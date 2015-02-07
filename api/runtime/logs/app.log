@@ -1,0 +1,448 @@
+2015-02-02 06:51:02 [127.0.0.1][-][-][warning][yii\log\Dispatcher::dispatch] Unable to send log via yii\debug\LogTarget: Exception (Invalid Configuration) 'yii\base\InvalidConfigException' with message 'The directory does not exist: /var/www/html/girc/dmis/api/web/assets' 
+
+in /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/AssetManager.php:166
+
+Stack trace:
+#0 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(362): ReflectionClass->newInstanceArgs(Array)
+#3 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(147): yii\di\Container->build('yii\web\AssetMa...', Array, Array)
+#4 /var/www/html/girc/dmis/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('yii\web\AssetMa...', Array, Array)
+#5 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/View.php(223): yii\base\Application->getAssetManager()
+#8 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Component.php(130): yii\web\View->getAssetManager()
+#9 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/panels/AssetPanel.php(53): yii\base\Component->__get('assetManager')
+#10 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(55): yii\debug\panels\AssetPanel->save()
+#11 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(112): yii\debug\LogTarget->export(Array)
+#12 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Dispatcher.php(183): yii\debug\LogTarget->collect(Array, true)
+#13 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Logger.php(170): yii\log\Dispatcher->dispatch(Array, true)
+#14 [internal function]: yii\log\Logger->flush(true)
+#15 {main}
+2015-02-02 06:50:56 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => '5101718a126cb19ef89487cd4d77193429cc6f8fbc4d647b7a1f041f6d8250bds:32:\"7hMjidfvygtqnm0qcn--7dNwp7VFxeFe\";'
+    'PHPSESSID' => '09loi1fs7ubudatk616dhndbc2'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=5101718a126cb19ef89487cd4d77193429cc6f8fbc4d647b7a1f041f6d8250bds%3A32%3A%227hMjidfvygtqnm0qcn--7dNwp7VFxeFe%22%3B; PHPSESSID=09loi1fs7ubudatk616dhndbc2'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '58890'
+    'REDIRECT_URL' => '/girc/dmis/api/web/item-sub-types'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/api/web/item-sub-types'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1422859855.128
+    'REQUEST_TIME' => 1422859855
+]
+2015-02-02 06:51:20 [127.0.0.1][-][-][warning][yii\log\Dispatcher::dispatch] Unable to send log via yii\debug\LogTarget: Exception (Invalid Configuration) 'yii\base\InvalidConfigException' with message 'The directory does not exist: /var/www/html/girc/dmis/api/web/assets' 
+
+in /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/AssetManager.php:166
+
+Stack trace:
+#0 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(362): ReflectionClass->newInstanceArgs(Array)
+#3 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(147): yii\di\Container->build('yii\web\AssetMa...', Array, Array)
+#4 /var/www/html/girc/dmis/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('yii\web\AssetMa...', Array, Array)
+#5 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/View.php(223): yii\base\Application->getAssetManager()
+#8 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Component.php(130): yii\web\View->getAssetManager()
+#9 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/panels/AssetPanel.php(53): yii\base\Component->__get('assetManager')
+#10 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(55): yii\debug\panels\AssetPanel->save()
+#11 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(112): yii\debug\LogTarget->export(Array)
+#12 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Dispatcher.php(183): yii\debug\LogTarget->collect(Array, true)
+#13 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Logger.php(170): yii\log\Dispatcher->dispatch(Array, true)
+#14 [internal function]: yii\log\Logger->flush(true)
+#15 {main}
+2015-02-02 06:51:18 [127.0.0.1][-][-][info][application] $_GET = [
+    '_format' => 'json'
+]
+
+$_COOKIE = [
+    '_csrf' => '5101718a126cb19ef89487cd4d77193429cc6f8fbc4d647b7a1f041f6d8250bds:32:\"7hMjidfvygtqnm0qcn--7dNwp7VFxeFe\";'
+    'PHPSESSID' => '09loi1fs7ubudatk616dhndbc2'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:35.0) Gecko/20100101 Firefox/35.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_csrf=5101718a126cb19ef89487cd4d77193429cc6f8fbc4d647b7a1f041f6d8250bds%3A32%3A%227hMjidfvygtqnm0qcn--7dNwp7VFxeFe%22%3B; PHPSESSID=09loi1fs7ubudatk616dhndbc2'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '58892'
+    'REDIRECT_QUERY_STRING' => '_format=json'
+    'REDIRECT_URL' => '/girc/dmis/api/web/item-sub-types'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_format=json'
+    'REQUEST_URI' => '/girc/dmis/api/web/item-sub-types?_format=json'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1422859878.534
+    'REQUEST_TIME' => 1422859878
+]
+2015-02-05 09:48:03 [127.0.0.1][-][-][warning][yii\log\Dispatcher::dispatch] Unable to send log via yii\debug\LogTarget: Exception (Invalid Configuration) 'yii\base\InvalidConfigException' with message 'The directory does not exist: /var/www/html/girc/dmis/api/web/assets' 
+
+in /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/AssetManager.php:166
+
+Stack trace:
+#0 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(362): ReflectionClass->newInstanceArgs(Array)
+#3 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(147): yii\di\Container->build('yii\web\AssetMa...', Array, Array)
+#4 /var/www/html/girc/dmis/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('yii\web\AssetMa...', Array, Array)
+#5 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/View.php(223): yii\base\Application->getAssetManager()
+#8 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Component.php(130): yii\web\View->getAssetManager()
+#9 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/panels/AssetPanel.php(53): yii\base\Component->__get('assetManager')
+#10 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(55): yii\debug\panels\AssetPanel->save()
+#11 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(112): yii\debug\LogTarget->export(Array)
+#12 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Dispatcher.php(183): yii\debug\LogTarget->collect(Array, true)
+#13 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Logger.php(170): yii\log\Dispatcher->dispatch(Array, true)
+#14 [internal function]: yii\log\Logger->flush(true)
+#15 {main}
+2015-02-05 09:47:59 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'uibg2kv9ugunpmc8b5j6kcgga5'
+    '_csrf' => 'c3741fd67510e6e2167ee1a548edc6a87d1c6942b90da8d122021dc9ee54b4d9s:32:\"8uCbH4XsfVOFaJR4QRdRMfdo-_r2SD-l\";'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/39.0.2171.65 Chrome/39.0.2171.65 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => 'PHPSESSID=uibg2kv9ugunpmc8b5j6kcgga5; _csrf=c3741fd67510e6e2167ee1a548edc6a87d1c6942b90da8d122021dc9ee54b4d9s%3A32%3A%228uCbH4XsfVOFaJR4QRdRMfdo-_r2SD-l%22%3B'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '58126'
+    'REDIRECT_URL' => '/girc/dmis/api/web/items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/api/web/items'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1423129676.658
+    'REQUEST_TIME' => 1423129676
+]
+2015-02-05 09:48:16 [127.0.0.1][-][-][warning][yii\log\Dispatcher::dispatch] Unable to send log via yii\debug\LogTarget: Exception (Invalid Configuration) 'yii\base\InvalidConfigException' with message 'The directory does not exist: /var/www/html/girc/dmis/api/web/assets' 
+
+in /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/AssetManager.php:166
+
+Stack trace:
+#0 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(362): ReflectionClass->newInstanceArgs(Array)
+#3 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(147): yii\di\Container->build('yii\web\AssetMa...', Array, Array)
+#4 /var/www/html/girc/dmis/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('yii\web\AssetMa...', Array, Array)
+#5 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/View.php(223): yii\base\Application->getAssetManager()
+#8 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Component.php(130): yii\web\View->getAssetManager()
+#9 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/panels/AssetPanel.php(53): yii\base\Component->__get('assetManager')
+#10 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(55): yii\debug\panels\AssetPanel->save()
+#11 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(112): yii\debug\LogTarget->export(Array)
+#12 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Dispatcher.php(183): yii\debug\LogTarget->collect(Array, true)
+#13 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Logger.php(170): yii\log\Dispatcher->dispatch(Array, true)
+#14 [internal function]: yii\log\Logger->flush(true)
+#15 {main}
+2015-02-05 09:48:16 [127.0.0.1][-][-][info][application] $_GET = [
+    '_format' => 'json'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'uibg2kv9ugunpmc8b5j6kcgga5'
+    '_csrf' => 'c3741fd67510e6e2167ee1a548edc6a87d1c6942b90da8d122021dc9ee54b4d9s:32:\"8uCbH4XsfVOFaJR4QRdRMfdo-_r2SD-l\";'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/39.0.2171.65 Chrome/39.0.2171.65 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => 'PHPSESSID=uibg2kv9ugunpmc8b5j6kcgga5; _csrf=c3741fd67510e6e2167ee1a548edc6a87d1c6942b90da8d122021dc9ee54b4d9s%3A32%3A%228uCbH4XsfVOFaJR4QRdRMfdo-_r2SD-l%22%3B'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '58133'
+    'REDIRECT_QUERY_STRING' => '_format=json'
+    'REDIRECT_URL' => '/girc/dmis/api/web/items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => '_format=json'
+    'REQUEST_URI' => '/girc/dmis/api/web/items?_format=json'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1423129695.746
+    'REQUEST_TIME' => 1423129695
+]
+2015-02-05 09:51:29 [127.0.0.1][-][-][warning][yii\log\Dispatcher::dispatch] Unable to send log via yii\debug\LogTarget: Exception (Invalid Configuration) 'yii\base\InvalidConfigException' with message 'The directory does not exist: /var/www/html/girc/dmis/api/web/assets' 
+
+in /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/AssetManager.php:166
+
+Stack trace:
+#0 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(362): ReflectionClass->newInstanceArgs(Array)
+#3 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(147): yii\di\Container->build('yii\web\AssetMa...', Array, Array)
+#4 /var/www/html/girc/dmis/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('yii\web\AssetMa...', Array, Array)
+#5 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/View.php(223): yii\base\Application->getAssetManager()
+#8 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Component.php(130): yii\web\View->getAssetManager()
+#9 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/panels/AssetPanel.php(53): yii\base\Component->__get('assetManager')
+#10 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(55): yii\debug\panels\AssetPanel->save()
+#11 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(112): yii\debug\LogTarget->export(Array)
+#12 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Dispatcher.php(183): yii\debug\LogTarget->collect(Array, true)
+#13 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Logger.php(170): yii\log\Dispatcher->dispatch(Array, true)
+#14 [internal function]: yii\log\Logger->flush(true)
+#15 {main}
+2015-02-05 09:51:28 [127.0.0.1][-][-][info][application] $_GET = [
+    'fields' => 'name,_format=json'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'uibg2kv9ugunpmc8b5j6kcgga5'
+    '_csrf' => 'c3741fd67510e6e2167ee1a548edc6a87d1c6942b90da8d122021dc9ee54b4d9s:32:\"8uCbH4XsfVOFaJR4QRdRMfdo-_r2SD-l\";'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/39.0.2171.65 Chrome/39.0.2171.65 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => 'PHPSESSID=uibg2kv9ugunpmc8b5j6kcgga5; _csrf=c3741fd67510e6e2167ee1a548edc6a87d1c6942b90da8d122021dc9ee54b4d9s%3A32%3A%228uCbH4XsfVOFaJR4QRdRMfdo-_r2SD-l%22%3B'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '58204'
+    'REDIRECT_QUERY_STRING' => 'fields=name,_format=json'
+    'REDIRECT_URL' => '/girc/dmis/api/web/items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'fields=name,_format=json'
+    'REQUEST_URI' => '/girc/dmis/api/web/items?fields=name,_format=json'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1423129887.21
+    'REQUEST_TIME' => 1423129887
+]
+2015-02-05 09:51:39 [127.0.0.1][-][-][warning][yii\log\Dispatcher::dispatch] Unable to send log via yii\debug\LogTarget: Exception (Invalid Configuration) 'yii\base\InvalidConfigException' with message 'The directory does not exist: /var/www/html/girc/dmis/api/web/assets' 
+
+in /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/AssetManager.php:166
+
+Stack trace:
+#0 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(362): ReflectionClass->newInstanceArgs(Array)
+#3 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(147): yii\di\Container->build('yii\web\AssetMa...', Array, Array)
+#4 /var/www/html/girc/dmis/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('yii\web\AssetMa...', Array, Array)
+#5 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/View.php(223): yii\base\Application->getAssetManager()
+#8 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Component.php(130): yii\web\View->getAssetManager()
+#9 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/panels/AssetPanel.php(53): yii\base\Component->__get('assetManager')
+#10 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(55): yii\debug\panels\AssetPanel->save()
+#11 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(112): yii\debug\LogTarget->export(Array)
+#12 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Dispatcher.php(183): yii\debug\LogTarget->collect(Array, true)
+#13 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Logger.php(170): yii\log\Dispatcher->dispatch(Array, true)
+#14 [internal function]: yii\log\Logger->flush(true)
+#15 {main}
+2015-02-05 09:51:38 [127.0.0.1][-][-][info][application] $_GET = [
+    'fields' => 'name'
+    '_format' => 'json'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'uibg2kv9ugunpmc8b5j6kcgga5'
+    '_csrf' => 'c3741fd67510e6e2167ee1a548edc6a87d1c6942b90da8d122021dc9ee54b4d9s:32:\"8uCbH4XsfVOFaJR4QRdRMfdo-_r2SD-l\";'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/39.0.2171.65 Chrome/39.0.2171.65 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => 'PHPSESSID=uibg2kv9ugunpmc8b5j6kcgga5; _csrf=c3741fd67510e6e2167ee1a548edc6a87d1c6942b90da8d122021dc9ee54b4d9s%3A32%3A%228uCbH4XsfVOFaJR4QRdRMfdo-_r2SD-l%22%3B'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '58205'
+    'REDIRECT_QUERY_STRING' => 'fields=name&_format=json'
+    'REDIRECT_URL' => '/girc/dmis/api/web/items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'fields=name&_format=json'
+    'REQUEST_URI' => '/girc/dmis/api/web/items?fields=name&_format=json'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1423129898.457
+    'REQUEST_TIME' => 1423129898
+]
+2015-02-05 17:00:49 [127.0.0.1][-][-][warning][yii\log\Dispatcher::dispatch] Unable to send log via yii\debug\LogTarget: Exception (Invalid Configuration) 'yii\base\InvalidConfigException' with message 'The directory does not exist: /var/www/html/girc/dmis/api/web/assets' 
+
+in /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/AssetManager.php:166
+
+Stack trace:
+#0 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Object.php(107): yii\web\AssetManager->init()
+#1 [internal function]: yii\base\Object->__construct(Array)
+#2 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(362): ReflectionClass->newInstanceArgs(Array)
+#3 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/Container.php(147): yii\di\Container->build('yii\web\AssetMa...', Array, Array)
+#4 /var/www/html/girc/dmis/vendor/yiisoft/yii2/BaseYii.php(344): yii\di\Container->get('yii\web\AssetMa...', Array, Array)
+#5 /var/www/html/girc/dmis/vendor/yiisoft/yii2/di/ServiceLocator.php(133): yii\BaseYii::createObject(Array)
+#6 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Application.php(600): yii\di\ServiceLocator->get('assetManager')
+#7 /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/View.php(223): yii\base\Application->getAssetManager()
+#8 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Component.php(130): yii\web\View->getAssetManager()
+#9 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/panels/AssetPanel.php(53): yii\base\Component->__get('assetManager')
+#10 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(55): yii\debug\panels\AssetPanel->save()
+#11 /var/www/html/girc/dmis/vendor/yiisoft/yii2-debug/LogTarget.php(112): yii\debug\LogTarget->export(Array)
+#12 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Dispatcher.php(183): yii\debug\LogTarget->collect(Array, true)
+#13 /var/www/html/girc/dmis/vendor/yiisoft/yii2/log/Logger.php(170): yii\log\Dispatcher->dispatch(Array, true)
+#14 [internal function]: yii\log\Logger->flush(true)
+#15 {main}
+2015-02-05 17:00:43 [127.0.0.1][-][-][info][application] $_GET = [
+    'fields' => 'name'
+    '_format' => 'json'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/39.0.2171.65 Chrome/39.0.2171.65 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '59129'
+    'REDIRECT_QUERY_STRING' => 'fields=name&_format=json'
+    'REDIRECT_URL' => '/girc/dmis/api/web/items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'fields=name&_format=json'
+    'REQUEST_URI' => '/girc/dmis/api/web/items?fields=name&_format=json'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1423155642.808
+    'REQUEST_TIME' => 1423155642
+]
