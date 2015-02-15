@@ -4,15 +4,15 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\modules\reporting\models\Damage */
+/* @var $model common\modules\reporting\models\Incident */
 
 $this->title = Yii::t('app', 'Create {modelClass}', [
-    'modelClass' => 'Damage',
+    'modelClass' => 'Incident',
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Damages'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Incidents'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="damage-create">
+<div class="incident-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

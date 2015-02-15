@@ -10,9 +10,11 @@ use \kartik\widgets\ActiveForm;
 $dropDownItemName = $model::getDropDownItemName();
 ?>
 
+
 <div class="event-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
 
     <?php // echo $form->field($model, 'reportitem_id')->textInput() ?>
 
@@ -59,6 +61,24 @@ $dropDownItemName = $model::getDropDownItemName();
 
     <?php //echo $form->field($model, 'status')->textInput() ?>
 
+
+    <!--{{{ Accordian -->
+    <div id="event-form-accordion" class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-geometries">1. What is HTML?</a>
+                </h4>
+            </div>
+            <div id="collapse-geometries" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages. <a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- }}}./Accordian
+
     <?php
     /*echo $form->field($model, 'tags')->widget(\kartik\widgets\Select2::className(),
         [
@@ -69,7 +89,7 @@ $dropDownItemName = $model::getDropDownItemName();
             ],
         ]);*/
     ?>
-    <!-- Tabular Input -->
+    <!--{{{ Tabular Input -->
     <table class="tabular table-striped">
         <thead>
         <th class="col-lg-4">type</th>
@@ -78,6 +98,7 @@ $dropDownItemName = $model::getDropDownItemName();
             <a id="add-row" title="Add" href="#"><span class="glyphicon glyphicon-add">Add</span></a>
         </th>
         </thead>
+
         <?=
         \mdm\widgets\TabularInput::widget([
             'id' => 'detail-grid',
@@ -92,6 +113,8 @@ $dropDownItemName = $model::getDropDownItemName();
         ])
         ?>
     </table>
+    <!--{{{ ./Tabular Input -->
+
 
     <?php
 /*    echo \common\modules\reporting\widgets\MultipleDamages::widget([

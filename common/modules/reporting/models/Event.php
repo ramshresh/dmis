@@ -62,13 +62,13 @@ class Event extends \yii\db\ActiveRecord
      */
     public function behaviors()
     {
-        return ArrayHelper::merge(parent::behaviors(),[
+        return [
             [//For Event IS_A ReportItem Relationship.
                 'class' => 'mdm\behaviors\ar\IsABehavior',
                 'relationClass' => ReportItem::className(),
                 'relationKey' => ['reportitem_id' => 'id'],
-            ],
-        ]);
+            ]
+        ];
     }
 
     //{{{ Getters based on model Relationship

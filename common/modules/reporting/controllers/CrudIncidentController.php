@@ -63,6 +63,11 @@ class CrudIncidentController extends Controller
     {
         $model = new Incident();
 
+        if(Yii::$app->request->post()) {
+            //Loading $_POST data of related models
+            $model->geometries = Yii::$app->request->post('Geometry', []);
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -81,6 +86,11 @@ class CrudIncidentController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        if(Yii::$app->request->post('Geometry') && $model->geometries) {
+            //Loading $_POST data of related models
+            $model->geometries = Yii::$app->request->post('Geometry', []);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

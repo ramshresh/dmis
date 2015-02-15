@@ -2,16 +2,9 @@
 
 namespace common\modules\reporting\controllers;
 
-use common\modules\reporting\models\Damage;
-use common\modules\reporting\models\Geometry;
-use common\modules\reporting\models\ItemType;
-use common\modules\reporting\models\ReportItem;
 use Yii;
 use common\modules\reporting\models\Event;
 use common\modules\reporting\models\search\EventSearch;
-use yii\data\ActiveDataProvider;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -67,10 +60,9 @@ class CrudEventController extends Controller
      */
     public function actionCreate()
     {
-
         $model = new Event();
-
         if(Yii::$app->request->post()) {
+            //Loading $_POST data of related models
             $model->geometries = Yii::$app->request->post('Geometry', []);
         }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -97,7 +89,8 @@ class CrudEventController extends Controller
         $model = $this->findModel($id);
 
         if(Yii::$app->request->post('Geometry') && $model->geometries) {
-                $model->geometries = Yii::$app->request->post('Geometry', []);
+            //Loading $_POST data of related models
+            $model->geometries = Yii::$app->request->post('Geometry', []);
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

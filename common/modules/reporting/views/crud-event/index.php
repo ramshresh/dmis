@@ -17,8 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('app', 'Create {modelClass}', [
-    'modelClass' => 'Event',
-]), ['create'], ['class' => 'btn btn-success']) ?>
+            'modelClass' => 'Event',
+        ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -29,12 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             //'reportitem_id',
-            ['attribute'=>'item_name','value'=>'reportitem.item_name'],
+            ['attribute' => 'item_name', 'value' => 'reportitem.item_name'],
             //['attribute'=>'type','value'=>'reportitem.type'],
-            ['attribute'=>'subtype_name','value'=>'reportitem.subtype_name'],
-            ['attribute'=>'is_verified','value'=>'reportitem.is_verified'],
-            ['attribute'=>'timestamp_created','value'=>'reportitem.timestamp_created'],
-            ['attribute'=>'timestamp_updated','value'=>'reportitem.timestamp_updated'],
+            ['attribute' => 'subtype_name', 'value' => 'reportitem.subtype_name'],
+            ['attribute' => 'is_verified', 'value' => 'reportitem.is_verified', 'format' => 'boolean',],
+            ['attribute' => 'timestamp_created', 'value' => 'reportitem.timestamp_created'],
+            ['attribute' => 'timestamp_updated', 'value' => 'reportitem.timestamp_updated'],
             'timestamp_occurance',
             //'duration',
             //'status',

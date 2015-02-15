@@ -65,22 +65,15 @@ class CrudDamageController extends Controller
     public function actionCreate()
     {
         $model = new Damage();
-
-        //$geometry = new GeometryPoint();
-        $geometry = new Geometry();
-        $geometry->type='POINT';
-
-        if($geometry->load(Yii::$app->request->post())){
-            $model->geometries = [$geometry];
+        if(Yii::$app->request->post()) {
+            //Loading $_POST data of related models
+            $model->geometries = Yii::$app->request->post('Geometry', []);
         }
-
         if ($model->load(Yii::$app->request->post())  && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-
             return $this->render('create', [
                 'model' => $model,
-                'geometry' => $geometry,
             ]);
         }
     }
@@ -94,6 +87,11 @@ class CrudDamageController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        if(Yii::$app->request->post('Geometry') && $model->geometries) {
+            //Loading $_POST data of related models
+            $model->geometries = Yii::$app->request->post('Geometry', []);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

@@ -19,7 +19,6 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

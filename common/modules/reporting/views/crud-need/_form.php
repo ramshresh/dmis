@@ -4,15 +4,16 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\modules\reporting\models\Damage */
+/* @var $model common\modules\reporting\models\Need */
 /* @var $form yii\widgets\ActiveForm */
 $dropDownItemName = $model::getDropDownItemName();
 ?>
 
-<div class="damage-form">
+<div class="need-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?php //echo $form->field($model, 'reportitem_id')->textInput() ?>
     <?php
     // Parent
 
@@ -39,8 +40,6 @@ $dropDownItemName = $model::getDropDownItemName();
     ?>
 
 
-    <?php //echo $form->field($model, 'reportitem_id')->textInput() ?>
-
     <?= $form->field($model, 'quantity')->textInput() ?>
 
     <?= $form->field($model, 'units_shortname')->textInput(['maxlength' => 25]) ?>
@@ -48,7 +47,6 @@ $dropDownItemName = $model::getDropDownItemName();
     <?php //echo $form->field($model, 'units_displayname')->textInput(['maxlength' => 25]) ?>
 
     <?php //echo $form->field($model, 'status')->textInput() ?>
-
     <!--{{{ Tabular Input -->
     <table class="tabular table-striped">
         <thead>
@@ -75,25 +73,6 @@ $dropDownItemName = $model::getDropDownItemName();
     </table>
     <!--{{{ ./Tabular Input -->
 
-
-
-    <!--- {{{ Geometry-->
-<!--	<button id="triggerpointpicker-modalmap" type="button">Locate on map</button>
-    <?php /*echo $form->field($geometry, 'type')->textInput(); */?>
-    <?php /*echo $form->field($geometry, 'latitude')->textInput(); */?>
-    <?php /*echo $form->field($geometry, 'longitude')->textInput(); */?>
-    <?php /*echo $form->field($geometry, 'wkt')->textInput(); */?>
-    --><?php
-/*        echo \common\modules\reporting\widgets\pointpicker\PointPickerWidget::widget([
-             'latitudeId'=>Html::getInputId($geometry,'latitude'),
-             'longitudeId'=>Html::getInputId($geometry,'longitude'),
-             'placenameId' => 'placename',
-             'wktFieldId'=>Html::getInputId($geometry,'wkt'),
-             'triggerId'=>'triggerpointpicker-modalmap',
-             //'externalMapDivId'=>'map',
-            ]);
-    */?>
-	<!--- }}} /.Geometry  -->
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

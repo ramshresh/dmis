@@ -4,15 +4,16 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\modules\reporting\models\Damage */
+/* @var $model common\modules\reporting\models\Incident */
 /* @var $form yii\widgets\ActiveForm */
 $dropDownItemName = $model::getDropDownItemName();
 ?>
 
-<div class="damage-form">
+<div class="incident-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?php //echo $form->field($model, 'reportitem_id')->textInput() ?>
     <?php
     // Parent
 
@@ -39,13 +40,20 @@ $dropDownItemName = $model::getDropDownItemName();
     ?>
 
 
-    <?php //echo $form->field($model, 'reportitem_id')->textInput() ?>
+    <?= $form->field($model, 'timestamp_occurance')->widget(\kartik\widgets\DateTimePicker::className(),
+        [
+            'options' => ['placeholder' => 'Enter event time ...'],
+            'convertFormat' => true,
+            'pluginOptions' => [
+                'todayHighlight' => true,
+                'todayBtn' => true,
+                'format' => 'yyyy-MM-dd h:i:s',
+                'autoclose' => true,
+            ]
+        ]);
+    ?>
 
-    <?= $form->field($model, 'quantity')->textInput() ?>
-
-    <?= $form->field($model, 'units_shortname')->textInput(['maxlength' => 25]) ?>
-
-    <?php //echo $form->field($model, 'units_displayname')->textInput(['maxlength' => 25]) ?>
+    <?php //echo $form->field($model, 'duration')->textInput() ?>
 
     <?php //echo $form->field($model, 'status')->textInput() ?>
 
@@ -76,24 +84,6 @@ $dropDownItemName = $model::getDropDownItemName();
     <!--{{{ ./Tabular Input -->
 
 
-
-    <!--- {{{ Geometry-->
-<!--	<button id="triggerpointpicker-modalmap" type="button">Locate on map</button>
-    <?php /*echo $form->field($geometry, 'type')->textInput(); */?>
-    <?php /*echo $form->field($geometry, 'latitude')->textInput(); */?>
-    <?php /*echo $form->field($geometry, 'longitude')->textInput(); */?>
-    <?php /*echo $form->field($geometry, 'wkt')->textInput(); */?>
-    --><?php
-/*        echo \common\modules\reporting\widgets\pointpicker\PointPickerWidget::widget([
-             'latitudeId'=>Html::getInputId($geometry,'latitude'),
-             'longitudeId'=>Html::getInputId($geometry,'longitude'),
-             'placenameId' => 'placename',
-             'wktFieldId'=>Html::getInputId($geometry,'wkt'),
-             'triggerId'=>'triggerpointpicker-modalmap',
-             //'externalMapDivId'=>'map',
-            ]);
-    */?>
-	<!--- }}} /.Geometry  -->
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
