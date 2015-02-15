@@ -24,9 +24,7 @@
         "kartik-v/yii2-widget-depdrop": "*",
         "kartik-v/yii2-date-range": "*",
         "kartik-v/yii2-widgets": "*",
-        "ramshresh/yii2-reporting": "dev-master",
         "mdmsoft/yii2-ar-behaviors": "1.0.*@dev",
-        "ramshresh/yii2-openlayers2-pointpicker": "dev-master",
         "ramshresh/yii2-geo": "dev-master",
         "yiisoft/yii2-jui": "*",
         "mdmsoft/yii2-widgets": "~1.0"
