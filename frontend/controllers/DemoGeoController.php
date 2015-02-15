@@ -4,12 +4,15 @@ namespace frontend\controllers;
 use common\modules\reporting\models\Damage;
 use common\modules\reporting\models\EmergencySituation;
 use common\modules\reporting\models\Event;
+use common\modules\reporting\models\Geometry;
 use common\modules\reporting\models\Incident;
 use common\modules\reporting\models\ItemType;
+use common\modules\reporting\models\Need;
 use common\modules\reporting\models\ReportItem;
 use Yii;
 use common\components\MyBaseContoller;
 use frontend\models\ContactForm;
+use yii\helpers\Json;
 use yii\helpers\Url;
 
 /**
@@ -66,5 +69,35 @@ class DemoGeoController extends MyBaseContoller
     public function actionOl3MapCustomControls(){
 		return $this->render('ol3-map-custom-controls');
 	}
+    public function actionTest(){
+        $model = new Damage();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            echo 'saved!';
+            $g1=new Geometry();
+            $g1->type='POINT';
+            $g1->reportitem_id=$model->reportitem_id;
+            $g1->save();
+            $g2=new Geometry();
+            $g2->type='POLYGON';
+            $g2->reportitem_id=$model->reportitem_id;
+            $g2->save();
+            $g3=new Geometry();
+            $g3->type='linestring';
+            $g3->reportitem_id=$model->reportitem_id;
+            $g3->save();
+
+            foreach($model->geometries as $geometry){
+                var_dump($geometry->attributes);
+            }
+
+        } else {
+
+            return $this->render('test', [
+                'model' => $model,
+            ]);
+        }
+
+    }
     
 }

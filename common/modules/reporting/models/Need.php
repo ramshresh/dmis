@@ -16,9 +16,24 @@ use Yii;
  *
  * @property Reportitem $reportitem
  * @property Units $unitsDisplayname
+ *
+ * These are the available properties of model<ReportItem>
+ * defined via  @Behavior<mdm\behaviors\ar\IsABehavior> in this model
+ * They can be used to directly save ReportItem model while saving $this model itself
+ * example. $model= new Damage(); $model->item_name = Earthquake; $model->save();
+ * Validation Rules and Scenarios for these properties are defined in model <ReportItem> itself
+ * These are @Read_and_Write properties
+ * @property integer $type
+ * @property string $item_name
+ * @property string $sybtype_name
+ * @property boolean $is_verified
+ * @property string $timestamp_created
+ * @property string $timestamp_updated
+ *
  */
 class Need extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -33,7 +48,7 @@ class Need extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['reportitem_id', 'quantity'], 'required'],
+            [['quantity'], 'required'],
             [['reportitem_id', 'quantity', 'status'], 'integer'],
             [['units_shortname', 'units_displayname'], 'string', 'max' => 25]
         ];
@@ -54,6 +69,18 @@ class Need extends \yii\db\ActiveRecord
         ];
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'mdm\behaviors\ar\IsABehavior',
+                'relationClass' => ReportItem::className(),
+                'relationKey' => ['reportitem_id' => 'id'],
+            ],
+        ];
+    }
+
+    //{{{ Getters based on model Relationship
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -69,4 +96,23 @@ class Need extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Units::className(), ['displayname' => 'units_displayname', 'shortname' => 'units_shortname']);
     }
+    //}}} ./Getters based on model Relationship
+
+    public static function getDropDownItemName(){
+        return \yii\helpers\ArrayHelper::map(ItemType::find()
+            ->where('type=:type',[':type'=>ReportItem::TYPE_NEED])
+            ->all(), 'item_name', 'item_name');
+    }
+
+    //{{{ Initializing model
+    public function loadDefaultValues(){
+        $this->type = ItemType::TYPE_NEED;
+    }
+
+    public function init()
+    {
+        parent::init();
+        $this->loadDefaultValues();
+    }
+    //}}} ./Initializing model
 }

@@ -28,7 +28,8 @@
         "mdmsoft/yii2-ar-behaviors": "1.0.*@dev",
         "ramshresh/yii2-openlayers2-pointpicker": "dev-master",
         "ramshresh/yii2-geo": "dev-master",
-        "yiisoft/yii2-jui": "*"
+        "yiisoft/yii2-jui": "*",
+        "mdmsoft/yii2-widgets": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
@@ -46,10 +47,6 @@
         }
     },
     "repositories":[
-        {
-            "type": "git",
-            "url": "https://github.com/ramshresh/yii2-reporting.git"
-        },
         {
             "type": "git",
             "url": "https://github.com/ramshresh/openlayers2-pointpicker.git"

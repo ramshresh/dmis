@@ -24,7 +24,7 @@ var map;
 var menuStart;
 var menuIntermediate;
 var menuEnd;
-var browserTitle = "GraphHopper Maps - Driving Directions";
+var browserTitle = "Driving Directions";
 var defaultTranslationMap = null;
 var enTranslationMap = null;
 var routeSegmentPopup = null;
@@ -33,21 +33,22 @@ var activeLayer = 'Lyrk';
 var i18nIsInitialized;
 
 var iconFrom = L.icon({
-    iconUrl: '/img/marker-icon-green.png',
+    iconUrl: '/girc/dmis/frontend/web/assets/4f12462e/img/marker-icon-green.png',
     shadowSize: [50, 64],
     shadowAnchor: [4, 62],
     iconAnchor: [12, 40]
 });
 
 var iconTo = L.icon({
-    iconUrl: './img/marker-icon-red.png',
+    //iconUrl: './img/marker-icon-red.png',
+    iconUrl: '/girc/dmis/frontend/web/assets/4f12462e/img/marker-icon-red.png',
     shadowSize: [50, 64],
     shadowAnchor: [4, 62],
     iconAnchor: [12, 40]
 });
 
 var iconInt = L.icon({
-    iconUrl: './img/marker-icon-blue.png',
+    iconUrl: '/girc/dmis/frontend/web/assets/4f12462e/img/marker-icon-blue.png',
     shadowSize: [50, 64],
     shadowAnchor: [4, 62],
     iconAnchor: [12, 40]
@@ -115,7 +116,7 @@ $(document).ready(function (e) {
                 function createButton(vehicle) {
                     var button = $("<button class='vehicle-btn' title='" + tr(vehicle) + "'/>");
                     button.attr('id', vehicle);
-                    button.html("<img src='img/" + vehicle + ".png' alt='" + tr(vehicle) + "'></img>");
+                    button.html("<img src='/girc/dmis/frontend/web/assets/4f12462e/img/" + vehicle + ".png' alt='" + tr(vehicle) + "'></img>");
                     button.click(function () {
                         ghRequest.initVehicle(vehicle);
                         resolveAll()
@@ -248,8 +249,8 @@ function checkInput() {
         var toFrom = getToFrom(i);
         div.data("index", i);
         div.find(".pointFlag").attr("src",
-                (toFrom === FROM) ? 'img/marker-small-green.png' :
-                ((toFrom === TO) ? 'img/marker-small-red.png' : 'img/marker-small-blue.png'));
+                (toFrom === FROM) ? '/girc/dmis/frontend/web/assets/4f12462e/img/marker-small-green.png' :
+                ((toFrom === TO) ? '/girc/dmis/frontend/web/assets/4f12462e/img/marker-small-red.png' : '/girc/dmis/frontend/web/assets/4f12462e/img/marker-small-blue.png'));
         if (len > 2) {
             div.find(".pointDelete").click(function () {
                 var index = $(this).parent().data('index');
@@ -944,7 +945,7 @@ function routeLatLng(request, doQuery) {
     $("button#" + request.vehicle.toLowerCase()).addClass("selectvehicle");
 
     var urlForAPI = request.createURL();
-    descriptionDiv.html('<img src="img/indicator.gif"/> Search Route ...');
+    descriptionDiv.html('<img src="/girc/dmis/frontend/web/assets/4f12462e/img/indicator.gif"/> Search Route ...');
     request.doRequest(urlForAPI, function (json) {
         descriptionDiv.html("");
         if (json.info.errors) {
@@ -1156,8 +1157,8 @@ function addInstruction(main, instr, instrIndex, lngLat) {
     }
 
     if (sign !== "continue") {
-        var indiPic = "<img class='pic' style='vertical-align: middle' src='" +
-                window.location.pathname + "img/" + sign + ".png'/>";
+        //var indiPic = "<img class='pic' style='vertical-align: middle' src='" + window.location.pathname + "/girc/dmis/frontend/web/assets/4f12462e/img/" + sign + ".png'/>";
+        var indiPic = "<img class='pic' style='vertical-align: middle' src='/girc/dmis/frontend/web/assets/4f12462e/img/" + sign + ".png'/>";
         str = "<td class='instr_pic'>" + indiPic + "</td>" + str;
     } else
         str = "<td class='instr_pic'/>" + str;

@@ -3,8 +3,6 @@
 /* @var $model Impact */
 /* @var $this ApplicationController */
 /* @var $form yii\widgets\ActiveForm */
-
-
 ?>
 <tr>
 

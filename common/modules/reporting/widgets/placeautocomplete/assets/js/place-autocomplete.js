@@ -119,8 +119,12 @@ function repoFormatSelection(repo) {
             self.lat= lat;self.lon=lon;
 
             ////http://www.mapquestapi.com/geocoding/v1/reverse?key=Fmjtd|luur20a729%2Cb0%3Do5-9a15qr&callback=renderReverse&location=27.7067577,85.3153407
+            /** 
+             * Changed the domain from www.mapquestapi to open.mapquestapi
+             * @see http://developer.mapquest.com/de/web/products/forums/-/message_boards/message/670106;jsessionid=fP735P969n7bpvH082d9.0
+            */
             $.ajax(
-                'http://www.mapquestapi.com/geocoding/v1/reverse?',{
+                'http://open.mapquestapi.com/geocoding/v1/reverse?',{
                     dataType: 'jsonp',
                     jsonpCallback: 'fnCallbackSuccess',
                     jsonp: 'callback',
@@ -185,6 +189,9 @@ function repoFormatSelection(repo) {
         'lon':undefined
     };
 
+/**
+ * @exposes locationUpdated
+ */  
     var PlaceAutocomplete = {
         init: function (options, elem) {
             var self = this;
@@ -199,7 +206,9 @@ function repoFormatSelection(repo) {
             self.sData,self.sLon,self.sLat,self.sName,self.sFeature,self.sId;
             self.initSelect2();
             self.setPlaceAutocompleteData();
+            
         },
+        
         setPlaceAutocompleteData: function () {
             var self = this;
             self.$elem.data('PlaceAutocomplete', self);
@@ -287,21 +296,23 @@ function repoFormatSelection(repo) {
 
                 $('#'+self.latitudeId).val(self.sLat);
                 $('#'+self.longitudeId).val(self.sLon);
-
-
-                //var rg=$('#'+self.placenameId).reverseGeocode({
-                //	'latId':self.latitudeId,
-                //		'lonId':self.longitudeId
-                //	});
-                //	rg = new ReverseGeocode(this,{
-                //		'latId':self.latitudeId,
-                //		'lonId':self.longitudeId
-                //	});
-                //	rg.reverseGeocode();
-                //	console.log('rgn');
-                //	console.log(rg);
-
                 $('#'+self.placenameId).val(self.sPlacename);
+                //{{{ Custom event
+                	if (window.CustomEvent) {
+						event=new CustomEvent("locationUpdated", {
+							detail: {
+								message: 'Location Updated',
+								time: new Date(),
+								'self':self,
+								'latitude':self.sLat,
+								'longitude':self.sLon
+							},
+							bubbles: true,
+							cancelable: true
+						});
+						e.currentTarget.dispatchEvent(event);
+					}
+                //}}}
             });
         }
     };
@@ -322,3 +333,16 @@ function repoFormatSelection(repo) {
 /* Usage Instruction
  $("#<?php echo $id; ?>").placeAutocomplete({});
  */
+ 
+ /*
+// {{{ locationUpdatedHandler event handler
+function locationUpdatedHandler(e) {
+	console.log(
+		"Event subscriber on "+e.currentTarget.nodeName+", "
+		+e.detail.time.toLocaleString()+": "+e.detail.latitude+": "+e.detail.longitude+": "+e.detail.self
+	);
+}
+// listen for newMessage event
+document.addEventListener("locationUpdated", locationUpdatedHandler, false);
+//}}}./ 
+*/

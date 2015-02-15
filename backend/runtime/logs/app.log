@@ -138,3 +138,94 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1423341389.01
     'REQUEST_TIME' => 1423341389
 ]
+2015-02-07 21:03:44 [127.0.0.1][-][-][error][yii\i18n\PhpMessageSource::loadMessages] The message file for category 'kvdatetime' does not exist: /var/www/html/girc/dmis/vendor/kartik-v/yii2-widgets/messages/en-US/kvdatetime.php Fallback file does not exist as well: /var/www/html/girc/dmis/vendor/kartik-v/yii2-widgets/messages/en/kvdatetime.php
+2015-02-07 21:03:43 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => '9e46375ee0226f9ca7e8504a59a9c151f1b788c82c49d7675f3ddac44ec67ec4s:32:\"6EmCqLsexgzmI0oXqycaD7x7sV2d-3MA\";'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/39.0.2171.65 Chrome/39.0.2171.65 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_csrf=9e46375ee0226f9ca7e8504a59a9c151f1b788c82c49d7675f3ddac44ec67ec4s%3A32%3A%226EmCqLsexgzmI0oXqycaD7x7sV2d-3MA%22%3B'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/girc/dmis/frontend/web/index.php'
+    'REMOTE_PORT' => '33934'
+    'REDIRECT_URL' => '/girc/dmis/frontend/web/reporting/event-report/'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/frontend/web/reporting/event-report/'
+    'SCRIPT_NAME' => '/girc/dmis/frontend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1423343023.53
+    'REQUEST_TIME' => 1423343023
+]
+2015-02-07 21:03:47 [127.0.0.1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "r=site".' in /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Module.php:461
+Stack trace:
+#0 /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/Application.php(83): yii\base\Module->runAction('r=site', Array)
+#1 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /var/www/html/girc/dmis/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in /var/www/html/girc/dmis/vendor/yiisoft/yii2/web/Application.php:95
+Stack trace:
+#0 /var/www/html/girc/dmis/vendor/yiisoft/yii2/base/Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /var/www/html/girc/dmis/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2015-02-07 21:03:47 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    '_csrf' => '9e46375ee0226f9ca7e8504a59a9c151f1b788c82c49d7675f3ddac44ec67ec4s:32:\"6EmCqLsexgzmI0oXqycaD7x7sV2d-3MA\";'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/39.0.2171.65 Chrome/39.0.2171.65 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8'
+    'HTTP_COOKIE' => '_csrf=9e46375ee0226f9ca7e8504a59a9c151f1b788c82c49d7675f3ddac44ec67ec4s%3A32%3A%226EmCqLsexgzmI0oXqycaD7x7sV2d-3MA%22%3B'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Ubuntu) Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Ubuntu)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => '/var/www/html'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/var/www/html'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/var/www/html/girc/dmis/frontend/web/index.php'
+    'REMOTE_PORT' => '33934'
+    'REDIRECT_URL' => '/girc/dmis/frontend/web/r=site'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/frontend/web/r=site'
+    'SCRIPT_NAME' => '/girc/dmis/frontend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1423343027.479
+    'REQUEST_TIME' => 1423343027
+]

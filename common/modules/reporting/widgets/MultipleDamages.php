@@ -30,6 +30,7 @@ class MultipleDamages extends Widget{
     public $parentControllerContext;
     /** @var FormContext Context of parent form */
     public $parentFormContext;
+
     public $dropDownItemName;
 
     /** @var ArrayObject htmlOptions for .?. */
@@ -73,26 +74,24 @@ class MultipleDamages extends Widget{
         $optsJs = Json::encode($opts);
 //$cs->registerScript('multipleImpacts#'.$this->id,"$('#{$this->id}').multipleImpacts({$opts});");
 
-        $script="var lastDamage = 0;
-    var trDamage = new String(" .Json::encode($this->render('multiple-damages/_damageRow', ['id'=>'id_rep', 'model'=>new Damage(),'form'=>$this->parentFormContext,'dropDownItemName'=>$this->dropDownItemName,'reportItem'=>new ReportItem()])).
-            ");
-        console.log(JSON.stringify(trDamage));
-        $.fn.fooo=function(){
-	console.log(1);
-	};
-    $.fn.addDamage=function(button)
-    {
-    	console.log(button);
-        lastDamage++;
-        button.parents('table').children('tbody').append(trDamage.replace(/id_rep/g, 'new_row' + lastDamage));
-    }
-    $.fn.deleteDamage=function(button)
-    {
-
-        button.parents('tr').detach();
-    }
-";
+    $script="var lastDamage = 0;
+        var trDamage = new String(" .Json::encode($this->render('multiple-damages/_damageRow', ['id'=>'id_rep', 'model'=>new Damage(),'form'=>$this->parentFormContext,'dropDownItemName'=>$this->dropDownItemName,'reportItem'=>new ReportItem()])).
+                ");
+            console.log(JSON.stringify(trDamage));
+            $.fn.fooo=function(){
+        console.log(1);
+        };
+        $.fn.addDamage=function(button)
+        {
+            console.log(button);
+            lastDamage++;
+            button.parents('table').children('tbody').append(trDamage.replace(/id_rep/g, 'new_row' + lastDamage));
+        }
+        $.fn.deleteDamage=function(button)
+        {
+            button.parents('tr').detach();
+        }
+    ";
         $this->getView()->registerJs($script,View::POS_READY);
     }
-
 }

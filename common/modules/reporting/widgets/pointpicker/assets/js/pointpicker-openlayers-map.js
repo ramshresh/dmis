@@ -183,6 +183,7 @@ function getObjectClass(obj) {
             self.$iLat =self.options.$iLat;
             self.$iLon =self.options.$iLon;
             self.$iPlacename =self.options.$iPlacename;
+            self.$iWktFieldId=self.options.$iWktFieldId;
             self.openlayersImgPath = self.options.openlayersImgPath;
             self.mapDivId=self.options.mapDivId;
             self.$mapDiv=self.options.$mapDiv;
@@ -211,11 +212,9 @@ function getObjectClass(obj) {
     activateClick:function(){
         this.click.activate();
     },
-    zoomToCurrent:function(){
-        var ppM= this;
-        ppM.handlePickPoint();
-        lat = $(this.$iLat).val();
-        lon = $(this.$iLon).val();
+    zoomToLonLat:function(lon,lat){
+		var ppM=this;
+		
         map = this.map;
 
         if(map && lat && lon){
@@ -226,13 +225,24 @@ function getObjectClass(obj) {
                 ), 12 // Zoom level
             );
         }
+		},
+    zoomToCurrent:function(){
+        var ppM= this;
+        ppM.handlePickPoint();
+        lat = $(this.$iLat).val();
+        lon = $(this.$iLon).val();
+        ppM.zoomToLonLat(lon,lat);
     },
     reverseGeocode:function(lon,lat,fnCallbackSuccess){
         var self=this;
         var lat=lat; var lon=lon;
         ////http://www.mapquestapi.com/geocoding/v1/reverse?key=Fmjtd|luur20a729%2Cb0%3Do5-9a15qr&callback=renderReverse&location=27.7067577,85.3153407
+         /** 
+             * Changed the domain from www.mapquestapi to open.mapquestapi
+             * @see http://developer.mapquest.com/de/web/products/forums/-/message_boards/message/670106;jsessionid=fP735P969n7bpvH082d9.0
+            */
         $.ajax(
-            'http://www.mapquestapi.com/geocoding/v1/reverse?',{
+            'http://open.mapquestapi.com/geocoding/v1/reverse?',{
                 dataType: 'jsonp',
                 jsonpCallback: 'fnCallbackSuccess',
                 jsonp: 'callback',
@@ -294,6 +304,7 @@ function getObjectClass(obj) {
         if (ppM.$iLon && ppM.$iLat) {
             newLon=$(ppM.$iLon).val();
             newLat=$(ppM.$iLat).val();
+            newWktField=$(ppM.$iWktFieldId).val();
         }
         newMarker = ppM.createNewMarker(newLon, newLat);
         //adding marker on click
@@ -366,6 +377,8 @@ function getObjectClass(obj) {
                     if (ppM.$iLon && ppM.$iLat) {
                         $(ppM.$iLon).val(newLon);
                         $(ppM.$iLat).val(newLat);
+                        console.log($(ppM.$iWktFieldId));
+                        $(ppM.$iWktFieldId).val('POINT('+newLon+' '+newLat+')');
                     }
                     newMarker = ppM.createNewMarker(newLon, newLat);
                     //adding marker on click
@@ -513,15 +526,7 @@ function getObjectClass(obj) {
                     projection: new OpenLayers.Projection("EPSG:900913"),
                     displayProjection: new OpenLayers.Projection("EPSG:4326"),
                     maxResolution: 2.5,
-                    numZoomLevels: 20,
-                    controls: [
-                        new OpenLayers.Control.Navigation({
-                            div: document.getElementById("layers")
-                        }),
-                        new OpenLayers.Control.PanZoomBar(),
-                        new OpenLayers.Control.LayerSwitcher(),
-                        new OpenLayers.Control.MousePosition()
-                    ]
+                    numZoomLevels: 20
                 }
             );
             this.map = map;
@@ -662,6 +667,11 @@ function getObjectClass(obj) {
 
 
 
+		if(self.$iWktFieldId){
+			if ($(self.$iWktFieldId).val()){
+				wkt = $(self.$iWktFieldId).val();
+			}			
+		}
         // Check if the specified div ids for latitude and longitude fields exists
         if (self.$iLat && self.$iLon) {
             // check if the form already has lat lon
@@ -678,6 +688,7 @@ function getObjectClass(obj) {
                     lon = positiondata.longitude;
                     $(self.$iLat).val(lat);
                     $(self.$iLon).val(lon);
+                    
                     setNewMarker(lon,lat);
                 }
                 if(localStorage['positiondata']){
@@ -736,197 +747,215 @@ PointPickerMap.options = {
     $iLat:'',
     $iLon:'',
     $iPlacename:'',
+    $iWktFieldId:'',
     openlayersImgPath:'',
     markerUrl:'',
     $mapDiv:''
 };
 
-var PointPicker = {
-    init: function (options, elem) {
-        var self = this;
-        self.options = $.extend({}, $.fn.pointPicker.options, options);
-        self.elem = elem;
-        self.$elem = $(elem);
-        self.mapDivId = self.options.mapDivId;
-        self.$mapDiv = (self.options.mapDivId != undefined) ? $('#' + self.options.mapDivId) : undefined;
-        self.$iLat = $('#'+self.options.iLatId);
-        self.$iLon = $('#'+self.options.iLonId);
-        self.$iPlacename = $('#'+self.options.iPlacenameId);
-        self.$iOK = undefined;
-        self.$iZOOM_TO_CURRENT = undefined;
-        self.$iDialog = undefined;
-        self.$iFields = undefined;
-        self.$iActions = undefined;
-        self.trigger = self.options.trigger;
-        self.widgetDivId = self.options.widgetDivId;
-        self.latitudeId = self.options.latitudeId;
-        self.longitudeId = self.options.longitudeId;
-        self.placenameId = self.options.placenameId;
-        self.externalMapDivId=self.options.externalMapDivId;
-        self.triggerId = self.options.triggerId;
-        self.pointPickerMap=undefined; //PointPickerMap
-        self.markerUrl = self.options.markerUrl;
+    var PointPicker;
+    PointPicker = {
+        init: function (options, elem) {
+            var self = this;
+            self.options = $.extend({}, $.fn.pointPicker.options, options);
+            self.elem = elem;
+            self.$elem = $(elem);
+            self.mapDivId = self.options.mapDivId;
+            self.$mapDiv = (self.options.mapDivId != undefined) ? $('#' + self.options.mapDivId) : undefined;
+            self.$iLat = $('#' + self.options.iLatId);
+            self.$iLon = $('#' + self.options.iLonId);
+            self.$iPlacename = $('#' + self.options.iPlacenameId);
+            self.$iWktFieldId = $('#' + self.options.iWktFieldId);
+            self.$iOK = undefined;
+            self.$iZOOM_TO_CURRENT = undefined;
+            self.$iDialog = undefined;
+            self.$iFields = undefined;
+            self.$iActions = undefined;
+            self.trigger = self.options.trigger;
+            self.widgetDivId = self.options.widgetDivId;
+            self.latitudeId = self.options.latitudeId;
+            self.longitudeId = self.options.longitudeId;
+            self.placenameId = self.options.placenameId;
+            self.wktFieldId =self.options.wktFieldId;
+            self.externalMapDivId = self.options.externalMapDivId;
+            self.triggerId = self.options.triggerId;
+            self.pointPickerMap = undefined; //PointPickerMap
+            self.markerUrl = self.options.markerUrl;
 
-        self.setPointPickerData(); // store the point picker object to data attribute of widget HTML5
-        self.initHTMLElements();
-        self.activateTrigger();
+            self.setPointPickerData(); // store the point picker object to data attribute of widget HTML5
+            self.initHTMLElements();
+            self.activateTrigger();
 
-    },
-    activateTrigger: function () {
-        var pointPicker = this;
-        var $ppDialogTrg=$('#' + this.triggerId);
-        var $ppDialog=$(pointPicker.$iDialog);
+        },
+        activateTrigger: function () {
+            var pointPicker = this;
+            var $ppDialogTrg = $('#' + this.triggerId);
+            var $ppDialog = $(pointPicker.$iDialog);
 
-        $ppDialog.css({display:'none'});
-        $ppDialog.dialog({
-            autoOpen: false, dialogClass: 'ui-dialog-form', width: "auto", height: "auto", draggable: pointPicker.externalDivId
-        });
+            $ppDialog.css({display: 'none'});
+            $ppDialog.dialog({
+                autoOpen: false,
+                dialogClass: 'ui-dialog-form',
+                width: "auto",
+                height: "auto",
+                draggable: pointPicker.externalDivId
+            });
 
-        $ppDialogTrg.click(function () {
-            var trg=this;
-            if ($ppDialog.dialog("isOpen") == false) {
-                pointPicker.openWidget();
-            } else {
-                pointPicker.cancelChanges();
-            }
-
-        });
-
-        $(pointPicker.$iOK).click(function () {
-            var trg = this;
-            pointPicker.saveChanges();
-        });
-        $(pointPicker.$iCANCEL).click(function () {
-            pointPicker.cancelChanges();
-        });
-
-        $(pointPicker.$iZOOM_TO_CURRENT).click(function(){
-            pointPicker.pointPickerMap.zoomToCurrent();
-        });
-
-    },
-    openWidget:function(){
-        this.initFormData();
-        if (!this.pointPickerMap) {
-            this.initMap();
-        }else{
-            this.pointPickerMap.activate();
-        }
-        this.openDialog();
-    },
-    saveChanges:function(){
-        if(this.pointPickerMap){
-            this.setData();
-            this.pointPickerMap.deactivate();
-        }
-        this.closeDialog();
-    },
-    cancelChanges: function(){
-        if(this.pointPickerMap){
-            this.pointPickerMap.deactivate();
-        }
-        this.closeDialog();
-    },
-    closeDialog:function(){
-        var pointPicker=this;
-        $(pointPicker.$iDialog).dialog("close");
-    },
-    openDialog:function(){
-        var pointPicker=this;
-        $(pointPicker.$iDialog).dialog("open");
-    },
-    setData: function () {
-        var pointPicker=this;
-        console.log('**************');
-        console.log($('#' + pointPicker.placenameId));
-        console.log('**************');
-        $('#' + pointPicker.latitudeId).val(pointPicker.$iLat.val());
-        $('#' + pointPicker.longitudeId).val(pointPicker.$iLon.val());
-
-        // Dirty But needed for select 2 js
-        if($('#'+pointPicker.placenameId).prev('div').children('a.select2-choice').children('span.select2-chosen')){
-            $('#'+pointPicker.placenameId).prev('div').children('a.select2-choice').children('span.select2-chosen').html(pointPicker.$iPlacename.val());
-            $('#' + pointPicker.placenameId).val(pointPicker.$iPlacename.val());
-        }else{
-            $('#' + pointPicker.placenameId).val(pointPicker.$iPlacename.val());
-        }
-    },
-    getData: function () {
-        var pointPicker=this;
-        return  {
-            lat: pointPicker.$iLat.value,
-            lon: pointPicker.$iLon.value,
-            placename: pointPicker.$iPlacename.value
-        };
-    },
-    initFormData: function(){
-        var pointPicker=this;
-
-        if(pointPicker.latitudeId && pointPicker.longitudeId){
-            if(($('#' + pointPicker.latitudeId).value != '')&&($('#' + pointPicker.longitudeId).value != '')){
-                $(pointPicker.$iLat).val($('#' + pointPicker.latitudeId).val());
-                $(pointPicker.$iLon).val($('#' + pointPicker.longitudeId).val());
-
-                // Dirty But needed for select 2 js because select2js hides input under div
-                if($('#'+pointPicker.placenameId).prev('div').children('a.select2-choice').children('span.select2-chosen')){
-                    $(pointPicker.$iPlacename).val($('#' + pointPicker.placenameId).val());
-                    $(pointPicker.$iPlacename).prev('div').children('a.select2-choice').children('span.select2-chosen').html($('#' + pointPicker.placenameId).val());
-                }else{
-                    $(pointPicker.$iPlacename).val($('#' + pointPicker.placenameId).val());
+            $ppDialogTrg.click(function () {
+                var trg = this;
+                if ($ppDialog.dialog("isOpen") == false) {
+                    pointPicker.openWidget();
+                } else {
+                    pointPicker.cancelChanges();
                 }
 
+            });
+
+            $(pointPicker.$iOK).click(function () {
+                var trg = this;
+                pointPicker.saveChanges();
+            });
+            $(pointPicker.$iCANCEL).click(function () {
+                pointPicker.cancelChanges();
+            });
+
+            $(pointPicker.$iZOOM_TO_CURRENT).click(function () {
+                pointPicker.pointPickerMap.zoomToCurrent();
+            });
+
+        },
+        openWidget: function () {
+            this.initFormData();
+            if (!this.pointPickerMap) {
+                this.initMap();
+            } else {
+                this.pointPickerMap.activate();
             }
-        }
-        if(pointPicker.placenameId && $('#' + pointPicker.placenameId).val()){
-            $(pointPicker.$iPlacename).val($('#' + pointPicker.placenameId).val());
-        }
-    },
-    setPointPickerData: function () {
-        var pointPicker = this;
-        pointPicker.$elem.data('PointPicker', pointPicker);
-    },
-    initHTMLElements: function () {
-        var pointPicker = this;
-        pointPicker.$iDialog = $(pointPicker.elem).children('.pointpickerdialog')[0];
-        pointPicker.$iFields=$(pointPicker.$iDialog).children('.pointpickerfields')[0];
+            this.openDialog();
+        },
+        saveChanges: function () {
+            if (this.pointPickerMap) {
+                this.setData();
+                this.pointPickerMap.deactivate();
+            }
+            this.closeDialog();
+        },
+        cancelChanges: function () {
+            if (this.pointPickerMap) {
+                this.pointPickerMap.deactivate();
+            }
+            this.closeDialog();
+        },
+        closeDialog: function () {
+            var pointPicker = this;
+            $(pointPicker.$iDialog).dialog("close");
+        },
+        openDialog: function () {
+            var pointPicker = this;
+            $(pointPicker.$iDialog).dialog("open");
+        },
+        setData: function () {
+            var pointPicker = this;
+            console.log('*******test*******');
+            console.log(pointPicker.placenameId);
+            console.log($('#' + pointPicker.placenameId));
+            console.log('**************');
+            $('#' + pointPicker.latitudeId).val(pointPicker.$iLat.val());
+            $('#' + pointPicker.longitudeId).val(pointPicker.$iLon.val());
+            $('#' + pointPicker.wktFieldId).val(pointPicker.$iWktFieldId.val());
 
-        //pointPicker.$iLat = $(pointPicker.$iFields).children('.pointpickerfield.latitude')[0];
-        //pointPicker.$iLon = $(pointPicker.$iFields).children('.pointpickerfield.longitude')[0];
-        //pointPicker.$iPlacename = $(pointPicker.$iFields).children('.pointpickerfield.placename')[0];
+            // Dirty But needed for select 2 js
+            if ($('#' + pointPicker.placenameId).prev('div').children('a.select2-choice').children('span.select2-chosen')) {
+                $('#' + pointPicker.placenameId).prev('div').children('a.select2-choice').children('span.select2-chosen').html(pointPicker.$iPlacename.val());
+                $('#' + pointPicker.placenameId).val(pointPicker.$iPlacename.val());
+            } else {
+                $('#' + pointPicker.placenameId).val(pointPicker.$iPlacename.val());
+            }
+        },
+        getData: function () {
+            var pointPicker = this;
+            return {
+                lat: pointPicker.$iLat.value,
+                lon: pointPicker.$iLon.value,
+                placename: pointPicker.$iPlacename.value,
+                wkt:"POINT("+pointPicker.$iLon.value+" "+pointPicker.$iLat.value+")"
+            };
+        },
+        initFormData: function () {
+            var pointPicker = this;
 
-        //pointPicker.$iLat = $(pointPicker.$iFields).children('.pointpickerfield.latitude')[0];
-        //pointPicker.$iLon = $(pointPicker.$iFields).children('.pointpickerfield.longitude')[0];
-        //pointPicker.$iPlacename = $(pointPicker.$iFields).children('.pointpickerfield.placename')[0];
+            if (pointPicker.latitudeId && pointPicker.longitudeId) {
+                if (($('#' + pointPicker.latitudeId).value != '') && ($('#' + pointPicker.longitudeId).value != '')) {
+                    $(pointPicker.$iLat).val($('#' + pointPicker.latitudeId).val());
+                    $(pointPicker.$iLon).val($('#' + pointPicker.longitudeId).val());
+                    $(pointPicker.$iWktFieldId).val("POINT("+pointPicker.$iLon.value+" "+pointPicker.$iLat.value+")");
+                    // Dirty But needed for select 2 js because select2js hides input under div
+                    if ($('#' + pointPicker.placenameId).prev('div').children('a.select2-choice').children('span.select2-chosen')) {
+                        $(pointPicker.$iPlacename).val($('#' + pointPicker.placenameId).val());
+                        $(pointPicker.$iPlacename).prev('div').children('a.select2-choice').children('span.select2-chosen').html($('#' + pointPicker.placenameId).val());
+                    } else {
+                        $(pointPicker.$iPlacename).val($('#' + pointPicker.placenameId).val());
+                    }
 
-        console.log(pointPicker.options.iLatId);
-        console.log(pointPicker.$iLat);
-        console.log($('#'+pointPicker.options.iLatId));
 
 
+                }
+            }
+            if (pointPicker.placenameId && $('#' + pointPicker.placenameId).val()) {
+                $(pointPicker.$iPlacename).val($('#' + pointPicker.placenameId).val());
+            }
+        },
+        setPointPickerData: function () {
+            var pointPicker = this;
+            pointPicker.$elem.data('PointPicker', pointPicker);
+        },
+        initHTMLElements: function () {
+            var pointPicker = this;
+            pointPicker.$iDialog = $(pointPicker.elem).children('.pointpickerdialog')[0];
+            pointPicker.$iFields = $(pointPicker.$iDialog).children('.pointpickerfields')[0];
 
-        pointPicker.$iActions=$(pointPicker.$iDialog).children('.pointpickeractions')[0];
-        pointPicker.$iOK = $(pointPicker.$iActions).children('.pointpicker.ok')[0];
-        pointPicker.$iZOOM_TO_CURRENT = $(pointPicker.$iActions).children('.pointpicker.zoomtocurrent')[0];
-        pointPicker.$iCANCEL = $(pointPicker.$iActions).children('.pointpicker.cancel')[0];
-    },
-    initMap: function () {
-        var pointPicker =this;
-        var ppMap = Object.create(PointPickerMap);
-        var ppMapOpts={
-            $iLat:pointPicker.$iLat,
-            $iLon:pointPicker.$iLon,
-            $iPlacename:pointPicker.$iPlacename,
-            openlayersImgPath:pointPicker.options.openlayersImgPath,
-            markerUrl:pointPicker.markerUrl,
-            mapDivId:pointPicker.mapDivId,
-            $mapDiv:pointPicker.$mapDiv,
-            externalMapDivId:pointPicker.externalMapDivId
-        };
-        ppMap.init(ppMapOpts, pointPicker);
-        pointPicker.pointPickerMap = ppMap;
-    },
-    myProp: 'foo'
-};
+            //pointPicker.$iLat = $(pointPicker.$iFields).children('.pointpickerfield.latitude')[0];
+            //pointPicker.$iLon = $(pointPicker.$iFields).children('.pointpickerfield.longitude')[0];
+            //pointPicker.$iPlacename = $(pointPicker.$iFields).children('.pointpickerfield.placename')[0];
+
+            //pointPicker.$iLat = $(pointPicker.$iFields).children('.pointpickerfield.latitude')[0];
+            //pointPicker.$iLon = $(pointPicker.$iFields).children('.pointpickerfield.longitude')[0];
+            //pointPicker.$iPlacename = $(pointPicker.$iFields).children('.pointpickerfield.placename')[0];
+
+            pointPicker.$iActions = $(pointPicker.$iDialog).children('.pointpickeractions')[0];
+            pointPicker.$iOK = $(pointPicker.$iActions).children('.pointpicker.ok')[0];
+            pointPicker.$iZOOM_TO_CURRENT = $(pointPicker.$iActions).children('.pointpicker.zoomtocurrent')[0];
+            pointPicker.$iCANCEL = $(pointPicker.$iActions).children('.pointpicker.cancel')[0];
+            
+            document.addEventListener('locationUpdated',function(e) {
+				/*console.log(
+					"Event subscriber on "+e.currentTarget.nodeName+", "
+					+e.detail.time.toLocaleString()+": "+e.detail.latitude+": "+e.detail.longitude+": "+e.detail.self
+				);*/
+				if(pointPicker.pointPickerMap){
+					pointPicker.pointPickerMap.zoomToLonLat(e.detail.longitude,e.detail.latitude);
+				}
+			});
+        },
+        initMap: function () {
+            var pointPicker = this;
+            var ppMap = Object.create(PointPickerMap);
+            var ppMapOpts = {
+                $iLat: pointPicker.$iLat,
+                $iLon: pointPicker.$iLon,
+                $iPlacename: pointPicker.$iPlacename,
+                $iWktFieldId:pointPicker.$iWktFieldId,
+                openlayersImgPath: pointPicker.options.openlayersImgPath,
+                markerUrl: pointPicker.markerUrl,
+                mapDivId: pointPicker.mapDivId,
+                $mapDiv: pointPicker.$mapDiv,
+                externalMapDivId: pointPicker.externalMapDivId
+            };
+            ppMap.init(ppMapOpts, pointPicker);
+            pointPicker.pointPickerMap = ppMap;
+        },
+        myProp: 'foo'
+    };
 $.fn.pointPicker = function (options) {
     return this.each(function () {
         var pointPicker = Object.create(PointPicker);
@@ -937,6 +966,7 @@ $.fn.pointPicker.options = {
     latitudeId: '',
     longitudeId: '',
     placenameId: '',
+    wktFieldId:'',
     openlayersPackUrl: '//cdnjs.cloudflare.com/a.../openlayers/2.13.1',
     openlayersImgPath: '//cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/img/',
     markerUrl: '//cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/img/marker.png',

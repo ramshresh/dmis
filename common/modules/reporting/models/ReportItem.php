@@ -2,7 +2,12 @@
 
 namespace common\modules\reporting\models;
 
+use common\components\utils\php\pg\PHPG_Utils;
+use common\components\utils\php\pg\PhpPgUtils;
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "reporting.reportitem".
@@ -20,14 +25,19 @@ use Yii;
  * @property string $meta_hstore
  * @property string $meta_json
  *
+ * @property Event $event
+ * @property Incident $incident
+ * @property Damage $damage
+ * @property Need $need
+ *
+ *
  * @property Geometry[] $geometries
- * @property Incident[] $incidents
  * @property Multimedia[] $multimedia
  * @property ReportitemUser[] $reportitemUsers
- * @property Need[] $needs
+
  * @property Rating[] $ratings
- * @property Event[] $events
- * @property Damage[] $damages
+
+
  * @property EmergencySituation[] $emergencySituations
  * @property Geocode[] $geocodes
  * @property ReportItemChild[] $reportItemChildren
@@ -39,6 +49,8 @@ class ReportItem extends \yii\db\ActiveRecord
     const TYPE_INCIDENT = 2;
     const TYPE_DAMAGE = 3;
     const TYPE_NEED = 4;
+
+
 
     /**
      * @inheritdoc
@@ -54,7 +66,7 @@ class ReportItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'item_name'], 'required'],
+            [['type', 'item_name'], 'required','except'=>['search']], // 'except'=>'Search' for search form such as grid view
             [['type'], 'integer'],
             [['description', 'tags', 'meta_hstore', 'meta_json'], 'string'],
             [['is_verified'], 'boolean'],
@@ -64,6 +76,14 @@ class ReportItem extends \yii\db\ActiveRecord
         ];
     }
 
+    function scenarios()
+    {
+        $reportitemScenario =[
+            //This scenario is to be used for Search Model by instance of <ReporItem> or any <class that inherits ReportItem>
+            'search' => ['type', 'item_name','is_verified','timestamp_created','subtype_name','timestamp_updated'],
+        ];
+        return ArrayHelper::merge(parent::scenarios(),$reportitemScenario);
+    }
     /**
      * @inheritdoc
      */
@@ -90,15 +110,16 @@ class ReportItem extends \yii\db\ActiveRecord
      */
     public function getGeometries()
     {
-        return $this->hasMany(Geometry::className(), ['reportitem_id' => 'id']);
+        return $this->hasMany(Geometry::className(), ['reportitem_id' => 'id'])->indexBy('id');
     }
+
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIncidents()
+    public function getIncident()
     {
-        return $this->hasMany(Incident::className(), ['reportitem_id' => 'id']);
+        return $this->hasOne(Incident::className(), ['reportitem_id' => 'id']);
     }
 
     /**
@@ -120,9 +141,9 @@ class ReportItem extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNeeds()
+    public function getNeed()
     {
-        return $this->hasMany(Need::className(), ['reportitem_id' => 'id']);
+        return $this->hasOne(Need::className(), ['reportitem_id' => 'id']);
     }
 
     /**
@@ -136,17 +157,17 @@ class ReportItem extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEvents()
+    public function getEvent()
     {
-        return $this->hasMany(Event::className(), ['reportitem_id' => 'id']);
+        return $this->hasOne(Event::className(), ['reportitem_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDamages()
+    public function getDamage()
     {
-        return $this->hasMany(Damage::className(), ['reportitem_id' => 'id']);
+        return $this->hasOne(Damage::className(), ['reportitem_id' => 'id']);
     }
 
     /**
@@ -177,21 +198,30 @@ class ReportItem extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            $this->tags = '{'.$this->tags.'}';
+            //{{{ Saving related
+
+            //}}} ./Saving Tags
             return true;
         } else {
             return false;
         }
     }
 
-
     public function behaviors()
     {
-
-
         return [
             [
+                'class' => 'mdm\behaviors\ar\RelatedBehavior',
+            ],
+            [
                 'class' => 'mdm\behaviors\ar\RelationBehavior',
+
+            ],
+            [// Auto populates Timestamp for created and update events
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'timestamp_created',
+                'updatedAtAttribute' => 'timestamp_updated',
+                'value' => new Expression('NOW()'),
             ],
         ];
     }

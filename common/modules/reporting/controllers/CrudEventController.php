@@ -2,9 +2,16 @@
 
 namespace common\modules\reporting\controllers;
 
+use common\modules\reporting\models\Damage;
+use common\modules\reporting\models\Geometry;
+use common\modules\reporting\models\ItemType;
+use common\modules\reporting\models\ReportItem;
 use Yii;
 use common\modules\reporting\models\Event;
 use common\modules\reporting\models\search\EventSearch;
+use yii\data\ActiveDataProvider;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -60,8 +67,12 @@ class CrudEventController extends Controller
      */
     public function actionCreate()
     {
+
         $model = new Event();
 
+        if(Yii::$app->request->post()) {
+            $model->geometries = Yii::$app->request->post('Geometry', []);
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -71,6 +82,7 @@ class CrudEventController extends Controller
         }
     }
 
+
     /**
      * Updates an existing Event model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -79,7 +91,14 @@ class CrudEventController extends Controller
      */
     public function actionUpdate($id)
     {
+        /**
+         * @var  $oldmodels \yii\db\ActiveRecord[]
+         */
         $model = $this->findModel($id);
+
+        if(Yii::$app->request->post('Geometry') && $model->geometries) {
+                $model->geometries = Yii::$app->request->post('Geometry', []);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -118,4 +137,5 @@ class CrudEventController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

@@ -84,9 +84,7 @@ class EventReportController extends MyBaseContoller
         $reportItem->type = ReportItem::TYPE_EVENT;
         $event = new Event();
 
-        $dropDownItemName =  ArrayHelper::map(ItemType::find()
-            ->where('type=:type',[':type'=>ReportItem::TYPE_EVENT])
-            ->all(), 'item_name', 'item_name');
+
 
         if(Yii::$app->request->isAjax){
             if ($reportItem->load(Yii::$app->request->post()) && $event->load(Yii::$app->request->post()) && Model::validateMultiple([$reportItem, $event])) {
@@ -144,8 +142,7 @@ class EventReportController extends MyBaseContoller
 
         return $this->render('create', [
             'reportItem' => $reportItem,
-            'event' => $event,
-            'dropDownItemName'=>$dropDownItemName,
+            'event' => $event
         ]);
 
     }

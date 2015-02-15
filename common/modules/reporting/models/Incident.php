@@ -25,13 +25,13 @@ class Incident extends \yii\db\ActiveRecord
         return 'reporting.incident';
     }
 
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['reportitem_id'], 'required'],
             [['reportitem_id', 'status'], 'integer'],
             [['timestamp_occurance'], 'safe'],
             [['duration'], 'string']
@@ -53,10 +53,45 @@ class Incident extends \yii\db\ActiveRecord
     }
 
     /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'mdm\behaviors\ar\IsABehavior',
+                'relationClass' => ReportItem::className(),
+                'relationKey' => ['reportitem_id' => 'id'],
+            ],
+        ];
+    }
+
+    //{{{ Getters based on model Relationship
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getReportitem()
     {
         return $this->hasOne(Reportitem::className(), ['id' => 'reportitem_id']);
     }
+    //}}} ./Getters based on model Relationship
+
+    public static function getDropDownItemName(){
+        return \yii\helpers\ArrayHelper::map(ItemType::find()
+            ->where('type=:type',[':type'=>ReportItem::TYPE_INCIDENT])
+            ->all(), 'item_name', 'item_name');
+    }
+
+    //{{{ Initializing model
+    public function loadDefaultValues(){
+        $this->type = ItemType::TYPE_INCIDENT;
+    }
+
+    public function init()
+    {
+        parent::init();
+        $this->loadDefaultValues();
+    }
+    //}}} ./Initializing model
+
 }

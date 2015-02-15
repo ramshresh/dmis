@@ -27,11 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'reportitem_id',
+            //'id',
+            //'reportitem_id',
+            ['attribute'=>'item_name','value'=>'reportitem.item_name'],
+            //['attribute'=>'type','value'=>'reportitem.type'],
+            ['attribute'=>'subtype_name','value'=>'reportitem.subtype_name'],
+            ['attribute'=>'is_verified','value'=>'reportitem.is_verified'],
+            ['attribute'=>'timestamp_created','value'=>'reportitem.timestamp_created'],
+            ['attribute'=>'timestamp_updated','value'=>'reportitem.timestamp_updated'],
             'timestamp_occurance',
-            'duration',
-            'status',
+            //'duration',
+            //'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

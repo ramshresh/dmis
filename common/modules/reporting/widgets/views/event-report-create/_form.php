@@ -95,10 +95,12 @@ $this->registerAssetBundle(\kartik\growl\GrowlAsset::className(),$this::POS_END)
         <?= Html::hiddenInput('parentReportItemId',$parentReportItemId)?>
     </div>
 
-    <?= \common\modules\reporting\widgets\MultipleDamages::widget([
-        'parentFormContext'=>$form,
-        'parentControllerContext'=>$this,
-    ])?>
+    <?php
+     //echo \common\modules\reporting\widgets\MultipleDamages::widget([
+     //   'parentFormContext'=>$form,
+     //   'parentControllerContext'=>$this,
+    //]);
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton($reportItem->isNewRecord || $event->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $reportItem->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

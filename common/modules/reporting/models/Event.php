@@ -3,6 +3,7 @@
 namespace common\modules\reporting\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "reporting.event".
@@ -13,11 +14,12 @@ use Yii;
  * @property string $duration
  * @property integer $status
  *
- * @property ReportItem $reportItem
+ * @property ReportItem $reportitem
  * @property EmergencySituation[] $emergencySituations
  */
 class Event extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -39,6 +41,7 @@ class Event extends \yii\db\ActiveRecord
         ];
     }
 
+
     /**
      * @inheritdoc
      */
@@ -53,10 +56,26 @@ class Event extends \yii\db\ActiveRecord
         ];
     }
 
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return ArrayHelper::merge(parent::behaviors(),[
+            [//For Event IS_A ReportItem Relationship.
+                'class' => 'mdm\behaviors\ar\IsABehavior',
+                'relationClass' => ReportItem::className(),
+                'relationKey' => ['reportitem_id' => 'id'],
+            ],
+        ]);
+    }
+
+    //{{{ Getters based on model Relationship
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getReportItem()
+    public function getReportitem()
     {
         return $this->hasOne(ReportItem::className(), ['id' => 'reportitem_id']);
     }
@@ -68,5 +87,23 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasMany(EmergencySituation::className(), ['primary_event_id' => 'id']);
     }
+    //}}} ./Getters based on model Relationship
 
+    public static function getDropDownItemName(){
+        return \yii\helpers\ArrayHelper::map(ItemType::find()
+            ->where('type=:type',[':type'=>ReportItem::TYPE_EVENT])
+            ->all(), 'item_name', 'item_name');
+    }
+
+    public function loadDefaultValues(){
+        $this->type = ItemType::TYPE_EVENT;
+    }
+
+    //{{{ Initializing model
+    public function init()
+    {
+        parent::init();
+        $this->loadDefaultValues();
+    }
+    //}}} ./Initializing model
 }

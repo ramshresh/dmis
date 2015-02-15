@@ -1,20 +1,20 @@
-body {                
+body {
     color: #000;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;    
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.4;
     color: #111111;
     background-color: white;
     margin: 0;
     min-width: 600px;
 }
-#map {    
+#map {
     /* set size via JS */
     cursor: default;
 }
 
 #input {
-    float: left;                
-    margin-left: 10px; 
+    float: left;
+    margin-left: 10px;
     /*padding-right: 15px; */
 }
 
@@ -39,7 +39,7 @@ body {
 .pointResolveFound a {
     background-color: white;
     padding-left: 4px;
-    padding-right: 3px;    
+    padding-right: 3px;
 }
 .pointResolveFound {
     overflow: hidden;
@@ -47,9 +47,9 @@ body {
     font-size: 10px;
     color: blue;
     float: right;
-    cursor: pointer;    
+    cursor: pointer;
     margin-top: -20px;
-    margin-right: 2px;    
+    margin-right: 2px;
 }
 
 .pointResolveError {
@@ -77,13 +77,13 @@ body {
 }
 #moreattribution {
     padding-top: 20px;
-    color: #666666                    
+    color: #666666
 }
 #locationpoints {
     padding-bottom: 10px;
     float: left;
 }
-.pointDiv { 
+.pointDiv {
     margin: 6px 0;
 }
 .pointDiv > img {
@@ -141,8 +141,8 @@ body {
     margin-bottom: 5px;
 }
 
-#searchButton:hover { 
-    cursor: pointer; 
+#searchButton:hover {
+    cursor: pointer;
 }
 .clear {
     clear: both;
@@ -168,9 +168,9 @@ body {
     text-decoration: none;
     color: #00cc33;
 }
-.footer-link {    
-    padding-right: 12px;    
-    font-size: 12px;    
+.footer-link {
+    padding-right: 12px;
+    font-size: 12px;
 }
 
 #export-link {
@@ -200,7 +200,7 @@ td.instr_title {
 }
 td.instr_distance {
     min-width: 50px;
-    float: right;    
+    float: right;
     color: gray;
     text-align: right;
 }
@@ -208,7 +208,7 @@ td.instr_distance {
 #instructions tr .instr_pic {
     width: 20px;
 }
-td img.pic {    
+td img.pic {
     max-height: 24px;
     max-width: 16px;
 }
@@ -232,28 +232,28 @@ td img.pic {
     background-color: #bbb;
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
-    background-image: linear-gradient(to bottom, #9f9f9f, #e7e7e7);    
+    background-image: linear-gradient(to bottom, #9f9f9f, #e7e7e7);
 }
 
 .autocomplete {
-    border: 1px solid #999; 
-    background: #FFF; 
-    overflow: auto; 
+    border: 1px solid #999;
+    background: #FFF;
+    overflow: auto;
 }
-.autocomplete strong { 
+.autocomplete strong {
     font-weight: normal;
-    color: #04B431; 
+    color: #04B431;
 }
-.autocomplete-suggestion { 
-    padding: 5px 5px; 
-    white-space: nowrap; 
+.autocomplete-suggestion {
+    padding: 5px 5px;
+    white-space: nowrap;
     overflow: hidden;
     font-size: small;
     background-image: linear-gradient(to bottom, white, #e7e7e7);
 }
-.autocomplete-selected { 
-    padding: 5px 5px; 
-    background: #e7e7e7; 
+.autocomplete-selected {
+    padding: 5px 5px;
+    background: #e7e7e7;
     background-image: linear-gradient(to bottom, #9f9f9f, #e7e7e7);
 }
 .light { font-weight: lighter; color: #9f9f9f; font-size: smaller }
@@ -273,19 +273,19 @@ td img.pic {
     padding-left: 3px;
 }
 .pointDelete {
-    float: left;    
+    float: left;
     padding-left: 2px;
 }
 .pointDelete:hover, .pointAdd:hover { cursor: pointer; }
 
 #expandDetails {
     color: gray;
-    font-size:14px; 
+    font-size:14px;
     float: right;
-    font-weight: bold;    
+    font-weight: bold;
 
     width: 20px;
-    height: 20px;    
+    height: 20px;
     background-image: linear-gradient(to bottom, white, #e7e7e7);
 }
 #moreButton {

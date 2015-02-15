@@ -23,11 +23,12 @@ class PointPickerWidget extends Widget{
     public $openlayersPackName;//='openlayersPack';// for $openlayersPackUrl=Yii::app()->clientScript->getPackageBaseUrl($openlayersPackName);
     public $openlayersPackUrl;
     public $latitudeId,$longitudeId,$placenameId;
-    public $widgetDivId,$mapDivId,$iLatId,$iLonId,$iPlacenameId; // needed for html markup of view
+    public $widgetDivId,$mapDivId,$iLatId,$iLonId,$iPlacenameId,$iWktFieldId; // needed for html markup of view
     public $openlayersImgPath;
     public $markerUrl;
     public $triggerId;
     public $externalMapDivId;
+    public $wktFieldId;
 
     public function init()
     {
@@ -52,6 +53,7 @@ class PointPickerWidget extends Widget{
         $this->iLatId=$this->widgetDivId.'-lat';
         $this->iLonId=$this->widgetDivId.'-lon';
         $this->iPlacenameId=$this->widgetDivId.'-placename';
+        $this->iWktFieldId=$this->widgetDivId.'wkt';
         $this->mapDivId =$this->id.'-map';
         $triggerId=(isset($this->triggerId))?$this->triggerId:$this->id.'btn-trigger';
 
@@ -66,12 +68,13 @@ class PointPickerWidget extends Widget{
             'iLatId'=>$this->iLatId,
             'iLonId'=>$this->iLonId,
             'iPlacenameId'=>$this->iPlacenameId,
+            'iWktFieldId'=>$this->iWktFieldId,
             'mapDivId'=>$this->mapDivId,
             'triggerId'=>$triggerId,
             'externalMapDivId'=>$this->externalMapDivId,
+            'wktFieldId'=>$this->wktFieldId,
 
         );
-
 
         $options = Json::encode($opts);
         $this->getView()->registerJs("$('#{$this->id}').pointPicker({$options});$('#pointpickerModal').draggable({handle: '.modal-header'});$('.modal').resizable();",View::POS_READY);

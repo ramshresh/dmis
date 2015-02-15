@@ -27,6 +27,7 @@ class PointPickerAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'common\modules\reporting\widgets\pointpicker\JqueryUiAsset',
+        //'common\modules\reporting\widgets\pointpicker\JqueryUiAsset',
+        'yii\jui\JuiAsset',
     ];
 }
