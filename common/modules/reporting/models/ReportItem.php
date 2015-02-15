@@ -4,6 +4,7 @@ namespace common\modules\reporting\models;
 
 use common\components\utils\php\pg\PHPG_Utils;
 use common\components\utils\php\pg\PhpPgUtils;
+use common\modules\user\models\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
@@ -37,6 +38,7 @@ use yii\helpers\ArrayHelper;
 
  * @property Rating[] $ratings
 
+ * @property User $user ReportItem belongs to User
 
  * @property EmergencySituation[] $emergencySituations
  * @property Geocode[] $geocodes
@@ -67,7 +69,7 @@ class ReportItem extends \yii\db\ActiveRecord
     {
         return [
             [['type', 'item_name'], 'required','except'=>['search']], // 'except'=>'Search' for search form such as grid view
-            [['type'], 'integer'],
+            [['type','user_id'], 'integer'],
             [['description', 'tags', 'meta_hstore', 'meta_json'], 'string'],
             [['is_verified'], 'boolean'],
             [['timestamp_created', 'timestamp_updated'], 'safe'],
@@ -80,7 +82,7 @@ class ReportItem extends \yii\db\ActiveRecord
     {
         $reportitemScenario =[
             //This scenario is to be used for Search Model by instance of <ReporItem> or any <class that inherits ReportItem>
-            'search' => ['type', 'item_name','is_verified','timestamp_created','subtype_name','timestamp_updated'],
+            'search' => ['type','user_id', 'item_name','is_verified','timestamp_created','subtype_name','timestamp_updated'],
         ];
         return ArrayHelper::merge(parent::scenarios(),$reportitemScenario);
     }
@@ -102,7 +104,16 @@ class ReportItem extends \yii\db\ActiveRecord
             'tags' => Yii::t('app', 'Tags'),
             'meta_hstore' => Yii::t('app', 'Meta Hstore'),
             'meta_json' => Yii::t('app', 'Meta Json'),
+            'user_id' => Yii::t('app', 'User Id'),
+
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser(){
+        return $this->hasOne(User::className(), ['id'=>'user_id']);
     }
 
     /**
