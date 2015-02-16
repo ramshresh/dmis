@@ -23,7 +23,13 @@ return [
         ],
         'gridview' => [
             'class' => '\kartik\grid\Module'
-        ]
+        ],
+        'file' => [
+            'class' => 'common\modules\file\Module',
+        ],
+        'utility' => [
+            'class' => 'c006\utility\migration\Module',
+        ],
     ],
 
 ];
