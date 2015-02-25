@@ -1,15 +1,9 @@
 <?php
 namespace frontend\controllers;
 
-use common\modules\reporting\models\Damage;
-use common\modules\reporting\models\EmergencySituation;
-use common\modules\reporting\models\Event;
-use common\modules\reporting\models\Incident;
-use common\modules\reporting\models\ItemType;
-use common\modules\reporting\models\ReportItem;
-use Yii;
 use common\components\MyBaseContoller;
 use frontend\models\ContactForm;
+use Yii;
 
 
 /**
@@ -92,16 +86,19 @@ class SiteController extends MyBaseContoller
         return $this->render('about');
     }
 
-    public function actionHelloWidget(){
+    public function actionHelloWidget()
+    {
         return $this->render('hellowidget');
     }
 
-    public function actionGraphhopper(){
+    public function actionGraphhopper()
+    {
         return $this->render('graphhopper');
     }
 
 
-    public function actionInitReporting(){
+    public function actionInitReporting()
+    {
         //$event=new Event();
 
         /*$re1 = new ReportItem();
@@ -164,13 +161,13 @@ class SiteController extends MyBaseContoller
         $d1->save();
         $ri1->link('reportItemChildren',$rd1);*/
 
-/*
-        $itemTypes = ItemType::find()->where('item_name=:item_name',[':item_name'=>'Building Damage'])->all();
-        foreach($itemTypes as $itemType){
-            $itemChildren=$itemType->itemChildren;
-            foreach($itemChildren as $itemChild){
-                print_r($itemChild->item_name);
-            }
-        }*/
+        /*
+                $itemTypes = ItemType::find()->where('item_name=:item_name',[':item_name'=>'Building Damage'])->all();
+                foreach($itemTypes as $itemType){
+                    $itemChildren=$itemType->itemChildren;
+                    foreach($itemChildren as $itemChild){
+                        print_r($itemChild->item_name);
+                    }
+                }*/
     }
 }

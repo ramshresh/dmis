@@ -1,9 +1,8 @@
 <?php
 namespace frontend\controllers;
 
-use Yii;
 use common\components\MyBaseContoller;
-use frontend\models\ContactForm;
+use Yii;
 
 
 /**

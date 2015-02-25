@@ -122,6 +122,7 @@
 
         //    var layerSwitcher = new ol.control.LayerSwitcher();
         //    map.addControl(layerSwitcher);
+        $('#map').data('map',map);
     }
     init();
 })(jQuery);

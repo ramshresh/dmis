@@ -13,8 +13,15 @@
 \frontend\assets\DemoGeo_Ol3MapSimpleAsset::register($this,$this::POS_READY);
 ?>
 <div id="map" class="map"></div>
-<input type="text" id="ilat" />
-<input type="text" id="ilon" />
-<input type="text" id="iplacename" />
-<div id="marker"></div>
+<button id = 'btn-report-item-create' type="button">report</button>
+<?php echo \common\modules\reporting\widgets\reportitem\Create::widget(
+    [
+        'mapDivId'=>'map',
+        'containerId'=>'custom-id',
+        'model'=>new \common\modules\reporting\models\Event(),
+        'urlToCreateAction'=> \yii\helpers\Url::toRoute('event-create'),
+        'jqToggleBtnSelector'=>'btn-report-item-create',
+    ]
+)?>
+
 
