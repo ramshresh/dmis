@@ -34,7 +34,7 @@ return [
             'errorAction' => 'site/error',
         ],
     ],
-    'modules'=>[
+    'modules' => [
         'moderate_reporting' => [
             'class' => 'backend\modules\moderate_reporting\Module',
         ],

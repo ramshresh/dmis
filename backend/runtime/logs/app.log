@@ -229,3 +229,758 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1423343027.479
     'REQUEST_TIME' => 1423343027
 ]
+2015-02-24 05:05:12 [::1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'could not find driver' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:579
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(579): PDO->__construct('pgsql:host=loca...', 'postgres', 'postgres', NULL)
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(382): yii\db\Connection->getSlavePdo()
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(732): yii\db\Schema->quoteValue('ram_shresh@hotm...')
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(164): yii\db\Connection->quoteValue('ram_shresh@hotm...')
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(791): yii\db\Command->getRawSql()
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(364): yii\db\Command->queryInternal('fetch', NULL)
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(243): yii\db\Command->queryOne()
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveQuery.php(285): yii\db\Query->one(NULL)
+#11 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(131): yii\db\ActiveQuery->one()
+#12 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(53): common\modules\user\models\forms\LoginForm->getUser()
+#13 [internal function]: common\modules\user\models\forms\LoginForm->validateUser('username', NULL)
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\validators\InlineValidator.php(67): call_user_func(Array, 'username', NULL)
+#15 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\validators\Validator.php(238): yii\validators\InlineValidator->validateAttribute(Object(common\modules\user\models\forms\LoginForm), 'username')
+#16 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Model.php(333): yii\validators\Validator->validateAttributes(Object(common\modules\user\models\forms\LoginForm), Array)
+#17 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(160): yii\base\Model->validate()
+#18 C:\xampp\htdocs\girc\dmis\common\modules\user\controllers\DefaultController.php(78): common\modules\user\models\forms\LoginForm->login(2592000)
+#19 [internal function]: common\modules\user\controllers\DefaultController->actionLogin()
+#20 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#22 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#23 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('user/login', Array)
+#24 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#26 {main}
+
+Next exception 'yii\db\Exception' with message 'could not find driver' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:534
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(382): yii\db\Connection->getSlavePdo()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(732): yii\db\Schema->quoteValue('ram_shresh@hotm...')
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(164): yii\db\Connection->quoteValue('ram_shresh@hotm...')
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(791): yii\db\Command->getRawSql()
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(364): yii\db\Command->queryInternal('fetch', NULL)
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(243): yii\db\Command->queryOne()
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveQuery.php(285): yii\db\Query->one(NULL)
+#9 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(131): yii\db\ActiveQuery->one()
+#10 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(53): common\modules\user\models\forms\LoginForm->getUser()
+#11 [internal function]: common\modules\user\models\forms\LoginForm->validateUser('username', NULL)
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\validators\InlineValidator.php(67): call_user_func(Array, 'username', NULL)
+#13 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\validators\Validator.php(238): yii\validators\InlineValidator->validateAttribute(Object(common\modules\user\models\forms\LoginForm), 'username')
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Model.php(333): yii\validators\Validator->validateAttributes(Object(common\modules\user\models\forms\LoginForm), Array)
+#15 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(160): yii\base\Model->validate()
+#16 C:\xampp\htdocs\girc\dmis\common\modules\user\controllers\DefaultController.php(78): common\modules\user\models\forms\LoginForm->login(2592000)
+#17 [internal function]: common\modules\user\controllers\DefaultController->actionLogin()
+#18 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#19 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#20 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#21 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('user/login', Array)
+#22 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#24 {main}
+Additional Information:
+
+2015-02-24 05:05:12 [::1][-][-][info][application] $_POST = [
+    '_csrf' => 'OE5VQVdkOXRuOjEoNFJfDVogJABlA3tDXnwQLmUNbgdVOREbDlZXBg=='
+    'LoginForm' => [
+        'username' => 'ram_shresh@hotmail.com'
+        'password' => 'ra1053c3276'
+        'rememberMe' => '1'
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'cab915065de0313cb2673607254fc16326098b30e47d7711a5518ac94c66a5d1s:32:\"Vtdic6fybnqA2gB7f2Eo2iWsmwDZY2nr\";'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '207'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_X_CSRF_TOKEN' => 'OE5VQVdkOXRuOjEoNFJfDVogJABlA3tDXnwQLmUNbgdVOREbDlZXBg=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_REFERER' => 'http://localhost/girc/dmis/backend/web/user/login'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,hi;q=0.6,ru;q=0.4'
+    'HTTP_COOKIE' => '_csrf=cab915065de0313cb2673607254fc16326098b30e47d7711a5518ac94c66a5d1s%3A32%3A%22Vtdic6fybnqA2gB7f2Eo2iWsmwDZY2nr%22%3B'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/backend/web/index.php'
+    'REMOTE_PORT' => '50190'
+    'REDIRECT_URL' => '/girc/dmis/backend/web/user/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/backend/web/user/login'
+    'SCRIPT_NAME' => '/girc/dmis/backend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424750712.255
+    'REQUEST_TIME' => 1424750712
+]
+2015-02-24 05:05:17 [::1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'could not find driver' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:579
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(579): PDO->__construct('pgsql:host=loca...', 'postgres', 'postgres', NULL)
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(382): yii\db\Connection->getSlavePdo()
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(732): yii\db\Schema->quoteValue('ram_shresh@hotm...')
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(164): yii\db\Connection->quoteValue('ram_shresh@hotm...')
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(791): yii\db\Command->getRawSql()
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(364): yii\db\Command->queryInternal('fetch', NULL)
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(243): yii\db\Command->queryOne()
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveQuery.php(285): yii\db\Query->one(NULL)
+#11 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(131): yii\db\ActiveQuery->one()
+#12 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(53): common\modules\user\models\forms\LoginForm->getUser()
+#13 [internal function]: common\modules\user\models\forms\LoginForm->validateUser('username', NULL)
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\validators\InlineValidator.php(67): call_user_func(Array, 'username', NULL)
+#15 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\validators\Validator.php(238): yii\validators\InlineValidator->validateAttribute(Object(common\modules\user\models\forms\LoginForm), 'username')
+#16 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Model.php(333): yii\validators\Validator->validateAttributes(Object(common\modules\user\models\forms\LoginForm), Array)
+#17 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(160): yii\base\Model->validate()
+#18 C:\xampp\htdocs\girc\dmis\common\modules\user\controllers\DefaultController.php(78): common\modules\user\models\forms\LoginForm->login(2592000)
+#19 [internal function]: common\modules\user\controllers\DefaultController->actionLogin()
+#20 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#22 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#23 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('user/login', Array)
+#24 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#26 {main}
+
+Next exception 'yii\db\Exception' with message 'could not find driver' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:534
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(382): yii\db\Connection->getSlavePdo()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(732): yii\db\Schema->quoteValue('ram_shresh@hotm...')
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(164): yii\db\Connection->quoteValue('ram_shresh@hotm...')
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(791): yii\db\Command->getRawSql()
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(364): yii\db\Command->queryInternal('fetch', NULL)
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(243): yii\db\Command->queryOne()
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveQuery.php(285): yii\db\Query->one(NULL)
+#9 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(131): yii\db\ActiveQuery->one()
+#10 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(53): common\modules\user\models\forms\LoginForm->getUser()
+#11 [internal function]: common\modules\user\models\forms\LoginForm->validateUser('username', NULL)
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\validators\InlineValidator.php(67): call_user_func(Array, 'username', NULL)
+#13 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\validators\Validator.php(238): yii\validators\InlineValidator->validateAttribute(Object(common\modules\user\models\forms\LoginForm), 'username')
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Model.php(333): yii\validators\Validator->validateAttributes(Object(common\modules\user\models\forms\LoginForm), Array)
+#15 C:\xampp\htdocs\girc\dmis\common\modules\user\models\forms\LoginForm.php(160): yii\base\Model->validate()
+#16 C:\xampp\htdocs\girc\dmis\common\modules\user\controllers\DefaultController.php(78): common\modules\user\models\forms\LoginForm->login(2592000)
+#17 [internal function]: common\modules\user\controllers\DefaultController->actionLogin()
+#18 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#19 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#20 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#21 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('user/login', Array)
+#22 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#24 {main}
+Additional Information:
+
+2015-02-24 05:05:17 [::1][-][-][info][application] $_POST = [
+    '_csrf' => 'OE5VQVdkOXRuOjEoNFJfDVogJABlA3tDXnwQLmUNbgdVOREbDlZXBg=='
+    'LoginForm' => [
+        'username' => 'ram_shresh@hotmail.com'
+        'password' => 'ra1053c3276'
+        'rememberMe' => '1'
+    ]
+]
+
+$_COOKIE = [
+    '_csrf' => 'cab915065de0313cb2673607254fc16326098b30e47d7711a5518ac94c66a5d1s:32:\"Vtdic6fybnqA2gB7f2Eo2iWsmwDZY2nr\";'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '207'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_X_CSRF_TOKEN' => 'OE5VQVdkOXRuOjEoNFJfDVogJABlA3tDXnwQLmUNbgdVOREbDlZXBg=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_REFERER' => 'http://localhost/girc/dmis/backend/web/user/login'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,hi;q=0.6,ru;q=0.4'
+    'HTTP_COOKIE' => '_csrf=cab915065de0313cb2673607254fc16326098b30e47d7711a5518ac94c66a5d1s%3A32%3A%22Vtdic6fybnqA2gB7f2Eo2iWsmwDZY2nr%22%3B'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/backend/web/index.php'
+    'REMOTE_PORT' => '50198'
+    'REDIRECT_URL' => '/girc/dmis/backend/web/user/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/backend/web/user/login'
+    'SCRIPT_NAME' => '/girc/dmis/backend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424750717.776
+    'REQUEST_TIME' => 1424750717
+]
+2015-02-24 05:05:21 [::1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'could not find driver' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:579
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(579): PDO->__construct('pgsql:host=loca...', 'postgres', 'postgres', NULL)
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(382): yii\db\Connection->getSlavePdo()
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(732): yii\db\Schema->quoteValue('user')
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\pgsql\Schema.php(319): yii\db\Connection->quoteValue('user')
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\pgsql\Schema.php(160): yii\db\pgsql\Schema->findColumns(Object(yii\db\TableSchema))
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(139): yii\db\pgsql\Schema->loadTableSchema('user.user')
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveRecord.php(297): yii\db\Schema->getTableSchema('user.user')
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveRecord.php(330): yii\db\ActiveRecord::getTableSchema()
+#11 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\BaseActiveRecord.php(422): yii\db\ActiveRecord->attributes()
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\BaseActiveRecord.php(264): yii\db\BaseActiveRecord->hasAttribute('scenario')
+#13 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\BaseYii.php(518): yii\db\BaseActiveRecord->__set('scenario', 'register')
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Object.php(105): yii\BaseYii::configure(Object(common\modules\user\models\User), Array)
+#15 [internal function]: yii\base\Object->__construct(Array)
+#16 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\di\Container.php(368): ReflectionClass->newInstanceArgs(Array)
+#17 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\di\Container.php(147): yii\di\Container->build('common\\modules\\...', Array, Array)
+#18 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('common\\modules\\...', Array, Array)
+#19 C:\xampp\htdocs\girc\dmis\common\modules\user\Module.php(216): yii\BaseYii::createObject(Array)
+#20 C:\xampp\htdocs\girc\dmis\common\modules\user\controllers\DefaultController.php(122): common\modules\user\Module->model('User', Array)
+#21 [internal function]: common\modules\user\controllers\DefaultController->actionRegister()
+#22 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('register', Array)
+#25 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('user/register', Array)
+#26 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#28 {main}
+
+Next exception 'yii\db\Exception' with message 'could not find driver' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:534
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(382): yii\db\Connection->getSlavePdo()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(732): yii\db\Schema->quoteValue('user')
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\pgsql\Schema.php(319): yii\db\Connection->quoteValue('user')
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\pgsql\Schema.php(160): yii\db\pgsql\Schema->findColumns(Object(yii\db\TableSchema))
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(139): yii\db\pgsql\Schema->loadTableSchema('user.user')
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveRecord.php(297): yii\db\Schema->getTableSchema('user.user')
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveRecord.php(330): yii\db\ActiveRecord::getTableSchema()
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\BaseActiveRecord.php(422): yii\db\ActiveRecord->attributes()
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\BaseActiveRecord.php(264): yii\db\BaseActiveRecord->hasAttribute('scenario')
+#11 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\BaseYii.php(518): yii\db\BaseActiveRecord->__set('scenario', 'register')
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Object.php(105): yii\BaseYii::configure(Object(common\modules\user\models\User), Array)
+#13 [internal function]: yii\base\Object->__construct(Array)
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\di\Container.php(368): ReflectionClass->newInstanceArgs(Array)
+#15 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\di\Container.php(147): yii\di\Container->build('common\\modules\\...', Array, Array)
+#16 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('common\\modules\\...', Array, Array)
+#17 C:\xampp\htdocs\girc\dmis\common\modules\user\Module.php(216): yii\BaseYii::createObject(Array)
+#18 C:\xampp\htdocs\girc\dmis\common\modules\user\controllers\DefaultController.php(122): common\modules\user\Module->model('User', Array)
+#19 [internal function]: common\modules\user\controllers\DefaultController->actionRegister()
+#20 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#22 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('register', Array)
+#23 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('user/register', Array)
+#24 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#26 {main}
+Additional Information:
+
+2015-02-24 05:05:21 [::1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'cab915065de0313cb2673607254fc16326098b30e47d7711a5518ac94c66a5d1s:32:\"Vtdic6fybnqA2gB7f2Eo2iWsmwDZY2nr\";'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/girc/dmis/backend/web/user/login'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,hi;q=0.6,ru;q=0.4'
+    'HTTP_COOKIE' => '_csrf=cab915065de0313cb2673607254fc16326098b30e47d7711a5518ac94c66a5d1s%3A32%3A%22Vtdic6fybnqA2gB7f2Eo2iWsmwDZY2nr%22%3B'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/backend/web/index.php'
+    'REMOTE_PORT' => '50199'
+    'REDIRECT_URL' => '/girc/dmis/backend/web/user/register'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/backend/web/user/register'
+    'SCRIPT_NAME' => '/girc/dmis/backend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424750721.644
+    'REQUEST_TIME' => 1424750721
+]
+2015-02-24 05:08:06 [::1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[08006] [7] could not connect to server: Connection refused (0x0000274D/10061)
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused (0x0000274D/10061)
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:579
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(579): PDO->__construct('pgsql:host=loca...', 'postgres', 'postgres', NULL)
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(382): yii\db\Connection->getSlavePdo()
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(732): yii\db\Schema->quoteValue('user')
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\pgsql\Schema.php(319): yii\db\Connection->quoteValue('user')
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\pgsql\Schema.php(160): yii\db\pgsql\Schema->findColumns(Object(yii\db\TableSchema))
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(139): yii\db\pgsql\Schema->loadTableSchema('user.user')
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveRecord.php(297): yii\db\Schema->getTableSchema('user.user')
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveRecord.php(330): yii\db\ActiveRecord::getTableSchema()
+#11 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\BaseActiveRecord.php(422): yii\db\ActiveRecord->attributes()
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\BaseActiveRecord.php(264): yii\db\BaseActiveRecord->hasAttribute('scenario')
+#13 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\BaseYii.php(518): yii\db\BaseActiveRecord->__set('scenario', 'register')
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Object.php(105): yii\BaseYii::configure(Object(common\modules\user\models\User), Array)
+#15 [internal function]: yii\base\Object->__construct(Array)
+#16 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\di\Container.php(368): ReflectionClass->newInstanceArgs(Array)
+#17 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\di\Container.php(147): yii\di\Container->build('common\\modules\\...', Array, Array)
+#18 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('common\\modules\\...', Array, Array)
+#19 C:\xampp\htdocs\girc\dmis\common\modules\user\Module.php(216): yii\BaseYii::createObject(Array)
+#20 C:\xampp\htdocs\girc\dmis\common\modules\user\controllers\DefaultController.php(122): common\modules\user\Module->model('User', Array)
+#21 [internal function]: common\modules\user\controllers\DefaultController->actionRegister()
+#22 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('register', Array)
+#25 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('user/register', Array)
+#26 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#28 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[08006] [7] could not connect to server: Connection refused (0x0000274D/10061)
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused (0x0000274D/10061)
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:534
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(382): yii\db\Connection->getSlavePdo()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(732): yii\db\Schema->quoteValue('user')
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\pgsql\Schema.php(319): yii\db\Connection->quoteValue('user')
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\pgsql\Schema.php(160): yii\db\pgsql\Schema->findColumns(Object(yii\db\TableSchema))
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Schema.php(139): yii\db\pgsql\Schema->loadTableSchema('user.user')
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveRecord.php(297): yii\db\Schema->getTableSchema('user.user')
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\ActiveRecord.php(330): yii\db\ActiveRecord::getTableSchema()
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\BaseActiveRecord.php(422): yii\db\ActiveRecord->attributes()
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\BaseActiveRecord.php(264): yii\db\BaseActiveRecord->hasAttribute('scenario')
+#11 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\BaseYii.php(518): yii\db\BaseActiveRecord->__set('scenario', 'register')
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Object.php(105): yii\BaseYii::configure(Object(common\modules\user\models\User), Array)
+#13 [internal function]: yii\base\Object->__construct(Array)
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\di\Container.php(368): ReflectionClass->newInstanceArgs(Array)
+#15 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\di\Container.php(147): yii\di\Container->build('common\\modules\\...', Array, Array)
+#16 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\BaseYii.php(344): yii\di\Container->get('common\\modules\\...', Array, Array)
+#17 C:\xampp\htdocs\girc\dmis\common\modules\user\Module.php(216): yii\BaseYii::createObject(Array)
+#18 C:\xampp\htdocs\girc\dmis\common\modules\user\controllers\DefaultController.php(122): common\modules\user\Module->model('User', Array)
+#19 [internal function]: common\modules\user\controllers\DefaultController->actionRegister()
+#20 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#21 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#22 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('register', Array)
+#23 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('user/register', Array)
+#24 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#26 {main}
+Additional Information:
+
+2015-02-24 05:08:04 [::1][-][-][info][application] $_COOKIE = [
+    '_csrf' => 'cab915065de0313cb2673607254fc16326098b30e47d7711a5518ac94c66a5d1s:32:\"Vtdic6fybnqA2gB7f2Eo2iWsmwDZY2nr\";'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,hi;q=0.6,ru;q=0.4'
+    'HTTP_COOKIE' => '_csrf=cab915065de0313cb2673607254fc16326098b30e47d7711a5518ac94c66a5d1s%3A32%3A%22Vtdic6fybnqA2gB7f2Eo2iWsmwDZY2nr%22%3B'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/backend/web/index.php'
+    'REMOTE_PORT' => '50265'
+    'REDIRECT_URL' => '/girc/dmis/backend/web/user/register'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/backend/web/user/register'
+    'SCRIPT_NAME' => '/girc/dmis/backend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424750884.737
+    'REQUEST_TIME' => 1424750884
+]
+2015-02-24 05:56:03 [::1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[08006] [7] FATAL:  database "dmis" does not exist' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:579
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(579): PDO->__construct('pgsql:host=loca...', 'postgres', 'postgres', NULL)
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(208): yii\db\Connection->getSlavePdo()
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(815): yii\db\Command->prepare(true)
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(376): yii\db\Command->queryInternal('fetchColumn', 0)
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(373): yii\db\Command->queryScalar()
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(280): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\ActiveDataProvider.php(165): yii\db\Query->count('*', NULL)
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(147): yii\data\ActiveDataProvider->prepareTotalCount()
+#11 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#13 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#15 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\widgets\BaseListView.php(124): yii\data\BaseDataProvider->getCount()
+#16 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#17 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#18 C:\xampp\htdocs\girc\dmis\common\modules\reporting\views\crud-item\index.php(39): yii\base\Widget::widget(Array)
+#19 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#20 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#21 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(common\modules\reporting\controllers\CrudItemController))
+#22 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(common\modules\reporting\controllers\CrudItemController))
+#23 C:\xampp\htdocs\girc\dmis\common\modules\reporting\controllers\CrudItemController.php(41): yii\base\Controller->render('index', Array)
+#24 [internal function]: common\modules\reporting\controllers\CrudItemController->actionIndex()
+#25 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#26 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#27 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#28 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('reporting/crud-...', Array)
+#29 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#30 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#31 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[08006] [7] FATAL:  database "dmis" does not exist' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:534
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(208): yii\db\Connection->getSlavePdo()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(815): yii\db\Command->prepare(true)
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(376): yii\db\Command->queryInternal('fetchColumn', 0)
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(373): yii\db\Command->queryScalar()
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(280): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\ActiveDataProvider.php(165): yii\db\Query->count('*', NULL)
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(147): yii\data\ActiveDataProvider->prepareTotalCount()
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#11 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#13 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\widgets\BaseListView.php(124): yii\data\BaseDataProvider->getCount()
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#15 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#16 C:\xampp\htdocs\girc\dmis\common\modules\reporting\views\crud-item\index.php(39): yii\base\Widget::widget(Array)
+#17 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#19 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(common\modules\reporting\controllers\CrudItemController))
+#20 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(common\modules\reporting\controllers\CrudItemController))
+#21 C:\xampp\htdocs\girc\dmis\common\modules\reporting\controllers\CrudItemController.php(41): yii\base\Controller->render('index', Array)
+#22 [internal function]: common\modules\reporting\controllers\CrudItemController->actionIndex()
+#23 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#25 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#26 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('reporting/crud-...', Array)
+#27 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#29 {main}
+Additional Information:
+
+2015-02-24 05:56:03 [::1][-][-][info][application] $_COOKIE = [
+    '_csrf' => '397b1c0695d940069c65121b1bc7fd65bc155503116b423c093715d173696caas:32:\"IZSqqSpUoGAroAky5u6ntCZjd3C1mAE3\";'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,hi;q=0.6,ru;q=0.4'
+    'HTTP_COOKIE' => '_csrf=397b1c0695d940069c65121b1bc7fd65bc155503116b423c093715d173696caas%3A32%3A%22IZSqqSpUoGAroAky5u6ntCZjd3C1mAE3%22%3B'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/backend/web/index.php'
+    'REMOTE_PORT' => '50981'
+    'REDIRECT_URL' => '/girc/dmis/backend/web/reporting/crud-item'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/backend/web/reporting/crud-item'
+    'SCRIPT_NAME' => '/girc/dmis/backend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424753763.112
+    'REQUEST_TIME' => 1424753763
+]
+2015-02-24 06:03:10 [::1][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[08006] [7] FATAL:  database "dmis" does not exist' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:579
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(579): PDO->__construct('pgsql:host=loca...', 'postgres', 'postgres', NULL)
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(208): yii\db\Connection->getSlavePdo()
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(815): yii\db\Command->prepare(true)
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(376): yii\db\Command->queryInternal('fetchColumn', 0)
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(373): yii\db\Command->queryScalar()
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(280): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\ActiveDataProvider.php(165): yii\db\Query->count('*', NULL)
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(147): yii\data\ActiveDataProvider->prepareTotalCount()
+#11 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#13 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#15 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\widgets\BaseListView.php(124): yii\data\BaseDataProvider->getCount()
+#16 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#17 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#18 C:\xampp\htdocs\girc\dmis\common\modules\reporting\views\crud-item\index.php(39): yii\base\Widget::widget(Array)
+#19 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#20 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#21 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(common\modules\reporting\controllers\CrudItemController))
+#22 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(common\modules\reporting\controllers\CrudItemController))
+#23 C:\xampp\htdocs\girc\dmis\common\modules\reporting\controllers\CrudItemController.php(41): yii\base\Controller->render('index', Array)
+#24 [internal function]: common\modules\reporting\controllers\CrudItemController->actionIndex()
+#25 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#26 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#27 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#28 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('reporting/crud-...', Array)
+#29 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#30 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#31 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[08006] [7] FATAL:  database "dmis" does not exist' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php:534
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(208): yii\db\Connection->getSlavePdo()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(815): yii\db\Command->prepare(true)
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Command.php(376): yii\db\Command->queryInternal('fetchColumn', 0)
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(373): yii\db\Command->queryScalar()
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\db\Query.php(280): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\ActiveDataProvider.php(165): yii\db\Query->count('*', NULL)
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(147): yii\data\ActiveDataProvider->prepareTotalCount()
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(79): yii\data\ActiveDataProvider->prepareModels()
+#11 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(92): yii\data\BaseDataProvider->prepare()
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\data\BaseDataProvider.php(133): yii\data\BaseDataProvider->getModels()
+#13 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\widgets\BaseListView.php(124): yii\data\BaseDataProvider->getCount()
+#14 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#15 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#16 C:\xampp\htdocs\girc\dmis\common\modules\reporting\views\crud-item\index.php(39): yii\base\Widget::widget(Array)
+#17 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(325): require('C:\\xampp\\htdocs...')
+#18 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('C:\\xampp\\htdocs...', Array)
+#19 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(common\modules\reporting\controllers\CrudItemController))
+#20 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(common\modules\reporting\controllers\CrudItemController))
+#21 C:\xampp\htdocs\girc\dmis\common\modules\reporting\controllers\CrudItemController.php(41): yii\base\Controller->render('index', Array)
+#22 [internal function]: common\modules\reporting\controllers\CrudItemController->actionIndex()
+#23 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#24 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#25 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#26 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('reporting/crud-...', Array)
+#27 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#28 C:\xampp\htdocs\girc\dmis\backend\web\index.php(18): yii\base\Application->run()
+#29 {main}
+Additional Information:
+
+2015-02-24 06:03:10 [::1][-][-][info][application] $_COOKIE = [
+    '_csrf' => '397b1c0695d940069c65121b1bc7fd65bc155503116b423c093715d173696caas:32:\"IZSqqSpUoGAroAky5u6ntCZjd3C1mAE3\";'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,hi;q=0.6,ru;q=0.4'
+    'HTTP_COOKIE' => '_csrf=397b1c0695d940069c65121b1bc7fd65bc155503116b423c093715d173696caas%3A32%3A%22IZSqqSpUoGAroAky5u6ntCZjd3C1mAE3%22%3B'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/backend/web/index.php'
+    'REMOTE_PORT' => '51366'
+    'REDIRECT_URL' => '/girc/dmis/backend/web/reporting/crud-item'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/backend/web/reporting/crud-item'
+    'SCRIPT_NAME' => '/girc/dmis/backend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424754190.795
+    'REQUEST_TIME' => 1424754190
+]
