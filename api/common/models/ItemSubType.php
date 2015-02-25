@@ -6,7 +6,8 @@
  * Time: 9:31 PM
  */
 namespace api\common\models;
-class ItemSubType extends \common\modules\reporting\models\ItemSubType{
+class ItemSubType extends \common\modules\reporting\models\ItemSubType
+{
     public function extraFields()
     {
         return [];

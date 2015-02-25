@@ -13,8 +13,9 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\web\Response;
 
-class ItemSubTypeController extends \yii\rest\ActiveController{
-    public $modelClass='api\common\models\ItemSubType';
+class ItemSubTypeController extends \yii\rest\ActiveController
+{
+    public $modelClass = 'api\common\models\ItemSubType';
 
     public function actionSearch()
     {

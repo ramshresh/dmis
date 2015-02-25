@@ -21,10 +21,11 @@ return [
     'modules' => [],
     'components' => [
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'k69dPn6pHcjC0eeXjFll7xpwYI0hjbhblkjhgfcvhbU',
+            'class' => '\yii\web\Request',
+            'enableCookieValidation' => false,
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
+
             ]
         ],
         'user' => [
@@ -42,14 +43,45 @@ return [
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            //'enableStrictParsing' => true,
+            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'item','extraPatterns' => ['GET search' => 'search']],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'item-type','extraPatterns' => ['GET search' => 'search']],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'item-sub-type','extraPatterns' => ['GET search' => 'search']],
+                [
+                    'class' => 'yii\rest\UrlRule', 'controller' => ['event'],
+                    'extraPatterns' => [
+                        'POST test-create' => 'test-create', // 'test' refers to 'actionTestCreate'
+                        'POST test-update/{id}' => 'test-update', // 'test' refers to 'actionTestUpdate'
+                        'POST test-manage' => 'test-manage', // 'test' refers to 'actionTestManage'
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule', 'controller' => ['item'],
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule', 'controller' => ['report-item'],
+
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'item-type',
+                    'extraPatterns' =>
+                        [
+                            'GET search' => 'search',
+                            'GET json'=>'json',
+                        ]
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'item-sub-type',
+                    'extraPatterns' => [
+                        'GET search' => 'search'
+                    ]
+                ],
 
             ],
+
+
         ]
     ],
     'params' => $params,

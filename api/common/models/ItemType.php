@@ -6,9 +6,10 @@
  * Time: 9:31 PM
  */
 namespace api\common\models;
-class ItemType extends \common\modules\reporting\models\ItemType{
+class ItemType extends \common\modules\reporting\models\ItemType
+{
     public function extraFields()
     {
-        return ['itemName','itemChildren'];
+        return ['itemName', 'itemChildren'];
     }
 }
