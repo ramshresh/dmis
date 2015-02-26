@@ -11,7 +11,19 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
         'assetManager' => [
-            'linkAssets' => true,
+            //'linkAssets' => true, //disabled because not working in windows
+            'linkAssets' => false,
+            // Overriding with Custom jqueryui
+            'bundles' => [ 'yii\jui\JuiAsset' => [
+                'sourcePath' => '@common/asset-files/jqueryui/1/11/2/custom',
+                'css' => [
+                    'jquery-ui.css',
+                ],
+                'js'=>[
+                    'jquery-ui.js',
+                ],
+
+            ] ]
         ],
     ],
     'modules' => [
