@@ -10,6 +10,6 @@ class ReportItem extends \common\modules\reporting\models\ReportItem
 {
     public function extraFields()
     {
-        return ['events','incident','damage','need','geometries','user'];
+        return ['event','incident','damage','need','geometries','user'];
     }
 }
