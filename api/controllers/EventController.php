@@ -15,8 +15,8 @@ use yii\web\ServerErrorHttpException;
 
 class EventController extends \yii\rest\ActiveController
 {
-    public $modelClass = 'common\modules\reporting\models\Event';
-
+    public $modelClass = 'api\common\models\Event';
+public function init(){header("Access-Control-Allow-Origin: *");}
     /**
      * Creates a new Event model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -24,6 +24,7 @@ class EventController extends \yii\rest\ActiveController
      */
     public function actionTestCreate()
     {
+
         $model = new Event();
         if (Yii::$app->request->post()) {
             //Loading $_POST data of related models
@@ -103,4 +104,5 @@ class EventController extends \yii\rest\ActiveController
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

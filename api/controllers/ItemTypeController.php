@@ -38,7 +38,6 @@ class ItemTypeController extends \yii\rest\ActiveController
            $modelClass::find()->all();
 
 
-    //$data = [1,2];
        $callback=(\Yii::$app->request->get('callback'))?\Yii::$app->request->get('callback'):null;
 
        // retrieve data to be returned

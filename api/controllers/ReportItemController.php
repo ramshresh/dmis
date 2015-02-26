@@ -11,5 +11,9 @@ namespace api\controllers;
 
 class ReportItemController extends \yii\rest\ActiveController
 {
-    public $modelClass = 'common\modules\reporting\models\ReportItem';
+    public $modelClass = 'api\common\models\ReportItem';
+    public function init(){
+        parent::init();
+        header("Access-Control-Allow-Origin: *");
+    }
 }

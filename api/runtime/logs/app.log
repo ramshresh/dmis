@@ -10188,3 +10188,736 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1424902259.534
     'REQUEST_TIME' => 1424902259
 ]
+2015-02-25 23:32:34 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'Response content must not be an array.' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php:944
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php(312): yii\web\Response->prepare()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(381): yii\web\Response->send()
+#2 C:\xampp\htdocs\girc\dmis\api\web\index.php(25): yii\base\Application->run()
+#3 {main}
+2015-02-25 23:32:34 [127.0.0.1][-][-][info][application] $_GET = [
+    'field' => 'name'
+    'expand' => 'itemtypes'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '59057'
+    'REDIRECT_QUERY_STRING' => 'field=name&expand=itemtypes'
+    'REDIRECT_URL' => '/girc/dmis/api/web/items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'field=name&expand=itemtypes'
+    'REQUEST_URI' => '/girc/dmis/api/web/items?field=name&expand=itemtypes'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424903554.261
+    'REQUEST_TIME' => 1424903554
+]
+2015-02-25 23:32:49 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'Response content must not be an array.' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php:944
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php(312): yii\web\Response->prepare()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(381): yii\web\Response->send()
+#2 C:\xampp\htdocs\girc\dmis\api\web\index.php(25): yii\base\Application->run()
+#3 {main}
+2015-02-25 23:32:49 [127.0.0.1][-][-][info][application] $_GET = [
+    'fields' => 'name'
+    'expand' => 'itemtypes'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '59061'
+    'REDIRECT_QUERY_STRING' => 'fields=name&expand=itemtypes'
+    'REDIRECT_URL' => '/girc/dmis/api/web/items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'fields=name&expand=itemtypes'
+    'REQUEST_URI' => '/girc/dmis/api/web/items?fields=name&expand=itemtypes'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424903569.749
+    'REQUEST_TIME' => 1424903569
+]
+2015-02-25 23:32:59 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'Response content must not be an array.' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php:944
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php(312): yii\web\Response->prepare()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(381): yii\web\Response->send()
+#2 C:\xampp\htdocs\girc\dmis\api\web\index.php(25): yii\base\Application->run()
+#3 {main}
+2015-02-25 23:32:59 [127.0.0.1][-][-][info][application] $_GET = [
+    'fields' => 'name'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '59065'
+    'REDIRECT_QUERY_STRING' => 'fields=name'
+    'REDIRECT_URL' => '/girc/dmis/api/web/items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'fields=name'
+    'REQUEST_URI' => '/girc/dmis/api/web/items?fields=name'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424903579.521
+    'REQUEST_TIME' => 1424903579
+]
+2015-02-25 23:33:09 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'Response content must not be an array.' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php:944
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php(312): yii\web\Response->prepare()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(381): yii\web\Response->send()
+#2 C:\xampp\htdocs\girc\dmis\api\web\index.php(25): yii\base\Application->run()
+#3 {main}
+2015-02-25 23:33:09 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '59069'
+    'REDIRECT_QUERY_STRING' => ''
+    'REDIRECT_URL' => '/girc/dmis/api/web/items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/api/web/items?'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424903589.462
+    'REQUEST_TIME' => 1424903589
+]
+2015-02-25 23:36:33 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'Response content must not be an array.' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php:944
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php(312): yii\web\Response->prepare()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(381): yii\web\Response->send()
+#2 C:\xampp\htdocs\girc\dmis\api\web\index.php(25): yii\base\Application->run()
+#3 {main}
+2015-02-25 23:36:33 [127.0.0.1][-][-][info][application] $_GET = [
+    'fields' => 'item_name'
+    'expand' => 'reportitems'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '59127'
+    'REDIRECT_QUERY_STRING' => 'fields=item_name&expand=reportitems'
+    'REDIRECT_URL' => '/girc/dmis/api/web/items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'fields=item_name&expand=reportitems'
+    'REQUEST_URI' => '/girc/dmis/api/web/items?fields=item_name&expand=reportitems'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424903793.091
+    'REQUEST_TIME' => 1424903793
+]
+2015-02-26 04:56:54 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'Response content must not be an array.' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php:944
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php(312): yii\web\Response->prepare()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(381): yii\web\Response->send()
+#2 C:\xampp\htdocs\girc\dmis\api\web\index.php(25): yii\base\Application->run()
+#3 {main}
+2015-02-26 04:56:53 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '49622'
+    'REDIRECT_QUERY_STRING' => ''
+    'REDIRECT_URL' => '/girc/dmis/api/web/events'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/api/web/events?'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424923013.95
+    'REQUEST_TIME' => 1424923013
+]
+2015-02-26 04:59:04 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'Response content must not be an array.' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php:944
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Response.php(312): yii\web\Response->prepare()
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(381): yii\web\Response->send()
+#2 C:\xampp\htdocs\girc\dmis\api\web\index.php(25): yii\base\Application->run()
+#3 {main}
+2015-02-26 04:59:04 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '49663'
+    'REDIRECT_QUERY_STRING' => ''
+    'REDIRECT_URL' => '/girc/dmis/api/web/events'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/api/web/events?'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424923144.164
+    'REQUEST_TIME' => 1424923144
+]
+2015-02-26 04:59:09 [127.0.0.1][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Invalid argument supplied for foreach()' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Component.php:643
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Component.php(643): yii\base\ErrorHandler->handleError(2, 'Invalid argumen...', 'C:\\xampp\\htdocs...', 643, Array)
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Component.php(526): yii\base\Component->ensureBehaviors()
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(259): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Controller.php(108): yii\base\Controller->beforeAction(Object(yii\rest\IndexAction))
+#4 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(149): yii\web\Controller->beforeAction(Object(yii\rest\IndexAction))
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('index', Array)
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('event/index', Array)
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#8 C:\xampp\htdocs\girc\dmis\api\web\index.php(25): yii\base\Application->run()
+#9 {main}
+2015-02-26 04:59:09 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '49665'
+    'REDIRECT_QUERY_STRING' => ''
+    'REDIRECT_URL' => '/girc/dmis/api/web/events'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/api/web/events?'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424923149.812
+    'REQUEST_TIME' => 1424923149
+]
+2015-02-26 05:04:29 [127.0.0.1][-][-][error][yii\base\UnknownMethodException] exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: api\controllers\EventController::onRest()' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Component.php:282
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\api\controllers\EventController.php(23): yii\base\Component->__call('onRest', Array)
+#1 C:\xampp\htdocs\girc\dmis\api\controllers\EventController.php(23): api\controllers\EventController->onRest('req.cors.access...', Object(Closure))
+#2 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Object.php(107): api\controllers\EventController->init()
+#3 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Controller.php(81): yii\base\Object->__construct(Array)
+#4 [internal function]: yii\base\Controller->__construct('event', Object(yii\web\Application), Array)
+#5 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\di\Container.php(362): ReflectionClass->newInstanceArgs(Array)
+#6 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\di\Container.php(147): yii\di\Container->build('api\\controllers...', Array, Array)
+#7 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\BaseYii.php(340): yii\di\Container->get('api\\controllers...', Array)
+#8 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(568): yii\BaseYii::createObject('api\\controllers...', Array)
+#9 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(521): yii\base\Module->createControllerByID('event')
+#10 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php(449): yii\base\Module->createController('event/index')
+#11 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('event/index', Array)
+#12 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\xampp\htdocs\girc\dmis\api\web\index.php(25): yii\base\Application->run()
+#14 {main}
+2015-02-26 05:04:29 [127.0.0.1][-][-][info][application] $_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '49838'
+    'REDIRECT_QUERY_STRING' => ''
+    'REDIRECT_URL' => '/girc/dmis/api/web/events'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/api/web/events?'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424923469.255
+    'REQUEST_TIME' => 1424923469
+]
+2015-02-26 05:20:52 [127.0.0.1][-][-][error][yii\base\ErrorException:64] exception 'yii\base\ErrorException' with message 'Cannot use api\common\models\ItemType as ItemType because the name is already in use' in C:\xampp\htdocs\girc\dmis\common\modules\reporting\models\Damage.php:5
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-26 05:20:51 [127.0.0.1][-][-][info][application] $_GET = [
+    'expand' => 'geometries,event,incident,damage,need'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '50076'
+    'REDIRECT_QUERY_STRING' => 'expand=geometries%2Cevent%2Cincident%2Cdamage%2Cneed'
+    'REDIRECT_URL' => '/girc/dmis/api/web/report-items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'expand=geometries%2Cevent%2Cincident%2Cdamage%2Cneed'
+    'REQUEST_URI' => '/girc/dmis/api/web/report-items?expand=geometries%2Cevent%2Cincident%2Cdamage%2Cneed'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424924451.674
+    'REQUEST_TIME' => 1424924451
+]
+2015-02-26 05:21:36 [127.0.0.1][-][-][error][yii\base\ErrorException:64] exception 'yii\base\ErrorException' with message 'Cannot use api\common\models\ItemType as ItemType because the name is already in use' in C:\xampp\htdocs\girc\dmis\common\modules\reporting\models\Damage.php:5
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2015-02-26 05:21:35 [127.0.0.1][-][-][info][application] $_GET = [
+    'expand' => 'geometries,event,incident,damage'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'p1frj013in1mvattvrbvjdqd26'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => '*/*'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_USER_AGENT' => 'Apache-HttpClient/4.3.2 (java 1.5)'
+    'HTTP_COOKIE' => 'PHPSESSID=p1frj013in1mvattvrbvjdqd26'
+    'HTTP_COOKIE2' => '$Version=1'
+    'HTTP_ACCEPT_ENCODING' => 'gzip,deflate'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/api/web/index.php'
+    'REMOTE_PORT' => '50082'
+    'REDIRECT_QUERY_STRING' => 'expand=geometries%2Cevent%2Cincident%2Cdamage'
+    'REDIRECT_URL' => '/girc/dmis/api/web/report-items'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'expand=geometries%2Cevent%2Cincident%2Cdamage'
+    'REQUEST_URI' => '/girc/dmis/api/web/report-items?expand=geometries%2Cevent%2Cincident%2Cdamage'
+    'SCRIPT_NAME' => '/girc/dmis/api/web/index.php'
+    'PHP_SELF' => '/girc/dmis/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1424924495.643
+    'REQUEST_TIME' => 1424924495
+]
