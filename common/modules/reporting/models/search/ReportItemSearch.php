@@ -2,10 +2,10 @@
 
 namespace common\modules\reporting\models\search;
 
+use common\modules\reporting\models\ReportItem;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\modules\reporting\models\ReportItem;
 
 /**
  * ReportItemSearch represents the model behind the search form about `common\modules\reporting\models\ReportItem`.

@@ -15,6 +15,7 @@ use \yii\helpers\Html;
 <input id="latitude" type="text" placeholder="latitude">
 <input id="longitude" type="text" placeholder="longitude">
 <input id="placename" type="text" placeholder="placename">
+<input id="wkt" type="text" placeholder="wkt">
 
 
 <?php
@@ -27,6 +28,9 @@ echo \common\modules\reporting\widgets\pointpicker\PointPickerWidget::widget(
         //'openlayersPackName' => 'openlayers', //'openlayerslPack' //,
         'triggerId'=>'triggerpointpicker-modalmap',
         //'externalMapDivId'=>'map',
+        'wktId'=>'wkt'
+
+
         ]);
 ?>
 

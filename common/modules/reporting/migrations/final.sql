@@ -1,3 +1,6 @@
+-- CHANGESET
+-- add user_id as fk in reportitem
+
 -- ****************DROM Reports****************----
 --  DROP TABLE reporting.need;
 --  DROP TABLE reporting.damage;

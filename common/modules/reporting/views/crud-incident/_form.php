@@ -20,7 +20,7 @@ $dropDownItemName = $model::getDropDownItemName();
     echo $form->field($model, 'item_name')
         ->widget(\kartik\widgets\Select2::classname(), [
             'data' => array_merge(["" => ""], $dropDownItemName),
-            'options' => ['placeholder' => '--Select Event Type--'],
+            'options' => ['placeholder' => '--Select Incident Type--'],
             'pluginOptions' => [
                 'allowClear' => true
             ],

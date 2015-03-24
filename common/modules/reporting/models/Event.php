@@ -3,7 +3,6 @@
 namespace common\modules\reporting\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "reporting.event".
@@ -17,7 +16,7 @@ use yii\helpers\ArrayHelper;
  * @property ReportItem $reportitem
  * @property EmergencySituation[] $emergencySituations
  */
-class Event extends \yii\db\ActiveRecord
+class Event extends ReportItem
 {
 
     /**
@@ -89,6 +88,7 @@ class Event extends \yii\db\ActiveRecord
     }
     //}}} ./Getters based on model Relationship
 
+
     public static function getDropDownItemName(){
         return \yii\helpers\ArrayHelper::map(ItemType::find()
             ->where('type=:type',[':type'=>ReportItem::TYPE_EVENT])
@@ -99,6 +99,9 @@ class Event extends \yii\db\ActiveRecord
         $this->type = ItemType::TYPE_EVENT;
     }
 
+    public function assignChild($model){
+        $this->reportitem->link('reportItemChildren',$model->reportitem);
+    }
     //{{{ Initializing model
     public function init()
     {

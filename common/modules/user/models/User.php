@@ -2,13 +2,13 @@
 
 namespace common\modules\user\models;
 
+use ReflectionClass;
 use Yii;
 use yii\db\ActiveRecord;
-use yii\web\IdentityInterface;
+use yii\helpers\Inflector;
 use yii\swiftmailer\Mailer;
 use yii\swiftmailer\Message;
-use yii\helpers\Inflector;
-use ReflectionClass;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "tbl_user".

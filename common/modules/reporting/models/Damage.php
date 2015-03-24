@@ -2,7 +2,8 @@
 
 namespace common\modules\reporting\models;
 
-use api\common\models\ItemType;
+
+
 use Yii;
 
 /**
@@ -32,7 +33,7 @@ use Yii;
  * @property string $timestamp_updated
  *
  */
-class Damage extends \yii\db\ActiveRecord
+class Damage extends ReportItem
 {
     /**
      * @inheritdoc
@@ -102,7 +103,7 @@ class Damage extends \yii\db\ActiveRecord
     //}}} ./Getters based on model Relationship
 
     public static function getDropDownItemName(){
-        return \yii\helpers\ArrayHelper::map(ItemType::find()
+        return \yii\helpers\ArrayHelper::map(\api\common\models\ItemType::find()
             ->where('type=:type',[':type'=>ReportItem::TYPE_DAMAGE])
             ->all(), 'item_name', 'item_name');
     }
@@ -111,7 +112,9 @@ class Damage extends \yii\db\ActiveRecord
     public function loadDefaultValues(){
         $this->type = ItemType::TYPE_DAMAGE;
     }
-
+    public function assignChild($model){
+        $this->reportitem->link('reportItemChildren',$model->reportitem);
+    }
     public function init()
     {
         parent::init();

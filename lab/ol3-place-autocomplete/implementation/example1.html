@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Place Autocomplete</title>
+    <link rel="stylesheet" href="../../lib/bootstrap/3/2/0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../lib/jquery-ui-1-11-2-custom/jquery-ui.min.css">
+    <link rel="stylesheet" href="../../lib/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../../lib/ol.css">
+</head>
+<body>
+<style>
+    .address-search-container{
+        width: 30em;
+        height: auto;
+    }
+    .btn-search {
+        background-color: #666;
+        color: #fff;
+        border-radius:0;
+        border-color:#666;
+    }
+
+    .input-search {
+        border-radius:0;
+        background-color: #eee;
+        box-shadow: none;
+        border: none;
+        border-right: 1px solid #eee;
+    }
+
+    .input-search:focus {
+        box-shadow: none;
+    }
+    .ui-autocomplete{
+        width: 300px;
+    }
+</style>
+<div class="address-search-container">
+<form>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control input-search autocomplete">
+        <span class="input-group-btn">
+          <button class="btn btn-search" type="button"><i class="glyphicon glyphicon-search"></i></button>
+        </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+</form>
+</div>
+<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery-simple-javascript-inheritance.js"></script>
+<script src="../../lib/bootstrap/3/2/0/dist/js/bootstrap.min.js"></script>
+<script src="../../lib/jquery-ui-1-11-2-custom/jquery-ui.min.js"></script>
+<script src="../../lib/select2/dist/js/select2.min.js"></script>
+<script src="../../lib/ol-debug.js"></script>
+<script src="../src/ol3-place-autocomplete.js"></script>
+<script>
+    $(document).ready(function(){
+       $(".input-search").placeAutocomplete({});
+
+    });
+</script>
+</body>
+</html>

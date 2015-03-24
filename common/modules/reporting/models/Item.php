@@ -92,4 +92,23 @@ class Item extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Reportitem::className(), ['item_name' => 'name']);
     }
+
+    public static function getDropDownItemType(){
+        return ['0'=>'Emergency Situation','1'=>'Event','2'=>'Incident','3'=>'Damage','4'=>'Need'];
+    }
+
+    public static function getDropDownItemName($type){
+        return \yii\helpers\ArrayHelper::map(ItemType::find()
+            ->where('type=:type',[':type'=>$type])
+            ->all(), 'item_name', 'item_name');
+    }
+
+    public static function getDropDownItemChild($type,$itemName){
+        self::hasMany(self::className(),['name'=>'name'])->viaTable(ItemChild::tableName(),['parent_name'=>'name'],function($q){
+            $q->andWhere(['parent_type'=>$type]);
+        });
+        return \yii\helpers\ArrayHelper::map(ItemType::find()
+            ->where('type=:type',[':type'=>$type])
+            ->all(), 'item_name', 'item_name');
+    }
 }

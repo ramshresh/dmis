@@ -10,7 +10,8 @@ namespace common\assets;
 
 use yii\web\AssetBundle;
 
-class Ol2Asset extends AssetBundle{
+class Ol2Asset extends AssetBundle
+{
     public $sourcePath = '@common/asset-files/openlayers/ol2';
     public $css = [
         'green_theme/style.css',

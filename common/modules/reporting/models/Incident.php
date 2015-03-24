@@ -15,7 +15,7 @@ use Yii;
  *
  * @property Reportitem $reportitem
  */
-class Incident extends \yii\db\ActiveRecord
+class Incident extends ReportItem
 {
     /**
      * @inheritdoc

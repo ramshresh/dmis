@@ -22,6 +22,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'displayname')->textInput(['maxlength' => 75]) ?>
 
+    <?php
+    /*echo \yii\bootstrap\Dropdown::widget([
+        'items'=>$model::getDropDownItemType(),
+    ]);*/
+      echo Html::dropDownList('type',[],$model::getDropDownItemType(),['class'=>'']);
+
+    ?>
+
+    <?php
+    echo Html::dropDownList('children',[],$model::getDropDownItemName(1));
+    ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

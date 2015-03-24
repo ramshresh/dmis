@@ -61,5 +61,4 @@ class GraphhopperController extends MyBaseContoller
     {
         return $this->render('index');
     }
-
 }

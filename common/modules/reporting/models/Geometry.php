@@ -2,9 +2,6 @@
 
 namespace common\modules\reporting\models;
 
-use common\modules\reporting\models\GeometryLinestring;
-use common\modules\reporting\models\GeometryPoint;
-use common\modules\reporting\models\GeometryPolygon;
 use kartik\builder\TabularForm;
 use kartik\grid\GridView;
 use Yii;
@@ -32,6 +29,7 @@ use yii\db\Expression;
 class Geometry extends \yii\db\ActiveRecord
 {
     CONST SRID = 4326;
+
     CONST TYPE_POINT='POINT';
     CONST TYPE_LINESTRING='LINESTRING';
     CONST TYPE_POLYGON='POLYGON';
@@ -136,20 +134,19 @@ class Geometry extends \yii\db\ActiveRecord
      * @param array $row
      * @return Geometry|GeometryLinestring|GeometryPoint|GeometryPolygon
      */
-    /*public static function instantiate($row)
+    public static function instantiate($row)
     {
         switch ($row['type']) {
-            case Geometry::TYPE_POINT:
+            case self::TYPE_POINT:
                 return new GeometryPoint();
-            case Geometry::TYPE_LINESTRING:
+            case self::TYPE_LINESTRING:
                 return new GeometryLinestring();
-            case Geometry::TYPE_POLYGON:
+            case self::TYPE_POLYGON:
                 return new GeometryPolygon();
             default:
                 return new self;
         }
-
-    }*/
+    }
 
     //{{{ Kartik gridview
     /**

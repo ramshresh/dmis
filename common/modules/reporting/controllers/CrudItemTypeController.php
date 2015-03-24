@@ -2,12 +2,12 @@
 
 namespace common\modules\reporting\controllers;
 
-use Yii;
 use common\modules\reporting\models\ItemType;
 use common\modules\reporting\models\search\ItemTypeSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CrudItemTypeController implements the CRUD actions for ItemType model.

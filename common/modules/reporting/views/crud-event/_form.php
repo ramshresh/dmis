@@ -1,8 +1,9 @@
 <?php
 
+use kartik\widgets\ActiveForm;
 use yii\helpers\Html;
+
 //use yii\widgets\ActiveForm;
-use \kartik\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\modules\reporting\models\Event */
@@ -20,7 +21,6 @@ $dropDownItemName = $model::getDropDownItemName();
 
     <?php
     // Parent
-
     echo $form->field($model, 'item_name')
         ->widget(\kartik\widgets\Select2::classname(), [
             'data' => array_merge(["" => ""], $dropDownItemName),
@@ -62,24 +62,7 @@ $dropDownItemName = $model::getDropDownItemName();
     <?php //echo $form->field($model, 'status')->textInput() ?>
 
 
-    <!--{{{ Accordian -->
-    <div id="event-form-accordion" class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-geometries">1. What is HTML?</a>
-                </h4>
-            </div>
-            <div id="collapse-geometries" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <p>HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages. <a href="http://www.tutorialrepublic.com/html-tutorial/" target="_blank">Learn more.</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- }}}./Accordian
-
-    <?php
+     <?php
     /*echo $form->field($model, 'tags')->widget(\kartik\widgets\Select2::className(),
         [
             'options' => ['placeholder' => 'tags'],

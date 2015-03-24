@@ -2,12 +2,12 @@
 
 namespace common\modules\reporting\controllers;
 
-use Yii;
 use common\modules\reporting\models\ItemChild;
-use common\modules\reporting\models\search\ItemChildSearch;
+use common\modules\reporting\models\search\ItemChild as ItemChildSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CrudItemChildController implements the CRUD actions for ItemChild model.
@@ -43,7 +43,7 @@ class CrudItemChildController extends Controller
 
     /**
      * Displays a single ItemChild model.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionView($id)
@@ -74,7 +74,7 @@ class CrudItemChildController extends Controller
     /**
      * Updates an existing ItemChild model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionUpdate($id)
@@ -93,7 +93,7 @@ class CrudItemChildController extends Controller
     /**
      * Deletes an existing ItemChild model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionDelete($id)
@@ -106,7 +106,7 @@ class CrudItemChildController extends Controller
     /**
      * Finds the ItemChild model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param string $id
      * @return ItemChild the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

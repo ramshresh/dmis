@@ -13,6 +13,7 @@ namespace common\modules\reporting\widgets\pointpicker;
 use common\assets\Ol3Asset;
 use yii\bootstrap\Widget;
 use yii\helpers\Json;
+use yii\jui\JuiAsset;
 use yii\web\View;
 
 class PointPickerOl3Widget extends Widget{
@@ -24,7 +25,7 @@ class PointPickerOl3Widget extends Widget{
     public $openlayersPackName;//='openlayersPack';// for $openlayersPackUrl=Yii::app()->clientScript->getPackageBaseUrl($openlayersPackName);
     public $openlayersPackUrl;
     public $latitudeId,$longitudeId,$placenameId;
-    public $widgetDivId,$mapDivId,$iLatId,$iLonId,$iPlacenameId; // needed for html markup of view
+    public $widgetDivId,$mapDivId,$iLatId,$iLonId,$iPlacenameId,$iWktFieldId; // needed for html markup of view
     public $openlayersImgPath;
     public $markerUrl;
     public $triggerId;
@@ -32,7 +33,7 @@ class PointPickerOl3Widget extends Widget{
 
     public function init()
     {
-			JqueryUiAsset::register($this->getView());
+			JuiAsset::register($this->getView());
             Ol3Asset::register($this->getView());              
             /*
             if(!isset($this->externalMapDivId)){ // Register OpenLayers only if external map is not provided
@@ -53,6 +54,7 @@ class PointPickerOl3Widget extends Widget{
         $this->iLatId=$this->widgetDivId.'-lat';
         $this->iLonId=$this->widgetDivId.'-lon';
         $this->iPlacenameId=$this->widgetDivId.'-placename';
+        $this->iWktFieldId = $this->widgetDivId.'-wkt';
         $this->mapDivId =$this->id.'-map';
         $triggerId=(isset($this->triggerId))?$this->triggerId:$this->id.'btn-trigger';
 
@@ -67,6 +69,7 @@ class PointPickerOl3Widget extends Widget{
             'iLatId'=>$this->iLatId,
             'iLonId'=>$this->iLonId,
             'iPlacenameId'=>$this->iPlacenameId,
+            'iWktFieldId'=>$this->iWktFieldId,
             'mapDivId'=>$this->mapDivId,
             'triggerId'=>$triggerId,
             'externalMapDivId'=>$this->externalMapDivId,
@@ -79,7 +82,6 @@ class PointPickerOl3Widget extends Widget{
 
         $this->htmlOptions['id'] = $this->id;
         $this->htmlOptions['class'] = 'pointpicker';
-
 
         return $this->render('pointpicker',array('opts'=>$opts));
     }

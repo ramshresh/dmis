@@ -12,6 +12,7 @@ namespace common\modules\reporting\widgets\pointpicker;
 use common\assets\Ol3Asset;
 use yii\bootstrap\Widget;
 use yii\helpers\Json;
+use yii\jui\JuiAsset;
 use yii\web\View;
 
 class PointPickerOl3BootstrapModalWidget extends Widget{
@@ -31,7 +32,7 @@ class PointPickerOl3BootstrapModalWidget extends Widget{
 
     public function init()
     {
-			JqueryUiAsset::register($this->getView());
+			JuiAsset::register($this->getView());
             Ol3Asset::register($this->getView());              
             /*
             if(!isset($this->externalMapDivId)){ // Register OpenLayers only if external map is not provided

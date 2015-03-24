@@ -6,6 +6,7 @@ use common\modules\reporting\models\Damage;
 use common\modules\reporting\models\Geometry;
 use Yii;
 use yii\helpers\Url;
+use yii\jui\JuiAsset;
 
 /**
  * DemoGeo controller
@@ -84,33 +85,7 @@ class DemoGeoController extends MyBaseContoller
 
     public function actionTest()
     {
-        $model = new Damage();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            echo 'saved!';
-            $g1 = new Geometry();
-            $g1->type = 'POINT';
-            $g1->reportitem_id = $model->reportitem_id;
-            $g1->save();
-            $g2 = new Geometry();
-            $g2->type = 'POLYGON';
-            $g2->reportitem_id = $model->reportitem_id;
-            $g2->save();
-            $g3 = new Geometry();
-            $g3->type = 'linestring';
-            $g3->reportitem_id = $model->reportitem_id;
-            $g3->save();
-
-            foreach ($model->geometries as $geometry) {
-                var_dump($geometry->attributes);
-            }
-
-        } else {
-
-            return $this->render('test', [
-                'model' => $model,
-            ]);
-        }
+        return $this->render('test');
 
     }
 

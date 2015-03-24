@@ -2,13 +2,12 @@
 
 namespace common\modules\reporting\controllers;
 
-use common\modules\reporting\models\ItemType;
-use Yii;
 use common\modules\reporting\models\Need;
 use common\modules\reporting\models\search\Need as NeedSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CrudNeedController implements the CRUD actions for Need model.

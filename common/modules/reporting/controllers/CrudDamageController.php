@@ -1,17 +1,14 @@
 <?php
 
+
 namespace common\modules\reporting\controllers;
 
-use common\modules\reporting\models\Geometry;
-use common\modules\reporting\models\ItemType;
-use common\modules\user\models\User;
-use common\modules\reporting\models\GeometryPoint;
-use Yii;
 use common\modules\reporting\models\Damage;
 use common\modules\reporting\models\search\Damage as DamageSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CrudDamageController implements the CRUD actions for Damage model.

@@ -8,7 +8,7 @@ $iPlacenameId = $opts['iPlacenameId'];
 $iWktFieldId=$opts['iWktFieldId'];
 ?>
 
-
+<div id="map"></div>
 <?php if (!$opts['triggerId']):; ?>
     <button id="<?php echo $triggerId ?>" class="buttons pointpicker-trigger btn btn-primary">Point from map</button>
 <?php endif; ?>

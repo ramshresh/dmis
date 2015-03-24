@@ -2,8 +2,11 @@
 namespace frontend\controllers;
 
 use common\components\MyBaseContoller;
+use common\modules\rapid_assessment\models\ReportItem;
 use frontend\models\ContactForm;
 use Yii;
+use yii\bootstrap\BootstrapAsset;
+use yii\helpers\Json;
 
 
 /**
@@ -11,6 +14,7 @@ use Yii;
  */
 class SiteController extends MyBaseContoller
 {
+    public $layout = 'main';
     /**
      * @inheritdoc
      */
@@ -55,7 +59,43 @@ class SiteController extends MyBaseContoller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            'emergency-situation-create' => [
+                'class' => 'common\modules\reporting\actions\EmergencySituationCreateAction',
+            ],
+            'event-create' => [
+                'class' => 'common\modules\reporting\actions\EventCreateAction',
+            ],
+            'incident-create' => [
+                'class' => 'common\modules\reporting\actions\IncidentCreateAction',
+            ],
+            'damage-create' => [
+                'class' => 'common\modules\reporting\actions\DamageCreateAction',
+            ],
+            'need-create' => [
+                'class' => 'common\modules\reporting\actions\NeedCreateAction',
+            ],
+            'register-driver' => [
+                'class' => 'common\modules\tracking\actions\rest\DriverRegistrationAction',
+            ],
+            'report-item-create' => [
+                'class' => 'common\modules\rapid_assessment\actions\ReportItemCreateAction',
+            ],
         ];
+    }
+
+    public function actionWidget()
+    {
+        if (Yii::$app->request->get('name')) {
+            $widgetName = Yii::$app->request->get('name');
+            switch ($widgetName) {
+                case 'event-report-create':
+                    return $this->renderAjax('widgets/event-report-create');
+                    break;
+                default:
+                    break;
+            }
+
+        }
     }
 
     public function actionIndex()
@@ -72,12 +112,14 @@ class SiteController extends MyBaseContoller
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
             }
-
             return $this->refresh();
         } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
+            return $this->render(
+                'contact',
+                [
+                    'model' => $model,
+                ]
+            );
         }
     }
 
@@ -94,6 +136,13 @@ class SiteController extends MyBaseContoller
     public function actionGraphhopper()
     {
         return $this->render('graphhopper');
+    }
+
+    public function actionTest()
+    {
+        echo Json::encode(Re::find()->all());
+        echo '<br>';
+
     }
 
 
@@ -169,5 +218,183 @@ class SiteController extends MyBaseContoller
                         print_r($itemChild->item_name);
                     }
                 }*/
+    }
+
+    public function actionGeometryPicker()
+    {
+        return $this->renderAjax('geometry_picker', []);
+    }
+
+    public function actionRapidAssessment()
+    {
+        // creating new
+        /*$a = new \common\modules\rapid_assessment\models\ReportItemEmergencySituation();
+        $b = new \common\modules\rapid_assessment\models\ReportItemEvent();
+        $c = new \common\modules\rapid_assessment\models\ReportItemIncident();
+        $d = new \common\modules\rapid_assessment\models\ReportItemImpact();
+        $e = new \common\modules\rapid_assessment\models\ReportItemNeed();
+
+        $a->type=ReportItem::TYPE_EMERGENCY_SITUATION;
+        $a->item_name='ES 1';
+        $b->type=ReportItem::TYPE_EVENT;
+        $b->item_name='EV 1';
+        $c->type=ReportItem::TYPE_INCIDENT;
+        $c->item_name='INC 1';
+        $d->type=ReportItem::TYPE_IMPACT;
+        $d->item_name='IMP 1';
+        $e->type=ReportItem::TYPE_NEED;
+        $e->item_name='ND 1';
+        $a->save();
+        $b->save();
+        $c->save();
+        $d->save();
+        $e->save();*/
+
+        //retrieving one
+        $a = \common\modules\rapid_assessment\models\ReportItemEmergencySituation::find()->one();
+        $b = \common\modules\rapid_assessment\models\ReportItemEvent::find()->one();
+        $c = \common\modules\rapid_assessment\models\ReportItemIncident::find()->one();
+        $d = \common\modules\rapid_assessment\models\ReportItemImpact::find()->one();
+        $e = \common\modules\rapid_assessment\models\ReportItemNeed::find()->one();
+
+        /*$a->wkt='POINT(81 27)';
+        $a->title = 'Earthquake emergency situation in Nepal (2015)';
+        $a->declared_by ='UNOCHA';
+        $a->timestamp_declared_at ='2015-02-15 10:00:00';
+        $a->item_name='Emergency Situation';
+        $a->class_basis='Extent';
+        $a->class_name='Regional';
+
+        $b->wkt='POINT(81.5 27.5)';
+        $b->title = 'Earthquake Hits Central Nepal';
+        $b->item_name='Earthquake';
+        $b->class_basis='Magnitude';
+        $b->class_name='Major';
+        $b->magnitude = '8.5';
+        $b->units ='RH Scale';
+        $b->timestamp_occurance='2015-02-15 05:15:00';
+        $b->address='Kathmandu, Central Region, Nepal';
+
+
+
+        $c->wkt='POINT(81.1 25.1)';
+        $c->title = 'An old 5 storied building collapsed near Patan Durbar Square';
+        $c->item_name='Building Damage';
+        $c->class_basis='Type of Damage';
+        $c->class_name='Residential Complete';
+        $c->magnitude = '1';
+        $c->units ='Nos';
+        $c->timestamp_occurance='2015-02-15 05:15:00'; //equalto event if not defined
+        $c->address='Lalitpur, Central Region, Nepal';
+
+        $d->wkt='POINT(81.1001 25.103)';
+        $d->title='5 people dead';
+        $d->item_name='Death';
+        $d->class_basis='Cause';
+        $d->class_name='Falling Debris';
+        $d->magnitude = '5';
+        $d->units ='Person';
+        $d->timestamp_occurance='2015-02-15 05:15:00'; //equal to incident if not set
+        $d->address='Lalitpur, Central Region, Nepal'; //equal to incident if not set
+
+        $e->wkt='POINT(81.1001 25.103)'; // inherit impact or incident or event or emergency situation
+        $e->title='Need Tents for homeless';
+        $e->item_name='Tent';
+        $e->class_basis='Use Type';
+        $e->class_name='Shelter';
+        $e->magnitude = '5';
+        $e->units ='Nos';
+        $e->timestamp_occurance='2015-02-15 05:15:00'; //equal to incident if not set
+        $e->address='Lalitpur, Central Region, Nepal'; //equal to incident if not set*/
+
+
+        //saving
+        /*$a->save();
+        $b->save();
+        $c->save();
+        $d->save();
+        $e->save();*/
+
+
+//$eventModel = \common\modules\rapid_assessment\models\ReportItemEvent::find()->one();
+//$es = \common\modules\rapid_assessment\models\ReportItemEmergencySituation::find()->one();
+
+        //Linking
+        /*$e->link('impact',$d);
+        $e->link('incident',$c);
+        $e->link('event',$b);
+        $e->link('emergencySituation',$a);
+
+        $d->link('incident',$c);
+           $d->link('event',$b);
+        $d->link('emergencySituation',$a);
+
+       $c->link('event',$b);
+        $c->link('emergencySituation',$a);
+
+        $b->link('emergencySituation',$a);*/
+
+        echo '<h2> Emergency Situation Children';
+        echo '<br><h5><b>Events:</b></h5>';
+        echo Json::encode($a->events);
+        echo '<br><h5><b>Incidents:</b></h5>';
+        echo Json::encode($a->incidents);
+        echo '<br><h5><b>Impacts:</b></h5>';
+        echo Json::encode($a->impacts);
+        echo '<br><h5><b>Needs:</b></h5>';
+        echo Json::encode($a->needs);
+        echo '</h2>';
+
+        echo '<h2> Event  Children';
+        echo '<br><h5><b>Incidents:</b></h5>';
+        echo Json::encode($b->incidents);
+        echo '<br><h5><b>Impacts:</b></h5>';
+        echo Json::encode($b->impacts);
+        echo '<br><h5><b>Needs:</b></h5>';
+        echo Json::encode($b->needs);
+        echo '</h2>';
+
+        echo '<h2> Incident  Children';
+        echo '<br><h5><b>Impacts:</b></h5>';
+        echo Json::encode($c->impacts);
+        echo '<br><h5><b>Needs:</b></h5>';
+        echo Json::encode($c->needs);
+        echo '</h2>';
+
+
+        echo '<h2> Impact  Children';
+        echo '<br><h5><b>Needs:</b></h5>';
+        echo Json::encode($d->needs);
+        echo '</h2>';
+
+
+        echo '<h2> Need parent';
+        echo '<br><h5><b>EmergencySituation:</b></h5>';
+        echo Json::encode($e->emergencySituation);
+        echo '<br><h5><b>Event:</b></h5>';
+        echo Json::encode($e->event);
+        echo '<br><h5><b>Incident:</b></h5>';
+        echo Json::encode($e->incident);
+        echo '<br><h5><b>Impact:</b></h5>';
+        echo Json::encode($e->impact);
+        echo '</h2>';
+
+        echo '<h2> Impact parent';
+        echo '<br><h5><b>EmergencySituation:</b></h5>';
+        echo Json::encode($d->emergencySituation);
+        echo '<br><h5><b>Event:</b></h5>';
+        echo Json::encode($d->event);
+        echo '<br><h5><b>Incident:</b></h5>';
+        echo Json::encode($d->incident);
+
+        echo '<h2> Incident parent';
+        echo '<br><h5><b>EmergencySituation:</b></h5>';
+        echo Json::encode($c->emergencySituation);
+        echo '<br><h5><b>Event:</b></h5>';
+        echo Json::encode($c->event);
+
+        echo '<h2> Event parent';
+        echo '<br><h5><b>EmergencySituation:</b></h5>';
+        echo Json::encode($b->emergencySituation);
     }
 }

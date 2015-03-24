@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link href="../lib/jquery-ui-1-11-2-custom/jquery-ui.css">
+    <link href="../lib/bootstrap/3/2/0/dist/css/bootstrap.css">
+    <link href="../lib/ol.css">
+    <link href="../lib/ol3-layer-switcher/ol3-layerswitcher.css">
+    <link href="../lib/ol3-popup/css/ol3-popup.css">
+</head>
+<div id="map" data-map></div>
+<body>
+<select id="report-item-type">
+    <option value="" selected="true" style="display: none">Select Report Item Type</option>
+    <option value="0">Emergency Situations</option>
+    <option value="1">Events</option>
+    <option value="2">Incidents</option>
+    <option value="3">Impacts</option>
+    <option value="4">Needs</option>
+</select>
+<select id="layer-properties">
+    <option value="" selected="true" style="display: none">Select Layer Properties</option>
+</select>
+<select id="layer-property-values">
+    <option value="" selected="true" style="display: none">Select Layer Properties</option>
+</select>
+<label>Date Range</label>
+<input id="datefilter_from" placeholder="From">
+<input id="datefilter_to" placeholder="To">
+<input id="events" placeholder="EMS">
+<script src="../lib/jquery.js"></script>
+<script src="../lib/bootstrap/3/2/0/dist/js/bootstrap.js"></script>
+<script src="../lib/jquery-ui-1-11-2-custom/jquery-ui.js"></script>
+<script src="../lib/ol-debug.js"></script>
+<script src="../lib/ol3-layer-switcher/ol3-layerswitcher.js"></script>
+<script src="../lib/ol3-popup/js/ol3-popup.js"></script>
+<script>
+    /* Defining basic Map with OSM as basemap*/
+    var view = new ol.View({
+        center: ol.proj.transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
+        zoom: 1
+    });
+    var osm = new ol.layer.Tile({
+        title:'OSM',
+        type:'base',
+        source: new ol.source.OSM()
+    });
+    map = new ol.Map({
+        target: 'map',
+        layers: [
+            osm
+        ],
+        view: view
+    });
+
+    map.addControl(new ol.control.FullScreen());
+    map.addControl(new ol.control.LayerSwitcher());
+    var popup = new ol.Overlay.Popup();
+    map.addOverlay(popup);
+
+    /* ./Defining basic Map */
+
+    /* Defining Overlay Layers */
+    var reportitems_all = new ol.layer.Tile(
+            {
+                'name': 'Report Items',
+                'source': new ol.source.TileWMS(
+                        ({
+                            //   url: 'http://localhost:8080/geoserver/wms',
+                            url: 'http://116.90.239.21:8080/geoserver/wms',
+                            params: {
+                                'LAYERS': 'dmis:reportitems_all', 'TILED': true
+                                //   params: {'LAYERS': 'fra:ambulance', 'TILED': true
+                                //'cql_filter':"subcategory='trapped'"
+                                //        'STYLES':'disaster_hazard'
+                                //    'SLD' :'styles/all_feature_style.sld'
+
+                            },
+                            //styles:"",
+                            serverType: 'geoserver'
+                            //   request:'GetMap'
+
+                        }))
+            }
+    );
+    var reportitems_all_clickHandler = function (evt) {
+        tilewmsSource = reportitems_all;
+        viewResolution = view.getResolution();
+        viewProjection = view.getProjection();
+        //  console.log(evt.coordinate);
+        var url = tilewmsSource.getSource().getGetFeatureInfoUrl(
+                evt.coordinate, viewResolution, viewProjection,
+                {
+                    'INFO_FORMAT': 'text/javascript'
+                    //   'propertyName': 'status',''
+                });
+
+        if (url) {
+            var parser = new ol.format.GeoJSON();
+            $.ajax({
+                url: url,
+                dataType: 'jsonp',
+                jsonpCallback: 'parseResponse'
+            }).then(function (response) {
+                var result = parser.readFeatures(response);
+                //console.log(result);
+
+                if (result.length) {
+                    var popupContent = '';
+                    for (var i = 0, ii = result.length; i < ii; ++i) {
+                        var values = result[i].values_;
+                        console.log(values);
+                        console.log(result[i].values_.reportitem_item_name);
+                        console.log(result[i].values_.reportitem_subtype_name);
+                        console.log(result[i].values_.reportitem_timestamp_created);
+                        console.log(result[i].values_.reportitem_is_verified);
+                        isVerified = undefined;
+
+                        popupContent = values.reportitem_item_name;
+                        popupContent += '(' + values.reportitem_subtype_name + ')';
+
+
+                        switch (values.reportitem_type) {
+                            case 0:
+
+                                break;
+                            case 1:
+                                if (values.event_timestamp_occurance)
+                                    popupContent += '<br> time: ' + String(values.event_timestamp_occurance);
+                                break;
+                            case 2:
+
+                                break;
+                            case 3:
+                                if (values.damage_quantity)
+                                    popupContent += '<br> ' + String(values.damage_quantity);
+                                if (values.damage_units_shortname)
+                                    popupContent += ' ' + String(values.damage_units_shortname);
+                                break;
+                            case 4:
+                                if (values.need_quantity)
+                                    popupContent += '<br> ' + String(values.need_quantity);
+                                if (values.need_units_shortname)
+                                    popupContent += ' ' + String(values.need_units_shortname);
+                                break;
+                            default :
+                                break;
+                        }
+                        if (values.reportitem_is_verified) {
+                            isVerified = 'verified'
+                        } else {
+                            isVerified = 'not verified'
+                        }
+                        popupContent += '<br>' + isVerified;
+
+                    }
+                    ////container.innerHTML = info.join(', ');
+                    popup.show(evt.coordinate, popupContent);
+                } else {
+                    //popup.show(evt.coordinate, 'Nothing to show!');
+                    //container.innerHTML = '&nbsp;';
+                }
+            });
+        }
+    };
+
+    map.addLayer(reportitems_all);
+    map.on('click', reportitems_all_clickHandler);
+
+    var fetchDescribeFeatureType= function (layer) {
+        var protocol = layer.protocol;
+        var baseUrl = protocol.url;
+        var namespace = protocol.featurePrefix;
+        var featuretype = protocol.featureType;
+        var typeName = namespace + ':' + featuretype;
+        //var describeFeatureUrl = "http://localhost:8080/geoserver/ktmemis/wfs?service=wfs&version=1.1.0&request=DescribeFeatureType&outputFormat=application/json&typeName=" + typeName
+        var describeFeatureUrl = baseUrl + "?service=wfs&version=1.1.0&request=DescribeFeatureType&outputFormat=application/json&typeName=" + typeName
+        var proxiedDescribeFeatureUrl = OpenLayers.ProxyHost + encodeURIComponent(describeFeatureUrl);
+
+        return $.ajax({
+            async: false,
+            url: proxiedDescribeFeatureUrl,
+            type: "GET",
+            dataType: 'json',
+            contentType: 'application/json'
+        });
+
+    };
+
+    $().
+
+    $("#ems").autocomplete({
+        delay: 500,
+        minLength: 3,
+        source: function(request, response) {
+            $.getJSON("http://116.90.239.21/girc/dmis/api/web/report-items", {
+                // do not copy the api key; get your own at developer.rottentomatoes.com
+
+                item_name: request.term
+            }, function(data) {
+                // data is an array of objects and must be transformed for autocomplete to use
+                var array = data.error ? [] : $.map(data, function(m) {
+                    return {
+                        label: m.item_name
+
+                    };
+                });
+                response(array);
+            });
+        },
+        search:function(event, ui){
+            var self=this;
+            $('#ems').addClass('loadinggif');
+        },
+        response:function( event, ui ){
+            var self= this;
+            $('#ems').removeClass('loadinggif');
+        },
+        focus: function(event, ui) {
+            // prevent autocomplete from updating the textbox
+            event.preventDefault();
+        },
+        select: function(event, ui) {
+            // prevent autocomplete from updating the textbox
+            event.preventDefault();
+            var position =ol.proj.transform(
+                    [ui.item.lon,ui.item.lat], 'EPSG:4326', 'EPSG:3857'
+            );
+            map.getView().setCenter(position);
+            map.getView().setZoom(12);
+            // Adding overlay marker
+            map.addOverlay(new ol.Overlay({
+                position:position,
+                element:  $('<img src="http://localhost/girc/dmis/img/location.png" style="width:32px;height:auto;">')
+                        .css({marginTop: '-200%', marginLeft: '-50%', cursor: 'pointer'})
+                        .popover({
+                            'placement': 'top',
+                            'html': true,
+                            'content':'<strong>'+ui.item.label+'</strong>'
+                        })
+                        .on('click', function (e) { $(".location-popover").not(this).popover('hide'); })
+            }));
+        }
+    });
+    $("#ems").autocomplete( "instance" )._renderItem = function( ul, item ) {
+        return $( "<li>" )
+                .append( "<a>" + item.label + "</a></br>" )
+
+                .appendTo( ul );
+    };
+    $("#ems").autocomplete( "instance" )._renderMenu= function( ul, items ) {
+        var that = this;
+        $.each( items, function( index, item ) {
+            that._renderItemData( ul, item );
+        });
+        $( ul ).find( "li:odd" ).addClass( "odd" );
+        $( ul ).find( "li:even" ).addClass( "even" );
+    };
+    $("#ems").autocomplete( "instance" )._resizeMenu= function() {
+        var ul = this.menu.element;
+        ul.outerWidth(this.element.outerWidth());
+    };
+
+</script>
+</body>
+</html>

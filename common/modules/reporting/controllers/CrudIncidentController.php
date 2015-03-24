@@ -2,13 +2,12 @@
 
 namespace common\modules\reporting\controllers;
 
-use common\modules\reporting\models\ItemType;
-use Yii;
 use common\modules\reporting\models\Incident;
 use common\modules\reporting\models\search\Incident as IncidentSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CrudIncidentController implements the CRUD actions for Incident model.

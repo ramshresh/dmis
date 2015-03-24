@@ -10,7 +10,6 @@ namespace common\modules\user\widgets\login;
 
 
 use common\modules\user\models\forms\LoginForm;
-
 use yii\bootstrap\Widget;
 
 class LoginWidget extends Widget {
@@ -47,6 +46,4 @@ class LoginWidget extends Widget {
         }
         return $this->render('login',['model'=>$model]);
     }
-
-
 }

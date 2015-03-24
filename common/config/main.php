@@ -12,7 +12,7 @@ return [
         ],
         'assetManager' => [
             //'linkAssets' => true, //disabled because not working in windows
-            'linkAssets' => false,
+            'linkAssets' => true,
             // Overriding with Custom jqueryui
             'bundles' => [ 'yii\jui\JuiAsset' => [
                 'sourcePath' => '@common/asset-files/jqueryui/1/11/2/custom',
@@ -41,6 +41,12 @@ return [
         ],
         'utility' => [
             'class' => 'c006\utility\migration\Module',
+        ],
+        'tracking' => [
+            'class' => 'common\modules\tracking\Module',
+        ],
+        'rapid_assessment' => [
+            'class' => 'common\modules\rapid_assessment\Module',
         ],
     ],
 

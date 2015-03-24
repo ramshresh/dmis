@@ -1,0 +1,63 @@
+<?php
+
+$host = 'localhost';
+$db = 'dmis';
+$username = 'postgres';
+$password = 'postgres';
+$port = 5432;
+$dsn = "pgsql:host=$host;port=$port;dbname=$db;user=$username;password=$password";
+try{
+    $conn = new PDO($dsn);
+    if($conn){
+        $sql = 'SELECT * FROM "tracking".coordinate LEFT JOIN "tracking".driver	on "tracking".coordinate."device_id" = "tracking".driver."IMEI"	LEFT JOIN tracking."status"  on "tracking".coordinate."device_id" = tracking."status"."IMEI"  where "device_id" IN (SELECT "IMEI" FROM "tracking".driver)';
+        $sth=$conn->prepare($sql);
+        $dat=$sth->execute();
+        $result = $sth->fetchALL(PDO::FETCH_ASSOC);
+
+        foreach ($result as $key => $val) {
+
+            $id[]=$val['id'];
+            $device_id[]=$val['device_id'];
+            $long[]=$val['longitude'];
+            $lat[]=$val['latitude'];
+            $first_name[]=$val['Firstname'];
+            $last_name[]=$val['Lastname'];
+            $amb_no[]=$val['Ambulance_Number'];
+            $status[]=(Integer)$val['status'];
+        }
+        $features_body ='';
+        for($i=0;$i<count($result);$i++){
+            $features_body.= '
+     {
+      "type": "Feature",
+      "properties": {
+        "Driver":"'.$first_name[$i].' '.$last_name[$i].'",
+		"Ambulance_no":"'.$amb_no[$i].'",
+		"Status":'.$status[$i].'
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          '.$long[$i].',
+          '.$lat[$i].'
+        ]
+      }
+    },';
+        }
+        $features_body_trimmed = rtrim($features_body, ',');
+        $features = '{
+  "type": "FeatureCollection",
+  "features": ['.$features_body_trimmed.']
+				}';
+
+
+        echo $features;
+        // $res= json_encode($result);
+
+//	echo $res;
+    }
+}
+catch(PDOException $e){
+    echo $e->getMessage();
+}
+?>

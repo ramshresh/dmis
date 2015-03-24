@@ -11,12 +11,23 @@ namespace api\controllers;
 use common\modules\reporting\models\ItemChild;
 use common\modules\reporting\models\ItemSubType;
 use common\modules\reporting\models\ItemType;
+use common\modules\tracking\models\Status;
+use yii\data\ActiveDataProvider;
+use yii\db\ActiveQuery;
+use yii\db\Query;
 
 class SiteController extends \yii\rest\Controller
 {
     public function actionIndex()
     {
-        return [1, 2, 3];
+        /*SELECT COUNT(*), "status" FROM  "tracking"."status" GROUP BY "status" ORDER BY "status" DESC*/
+        $query = new Query();
+        $query->select(['COUNT(*)','value'=>'status']);
+        $query->from([Status::tableName()]);
+        $query->groupBy('value');
+        $query->orderBy(['count'=>SORT_ASC]);
+        return $query->all();
+       // return $query->createCommand()->sql;
     }
 
     public function actionItems()

@@ -10,7 +10,8 @@
  * @var $type
  * @var $body
  */
-use \kartik\widgets\Growl;
+use kartik\widgets\Growl;
+
 echo Growl::widget([
     'type' => Growl::TYPE_DANGER,
     'title' => $title,

@@ -11,7 +11,8 @@ namespace common\assets;
 
 use yii\web\AssetBundle;
 
-class GraphhopperLeafletAsset extends AssetBundle {
+class GraphhopperLeafletAsset extends AssetBundle
+{
     public $sourcePath = '@common/asset-files/graphhopper';
     public $css = [
         'css/leaflet.css?v=0.7.3',

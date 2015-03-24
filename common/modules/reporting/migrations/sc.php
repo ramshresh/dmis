@@ -1,0 +1,21 @@
+
+WITH reportitem AS (
+SELECT  r.id as id,r.type as reportitem_type, r.subtype_name as reportitem_subtype_name,r.item_name as reportitem_item_name,r.title as reportitem_title,r.description as reportitem_description,r.is_verified as reportitem_is_verified,r.timestamp_created as reportitem_timestamp_created,r.timestamp_updated as reportitem_timestamp_updated,r.tags as reportitem_tags,r.meta_hstore as reportitem_meta_hstore,r.meta_json as reportitem_meta_json,r.user_id,g.id as geometry_id, g.geom, g.latitude, g.longitude
+FROM "reporting".reportitem as r
+LEFT JOIN "reporting".geometry as g
+ON r.id = g.reportitem_id
+)
+
+SELECT j4.id,j4.reportitem_type,j4.reportitem_subtype_name,j4.reportitem_item_name,j4.reportitem_title,j4.reportitem_description,j4.reportitem_is_verified,j4.reportitem_timestamp_created,j4.reportitem_timestamp_updated,j4.reportitem_tags,j4.reportitem_meta_hstore,j4.reportitem_meta_json,j4.user_id, j4.geometry_id,j4.latitude,j4.longitude,j4.geom,j4.event_id,j4.event_timestamp_occurance,j4.event_duration,j4.event_status, j4.incident_id,j4.incident_timestamp_occurance,j4.incident_duration,j4.incident_status, damage_id, damage_quantity,damage_units_shortname,damage_units_displayname,damage_status, need.id as need_id, need.quantity as need_quantity,need.units_shortname as need_units_shortname, need.units_displayname as need_displayname,need.status as need_status FROM
+(SELECT j3.id,j3.reportitem_type,j3.reportitem_subtype_name,j3.reportitem_item_name,j3.reportitem_title,j3.reportitem_description,j3.reportitem_is_verified,j3.reportitem_timestamp_created,j3.reportitem_timestamp_updated,j3.reportitem_tags,j3.reportitem_meta_hstore,j3.reportitem_meta_json,j3.user_id, j3.geometry_id,j3.latitude,j3.longitude,j3.geom,j3.event_id,j3.event_timestamp_occurance,j3.event_duration,j3.event_status, j3.incident_id, j3.incident_timestamp_occurance,j3.incident_duration,j3.incident_status, damage.id as damage_id, damage.quantity as damage_quantity, damage.units_shortname as damage_units_shortname, damage.units_displayname as damage_units_displayname,damage.status as damage_status FROM
+(SELECT j2.id,j2.reportitem_type,j2.reportitem_subtype_name,j2.reportitem_item_name,j2.reportitem_title,j2.reportitem_description,j2.reportitem_is_verified,j2.reportitem_timestamp_created,j2.reportitem_timestamp_updated,j2.reportitem_tags,j2.reportitem_meta_hstore,j2.reportitem_meta_json,j2.user_id, j2.geometry_id,j2.latitude,j2.longitude,j2.geom,j2.event_id,j2.event_timestamp_occurance,j2.event_duration,j2.event_status,incident.id as incident_id, incident.timestamp_occurance as incident_timestamp_occurance, incident.duration as incident_duration, incident.status as incident_status  FROM (
+SELECT  j1.id,j1.reportitem_type,j1.reportitem_subtype_name,j1.reportitem_item_name,j1.reportitem_title,j1.reportitem_description,j1.reportitem_is_verified,j1.reportitem_timestamp_created,j1.reportitem_timestamp_updated,j1.reportitem_tags,j1.reportitem_meta_hstore,j1.reportitem_meta_json,j1.user_id, j1.geometry_id,j1.latitude,j1.longitude,j1.geom,j1.event_id,j1.event_timestamp_occurance,j1.event_duration,j1.event_status FROM reportitem
+LEFT JOIN (
+SELECT reportitem.id as id, reportitem_type,reportitem_subtype_name,reportitem_item_name,reportitem_title,reportitem_description,reportitem_is_verified,reportitem_timestamp_created,reportitem_timestamp_updated,reportitem_tags,reportitem_meta_hstore,reportitem_meta_json,reportitem.user_id, reportitem.geometry_id,reportitem.latitude,reportitem.longitude,reportitem.geom, event.id as event_id, event.timestamp_occurance as event_timestamp_occurance, event.status as event_status,event.duration as event_duration FROM reportitem
+LEFT JOIN "reporting".event as event
+ON event.reportitem_id = reportitem.id
+)  as j1 ON j1.id=reportitem.id) as j2
+LEFT JOIN "reporting".incident  as incident ON incident.reportitem_id = j2.id)  as j3
+LEFT JOIN "reporting".damage as damage ON damage.reportitem_id = j3.id) as j4
+LEFT JOIN "reporting".need as need ON need.reportitem_id = j4.id
+	

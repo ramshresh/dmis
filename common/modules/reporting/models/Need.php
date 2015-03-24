@@ -31,7 +31,7 @@ use Yii;
  * @property string $timestamp_updated
  *
  */
-class Need extends \yii\db\ActiveRecord
+class Need extends ReportItem
 {
 
     /**

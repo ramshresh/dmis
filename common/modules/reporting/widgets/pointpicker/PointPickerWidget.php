@@ -22,7 +22,7 @@ class PointPickerWidget extends Widget{
     public $assets;
     public $openlayersPackName;//='openlayersPack';// for $openlayersPackUrl=Yii::app()->clientScript->getPackageBaseUrl($openlayersPackName);
     public $openlayersPackUrl;
-    public $latitudeId,$longitudeId,$placenameId;
+    public $latitudeId,$longitudeId,$placenameId,$wktId;
     public $widgetDivId,$mapDivId,$iLatId,$iLonId,$iPlacenameId,$iWktFieldId; // needed for html markup of view
     public $openlayersImgPath;
     public $markerUrl;
@@ -61,6 +61,7 @@ class PointPickerWidget extends Widget{
             'latitudeId' => (isset($this->latitudeId))? $this->latitudeId:'latitude',
             'longitudeId' => (isset($this->longitudeId))? $this->longitudeId:'longitude',
             'placenameId' => (isset($this->placenameId))? $this->placenameId:'placenameId',
+            'wktId' => (isset($this->wktId))? $this->wktId:'wktId',
             'openlayersPackUrl'=>$this->openlayersPackUrl,
             'openlayersImgPath'=>(isset($this->openlayersImgPath))? $this->markerUrl:$this->openlayersPackUrl.'/img/',
             'markerUrl'=>(isset($this->markerUrl))? $this->markerUrl:$this->openlayersPackUrl.'/img/marker.png',

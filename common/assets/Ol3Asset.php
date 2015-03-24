@@ -10,13 +10,14 @@ namespace common\assets;
 
 use yii\web\AssetBundle;
 
-class Ol3Asset extends AssetBundle{
+class Ol3Asset extends AssetBundle
+{
     public $sourcePath = '@common/asset-files/openlayers/ol3';
     public $css = [
         'ol.css',
     ];
     public $js = [
-        'ol.js',
+        'ol-debug.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

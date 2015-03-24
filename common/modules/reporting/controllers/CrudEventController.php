@@ -2,12 +2,12 @@
 
 namespace common\modules\reporting\controllers;
 
-use Yii;
 use common\modules\reporting\models\Event;
 use common\modules\reporting\models\search\EventSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CrudEventController implements the CRUD actions for Event model.
@@ -51,6 +51,7 @@ class CrudEventController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+
     }
 
     /**
@@ -73,7 +74,6 @@ class CrudEventController extends Controller
             ]);
         }
     }
-
 
     /**
      * Updates an existing Event model.
@@ -130,5 +130,4 @@ class CrudEventController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
 }

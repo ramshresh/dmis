@@ -111,7 +111,9 @@ class Person extends \yii\db\ActiveRecord
      */
     public function getType1Children() {
         return $this->hasMany(Person::className(), ['id' => 'childid'])
-            ->viaTable(PersonChild::tableName(), ['parentid' => 'id'],function($query){
+            ->viaTable(PersonChild::tableName(),
+                ['parentid' => 'id'],
+                function($query){
                 /**
                  * @var $query \yii\db\Query
                  */

@@ -13,7 +13,8 @@ namespace common\components;
  * @package common\components
  */
 
-interface MyYiiActiveFormJsAjaxFormInterface{
+interface MyYiiActiveFormJsAjaxFormInterface
+{
     /**
      * @param $model
      *

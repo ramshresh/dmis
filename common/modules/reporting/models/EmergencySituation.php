@@ -15,10 +15,10 @@ use Yii;
  * @property integer $status
  *
  * @property Event $primaryEvent
- * @property ReportItem $reportItem
+ * @property ReportItem $reportitem
  * @property Event[]    $events
  */
-class EmergencySituation extends \yii\db\ActiveRecord
+class EmergencySituation extends ReportItem
 {
     /**
      * @inheritdoc
@@ -34,7 +34,7 @@ class EmergencySituation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['reportitem_id', 'primary_event_id'], 'required'],
+          //  [['reportitem_id', 'primary_event_id'], 'required'],
             [['reportitem_id', 'primary_event_id', 'status'], 'integer'],
             [['timestamp_declared'], 'safe'],
             [['declared_by'], 'string', 'max' => 75]
@@ -55,7 +55,19 @@ class EmergencySituation extends \yii\db\ActiveRecord
             'status' => Yii::t('app', 'Status'),
         ];
     }
-
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [//For Event IS_A ReportItem Relationship.
+                'class' => 'mdm\behaviors\ar\IsABehavior',
+                'relationClass' => ReportItem::className(),
+                'relationKey' => ['reportitem_id' => 'id'],
+            ]
+        ];
+    }
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -67,7 +79,7 @@ class EmergencySituation extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getReportItem()
+    public function getReportitem()
     {
         return $this->hasOne(ReportItem::className(), ['id' => 'reportitem_id']);
     }
@@ -79,4 +91,25 @@ class EmergencySituation extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Event::className(), ['reportitem_id' => 'reportitem_id']);
     }
+
+    public static function getDropDownItemName(){
+        return \yii\helpers\ArrayHelper::map(ItemType::find()
+            ->where('type=:type',[':type'=>ReportItem::TYPE_EMERGENCY_SITUATION])
+            ->all(), 'item_name', 'item_name');
+    }
+
+    public function loadDefaultValues(){
+        $this->type = ItemType::TYPE_EMERGENCY_SITUATION;
+    }
+
+    public function assignChild($model){
+        $this->reportitem->link('reportItemChildren',$model->reportitem);
+    }
+    //{{{ Initializing model
+    public function init()
+    {
+        parent::init();
+        $this->loadDefaultValues();
+    }
+    //}}} ./Initializing model
 }

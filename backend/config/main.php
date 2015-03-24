@@ -5,6 +5,10 @@ $params = array_merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
+// {{{ Removing backend/web from url @see http://www.yiiframework.com/wiki/755/how-to-hide-frontend-web-in-url-addresses-on-apache/*/
+use \yii\web\Request;
+$baseUrl = str_replace('/backend/web', '/admin', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
+//}}} ./Removing backend/web from url
 
 return [
     'id' => 'app-backend',
@@ -14,6 +18,7 @@ return [
     'modules' => [],
     'components' => [
         'request' => [
+            'baseUrl' => $baseUrl,
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'k69dPn6pHcjC0eeXjFll7xpwYI0XUb6U',
         ],

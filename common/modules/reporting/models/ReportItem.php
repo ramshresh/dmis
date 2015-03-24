@@ -3,7 +3,6 @@
 namespace common\modules\reporting\models;
 
 use common\components\utils\php\pg\PHPG_Utils;
-use common\components\utils\php\pg\PhpPgUtils;
 use common\modules\user\models\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -25,7 +24,9 @@ use yii\helpers\ArrayHelper;
  * @property string $tags
  * @property string $meta_hstore
  * @property string $meta_json
+ * @property string $user_id
  *
+ * @property Event $emergencySituation
  * @property Event $event
  * @property Incident $incident
  * @property Damage $damage
@@ -40,7 +41,6 @@ use yii\helpers\ArrayHelper;
 
  * @property User $user ReportItem belongs to User
 
- * @property EmergencySituation[] $emergencySituations
  * @property Geocode[] $geocodes
  * @property ReportItemChild[] $reportItemChildren
  */
@@ -52,7 +52,21 @@ class ReportItem extends \yii\db\ActiveRecord
     const TYPE_DAMAGE = 3;
     const TYPE_NEED = 4;
 
-
+    /**
+     * Single table inheritance
+     * @github-reference https://github.com/samdark/yii2-cookbook/blob/master/book/ar-single-table-inheritance.md
+     * @param array $row
+     * @return Geometry|GeometryLinestring|GeometryPoint|GeometryPolygon
+     */
+    /*public static function instantiate($row)
+    {
+        switch ($row['type']) {
+            case self::TYPE_EVENT:
+                return new ReportItemEvent();
+            default:
+                return new self;
+        }
+    }*/
 
     /**
      * @inheritdoc
@@ -68,8 +82,13 @@ class ReportItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'item_name'], 'required','except'=>['search']], // 'except'=>'Search' for search form such as grid view
-            [['type','user_id'], 'integer'],
+
+            [['type', 'item_name',], 'required','except'=>['search']], // 'except'=>'Search' for search form such as grid view
+            ['subtype_name', 'required', 'when' => function($model) {
+                 if(sizeof(ItemSubType::find()->where(['item_name'=>$model->item_name])->all())>0)return true; else return false;
+
+            }],
+            [['type','user_id',], 'integer'],
             [['description', 'tags', 'meta_hstore', 'meta_json'], 'string'],
             [['is_verified'], 'boolean'],
             [['timestamp_created', 'timestamp_updated'], 'safe'],
@@ -148,7 +167,13 @@ class ReportItem extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ReportitemUser::className(), ['reportitem_id' => 'id']);
     }
-
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEmergencySituation()
+    {
+        return $this->hasOne(EmergencySituation::className(), ['reportitem_id' => 'id']);
+    }
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -184,14 +209,6 @@ class ReportItem extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEmergencySituations()
-    {
-        return $this->hasMany(EmergencySituation::className(), ['reportitem_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getGeocodes()
     {
         return $this->hasMany(Geocode::className(), ['reportitem_id' => 'id']);
@@ -209,8 +226,10 @@ class ReportItem extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            //{{{ Saving related
-
+            //{{{ Saving user_id
+                if($this->isNewRecord && $this->user_id==null){
+                    $this->user_id=Yii::$app->user->id;
+                }
             //}}} ./Saving Tags
             return true;
         } else {
@@ -218,6 +237,9 @@ class ReportItem extends \yii\db\ActiveRecord
         }
     }
 
+    public function assignChildren($model){
+        $this->link('reportItemChildren',$model);
+    }
     public function behaviors()
     {
         return [

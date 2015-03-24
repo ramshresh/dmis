@@ -5,20 +5,14 @@ namespace common\modules\reporting\controllers;
 use common\components\MyBaseContoller;
 use common\modules\reporting\models\Damage;
 use common\modules\reporting\models\Event;
-use common\modules\reporting\models\Item;
 use common\modules\reporting\models\ItemSubType;
 use common\modules\reporting\models\ItemType;
 use common\modules\reporting\models\ReportItem;
 use Yii;
-use common\modules\reporting\models\ItemChild;
-use common\modules\reporting\models\search\ItemChildSearch;
 use yii\base\Model;
-use yii\db\Exception;
+use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CrudItemChildController implements the CRUD actions for ItemChild model.

@@ -2,14 +2,15 @@
 
 namespace common\modules\user\controllers;
 
+use common\components\MyBaseContoller;
 use Yii;
-//use yii\web\Controller;
-use yii\web\Response;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 use yii\widgets\ActiveForm;
 
-use common\components\MyBaseContoller;
+//use yii\web\Controller;
+
 /**
  * Default controller for User module
  */
@@ -44,7 +45,7 @@ class DefaultController extends MyBaseContoller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                   // 'logout' => ['post'],
                 ],
             ],
         ];

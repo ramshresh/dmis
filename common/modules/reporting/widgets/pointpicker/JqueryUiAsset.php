@@ -15,8 +15,6 @@ use yii\web\AssetBundle;
  */
 class JqueryUiAsset extends AssetBundle
 {
-
-
     public $css = [
         '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.css',
     ];

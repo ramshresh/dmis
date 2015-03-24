@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\modules\reporting\models\search\ItemChildSearch */
@@ -28,8 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-           // 'parent_name',
-            //'child_name',
+            'parent_name',
+            'child_name',
             'parent_type',
             'child_type',
 

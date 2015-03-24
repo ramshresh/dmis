@@ -7,4 +7,6 @@
  */
 ?>
 <blockquote>This is test!</blockquote>
-<?php echo \common\modules\reporting\widgets\reportitem\Create::widget(['containerId'=>'custom-id',]) ?>
+<?php echo \common\modules\reporting\widgets\reportitem\Create::widget([
+    'containerId'=>'custom-id',
+]) ?>

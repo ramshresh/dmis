@@ -3,8 +3,8 @@
 namespace common\modules\user;
 
 use Yii;
-use yii\db\ActiveRecord;
 use yii\base\InvalidConfigException;
+use yii\db\ActiveRecord;
 
 /**
  * User module
@@ -181,13 +181,13 @@ class Module extends \yii\base\Module
     {
         // use single quotes so nothing gets escaped
         return [
-            'User'       => 'common\modules\user\models\User',
-            'Profile'    => 'common\modules\user\models\Profile',
-            'Role'       => 'common\modules\user\models\Role',
-            'UserKey'    => 'common\modules\user\models\UserKey',
-            'UserAuth'   => 'common\modules\user\models\UserAuth',
+            'User' => 'common\modules\user\models\User',
+            'Profile' => 'common\modules\user\models\Profile',
+            'Role' => 'common\modules\user\models\Role',
+            'UserKey' => 'common\modules\user\models\UserKey',
+            'UserAuth' => 'common\modules\user\models\UserAuth',
             'ForgotForm' => 'common\modules\user\models\forms\ForgotForm',
-            'LoginForm'  => 'common\modules\user\models\forms\LoginForm',
+            'LoginForm' => 'common\modules\user\models\forms\LoginForm',
             'ResendForm' => 'common\modules\user\models\forms\ResendForm',
             'UserSearch' => 'common\modules\user\models\search\UserSearch',
         ];
@@ -197,7 +197,7 @@ class Module extends \yii\base\Module
      * Get object instance of model
      *
      * @param string $name
-     * @param array  $config
+     * @param array $config
      * @return ActiveRecord
      */
     public function model($name, $config = [])
@@ -233,7 +233,7 @@ class Module extends \yii\base\Module
     public function createController($route)
     {
         // check valid routes
-        $validRoutes  = [$this->defaultRoute, "admin", "copy", "auth"];
+        $validRoutes = [$this->defaultRoute, "admin", "copy", "auth"];
         $isValidRoute = false;
         foreach ($validRoutes as $validRoute) {
             if (strpos($route, $validRoute) === 0) {

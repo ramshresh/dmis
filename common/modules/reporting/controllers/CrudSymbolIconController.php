@@ -2,12 +2,12 @@
 
 namespace common\modules\reporting\controllers;
 
-use Yii;
-use common\modules\reporting\models\SymbolIcon;
 use common\modules\reporting\models\search\SymbolIconSearch;
+use common\modules\reporting\models\SymbolIcon;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CrudSymbolIconController implements the CRUD actions for SymbolIcon model.

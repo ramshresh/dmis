@@ -9,21 +9,21 @@
  * (mdmunir commented on 1 Dec 2014)
  *
  * @usage
-      $order = new Order();
-
-      $items = [];
-      $items[] = new Item([
-      'product_id' => 1,
-      'qty' => 10,
-      ]);
-
-      $items[] = [
-      'product_id' => 2,
-      'qty' => 20,
-      ];
-
-      $order->items = $items; // Order::$items declarated as hasMany(Item::className(),...)
-      $order->save();
+$order = new Order();
+ *
+ * $items = [];
+ * $items[] = new Item([
+ * 'product_id' => 1,
+ * 'qty' => 10,
+ * ]);
+ *
+ * $items[] = [
+ * 'product_id' => 2,
+ * 'qty' => 20,
+ * ];
+ *
+ * $order->items = $items; // Order::$items declarated as hasMany(Item::className(),...)
+ * $order->save();
  *
  */
 
@@ -138,7 +138,7 @@ class RelationBehavior extends \yii\base\Behavior
      */
     public function events()
     {
-        return[
+        return [
             ActiveRecord::EVENT_AFTER_VALIDATE => 'afterValidate',
             ActiveRecord::EVENT_AFTER_INSERT => 'afterSave',
             ActiveRecord::EVENT_AFTER_UPDATE => 'afterSave',
@@ -374,7 +374,7 @@ class RelationBehavior extends \yii\base\Behavior
 
     /**
      * Check if relation has error.
-     * @param  string  $relationName
+     * @param  string $relationName
      * @return boolean
      */
     public function hasRelatedErrors($relationName = null)

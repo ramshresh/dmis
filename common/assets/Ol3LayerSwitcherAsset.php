@@ -10,7 +10,8 @@ namespace common\assets;
 
 use yii\web\AssetBundle;
 
-class Ol3LayerSwitcherAsset extends AssetBundle{
+class Ol3LayerSwitcherAsset extends AssetBundle
+{
     public $sourcePath = '@common/asset-files/openlayers/ol3';
     public $css = [
         'lib/css/ol3-layerswitcher.css',

@@ -5,7 +5,8 @@
  * Date: 2/14/15
  * Time: 8:43 AM
  */
-use \yii\helpers\Html;
+use yii\helpers\Html;
+
 ?>
 
 <td class="col-lg-4">

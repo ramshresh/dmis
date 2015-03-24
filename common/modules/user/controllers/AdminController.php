@@ -2,14 +2,14 @@
 
 namespace common\modules\user\controllers;
 
-use Yii;
 use common\modules\user\models\User;
-use common\modules\user\models\UserKey;
 use common\modules\user\models\UserAuth;
+use common\modules\user\models\UserKey;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * AdminController implements the CRUD actions for User model.

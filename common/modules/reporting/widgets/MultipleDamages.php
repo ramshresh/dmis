@@ -13,10 +13,8 @@ use common\modules\reporting\models\ItemType;
 use common\modules\reporting\models\ReportItem;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\View;
-use yii\widgets\ActiveForm;
 
 class MultipleDamages extends Widget{
 
@@ -54,7 +52,7 @@ class MultipleDamages extends Widget{
 
         $this->instantiateClientScripts();
         if(isset($this->parentReportItem)){
-            $this->render('multiple-damages/damagesForm',['model'=>$this->parentReportItem,'form'=>$this->parentFormContext,'this'=>$this->parentControllerContext]);
+            return $this->render('multiple-damages/damagesForm',['model'=>$this->parentReportItem,'form'=>$this->parentFormContext,'this'=>$this->parentControllerContext]);
         }else{
             return $this->render('multiple-damages/damagesForm',['form'=>$this->parentFormContext,'this'=>$this->parentControllerContext]);
         }

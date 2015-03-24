@@ -3,6 +3,6 @@ return [
     'adminEmail' => 'admin@example.com',
     'supportEmail' => 'support@example.com',
     'user.passwordResetTokenExpire' => 3600,
-    'brandLabel'=>'EMIS',
-    'id'=>'GIRC-GeospatialLab@ku'
+    'brandLabel' => 'EMIS',
+    'id' => 'GIRC-GeospatialLab@ku'
 ];

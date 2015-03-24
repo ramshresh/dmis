@@ -14,7 +14,9 @@
 ?>
 <div id="map" class="map"></div>
 <button id = 'btn-report-item-create' type="button">report</button>
-<?php echo \common\modules\reporting\widgets\reportitem\Create::widget(
+<?php
+
+/*echo \common\modules\reporting\widgets\reportitem\Create::widget(
     [
         'mapDivId'=>'map',
         'containerId'=>'custom-id',
@@ -22,6 +24,5 @@
         'urlToCreateAction'=> \yii\helpers\Url::toRoute('event-create'),
         'jqToggleBtnSelector'=>'btn-report-item-create',
     ]
-)?>
-
-
+);*/
+?>

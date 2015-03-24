@@ -3,8 +3,8 @@
 namespace common\modules\user\controllers;
 
 use Yii;
-use yii\web\HttpException;
 use yii\console\Controller;
+use yii\web\HttpException;
 
 /**
  * Copy user module to your app/modules folder
