@@ -124,6 +124,7 @@ class ReportItemController extends \yii\rest\ActiveController
          * @var $model \common\modules\rapid_assessment\models\ReportItem
          */
         $model = new $this->modelClass;
+        $model->scenario = 'search';
         return $model->getAttributes();
     }
 }
