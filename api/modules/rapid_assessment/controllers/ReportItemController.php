@@ -99,7 +99,7 @@ class ReportItemController extends \yii\rest\ActiveController
 
     public function actionUnique(){
         /**
-         * @var $model \common\modules\tracking\models\sql_views\TrackingDriver
+         * @var $model \common\modules\rapid_assessment\models\ReportItem
          */
         $model = new $this->modelClass;
         $property = $_GET['property'];
@@ -119,4 +119,11 @@ class ReportItemController extends \yii\rest\ActiveController
         return $query->all();
     }
 
+    public function actionAttributes(){
+        /**
+         * @var $model \common\modules\rapid_assessment\models\ReportItem
+         */
+        $model = new $this->modelClass;
+        return $model->getAttributes();
+    }
 }
