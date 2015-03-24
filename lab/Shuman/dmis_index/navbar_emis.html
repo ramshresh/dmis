@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="lib/disaster_icons.css" rel="stylesheet" media="screen">
+
+    <link href="lib/jquery-ui-1-11-2-custom/jquery-ui.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="lib/ol.css">
+    <link rel="stylesheet" href="lib/ol3-layerswitcher.css">
+    <script type='text/javascript' src='lib/ol-debug.js'></script>
+    <script type='text/javascript' src='lib/ol3-layerswitcher.js'></script>
+
+    <style>
+        hr{
+            border-width: 1px 0 0;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+
+        .ol-full-screen {
+            right: 0.5em;
+            top: 3.2em;
+        }
+
+        .ol-zoom {
+            position:absolute;
+            left: auto;
+            right: 0.5em;
+            top: 6em;
+        }
+
+
+
+        .ol-control button {
+            background-color: rgba(57, 52, 86, 0.8);
+
+        }
+      /*  #navbar >* {
+            background-color: rgba(57, 52, 86, 0.8);
+            width:auto;
+
+        }*/
+
+
+
+
+        /* pullout css */
+        div.pullout-right-footer-btn {
+            position: absolute;
+            border-radius: 0.1em;
+            bottom: 3px;
+            right: 0.5em;
+            background: rgba(57, 52, 86, 0.8);
+            padding: 1em 0.2em 0.5em 0.5em;
+            font-size: 14px;
+            z-index: 99999;
+            cursor: pointer;
+            color: #ddd;
+        }
+        div.pullout-right-footer {
+            background: none repeat scroll 0 0 rgba(57, 52, 86, 0.8);
+            bottom: 3px;
+            height: 167px;
+            position: fixed;
+            right: -100%;
+            width: 100%;
+            z-index: 2147483647;
+        }
+        /* tags and other css */
+        img {
+            display: inline-block;
+            height: auto;
+            max-width: 100%;
+        }
+        html,
+        body,
+        #map {
+            margin-top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /*for z-index of a dialog box */
+        .ui-dialog{
+            display: block;
+            z-index: 1000;
+        }
+
+        .ui-widget-header {
+            background: none repeat scroll 0 0 rgba(57, 52, 86, 0.8);
+            border: 1px solid #e78f08;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .ui-dialog .ui-dialog-titlebar {
+            padding: 0.2em 1em;
+            position: relative;
+        }
+
+        .toolbar
+        {
+            background: none repeat scroll 0 0 rgba(57, 52, 86, 0.8);
+            border-color: #d8d8d8;/* -moz-use-text-color #d8d8d8 #d8d8d8;*/
+            border-image: none;
+            border-radius: 3px;
+            border-style: solid none solid solid;
+            border-width: 1px medium 1px 1px;
+            padding: 5px;
+            position: absolute;
+            right: 0.5em;
+            top: 11.2em;
+            width: 25px;
+            z-index: 999;
+        }
+
+
+        hr{
+            border-width: 1px 0 0;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+
+        .ol-full-screen {
+            right: 0.5em;
+            top: 0.5em;
+        }
+
+        .ol-zoom {
+            position:absolute;
+            right:auto;
+            left: 0.5em;
+            top: 0.5em;
+        }
+
+        .ol-control button {
+            background-color: rgba(57, 52, 86, 0.8);
+            font-size: 2em;
+            /*padding:0em;*/
+
+        }
+     /*   *:before, *:after {
+            box-sizing: border-box;
+        }*/
+
+        .ol-attribution, .ol-control button, .ol-has-tooltip [role="tooltip"], .ol-scale-line-inner {
+            top: 2em;
+        }
+
+
+    </style>
+
+    <script src="lib/js/jquery.js"></script>
+    <script src="lib/js/bootstrap.min.js"></script>
+    <script src="lib/jquery-ui-1-11-2-custom/jquery-ui.min.js"></script>
+    <script src="lib/fullscreen/jquery.fullscreen-0.4.1.js"></script>
+
+    <script>
+        var osm = new ol.layer.Tile({
+            title:'OSM',
+            type:'base',
+            source: new ol.source.OSM()
+        });
+
+        var tilewmsSource = new ol.source.TileWMS(
+                ({
+                       url: 'http://localhost:8080/geoserver/wms',
+                //    url: 'http://116.90.239.21:8080/geoserver/wms',
+                //    params: {'LAYERS': 'dmis:reportitems_all', 'TILED': true
+                           params: {'LAYERS': 'disaster:tweet', 'TILED': true,
+                        //'cql_filter':"subcategory='trapped'"
+                                'STYLES':'tweet'
+                        //    'SLD' :'styles/all_feature_style.sld'
+
+                    },
+                    //styles:"",
+                    serverType: 'geoserver'
+                    //   request:'GetMap'
+
+                }));
+
+        var tweets =
+                new ol.layer.Tile({
+                    title:'tile wms',
+                    name: 'tiled layer',
+                    type:'overlay',
+                    source: tilewmsSource
+                });
+
+        var fra_ambulance = new ol.layer.Tile({
+            title:'ambulance',
+            name : 'ambulance',
+            type : 'overlay',
+            source : new ol.source.TileWMS(
+                    ({  url: 'http://localhost:8080/geoserver/wms',
+                        params: {'LAYERS': 'fra:ambulance', 'TILED': true,'STYLES':'ambulance'
+                        }
+                    }))
+        });
+
+        var vectorSource = new ol.source.ServerVector({
+            format: new ol.format.GeoJSON({
+                //    projection: 'EPSG:3857'
+            }),
+            loader: function(extent, resolution, projection) {
+                //    var url='http://localhost:8080/geoserver/fra/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=fra%3Aambulance&srsname=EPSG:3857&maxFeatures=50&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
+                var url='http://localhost:8080/geoserver/disaster/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=disaster%3Ahazard0,disaster:kbl0&srsname=EPSG:3857&maxFeatures=50&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
+                //   var url = 'http://localhost:8080/geoserver/disaster/ows?service=WFS&version=1.0.0&request=GetFeature&layer=disaster:hazard0&outputformat=text/javascript&srsname=EPSG:4326';
+
+                $.ajax({
+                    url: url,
+                    dataType: 'jsonp',
+                    success:function(data) {
+                        console.log(data);
+                    },
+                    error:function(data) {
+                        //  console.log(data);
+                    },
+                    timeout: 30000 // 1 minute timeout
+                });
+            },
+            strategy: ol.loadingstrategy.createTile(new ol.tilegrid.XYZ({
+                maxZoom: 19
+            }))
+            //   projection: 'EPSG:3857'
+        });
+
+
+        var defaultStyle=new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 3,
+//                fill: new ol.style.Fill({color: '#AA0000'}),
+                stroke: new ol.style.Stroke({color: 'red', width: 1})
+            })
+        })
+        var testdata_geopnt = new ol.layer.Vector({
+
+            type:'overlay',
+            name:'vectorLayer',
+            title:'vectorLayer',
+            source: vectorSource
+            // style: defaultStyle
+        });
+        window.testdata_geopnt = testdata_geopnt;
+
+        //var clusterSource = new ol.source.Cluster({
+        //    distance: 40,
+        //    source: vectorSource
+        //});
+        var loadFeatures = function (response) {
+            vectorSource.addFeatures(vectorSource.readFeatures(response));
+        };
+        window.loadFeatures = loadFeatures;
+
+        var overlayGroup = new ol.layer.Group({
+            title: 'Overlays',
+            layers: [testdata_geopnt
+            ]
+        });
+
+        var view = new ol.View({
+            //    projection:'EPSG:3857',
+            zoom: 3,
+            center: ol.proj.transform([85,27], 'EPSG:4326', 'EPSG:3857')
+        });
+
+        // create a vector layer used for editing
+        var vector_layer = new ol.layer.Vector({
+            type:'overlay',
+            title:'Pick Geometry',
+            name: 'my_vectorlayer',
+            source: new ol.source.Vector(),
+            style: new ol.style.Style({
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 255, 255, 0.2)'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: '#ffcc33',
+                    width: 2
+                }),
+                image: new ol.style.Circle({
+                    radius: 7,
+                    fill: new ol.style.Fill({
+                        color: '#ffcc33'
+                    })
+                })
+            })
+        });
+
+        //function init() {
+ $(document).ready(function() {
+
+
+            // Create a map
+            map = new ol.Map({
+                target: 'map',
+//                    layers: [
+//                        raster,
+//                        //new ol.layer.Tile({
+//                        //  source: new ol.source.OSM()
+//                        // }),
+//                        vector_layer
+//                    ],
+
+                layers: [
+                    new ol.layer.Group({
+                        'title': 'Base maps',
+                        layers: [osm ]
+                    }),
+                    overlayGroup
+                ],
+                view: view,
+                controls:// ol.control.defaults().extend(
+                        [
+                  //  new ol.control.ScaleLine({className: 'ol-scale-line', target: document.getElementById('scale-line')}),
+                    new ol.control.FullScreen(),
+                    new ol.control.LayerSwitcher(),
+                    new ol.control.Zoom({element:document.getElementById('info')})
+                ]
+                //)
+            });
+
+            overlayGroup.getLayers().push(tweets);
+            overlayGroup.getLayers().push(fra_ambulance);
+            overlayGroup.getLayers().push(vector_layer);
+
+
+           /*
+            Refreshing a layer at an interval
+            */
+           map.once("postcompose", function(){
+                       //start refreshing each 3 seconds
+                       window.setInterval(function(){
+                           /// call your function here
+                           var params = fra_ambulance.getSource().getParams();
+                           params.t = new Date().getMilliseconds()
+                           fra_ambulance.getSource().updateParams(params);
+                       }, 3000);
+                   }
+           );
+
+       })
+		
+
+
+    </script>
+
+</head>
+
+<body >
+
+
+
+
+
+<div id="navbar" class="ol-unselectable ol-control" style='display:inline-flex;top:0.5em;left:20%; z-index:9999999999;'>
+
+    <button id="report" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Reporting</span><i style="font-size: 22px;" class="icon-reporting"></i>
+    </button>
+    <button id="directions" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Directions</span><i style="font-size: 22px;" class="icon-routing"></i>
+    </button>
+
+    <button id="geofence" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Geofence</span><i style="font-size: 22px;" class="icon-geofence"></i>
+    </button>
+
+    <button id="resources" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Resources</span><i style="font-size: 22px;" class="icon-resource"></i>
+    </button>
+
+    <button id="updates" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Updates</span><i style="font-size: 22px;" class="icon-update"></i>
+    </button>
+
+    <input type="text" style="width:20em; font-size: 14px;">
+    <button id="search" class="ol-has-tooltip" type="button">
+
+        <span role="tooltip">Search</span><i style="font-size: 22px;" class="icon-earthquake"></i>
+    </button>
+</div>
+
+
+<div id="toolbar" class="ol-unselectable ol-control" style="top:6.5em;left:0.5em; z-index:9999999999;">
+
+ <button id="hospital" class="ol-has-tooltip" type="button">
+    <span role="tooltip">Hospital</span>
+    <i style="font-size: 25px;" class="icon-hospital"></i>
+    </button>
+
+<button id="police_station" class="ol-has-tooltip" type="button">
+    <span role="tooltip">Police Station</span><i style="font-size: 25px;" class="icon-policestation"></i>
+    </button>
+
+<button id="openspace" class="ol-has-tooltip" type="button">
+    <span role="tooltip">Open Space</span><i style="font-size: 25px;" class="icon-openspace"></i>
+    </button>
+
+<button id="camp" class="ol-has-tooltip" type="button">
+    <span role="tooltip">Camp</span><i style="font-size: 25px;" class="icon-shelter"></i>
+    </button>
+
+</div>
+
+
+
+
+<div id="socialmedia" class="ol-unselectable ol-control" style="top:18.2em;left:0.5em; z-index:9999999999">
+
+    <button id="social_facebook" class="ol-has-tooltip" type="button">
+    <span role="tooltip">Facebook</span><i style="font-size: 22px;" class="icon-facebook"></i>
+    </button>
+
+    <button id="social_twitter" class="ol-has-tooltip" type="button" >
+    <span role="tooltip">Twitter</span><i style="font-size: 22px;" class="icon-twitter"></i>
+    </button>
+    </div>
+
+<div id="analytics" class="ol-unselectable ol-control" style="top:24.4em;left:0.5em; z-index:9999999999">
+
+    <button id="" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Analytics</span>A
+    </button>
+
+
+</div>
+
+
+<div id="map"></div>
+
+
+
+<div class="pullout-right-footer" style="padding-top:10px; padding-bottom:15px; height:15.5em;">
+    <div id="images"></div>
+
+</div>
+
+    <!--Pull up and down icon-->
+    <div class="pullout-right-footer-btn"><i class='icon-file-image-o'></i>
+    </div>
+</div>
+
+<div id="twitter_box"></div>
+<div id="facebook_box" ></div>
+<div  id="resources_box" style="display:none;width:auto;"></div>
+<div  id="geometryPicker_box" style="display:none;width:auto;"></div>
+<div  id="fbalbum_box" style="display:none;width:auto;"></div>
+
+<script>
+
+/*    $('#camp').click(function() {
+        $('#toolbar').fullscreen();
+        return false;
+    });*/
+
+$("#social_twitter").click(function(){
+    $( "#twitter_box" ).dialog({
+        title:'Twitter Timeline',
+        open: function(event, ui) {
+            $( "#twitter_box" ) .load('twitter_timeline.html');
+        }
+    });
+})
+
+$("#social_facebook").click(function(){
+    $( "#facebook_box" ).dialog({
+        width:"auto",
+        title:'Facebook Timeline',
+        open: function(event, ui) {
+            $( "#facebook_box" ) .load('facebook_timeline.html');
+        }
+        /*buttons: [
+            {
+                text: "OK",
+                click: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        ]*/
+    });
+})
+
+/*
+$("#resources").click(function(){
+    $( "#resources_box" ).dialog({
+        title:'Search Ambulance',
+        modal:false,
+        resizeable:false,
+     //   height:"auto",
+       width:"auto",
+       minHeight: 0,
+        create: function() {
+            $(this).css("maxHeight", 120);
+        }
+    });
+})
+*/
+
+$("#resources").click(function(){
+    $( "#resources_box" ).dialog({
+        title:'Search Ambulance',
+        open: function(event, ui) {
+            $( "#resources_box" ) .load('ambulance_search.html');
+        }
+    });
+})
+
+
+$("#geofence").click(function(){
+    $( "#geometryPicker_box" ).dialog({
+        title:'Geometry Picker',
+        open: function(event, ui) {
+            $( "#geometryPicker_box" ) .load('geometry_picker.html');
+        },
+        close:function(){
+
+        }
+    })
+})
+
+/*$("#updates").click(function(){
+    $( "#fbalbum_box" ).dialog({
+        title:'Facebook Photo',
+        open: function(event, ui) {
+            $( "#fbalbum_box" ) .load('fb_gallery/index.php');
+		 //  $( "#fbalbum_box" ).open('fb_gallery/index.php');
+        },
+        close:function(){
+
+        }
+    })
+})*/
+
+
+
+    /*------Dialog box ----*/
+    $('#report').click(function() {
+        //   $('#dialog').dialog('open');
+
+        var elem = $("#dialog");
+        elem.dialog({
+            modal: false,
+            resizable: false,
+            title: 'Resource Locator',
+            width:'auto',
+            height:'auto'
+        }); // end dialog
+        elem.dialog('open');
+
+    });
+
+
+
+$('.pullout-right-footer-btn').click(function() {
+  //  $( ".pullout-right-footer" ) .load('gallery.html');
+    $( "#images" ) .load('gallery.html');
+
+});
+
+
+  /*  *//*------Carousel----*//*
+    $('#myCarousel').carousel({
+        interval: 10000
+    })
+
+
+
+    $('.carousel .item').each(function() {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        for (var i = 0; i < 2; i++) {
+            next = next.next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+
+            next.children(':first-child').clone().appendTo($(this));
+        }
+    });*/
+
+
+</script>
+
+
+</body>
+
+</html>
+<script type="text/javascript">
+    var pullout_right_footer = $('div.pullout-right-footer');
+    var pullout_right_footer_btn = $('div.pullout-right-footer-btn');
+    pullout_right_footer_btn.click(function() {
+        if (!$(this).hasClass("open")) {
+            $(this).css("bottom", "15.5em");
+           // $(this).css("position", "relative");
+            pullout_right_footer.css("right", "0");
+            $(this).addClass("open");
+        } else {
+            $(this).css("bottom", "0");
+            pullout_right_footer.css("right", "-100%");
+            $(this).removeClass("open")
+        }
+    });
+</script>

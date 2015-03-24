@@ -1,0 +1,63 @@
+<?php
+	include("pgconnection.php");
+
+	$fname = mysql_real_escape_string($_POST['firstname']);
+	$lname= mysql_real_escape_string($_POST['lastname']);
+	$Address= mysql_real_escape_string($_POST['Address']);
+	$Phonr= mysql_real_escape_string($_POST['phno']);
+	$IMEI= mysql_real_escape_string($_POST['IMEI']);
+	$Gen= mysql_real_escape_string($_POST['gender']);
+	$ano= mysql_real_escape_string($_POST['ANO']);
+	$hidden_IMEI = mysql_real_escape_string($_REQUEST['hiddenIMEI']);
+	
+	$decide = true;
+	if( empty($fname) ){
+		header("Location:updateDriver.php?warningFName=1");
+		$decide = false;
+	}
+	if( empty($lname) ){
+		header("Location:updateDriver.php?warningLName=1");
+		$decide = false;
+	}
+	if( empty($Address) ){
+		header("Location:updateDriver.php?warningAddress=1");
+		$decide = false;
+	}
+	if( empty($Phonr) ){
+		header("Location:updateDriver.php?warningPhonr=1");
+		$decide = false;
+	}
+	if( empty($IMEI) ){
+		header("Location:updateDriver.php?warningIMEI=1");
+		echo $IMEI;
+		$decide = false;
+	}
+	if( empty($ano) ){
+		header("Location:updateDriver.php?warningIMEI=1");
+		echo $ano;
+		$decide = false;
+	}
+	
+	if( $decide == true ){
+		
+		$query = "UPDATE tracking.drivers SET \"Firstname\"='".$fname."', \"Lastname\"='".$lname."', \"Address\"='".$Address."', \"Phonr\"='".$Phonr."', \"IMEI\"='".$IMEI."', \"Gender\"='".$Gen."', \"Ambulance_Number\"='".$ano."' WHERE \"IMEI\"='".$hidden_IMEI."'";
+		$exec=pg_query($connect_string,$query); 
+		
+		
+		/*
+		if( !$exec || $exec2){
+			header("Location:register.php?warning=1");
+		}
+		else{
+			
+			header("Location:register.php?success=1");
+		}
+		*/
+		if($exec){
+			header("Location:searchResult.php");
+		}
+		else{
+			echo "Update Unsuccessful";
+		}
+	}
+?>

@@ -1,0 +1,114 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head> -->
+ <!-- <script src="lib/js/jquery.js"></script>  -->
+
+ <select id="all_options" class="btn btn-default dropdown-toggle">
+            <option selected="true" style="display:none;">Search By</option>
+            <option value="ambulance" >Ambulance no</option>
+            <option value="driver">Driver name</option>
+        </select>
+
+        <select id="drivers" class="btn btn-default dropdown-toggle">
+            <option selected="true" style="display:none;">Select Driver</option>
+        </select>
+        <select id="ambulance_no" class="btn btn-default dropdown-toggle">
+            <option selected="true" style="display:none;">Select Ambulance No</option>
+        </select>
+
+        <button class="btn btn-primary" id="search">Search</button>
+		<script>
+$(document).ready(function() {
+
+		 /*
+ Search for ambulance
+ */  
+ 
+	
+			drivers = [];
+			ambulance_no = [];
+			longitude = [];
+			latitude = [];
+			dropdown = function(data){
+				features = data.features;
+				features_length = data.features.length;
+				
+				for (i = 0; i < features_length; i++) {
+					var driver_name = features[i].properties.Firstname + '' + features[i].properties.Lastname;
+					drivers.push(driver_name);
+					ambulance_no.push(features[i].properties.Ambulance_Number);
+					longitude.push(features[i].geometry.coordinates[0]);
+					latitude.push(features[i].geometry.coordinates[1]);
+					$("#drivers").append('<option value="'+drivers[i]+'">'+drivers[i]+'</option>');
+					$("#ambulance_no").append('<option value="'+ambulance_no[i]+'">'+ambulance_no[i]+'</option>');
+				};
+				
+				$("#ambulance_no").hide();
+				$("#drivers").hide();
+				$("#all_options").on('change',function(){
+						opt_val = $(this).val();
+						 if (opt_val=="driver"){
+							//	$("#drivers").append('<option value="'+drivers[i]+'">'+drivers[i]+'</option>');
+								$("#ambulance_no").hide();
+								$("#drivers").show();
+								
+								$("#drivers").on('change',function(){
+									index = drivers.indexOf($(this).val());
+									$("#search").click(function(){
+								//		map.setCenter(new OpenLayers.LonLat(longitude[index],latitude[index]), 12);
+								map.getView().setCenter(ol.proj.transform([longitude[index],latitude[index] ], 'EPSG:4326', 'EPSG:3857'));
+								map.getView().setZoom(20);
+									});
+								});
+						
+						}
+						else{
+						//	$("#ambulance_no").append('<option value="'+ambulance_no[i]+'">'+ambulance_no[i]+'</option>');
+							$("#drivers").hide();
+							$("#ambulance_no").show();
+							
+							
+							$("#ambulance_no").on('change',function(){
+									index = ambulance_no.indexOf($(this).val());
+									$("#search").click(function(){
+								//		map.setCenter(new OpenLayers.LonLat(longitude[index],latitude[index]), 12);
+								map.getView().setCenter(ol.proj.transform([longitude[index],latitude[index] ], 'EPSG:4326', 'EPSG:3857'));
+								map.getView().setZoom(12);
+								});
+								});
+						} 
+					});
+ 			//	console.log(drivers);
+			//	console.log(ambulance_no); 
+						
+			};
+			
+				 var getJson =  function(){
+	alert("hello");
+ }
+  var url = "http://localhost:8080/geoserver/fra/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=fra:ambulance&outputFormat=text/javascript&format_options=callback:getJson";
+	var json_data;
+                    $.ajax({
+                        jsonp: false,
+                        jsonpCallback: 'getJson',
+                        type: 'GET',
+                        url: url,
+                        async: false,
+                        dataType: 'jsonp',
+                        success: function(data) {
+							console.log(data);
+                           dropdown(data);
+                        }
+                    });
+
+})			
+
+</script>
+<!-- </head>
+
+<body> -->
+ 
+	
+<!-- </body>
+</html>	 -->

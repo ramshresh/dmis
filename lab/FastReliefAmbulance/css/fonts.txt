@@ -1,0 +1,6 @@
+david
+MS PMincho
+Narkisim
+Brush Script MT - Used in Taxi Meter
+
+font-family: Ubuntu, sans-serif;
