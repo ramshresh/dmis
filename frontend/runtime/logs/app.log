@@ -50143,3 +50143,307 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1427168044.026
     'REQUEST_TIME' => 1427168044
 ]
+2015-03-24 06:05:51 [::1][-][-][error][yii\i18n\PhpMessageSource::loadMessages] The message file for category 'kvdatetime' does not exist: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en-US/kvdatetime.php Fallback file does not exist as well: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en/kvdatetime.php
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:152
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:183
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:130
+2015-03-24 06:05:51 [::1][-][-][error][yii\i18n\PhpMessageSource::loadMessages] The message file for category 'kvdatetime' does not exist: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en-US/kvdatetime.php Fallback file does not exist as well: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en/kvdatetime.php
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:152
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:183
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:130
+2015-03-24 06:05:51 [::1][-][-][error][yii\i18n\PhpMessageSource::loadMessages] The message file for category 'kvdatetime' does not exist: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en-US/kvdatetime.php Fallback file does not exist as well: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en/kvdatetime.php
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:152
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:183
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:130
+2015-03-24 06:05:51 [::1][-][-][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.511467621.1427013086'
+    'PHPSESSID' => '8055v7l9e2qvam8nv94rkkdqj7'
+    '_csrf' => 'bc507baf6d5481ba70c919fd2c3f8c5439084789710e4feac70b0b52a212a3b8a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"cQSMU5vE17SZZElunzJLiuXl-LRw3P-g\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,hi;q=0.6,ru;q=0.4'
+    'HTTP_COOKIE' => '_ga=GA1.1.511467621.1427013086; PHPSESSID=8055v7l9e2qvam8nv94rkkdqj7; _csrf=bc507baf6d5481ba70c919fd2c3f8c5439084789710e4feac70b0b52a212a3b8a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22cQSMU5vE17SZZElunzJLiuXl-LRw3P-g%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\jetty\\jre\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\sdk\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\pgsql\\bin;C:\\Program Files (x86)\\Developers Tools\\osmools\\bin;C:\\Program Files (x86)\\Developers Tools\\;C:\\Program Files (x86)\\Developers Tools\\osmools\\osmosis\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/frontend/web/index.php'
+    'REMOTE_PORT' => '50856'
+    'REDIRECT_URL' => '/girc/dmis/'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/'
+    'SCRIPT_NAME' => '/girc/dmis/frontend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1427173551.65
+    'REQUEST_TIME' => 1427173551
+]
+2015-03-24 06:16:38 [::1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "geometry_picker.html".' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('geometry_picker...', Array)
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\girc\dmis\frontend\web\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\girc\dmis\frontend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2015-03-24 06:16:38 [::1][-][-][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.511467621.1427013086'
+    'PHPSESSID' => '8055v7l9e2qvam8nv94rkkdqj7'
+    '_csrf' => 'd9c4857c502714650c0eea34bdd6fff8e8a3f4192b7d4743417d5fb322b49488a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ccfVgWriiYI19pgNfr7oObxej5-xnOxr\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_X_CSRF_TOKEN' => 'MHlKOUlsM2NTGixvLjtBClkgAwhwHFQtVgt9VgYOSwZaTGdBJyNLEQ=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/girc/dmis/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,hi;q=0.6,ru;q=0.4'
+    'HTTP_COOKIE' => '_ga=GA1.1.511467621.1427013086; PHPSESSID=8055v7l9e2qvam8nv94rkkdqj7; _csrf=d9c4857c502714650c0eea34bdd6fff8e8a3f4192b7d4743417d5fb322b49488a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ccfVgWriiYI19pgNfr7oObxej5-xnOxr%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\jetty\\jre\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\sdk\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\pgsql\\bin;C:\\Program Files (x86)\\Developers Tools\\osmools\\bin;C:\\Program Files (x86)\\Developers Tools\\;C:\\Program Files (x86)\\Developers Tools\\osmools\\osmosis\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/frontend/web/index.php'
+    'REMOTE_PORT' => '51160'
+    'REDIRECT_URL' => '/girc/dmis/frontend/web/geometry_picker.html'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/geometry_picker.html'
+    'SCRIPT_NAME' => '/girc/dmis/frontend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1427174198.519
+    'REQUEST_TIME' => 1427174198
+]
+2015-03-24 06:16:59 [::1][-][-][error][yii\web\HttpException:404] exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "geometry_picker.html".' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('geometry_picker...', Array)
+#1 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\girc\dmis\frontend\web\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\web\Application.php:95
+Stack trace:
+#0 C:\xampp\htdocs\girc\dmis\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\girc\dmis\frontend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2015-03-24 06:16:59 [::1][-][-][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.511467621.1427013086'
+    'PHPSESSID' => '8055v7l9e2qvam8nv94rkkdqj7'
+    '_csrf' => 'd9c4857c502714650c0eea34bdd6fff8e8a3f4192b7d4743417d5fb322b49488a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ccfVgWriiYI19pgNfr7oObxej5-xnOxr\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html, */*; q=0.01'
+    'HTTP_X_CSRF_TOKEN' => 'MHlKOUlsM2NTGixvLjtBClkgAwhwHFQtVgt9VgYOSwZaTGdBJyNLEQ=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/girc/dmis/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,hi;q=0.6,ru;q=0.4'
+    'HTTP_COOKIE' => '_ga=GA1.1.511467621.1427013086; PHPSESSID=8055v7l9e2qvam8nv94rkkdqj7; _csrf=d9c4857c502714650c0eea34bdd6fff8e8a3f4192b7d4743417d5fb322b49488a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ccfVgWriiYI19pgNfr7oObxej5-xnOxr%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\jetty\\jre\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\sdk\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\pgsql\\bin;C:\\Program Files (x86)\\Developers Tools\\osmools\\bin;C:\\Program Files (x86)\\Developers Tools\\;C:\\Program Files (x86)\\Developers Tools\\osmools\\osmosis\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/frontend/web/index.php'
+    'REMOTE_PORT' => '51183'
+    'REDIRECT_URL' => '/girc/dmis/frontend/web/geometry_picker.html'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/geometry_picker.html'
+    'SCRIPT_NAME' => '/girc/dmis/frontend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1427174219.681
+    'REQUEST_TIME' => 1427174219
+]
+2015-03-24 06:22:16 [::1][-][-][error][yii\i18n\PhpMessageSource::loadMessages] The message file for category 'kvdatetime' does not exist: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en-US/kvdatetime.php Fallback file does not exist as well: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en/kvdatetime.php
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:152
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:183
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:130
+2015-03-24 06:22:16 [::1][-][-][error][yii\i18n\PhpMessageSource::loadMessages] The message file for category 'kvdatetime' does not exist: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en-US/kvdatetime.php Fallback file does not exist as well: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en/kvdatetime.php
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:152
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:183
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:130
+2015-03-24 06:22:16 [::1][-][-][error][yii\i18n\PhpMessageSource::loadMessages] The message file for category 'kvdatetime' does not exist: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en-US/kvdatetime.php Fallback file does not exist as well: C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widgets/messages/en/kvdatetime.php
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:152
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:183
+    in C:\xampp\htdocs\girc\dmis\vendor\kartik-v\yii2-widget-datetimepicker\DateTimePicker.php:130
+2015-03-24 06:22:16 [::1][-][-][info][application] $_COOKIE = [
+    '_ga' => 'GA1.1.511467621.1427013086'
+    'PHPSESSID' => '8055v7l9e2qvam8nv94rkkdqj7'
+    '_csrf' => 'd9c4857c502714650c0eea34bdd6fff8e8a3f4192b7d4743417d5fb322b49488a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"ccfVgWriiYI19pgNfr7oObxej5-xnOxr\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,hi;q=0.6,ru;q=0.4'
+    'HTTP_COOKIE' => '_ga=GA1.1.511467621.1427013086; PHPSESSID=8055v7l9e2qvam8nv94rkkdqj7; _csrf=d9c4857c502714650c0eea34bdd6fff8e8a3f4192b7d4743417d5fb322b49488a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22ccfVgWriiYI19pgNfr7oObxej5-xnOxr%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Dell\\DW WLAN Card;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\;C:\\Program Files\\WIDCOMM\\Bluetooth Software\\syswow64;C:\\Program Files (x86)\\Developers Tools\\WinSCP\\;C:\\Program Files\\PostgreSQL\\9.4\\bin\\;C:\\Users\\User\\AppData\\Local\\GitHub\\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\jetty\\jre\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\sdk\\bin;C:\\Program Files (x86)\\Boundless\\OpenGeo\\pgsql\\bin;C:\\Program Files (x86)\\Developers Tools\\osmools\\bin;C:\\Program Files (x86)\\Developers Tools\\;C:\\Program Files (x86)\\Developers Tools\\osmools\\osmosis\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/girc/dmis/frontend/web/index.php'
+    'REMOTE_PORT' => '51490'
+    'REDIRECT_URL' => '/girc/dmis/'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/girc/dmis/'
+    'SCRIPT_NAME' => '/girc/dmis/frontend/web/index.php'
+    'PHP_SELF' => '/girc/dmis/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1427174536.138
+    'REQUEST_TIME' => 1427174536
+]
