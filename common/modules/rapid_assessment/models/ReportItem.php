@@ -143,6 +143,15 @@ class ReportItem extends \yii\db\ActiveRecord
         ];
     }
 
+    function scenarios()
+    {
+        $reportItemScenarios =[
+            //This scenario is to be used for Search Model by instance of <ReporItem> or any <class that inherits ReportItem>
+            'search' => ['type','item_name', 'class_name'],
+        ];
+        return ArrayHelper::merge(parent::scenarios(),$reportItemScenarios);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
