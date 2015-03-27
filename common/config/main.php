@@ -48,6 +48,9 @@ return [
         'rapid_assessment' => [
             'class' => 'common\modules\rapid_assessment\Module',
         ],
+        'social_media' => [
+            'class' => 'common\modules\social_media\Module',
+        ],
     ],
 
 ];
