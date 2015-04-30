@@ -55,6 +55,7 @@ class ItemClassController extends Controller
                         }
                     }
                     $dataProvider = new ActiveDataProvider(['query' => $query]);
+                    $dataProvider->pagination=false;
                     return $dataProvider;
                 }
             ],

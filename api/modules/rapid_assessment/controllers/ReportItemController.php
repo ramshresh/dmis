@@ -124,7 +124,7 @@ class ReportItemController extends \yii\rest\ActiveController
                                    $query->orderBy(['count' => SORT_ASC]);
 
                                    return ['ids' => $ids, 'data' => $query->createCommand()->queryAll()];*/
-
+                        $dataProvider->pagination=false;
                         return $dataProvider;
                     }
                 ],
