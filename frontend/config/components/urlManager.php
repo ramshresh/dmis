@@ -8,7 +8,7 @@
 use yii\helpers\Url;
 
 return [
-    'class' => 'yii\web\urlManager',
+    'class' => 'yii\web\UrlManager',
     'enablePrettyUrl' => true,
     'showScriptName' => false,
 ];
