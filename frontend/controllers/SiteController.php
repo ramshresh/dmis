@@ -80,6 +80,9 @@ class SiteController extends MyBaseContoller
             'report-item-create' => [
                 'class' => 'common\modules\rapid_assessment\actions\ReportItemCreateAction',
             ],
+            'rapid_assessment-file-upload'=>[
+                'class'=>'common\modules\rapid_assessment\actions\FileUploadAction',
+            ],
         ];
     }
 
@@ -396,5 +399,13 @@ class SiteController extends MyBaseContoller
         echo '<h2> Event parent';
         echo '<br><h5><b>EmergencySituation:</b></h5>';
         echo Json::encode($b->emergencySituation);
+    }
+
+    public function actionFilterReportItem()
+    {
+        return $this->renderAjax('filter-report-item/view', []);
+    }
+    public function actionSocialMediaGalleryWidget(){
+      //  return $this->renderAjax('social-media/gallery-widget');
     }
 }

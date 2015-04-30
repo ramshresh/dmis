@@ -14,7 +14,10 @@ $params = array_merge(
 );
 // {{{ Removing api/web from url @see http://www.yiiframework.com/wiki/755/how-to-hide-frontend-web-in-url-addresses-on-apache/*/
 use \yii\web\Request;
+
+
 $baseUrl = str_replace('/api/web', '/api', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
+
 //}}} ./Removing api/web from url
 return [
     'id' => 'app-api',
@@ -30,8 +33,16 @@ return [
         ],
         'rapid_assessment'=>[
            'class'=>'api\modules\rapid_assessment\Module' ,
+           'controllerMap'=>[
+               'gallery'=>'zxbodya\yii2\galleryManager\rest\GalleryImageController',
+           ]
         ],
-
+        'file_management' => [
+            'class' => 'api\modules\file_management\Module',
+        ],
+        'user'=>[
+            'class'=>'api\modules\user\Module',
+        ]
     ],
     'components' => [
 
@@ -47,6 +58,8 @@ return [
         'user' => [
             'identityClass' => 'common\modules\user\models\User',
             'enableAutoLogin' => false,
+            'enableSession'=>false, //is not required but is recommended for RESTful APIs which should be stateless
+            'loginUrl'=>null, //  to show a HTTP 403 error instead of redirecting to the login page.
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -67,15 +80,61 @@ return [
                     'pluralize'=>false,
                 ],
                 [
-                    'class' => 'yii\rest\UrlRule', 'controller' => ['rapid_assessment/report-item'],
-                    'pluralize'=>true,
+                    'class' => 'yii\rest\UrlRule', 'controller' => ['user/default'],
+                    'pluralize'=>false,
                     'extraPatterns' => [
-                        'GET unique/<property:\w+>' => 'unique',
-                        'GET attributes' => 'attributes',
+                        'POST register' => 'register',
+                        'POST login' => 'login',
+                        'POST logout' => 'logout',
                     ]
                 ],
                 [
-                    'class' => 'yii\rest\UrlRule', 'controller' => ['rapid_assessment/item'],
+                    'class' => 'yii\rest\UrlRule', 'controller' => ['user/user'],
+                    'extraPatterns' => [
+                        'POST register' => 'register',
+                        'POST login' => 'login',
+                        'POST logout' => 'logout',
+                    ]
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule', 'controller' => ['file_management/upload'],
+                    'pluralize'=>false,
+                    'extraPatterns' => [
+                        'POST file' => 'file',
+                    ]
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => [
+                        'rapid_assessment/report-item',
+                        'rapid_assessment/gallery',
+                    ],
+                    'pluralize'=>true,
+                    'extraPatterns' => [
+                        'GET unique/<property:\w+>' => 'unique',
+                        'GET time-line/<type:\w+>' => 'time-line',
+                        'GET get-drop-down-item-names' => 'get-drop-down-item-names',
+                        'GET get-drop-down-item-children-names' => 'get-drop-down-item-children-names',
+                        'GET attributes' => 'attributes',
+                        'POST item-class' => 'item-class',
+                        'POST <model:\w+>/create' => 'create',
+                    ]
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule', 'controller' => ['rapid_assessment/report-item-multimedia'],
+                    'pluralize'=>true,
+                    'extraPatterns' => [
+                    ]
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => [
+                        'rapid_assessment/item',
+                        'rapid_assessment/item-type',
+                        'rapid_assessment/item-child',
+                        'rapid_assessment/item-class',
+
+                    ],
                     'pluralize'=>true,
                     'extraPatterns' => [
                         'GET unique/<attribute:\w+>' => 'unique',
@@ -165,7 +224,9 @@ return [
                     'controller' => 'tracking/location',
                 ],
             ],
-        ]
+        ],
+
+
     ],
     'params' => $params,
 ];

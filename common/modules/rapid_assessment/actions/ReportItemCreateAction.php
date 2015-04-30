@@ -17,7 +17,9 @@ use common\modules\rapid_assessment\models\ReportItemIncident;
 use common\modules\rapid_assessment\models\ReportItemNeed;
 use Yii;
 use yii\base\Exception;
+use yii\base\Model;
 use yii\helpers\Json;
+use yii\web\UploadedFile;
 
 class ReportItemCreateAction extends MyBaseAction
 {
@@ -30,93 +32,180 @@ class ReportItemCreateAction extends MyBaseAction
 
     public function run()
     {
-        switch(true){
-            case (new ReportItemEmergencySituation())->load(Yii::$app->getRequest()->getBodyParams()):
+        if(isset($_GET['model'])){
+        /**
+         * possible $models : [
+         *                      ReportItemEmergencySituation,
+         *                      ReportItemEvent,
+         *                      ReportItemIncident,
+         *                      ReportItemImpact,
+         *                      ReportItemNeed
+         *                  ]
+         */
 
+        switch($_GET['model']){
+            case ('ReportItemEmergencySituation'):
                 $transaction = Yii::$app->db->beginTransaction();
-
                 try {
-
                     $model = new ReportItemEmergencySituation();
-                    $model->load(Yii::$app->getRequest()->getBodyParams());
-                    $model->save();
+                    if (Yii::$app->request->post('ReportItemEvent', [])) {
+                        //Loading $_POST data of related models
+                        $model->events = Yii::$app->request->post('ReportItemEvent', []);
+                    }
+                    if (Yii::$app->request->post('ReportItemIncident', [])) {
+                        //Loading $_POST data of related models
+                        $model->incidents = Yii::$app->request->post('ReportItemIncident', []);
+                    }
+                    if (Yii::$app->request->post('ReportItemImpact', [])) {
+                        //Loading $_POST data of related models
+                        $model->impacts = Yii::$app->request->post('ReportItemImpact', []);
+                    }
+                    if (Yii::$app->request->post('ReportItemNeed', [])) {
+                        //Loading $_POST data of related models
+                        $model->needs = Yii::$app->request->post('ReportItemNeed', []);
+                    }
+                    if (Yii::$app->request->post('ReportItemNeed', [])) {
+                        //Loading $_POST data of related models
+                        $model->needs = Yii::$app->request->post('ReportItemNeed', []);
+                    }
 
-                    $needsData=Yii::$app->getRequest()->getBodyParam('ReportItemNeed',[]);
-                    //$multimediaData = Yii::$app->request->getBodyParam('ReportItemMultimedia', []);
-
-                    $model->assignNeeds($needsData);
-
-                    $check=ReportItemNeed::loadMultiple($model->needs,Yii::$app->getRequest()->getBodyParams(),'ReportItemNeed');
-
-
-                    $transaction->commit();
-
-                } catch (Exception $e) {
-
-                    $transaction->rollBack();
-
-                }
-
-
-
-
-
-
-
-                Yii::$app->end();
-                //////////////////////////////////////////////////
-
-                $model = new ReportItemEmergencySituation();
-                $model->load(Yii::$app->getRequest()->getBodyParams());
-                $needs=[];
-                $needsData=Yii::$app->getRequest()->getBodyParam('ReportItemNeed',[]);
-                $multimediaData = Yii::$app->request->getBodyParam('ReportItemMultimedia', []);
-
-                //echo Json::encode(ReportItemNeed::loadMultiple($model->needs,Yii::$app->getRequest()->getBodyParams(),'ReportItemNeed'));
-                //$model->needs=$needsData;
-                //$model->reportItemMultimedia=$multimediaData;
-                $model->save();
-                try {
-                    if ( $model->save()) {
-                        $this->sendSuccessResponseOnAjaxFormSubmit('saved');
-                    } else {
+                    if($model->load(Yii::$app->getRequest()->getBodyParams()) && $model->save() ){
+                        $transaction->commit();
+                        $this->sendSuccessResponseOnAjaxFormSubmit('saved',$model->attributes);
+                    }else{
+                        $transaction->rollBack();
                         $this->sendErrorResponseOnAjaxFormSubmit([$model]);
                     }
-                }catch (Exception $e){
-                    return $e;
+                } catch (Exception $e) {
+                    $transaction->rollBack();
                     $this->sendExceptionErrorOnAjaxFormSubmit($e);
                 }
-                //echo '<br>';
+                break;
+            case ('ReportItemEvent'):
+                $transaction = Yii::$app->db->beginTransaction();
+                try {
+                    $model = new ReportItemEvent();
 
-                echo Json::encode($multimediaData);
+                    if (Yii::$app->request->post('ReportItemIncident', [])) {
+                        //Loading $_POST data of related models
+                        $model->incidents = Yii::$app->request->post('ReportItemIncident', []);
+                    }
+                    if (Yii::$app->request->post('ReportItemImpact', [])) {
+                        //Loading $_POST data of related models
+                        $model->impacts = Yii::$app->request->post('ReportItemImpact', []);
+                    }
+                    if (Yii::$app->request->post('ReportItemNeed', [])) {
+                        //Loading $_POST data of related models
+                        $model->needs = Yii::$app->request->post('ReportItemNeed', []);
+                    }
 
-
-
-                // obtaining related models dada via POST request
-                if (Yii::$app->request->post('ReportItemNeed', [])) {
-                    //Loading $_POST data of related models
-                    $needs= Yii::$app->request->post('ReportItemNeed', []);
-                    /*$needs = Yii::$app->request->post('ReportItemNeed', []);
-                    foreach($needs as $need){
-                        $model->link('needs',$need);
-                    }*/
-
+                    if($model->load(Yii::$app->getRequest()->getBodyParams()) && $model->save() ){
+                        $transaction->commit();
+                        $this->sendSuccessResponseOnAjaxFormSubmit('saved',$model->attributes);
+                    }else{
+                        $transaction->rollBack();
+                        $this->sendErrorResponseOnAjaxFormSubmit([$model]);
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                    $this->sendExceptionErrorOnAjaxFormSubmit($e);
                 }
+                break;
+            case ('ReportItemIncident'):
 
+                $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+                //$txt = "Mickey Mouse\n";
+                $uf=Yii::$app->request->getBodyParam('ReportItemMultimedia');
 
+                $txt = Json::encode($uf);
 
+                fwrite($myfile, $txt);
+                fclose($myfile);
+
+                $transaction = Yii::$app->db->beginTransaction();
+                try {
+                    $model = new ReportItemIncident();
+                    if (Yii::$app->request->getBodyParam('ReportItemEvent', [])) {
+                        //Loading $_POST data of related models
+                        $model->event = Yii::$app->request->post('ReportItemEvent', []);
+                    }
+                    if (Yii::$app->request->post('ReportItemImpact', [])) {
+                        //Loading $_POST data of related models
+                        $model->impacts = Yii::$app->request->post('ReportItemImpact', []);
+                    }
+                    if (Yii::$app->request->post('ReportItemNeed', [])) {
+                        //Loading $_POST data of related models
+                        $model->needs = Yii::$app->request->post('ReportItemNeed', []);
+                    }
+                    if (Yii::$app->request->post('ReportItemMultimedia', [])) {
+                        //Loading $_POST data of related models
+                        //$model->getReportItemMultimedia = Yii::$app->request->post('ReportItemMultimedia', []);
+                    }
+/*
+                    $id='37';
+                    $savedTemp=TempUploadedFile::find()
+                        ->where('id > :id', [':id' => $id])
+                        ->all();*/
+
+                    if($model->load(Yii::$app->getRequest()->getBodyParams()) && $model->save() ){
+                        if(Yii::$app->request->post('photo')){
+                            $photo = Json::decode(Yii::$app->request->post('photo'));//Yii::$app->request->post('photo');
+                            if(isset($photo['id']))
+                                $model->getBehavior('galleryBehavior')->addTempUploadedImage($photo['id']);
+                        }
+
+                        $transaction->commit();
+                        /*
+                        return Yii::$app->request->post();
+                        Yii::$app->end();*/
+                        $this->sendSuccessResponseOnAjaxFormSubmit('saved',$model->attributes);
+                    }else{
+                        $transaction->rollBack();
+                        $this->sendErrorResponseOnAjaxFormSubmit([$model]);
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                    $this->sendExceptionErrorOnAjaxFormSubmit($e);
+                }
                 break;
-            case (new ReportItemEvent())->load(Yii::$app->getRequest()->getBodyParams()):
-                $model = new ReportItemEvent();
+            case ('ReportItemImpact'):
+                $transaction = Yii::$app->db->beginTransaction();
+                try {
+                    $model = new ReportItemImpact();
+
+                    if (Yii::$app->request->post('ReportItemNeed', [])) {
+                        //Loading $_POST data of related models
+                        $model->needs = Yii::$app->request->post('ReportItemNeed', []);
+                    }
+
+                    if($model->load(Yii::$app->getRequest()->getBodyParams()) && $model->save() ){
+                        $transaction->commit();
+                        $this->sendSuccessResponseOnAjaxFormSubmit('saved',$model->attributes);
+                    }else{
+                        $transaction->rollBack();
+                        $this->sendErrorResponseOnAjaxFormSubmit([$model]);
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                    $this->sendExceptionErrorOnAjaxFormSubmit($e);
+                }
                 break;
-            case (new ReportItemIncident())->load(Yii::$app->getRequest()->getBodyParams()):
-                $model = new ReportItemIncident();
-                break;
-            case (new ReportItemImpact())->load(Yii::$app->getRequest()->getBodyParams()):
-                $model = new ReportItemImpact();
-                break;
-            case (new ReportItemNeed())->load(Yii::$app->getRequest()->getBodyParams()):
-                $model = new ReportItemNeed();
+            case ('ReportItemNeed'):
+                $transaction = Yii::$app->db->beginTransaction();
+                try {
+                    $model = new ReportItemNeed();
+
+                    if($model->load(Yii::$app->getRequest()->getBodyParams()) && $model->save() ){
+                        $transaction->commit();
+                        $this->sendSuccessResponseOnAjaxFormSubmit('saved',$model->attributes);
+                    }else{
+                        $transaction->rollBack();
+                        $this->sendErrorResponseOnAjaxFormSubmit([$model]);
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                    $this->sendExceptionErrorOnAjaxFormSubmit($e);
+                }
                 break;
             case (new ReportItem())->load(Yii::$app->getRequest()->getBodyParams()):
                 $model = new ReportItem();
@@ -124,28 +213,9 @@ class ReportItemCreateAction extends MyBaseAction
             default:
                $this->sendExceptionErrorOnAjaxFormSubmit(new Exception('could not load Form Data'));
         }
-
-        // obtaining related models dada via POST request
-        if (Yii::$app->request->post('ReportItemMultimedia', [])) {
-            //Loading $_POST data of related models
-            $model->reportItemMultimedia = Yii::$app->request->post('ReportItemMultimedia', []);
+        }else{
+            $this->sendExceptionErrorOnAjaxFormSubmit(new Exception('Not Yet Implemented! And tor the time being, model parameter was not sent via url: HINT: submit to url http://116.90.239.21/girc/dmis/api/rapid_assessment/report-items/<model>/create  where <model> in the url must be replaced by one of : [ReportItemEmergencySituation, ReportItemEvent, ReportItemIncident, ReportItemImpact, ReportItemNeed]'));
         }
-        try {
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                $this->sendSuccessResponseOnAjaxFormSubmit('saved');
-            } else {
-                $this->sendErrorResponseOnAjaxFormSubmit([$model]);
-            }
-        }catch (Exception $e){
-            return $e;
-            $this->sendExceptionErrorOnAjaxFormSubmit($e);
-        }
-
-        echo Json::encode($needs);
-        echo 'kk';
-        Yii::$app->end();
-
-        return $model;
     }
 }
 

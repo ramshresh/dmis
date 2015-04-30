@@ -1,0 +1,51 @@
+Message-ID: <fea673ffd3e61c268c2338105f03c717@localhost>
+Date: Sun, 12 Apr 2015 06:25:36 +0200
+Subject: app-backend - Forgot password
+From: Admin <gircgeomatics@gmail.com>
+To: ram_shresh@hotmail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift_v4_1428812736_fba9300a9636ef808883a6438e56eaa3_=_"
+
+
+--_=_swift_v4_1428812736_fba9300a9636ef808883a6438e56eaa3_=_
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+app-backend - Forgot password
+
+Please use this link to reset you=
+r password:
+
+http://localhost/girc/dmis/admin/user/reset?key=3D4=
+ZqacDJtoMkVb7NKJ4cQt5meAL7Llql3
+
+--_=_swift_v4_1428812736_fba9300a9636ef808883a6438e56eaa3_=_
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.=
+org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org=
+/1999/xhtml">
+<head>
+    <meta http-equiv=3D"Content-Type" con=
+tent=3D"text/html; charset=3DUTF-8" />
+    <title></title>
+    <=
+/head>
+<body>
+
+<h3>app-backend - Forgot password</h3=
+>
+
+<p>Please use this link to reset your password:</=
+p>
+
+<p>http://localhost/girc/dmis/admin/user/reset?key=3D4ZqacD=
+JtoMkVb7NKJ4cQt5meAL7Llql3</p>
+</body>
+</html>
+
+
+--_=_swift_v4_1428812736_fba9300a9636ef808883a6438e56eaa3_=_--

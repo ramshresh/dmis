@@ -2,7 +2,7 @@
 
 namespace api\modules\rapid_assessment;
 
-class Module extends \yii\base\Module
+class Module extends \common\modules\rapid_assessment\Module
 {
     public $controllerNamespace = 'api\modules\rapid_assessment\controllers';
 

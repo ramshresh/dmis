@@ -15,6 +15,8 @@ use Yii;
  *
  * @property Item $itemName
  * @property ItemChild[] $itemChildren
+ * @property ItemType $parent
+ * @property ItemType[] $children
  */
 class ItemType extends \yii\db\ActiveRecord
 {
@@ -29,7 +31,7 @@ class ItemType extends \yii\db\ActiveRecord
      * @param array $row
      * @return Geometry|GeometryLinestring|GeometryPoint|GeometryPolygon
      */
-    public static function instantiate($row)
+    /*public static function instantiate($row)
     {
         switch ($row['type']) {
             case self::TYPE_EMERGENCY_SITUATION:
@@ -45,7 +47,7 @@ class ItemType extends \yii\db\ActiveRecord
             default:
                 return new self;
         }
-    }
+    }*/
     /**
      * @inheritdoc
      */
@@ -95,5 +97,16 @@ class ItemType extends \yii\db\ActiveRecord
     public function getItemChildren()
     {
         return $this->hasMany(ItemChild::className(), ['parent_name' => 'item_name', 'parent_type' => 'type']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     * @stackoverflow http://stackoverflow.com/questions/26763298/how-do-i-work-with-many-to-many-relations-in-yii2
+     */
+    public function getChildren() {
+        return $this->hasMany(ItemType::className(), ['item_name' => 'child_name','type' => 'child_type'])
+            // ->onCondition(['type'=>ReportItem::TYPE_IMPACT])
+            // ->viaTable(ReportItemChild::tableName(), ['parent_id' => 'id','parent_type' => 'type']);
+            ->via('itemChildren');
     }
 }

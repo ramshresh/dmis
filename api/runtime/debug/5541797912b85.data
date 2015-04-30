@@ -1,0 +1,992 @@
+a:8:{s:6:"config";a:5:{s:10:"phpVersion";s:5:"5.6.3";s:10:"yiiVersion";s:5:"2.0.3";s:11:"application";a:4:{s:3:"yii";s:5:"2.0.3";s:4:"name";s:14:"My Application";s:3:"env";s:3:"dev";s:5:"debug";b:1;}s:3:"php";a:4:{s:7:"version";s:5:"5.6.3";s:6:"xdebug";b:0;s:3:"apc";b:0;s:8:"memcache";b:0;}s:10:"extensions";a:39:{s:25:"kartik-v/yii2-krajee-base";a:3:{s:4:"name";s:25:"kartik-v/yii2-krajee-base";s:7:"version";s:7:"1.7.4.0";s:5:"alias";a:1:{s:12:"@kartik/base";s:58:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-krajee-base";}}s:31:"kartik-v/yii2-widget-activeform";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-activeform";s:7:"version";s:7:"1.4.1.0";s:5:"alias";a:1:{s:12:"@kartik/form";s:64:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-activeform";}}s:30:"kartik-v/yii2-widget-typeahead";a:3:{s:4:"name";s:30:"kartik-v/yii2-widget-typeahead";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:17:"@kartik/typeahead";s:63:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-typeahead";}}s:30:"kartik-v/yii2-widget-touchspin";a:3:{s:4:"name";s:30:"kartik-v/yii2-widget-touchspin";s:7:"version";s:7:"1.2.0.0";s:5:"alias";a:1:{s:17:"@kartik/touchspin";s:63:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-touchspin";}}s:31:"kartik-v/yii2-widget-timepicker";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-timepicker";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:12:"@kartik/time";s:64:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-timepicker";}}s:32:"kartik-v/yii2-widget-switchinput";a:3:{s:4:"name";s:32:"kartik-v/yii2-widget-switchinput";s:7:"version";s:7:"1.3.0.0";s:5:"alias";a:1:{s:19:"@kartik/switchinput";s:65:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-switchinput";}}s:28:"kartik-v/yii2-widget-spinner";a:3:{s:4:"name";s:28:"kartik-v/yii2-widget-spinner";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:15:"@kartik/spinner";s:61:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-spinner";}}s:28:"kartik-v/yii2-widget-sidenav";a:3:{s:4:"name";s:28:"kartik-v/yii2-widget-sidenav";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:15:"@kartik/sidenav";s:61:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-sidenav";}}s:28:"kartik-v/yii2-widget-select2";a:3:{s:4:"name";s:28:"kartik-v/yii2-widget-select2";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:15:"@kartik/select2";s:61:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-select2";}}s:27:"kartik-v/yii2-widget-rating";a:3:{s:4:"name";s:27:"kartik-v/yii2-widget-rating";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:14:"@kartik/rating";s:60:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-rating";}}s:31:"kartik-v/yii2-widget-rangeinput";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-rangeinput";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:13:"@kartik/range";s:64:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-rangeinput";}}s:26:"kartik-v/yii2-widget-growl";a:3:{s:4:"name";s:26:"kartik-v/yii2-widget-growl";s:7:"version";s:7:"1.1.0.0";s:5:"alias";a:1:{s:13:"@kartik/growl";s:59:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-growl";}}s:28:"kartik-v/yii2-widget-depdrop";a:3:{s:4:"name";s:28:"kartik-v/yii2-widget-depdrop";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:15:"@kartik/depdrop";s:61:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-depdrop";}}s:35:"kartik-v/yii2-widget-datetimepicker";a:3:{s:4:"name";s:35:"kartik-v/yii2-widget-datetimepicker";s:7:"version";s:7:"1.4.0.0";s:5:"alias";a:1:{s:16:"@kartik/datetime";s:68:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-datetimepicker";}}s:31:"kartik-v/yii2-widget-colorinput";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-colorinput";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:13:"@kartik/color";s:64:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-colorinput";}}s:26:"kartik-v/yii2-widget-alert";a:3:{s:4:"name";s:26:"kartik-v/yii2-widget-alert";s:7:"version";s:7:"1.1.0.0";s:5:"alias";a:1:{s:13:"@kartik/alert";s:59:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-alert";}}s:26:"kartik-v/yii2-widget-affix";a:3:{s:4:"name";s:26:"kartik-v/yii2-widget-affix";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:13:"@kartik/affix";s:59:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-affix";}}s:21:"kartik-v/yii2-widgets";a:3:{s:4:"name";s:21:"kartik-v/yii2-widgets";s:7:"version";s:7:"3.4.0.0";s:5:"alias";a:1:{s:15:"@kartik/widgets";s:54:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widgets";}}s:18:"ramshresh/yii2-geo";a:3:{s:4:"name";s:18:"ramshresh/yii2-geo";s:7:"version";s:11:"9999999-dev";s:5:"alias";a:1:{s:19:"@ramshresh/yii2/geo";s:51:"C:\xampp\htdocs\girc\dmis\vendor/ramshresh/yii2-geo";}}s:20:"mdmsoft/yii2-widgets";a:3:{s:4:"name";s:20:"mdmsoft/yii2-widgets";s:7:"version";s:7:"1.0.0.0";s:5:"alias";a:1:{s:12:"@mdm/widgets";s:53:"C:\xampp\htdocs\girc\dmis\vendor/mdmsoft/yii2-widgets";}}s:24:"kartik-v/yii2-dropdown-x";a:3:{s:4:"name";s:24:"kartik-v/yii2-dropdown-x";s:7:"version";s:7:"1.2.0.0";s:5:"alias";a:1:{s:16:"@kartik/dropdown";s:57:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-dropdown-x";}}s:24:"kartik-v/yii2-date-range";a:3:{s:4:"name";s:24:"kartik-v/yii2-date-range";s:7:"version";s:7:"1.6.0.0";s:5:"alias";a:1:{s:17:"@kartik/daterange";s:57:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-date-range";}}s:24:"yiisoft/yii2-swiftmailer";a:3:{s:4:"name";s:24:"yiisoft/yii2-swiftmailer";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:16:"@yii/swiftmailer";s:57:"C:\xampp\htdocs\girc\dmis\vendor/yiisoft/yii2-swiftmailer";}}s:16:"yiisoft/yii2-jui";a:3:{s:4:"name";s:16:"yiisoft/yii2-jui";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:8:"@yii/jui";s:49:"C:\xampp\htdocs\girc\dmis\vendor/yiisoft/yii2-jui";}}s:24:"yiisoft/yii2-codeception";a:3:{s:4:"name";s:24:"yiisoft/yii2-codeception";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:16:"@yii/codeception";s:57:"C:\xampp\htdocs\girc\dmis\vendor/yiisoft/yii2-codeception";}}s:22:"yiisoft/yii2-bootstrap";a:3:{s:4:"name";s:22:"yiisoft/yii2-bootstrap";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:14:"@yii/bootstrap";s:55:"C:\xampp\htdocs\girc\dmis\vendor/yiisoft/yii2-bootstrap";}}s:18:"yiisoft/yii2-debug";a:3:{s:4:"name";s:18:"yiisoft/yii2-debug";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:10:"@yii/debug";s:51:"C:\xampp\htdocs\girc\dmis\vendor/yiisoft/yii2-debug";}}s:16:"yiisoft/yii2-gii";a:3:{s:4:"name";s:16:"yiisoft/yii2-gii";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:8:"@yii/gii";s:49:"C:\xampp\htdocs\girc\dmis\vendor/yiisoft/yii2-gii";}}s:18:"yiisoft/yii2-faker";a:3:{s:4:"name";s:18:"yiisoft/yii2-faker";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:10:"@yii/faker";s:51:"C:\xampp\htdocs\girc\dmis\vendor/yiisoft/yii2-faker";}}s:31:"kartik-v/yii2-widget-datepicker";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-datepicker";s:7:"version";s:7:"1.3.2.0";s:5:"alias";a:1:{s:12:"@kartik/date";s:64:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-datepicker";}}s:25:"mdmsoft/yii2-ar-behaviors";a:4:{s:4:"name";s:25:"mdmsoft/yii2-ar-behaviors";s:7:"version";s:11:"9999999-dev";s:5:"alias";a:1:{s:17:"@mdm/behaviors/ar";s:58:"C:\xampp\htdocs\girc\dmis\vendor/mdmsoft/yii2-ar-behaviors";}s:9:"bootstrap";s:26:"mdm\behaviors\ar\Bootstrap";}s:21:"kartik-v/yii2-builder";a:3:{s:4:"name";s:21:"kartik-v/yii2-builder";s:7:"version";s:11:"9999999-dev";s:5:"alias";a:1:{s:15:"@kartik/builder";s:54:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-builder";}}s:34:"miloschuman/yii2-highcharts-widget";a:3:{s:4:"name";s:34:"miloschuman/yii2-highcharts-widget";s:7:"version";s:11:"9999999-dev";s:5:"alias";a:1:{s:23:"@miloschuman/highcharts";s:71:"C:\xampp\htdocs\girc\dmis\vendor/miloschuman/yii2-highcharts-widget/src";}}s:20:"yiisoft/yii2-imagine";a:3:{s:4:"name";s:20:"yiisoft/yii2-imagine";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:12:"@yii/imagine";s:53:"C:\xampp\htdocs\girc\dmis\vendor/yiisoft/yii2-imagine";}}s:28:"zxbodya/yii2-gallery-manager";a:3:{s:4:"name";s:28:"zxbodya/yii2-gallery-manager";s:7:"version";s:11:"9999999-dev";s:5:"alias";a:1:{s:28:"@zxbodya/yii2/galleryManager";s:61:"C:\xampp\htdocs\girc\dmis\vendor/zxbodya/yii2-gallery-manager";}}s:30:"kartik-v/yii2-widget-fileinput";a:3:{s:4:"name";s:30:"kartik-v/yii2-widget-fileinput";s:7:"version";s:7:"1.0.1.0";s:5:"alias";a:1:{s:12:"@kartik/file";s:63:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-widget-fileinput";}}s:18:"kartik-v/yii2-grid";a:3:{s:4:"name";s:18:"kartik-v/yii2-grid";s:7:"version";s:7:"3.0.1.0";s:5:"alias";a:1:{s:12:"@kartik/grid";s:51:"C:\xampp\htdocs\girc\dmis\vendor/kartik-v/yii2-grid";}}s:23:"yiisoft/yii2-authclient";a:3:{s:4:"name";s:23:"yiisoft/yii2-authclient";s:7:"version";s:7:"2.0.3.0";s:5:"alias";a:1:{s:15:"@yii/authclient";s:56:"C:\xampp\htdocs\girc\dmis\vendor/yiisoft/yii2-authclient";}}s:15:"amnah/yii2-user";a:3:{s:4:"name";s:15:"amnah/yii2-user";s:7:"version";s:11:"9999999-dev";s:5:"alias";a:1:{s:16:"@amnah/yii2/user";s:48:"C:\xampp\htdocs\girc\dmis\vendor/amnah/yii2-user";}}}}s:7:"request";a:14:{s:7:"flashes";a:0:{}s:10:"statusCode";i:200;s:14:"requestHeaders";a:5:{s:12:"content-type";s:16:"application/json";s:14:"content-length";s:3:"549";s:4:"host";s:8:"10.0.2.2";s:10:"connection";s:10:"Keep-Alive";s:10:"user-agent";s:40:"Apache-HttpClient/UNAVAILABLE (java 1.4)";}s:15:"responseHeaders";a:3:{s:12:"X-Powered-By";s:9:"PHP/5.6.3";s:27:"Access-Control-Allow-Origin";s:1:"*";s:12:"Content-Type";s:31:"application/json; charset=UTF-8";}s:5:"route";s:35:"rapid_assessment/report-item/create";s:6:"action";s:69:"common\modules\rapid_assessment\actions\ReportItemCreateAction::run()";s:12:"actionParams";a:0:{}s:11:"requestBody";a:3:{s:12:"Content Type";s:16:"application/json";s:3:"Raw";s:549:"{"photo":"{\"base_name\":\"Building Damage2\",\"extension\":\"jpg\",\"has_error\":false,\"size\":30395,\"name\":\"Building Damage2.jpg\",\"temp_name\":\"0Mv4QJl-pUADTBRhZhUkbDanDbk24bYP\",\"type\":\"jpg\",\"data\":{\"expression\":\"(select '{\\\"latitude\\\":\\\"27.699999722222223\\\",\\\"longitude\\\":\\\"85.33319999999999\\\"}'::JSON)\",\"params\":[]},\"id\":\"80\"}","ReportItemIncident":{"timestamp_occurance":"2015-04-30 00:38:07","longitude":85.3332,"latitude":27.7,"address":"","item_name":"Building Damage","description":"no description"}}";s:17:"Decoded to Params";a:2:{s:5:"photo";s:308:"{"base_name":"Building Damage2","extension":"jpg","has_error":false,"size":30395,"name":"Building Damage2.jpg","temp_name":"0Mv4QJl-pUADTBRhZhUkbDanDbk24bYP","type":"jpg","data":{"expression":"(select '{\"latitude\":\"27.699999722222223\",\"longitude\":\"85.33319999999999\"}'::JSON)","params":[]},"id":"80"}";s:18:"ReportItemIncident";a:6:{s:19:"timestamp_occurance";s:19:"2015-04-30 00:38:07";s:9:"longitude";d:85.333200000000005047695594839751720428466796875;s:8:"latitude";d:27.699999999999999289457264239899814128875732421875;s:7:"address";s:0:"";s:9:"item_name";s:15:"Building Damage";s:11:"description";s:14:"no description";}}}s:6:"SERVER";a:53:{s:25:"REDIRECT_REDIRECT_MIBDIRS";s:24:"C:/xampp/php/extras/mibs";s:28:"REDIRECT_REDIRECT_MYSQL_HOME";s:16:"\xampp\mysql\bin";s:30:"REDIRECT_REDIRECT_OPENSSL_CONF";s:31:"C:/xampp/apache/bin/openssl.cnf";s:38:"REDIRECT_REDIRECT_PHP_PEAR_SYSCONF_DIR";s:10:"\xampp\php";s:23:"REDIRECT_REDIRECT_PHPRC";s:10:"\xampp\php";s:21:"REDIRECT_REDIRECT_TMP";s:10:"\xampp\tmp";s:24:"REDIRECT_REDIRECT_STATUS";s:3:"200";s:16:"REDIRECT_MIBDIRS";s:24:"C:/xampp/php/extras/mibs";s:19:"REDIRECT_MYSQL_HOME";s:16:"\xampp\mysql\bin";s:21:"REDIRECT_OPENSSL_CONF";s:31:"C:/xampp/apache/bin/openssl.cnf";s:29:"REDIRECT_PHP_PEAR_SYSCONF_DIR";s:10:"\xampp\php";s:14:"REDIRECT_PHPRC";s:10:"\xampp\php";s:12:"REDIRECT_TMP";s:10:"\xampp\tmp";s:15:"REDIRECT_STATUS";s:3:"200";s:7:"MIBDIRS";s:24:"C:/xampp/php/extras/mibs";s:10:"MYSQL_HOME";s:16:"\xampp\mysql\bin";s:12:"OPENSSL_CONF";s:31:"C:/xampp/apache/bin/openssl.cnf";s:20:"PHP_PEAR_SYSCONF_DIR";s:10:"\xampp\php";s:5:"PHPRC";s:10:"\xampp\php";s:3:"TMP";s:10:"\xampp\tmp";s:12:"CONTENT_TYPE";s:16:"application/json";s:14:"CONTENT_LENGTH";s:3:"549";s:9:"HTTP_HOST";s:8:"10.0.2.2";s:15:"HTTP_CONNECTION";s:10:"Keep-Alive";s:15:"HTTP_USER_AGENT";s:40:"Apache-HttpClient/UNAVAILABLE (java 1.4)";s:4:"PATH";s:1434:"C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Dell\DW WLAN Card;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;Program Files\Java\jdk1.8.0_40\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files (x86)\Developers Tools\WinSCP\;C:\Program Files\PostgreSQL\9.4\bin\;C:\Users\User\AppData\Local\GitHub\PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad\bin;C:\Program Files (x86)\Boundless\OpenGeo\jetty\jre\bin;C:\Program Files (x86)\Boundless\OpenGeo\bin;C:\Program Files (x86)\Boundless\OpenGeo\sdk\bin;C:\Program Files (x86)\Boundless\OpenGeo\pgsql\bin;C:\Program Files (x86)\Developers Tools\osmools\bin;C:\Program Files (x86)\Developers Tools\;C:\Program Files (x86)\Developers Tools\osmools\osmosis\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\mvn3.3.1\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_40\bin\;C:\Users\User\AppData\Roaming\npm";s:10:"SystemRoot";s:10:"C:\Windows";s:7:"COMSPEC";s:27:"C:\Windows\system32\cmd.exe";s:7:"PATHEXT";s:53:".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC";s:6:"WINDIR";s:10:"C:\Windows";s:16:"SERVER_SIGNATURE";s:93:"<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at 10.0.2.2 Port 80</address>
+";s:15:"SERVER_SOFTWARE";s:46:"Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3";s:11:"SERVER_NAME";s:8:"10.0.2.2";s:11:"SERVER_ADDR";s:9:"127.0.0.1";s:11:"SERVER_PORT";s:2:"80";s:11:"REMOTE_ADDR";s:9:"127.0.0.1";s:13:"DOCUMENT_ROOT";s:15:"C:/xampp/htdocs";s:14:"REQUEST_SCHEME";s:4:"http";s:14:"CONTEXT_PREFIX";s:0:"";s:21:"CONTEXT_DOCUMENT_ROOT";s:15:"C:/xampp/htdocs";s:12:"SERVER_ADMIN";s:20:"postmaster@localhost";s:15:"SCRIPT_FILENAME";s:43:"C:/xampp/htdocs/girc/dmis/api/web/index.php";s:11:"REMOTE_PORT";s:5:"50649";s:12:"REDIRECT_URL";s:75:"/girc/dmis/api/web//rapid_assessment/report-items/ReportItemIncident/create";s:17:"GATEWAY_INTERFACE";s:7:"CGI/1.1";s:15:"SERVER_PROTOCOL";s:8:"HTTP/1.1";s:14:"REQUEST_METHOD";s:4:"POST";s:12:"QUERY_STRING";s:0:"";s:11:"REQUEST_URI";s:70:"/girc/dmis/api/rapid_assessment/report-items/ReportItemIncident/create";s:11:"SCRIPT_NAME";s:28:"/girc/dmis/api/web/index.php";s:8:"PHP_SELF";s:28:"/girc/dmis/api/web/index.php";s:18:"REQUEST_TIME_FLOAT";d:1430354297.04699993133544921875;s:12:"REQUEST_TIME";i:1430354297;}s:3:"GET";a:1:{s:5:"model";s:18:"ReportItemIncident";}s:4:"POST";a:0:{}s:6:"COOKIE";a:0:{}s:5:"FILES";a:0:{}s:7:"SESSION";a:0:{}}s:3:"log";a:1:{s:8:"messages";a:31:{i:0;a:5:{i:0;s:54:"Bootstrap with mdm\behaviors\ar\Bootstrap::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1430354297.068355083465576171875;i:4;a:0:{}}i:1;a:5:{i:0;s:33:"Bootstrap with yii\log\Dispatcher";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1430354297.0695478916168212890625;i:4;a:0:{}}i:2;a:5:{i:0;s:21:"Loading module: debug";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1430354297.0695769786834716796875;i:4;a:0:{}}i:3;a:5:{i:0;s:44:"Bootstrap with yii\debug\Module::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1430354297.0754649639129638671875;i:4;a:0:{}}i:4;a:5:{i:0;s:19:"Loading module: gii";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1430354297.0837719440460205078125;i:4;a:0:{}}i:5;a:5:{i:0;s:42:"Bootstrap with yii\gii\Module::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1430354297.0845329761505126953125;i:4;a:0:{}}i:6;a:5:{i:0;s:78:"Request parsed with URL rule: rapid_assessment/report-items/<model:\w+>/create";i:1;i:8;i:2;s:29:"yii\web\UrlRule::parseRequest";i:3;d:1430354297.086186885833740234375;i:4;a:0:{}}i:7;a:5:{i:0;s:78:"Request parsed with URL rule: rapid_assessment/report-items/<model:\w+>/create";i:1;i:8;i:2;s:30:"yii\rest\UrlRule::parseRequest";i:3;d:1430354297.086227893829345703125;i:4;a:0:{}}i:8;a:5:{i:0;s:54:"Route requested: 'rapid_assessment/report-item/create'";i:1;i:8;i:2;s:34:"yii\web\Application::handleRequest";i:3;d:1430354297.086247920989990234375;i:4;a:0:{}}i:9;a:5:{i:0;s:32:"Loading module: rapid_assessment";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1430354297.086267948150634765625;i:4;a:0:{}}i:10;a:5:{i:0;s:49:"Route to run: rapid_assessment/report-item/create";i:1;i:8;i:2;s:30:"yii\base\Controller::runAction";i:3;d:1430354297.096012115478515625;i:4;a:0:{}}i:11;a:5:{i:0;s:39:"Rate limit skipped: user not logged in.";i:1;i:4;i:2;s:37:"yii\filters\RateLimiter::beforeAction";i:3;d:1430354297.1019170284271240234375;i:4;a:0:{}}i:12;a:5:{i:0;s:85:"Running action: common\modules\rapid_assessment\actions\ReportItemCreateAction::run()";i:1;i:8;i:2;s:30:"yii\base\Action::runWithParams";i:3;d:1430354297.101975917816162109375;i:4;a:0:{}}i:13;a:5:{i:0;s:65:"Opening DB connection: pgsql:host=localhost;port=5432;dbname=dmis";i:1;i:4;i:2;s:23:"yii\db\Connection::open";i:3;d:1430354297.10457897186279296875;i:4;a:1:{i:0;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:125;s:8:"function";s:16:"beginTransaction";s:5:"class";s:17:"yii\db\Connection";s:4:"type";s:2:"->";}}}i:16;a:5:{i:0;s:17:"Begin transaction";i:1;i:8;i:2;s:25:"yii\db\Transaction::begin";i:3;d:1430354297.174170970916748046875;i:4;a:1:{i:0;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:125;s:8:"function";s:16:"beginTransaction";s:5:"class";s:17:"yii\db\Connection";s:4:"type";s:2:"->";}}}i:17;a:5:{i:0;s:1967:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'report_item'
+    and d.nspname = 'rapid_assessment'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.1928699016571044921875;i:4;a:2:{i:0;a:5:{s:4:"file";s:87:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\models\ReportItemIncident.php";s:4:"line";i:28;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:127;s:8:"function";s:11:"__construct";s:5:"class";s:15:"yii\base\Object";s:4:"type";s:2:"->";}}}i:20;a:5:{i:0;s:686:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='report_item'
+    and ns.nspname='rapid_assessment'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2034099102020263671875;i:4;a:2:{i:0;a:5:{s:4:"file";s:87:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\models\ReportItemIncident.php";s:4:"line";i:28;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:127;s:8:"function";s:11:"__construct";s:5:"class";s:15:"yii\base\Object";s:4:"type";s:2:"->";}}}i:23;a:5:{i:0;s:393:"INSERT INTO "rapid_assessment"."report_item" ("type", "timestamp_occurance", "longitude", "latitude", "address", "item_name", "description", "timestamp_created_at", "timestamp_updated_at", "wkt", "geom") VALUES ('incident', '2015-04-30 00:38:07', 85.3332, 27.7, '', 'Building Damage', 'no description', NOW(), NOW(), 'POINT(85.3332 27.7)', (SELECT ST_GeomFromText('POINT(85.3332 27.7)',4326)))";i:1;i:4;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.21360492706298828125;i:4;a:1:{i:0;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:150;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:26;a:5:{i:0;s:66:"SELECT * FROM "file_management"."temp_uploaded_file" WHERE "id"=80";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.226088047027587890625;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:29;a:5:{i:0;s:1973:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'temp_uploaded_file'
+    and d.nspname = 'file_management'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.229382991790771484375;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:32;a:5:{i:0;s:692:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='temp_uploaded_file'
+    and ns.nspname='file_management'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2337920665740966796875;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:35;a:5:{i:0;s:1959:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'gallery_image'
+    and d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.23727893829345703125;i:4;a:3:{i:0;a:5:{s:4:"file";s:80:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryImageAr.php";s:4:"line";i:83;s:8:"function";s:10:"attributes";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:396;s:8:"function";s:13:"setAttributes";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:38;a:5:{i:0;s:678:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='gallery_image'
+    and ns.nspname='public'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2422120571136474609375;i:4;a:3:{i:0;a:5:{s:4:"file";s:80:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryImageAr.php";s:4:"line";i:83;s:8:"function";s:10:"attributes";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:396;s:8:"function";s:13:"setAttributes";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:41;a:5:{i:0;s:15:"Set savepoint 1";i:1;i:8;i:2;s:25:"yii\db\Transaction::begin";i:3;d:1430354297.244618892669677734375;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:403;s:8:"function";s:16:"beginTransaction";s:5:"class";s:17:"yii\db\Connection";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:42;a:5:{i:0;s:16:"SAVEPOINT LEVEL1";i:1;i:4;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2446720600128173828125;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:403;s:8:"function";s:16:"beginTransaction";s:5:"class";s:17:"yii\db\Connection";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:45;a:5:{i:0;s:266:"INSERT INTO "gallery_image" ("type", "ownerId", "latitude", "longitude", "versions", "route", "extension") VALUES ('report_item', '757', 27.699999722222, 85.3332, (select '["small","medium","original","preview"]'::JSON), '/uploads/images/report_item/gallery', 'jpg')";i:1;i:4;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.24571990966796875;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:404;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:48;a:5:{i:0;s:121:"UPDATE "gallery_image" SET "versions"=(select '["small","medium","original","preview"]'::JSON), "rank"=105 WHERE "id"=105";i:1;i:4;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2477610111236572265625;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:406;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:51;a:5:{i:0;s:19:"Release savepoint 1";i:1;i:8;i:2;s:26:"yii\db\Transaction::commit";i:3;d:1430354297.5021359920501708984375;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:409;s:8:"function";s:6:"commit";s:5:"class";s:18:"yii\db\Transaction";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:52;a:5:{i:0;s:24:"RELEASE SAVEPOINT LEVEL1";i:1;i:4;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.502212047576904296875;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:409;s:8:"function";s:6:"commit";s:5:"class";s:18:"yii\db\Transaction";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:55;a:5:{i:0;s:66:"DELETE FROM "file_management"."temp_uploaded_file" WHERE "id"='80'";i:1;i:4;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.503940105438232421875;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:385;s:8:"function";s:6:"delete";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:58;a:5:{i:0;s:18:"Commit transaction";i:1;i:8;i:2;s:26:"yii\db\Transaction::commit";i:3;d:1430354297.5047419071197509765625;i:4;a:1:{i:0;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:157;s:8:"function";s:6:"commit";s:5:"class";s:18:"yii\db\Transaction";s:4:"type";s:2:"->";}}}}}s:9:"profiling";a:3:{s:6:"memory";i:20641944;s:4:"time";d:0.4526031017303466796875;s:8:"messages";a:28:{i:14;a:5:{i:0;s:65:"Opening DB connection: pgsql:host=localhost;port=5432;dbname=dmis";i:1;i:80;i:2;s:23:"yii\db\Connection::open";i:3;d:1430354297.1046121120452880859375;i:4;a:1:{i:0;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:125;s:8:"function";s:16:"beginTransaction";s:5:"class";s:17:"yii\db\Connection";s:4:"type";s:2:"->";}}}i:15;a:5:{i:0;s:65:"Opening DB connection: pgsql:host=localhost;port=5432;dbname=dmis";i:1;i:96;i:2;s:23:"yii\db\Connection::open";i:3;d:1430354297.17354488372802734375;i:4;a:1:{i:0;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:125;s:8:"function";s:16:"beginTransaction";s:5:"class";s:17:"yii\db\Connection";s:4:"type";s:2:"->";}}}i:18;a:5:{i:0;s:1967:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'report_item'
+    and d.nspname = 'rapid_assessment'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.1929509639739990234375;i:4;a:2:{i:0;a:5:{s:4:"file";s:87:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\models\ReportItemIncident.php";s:4:"line";i:28;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:127;s:8:"function";s:11:"__construct";s:5:"class";s:15:"yii\base\Object";s:4:"type";s:2:"->";}}}i:19;a:5:{i:0;s:1967:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'report_item'
+    and d.nspname = 'rapid_assessment'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.20195102691650390625;i:4;a:2:{i:0;a:5:{s:4:"file";s:87:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\models\ReportItemIncident.php";s:4:"line";i:28;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:127;s:8:"function";s:11:"__construct";s:5:"class";s:15:"yii\base\Object";s:4:"type";s:2:"->";}}}i:21;a:5:{i:0;s:686:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='report_item'
+    and ns.nspname='rapid_assessment'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2034759521484375;i:4;a:2:{i:0;a:5:{s:4:"file";s:87:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\models\ReportItemIncident.php";s:4:"line";i:28;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:127;s:8:"function";s:11:"__construct";s:5:"class";s:15:"yii\base\Object";s:4:"type";s:2:"->";}}}i:22;a:5:{i:0;s:686:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='report_item'
+    and ns.nspname='rapid_assessment'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2053339481353759765625;i:4;a:2:{i:0;a:5:{s:4:"file";s:87:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\models\ReportItemIncident.php";s:4:"line";i:28;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:127;s:8:"function";s:11:"__construct";s:5:"class";s:15:"yii\base\Object";s:4:"type";s:2:"->";}}}i:24;a:5:{i:0;s:393:"INSERT INTO "rapid_assessment"."report_item" ("type", "timestamp_occurance", "longitude", "latitude", "address", "item_name", "description", "timestamp_created_at", "timestamp_updated_at", "wkt", "geom") VALUES ('incident', '2015-04-30 00:38:07', 85.3332, 27.7, '', 'Building Damage', 'no description', NOW(), NOW(), 'POINT(85.3332 27.7)', (SELECT ST_GeomFromText('POINT(85.3332 27.7)',4326)))";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.213675975799560546875;i:4;a:1:{i:0;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:150;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:25;a:5:{i:0;s:393:"INSERT INTO "rapid_assessment"."report_item" ("type", "timestamp_occurance", "longitude", "latitude", "address", "item_name", "description", "timestamp_created_at", "timestamp_updated_at", "wkt", "geom") VALUES ('incident', '2015-04-30 00:38:07', 85.3332, 27.7, '', 'Building Damage', 'no description', NOW(), NOW(), 'POINT(85.3332 27.7)', (SELECT ST_GeomFromText('POINT(85.3332 27.7)',4326)))";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2190530300140380859375;i:4;a:1:{i:0;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:150;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:27;a:5:{i:0;s:66:"SELECT * FROM "file_management"."temp_uploaded_file" WHERE "id"=80";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.226151943206787109375;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:28;a:5:{i:0;s:66:"SELECT * FROM "file_management"."temp_uploaded_file" WHERE "id"=80";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2289180755615234375;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:30;a:5:{i:0;s:1973:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'temp_uploaded_file'
+    and d.nspname = 'file_management'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.229496002197265625;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:31;a:5:{i:0;s:1973:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'temp_uploaded_file'
+    and d.nspname = 'file_management'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2331058979034423828125;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:33;a:5:{i:0;s:692:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='temp_uploaded_file'
+    and ns.nspname='file_management'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2338650226593017578125;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:34;a:5:{i:0;s:692:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='temp_uploaded_file'
+    and ns.nspname='file_management'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.235557079315185546875;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:36;a:5:{i:0;s:1959:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'gallery_image'
+    and d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2373559474945068359375;i:4;a:3:{i:0;a:5:{s:4:"file";s:80:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryImageAr.php";s:4:"line";i:83;s:8:"function";s:10:"attributes";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:396;s:8:"function";s:13:"setAttributes";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:37;a:5:{i:0;s:1959:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'gallery_image'
+    and d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2413809299468994140625;i:4;a:3:{i:0;a:5:{s:4:"file";s:80:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryImageAr.php";s:4:"line";i:83;s:8:"function";s:10:"attributes";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:396;s:8:"function";s:13:"setAttributes";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:39;a:5:{i:0;s:678:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='gallery_image'
+    and ns.nspname='public'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2422809600830078125;i:4;a:3:{i:0;a:5:{s:4:"file";s:80:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryImageAr.php";s:4:"line";i:83;s:8:"function";s:10:"attributes";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:396;s:8:"function";s:13:"setAttributes";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:40;a:5:{i:0;s:678:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='gallery_image'
+    and ns.nspname='public'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2440888881683349609375;i:4;a:3:{i:0;a:5:{s:4:"file";s:80:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryImageAr.php";s:4:"line";i:83;s:8:"function";s:10:"attributes";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:396;s:8:"function";s:13:"setAttributes";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:43;a:5:{i:0;s:16:"SAVEPOINT LEVEL1";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2447071075439453125;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:403;s:8:"function";s:16:"beginTransaction";s:5:"class";s:17:"yii\db\Connection";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:44;a:5:{i:0;s:16:"SAVEPOINT LEVEL1";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2451050281524658203125;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:403;s:8:"function";s:16:"beginTransaction";s:5:"class";s:17:"yii\db\Connection";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:46;a:5:{i:0;s:266:"INSERT INTO "gallery_image" ("type", "ownerId", "latitude", "longitude", "versions", "route", "extension") VALUES ('report_item', '757', 27.699999722222, 85.3332, (select '["small","medium","original","preview"]'::JSON), '/uploads/images/report_item/gallery', 'jpg')";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.245771884918212890625;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:404;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:47;a:5:{i:0;s:266:"INSERT INTO "gallery_image" ("type", "ownerId", "latitude", "longitude", "versions", "route", "extension") VALUES ('report_item', '757', 27.699999722222, 85.3332, (select '["small","medium","original","preview"]'::JSON), '/uploads/images/report_item/gallery', 'jpg')";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2468159198760986328125;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:404;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:49;a:5:{i:0;s:121:"UPDATE "gallery_image" SET "versions"=(select '["small","medium","original","preview"]'::JSON), "rank"=105 WHERE "id"=105";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2478129863739013671875;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:406;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:50;a:5:{i:0;s:121:"UPDATE "gallery_image" SET "versions"=(select '["small","medium","original","preview"]'::JSON), "rank"=105 WHERE "id"=105";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2516710758209228515625;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:406;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:53;a:5:{i:0;s:24:"RELEASE SAVEPOINT LEVEL1";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.502255916595458984375;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:409;s:8:"function";s:6:"commit";s:5:"class";s:18:"yii\db\Transaction";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:54;a:5:{i:0;s:24:"RELEASE SAVEPOINT LEVEL1";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.502748966217041015625;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:409;s:8:"function";s:6:"commit";s:5:"class";s:18:"yii\db\Transaction";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:56;a:5:{i:0;s:66:"DELETE FROM "file_management"."temp_uploaded_file" WHERE "id"='80'";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.5039970874786376953125;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:385;s:8:"function";s:6:"delete";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:57;a:5:{i:0;s:66:"DELETE FROM "file_management"."temp_uploaded_file" WHERE "id"='80'";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.504518985748291015625;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:385;s:8:"function";s:6:"delete";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}}}s:2:"db";a:1:{s:8:"messages";a:26:{i:18;a:5:{i:0;s:1967:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'report_item'
+    and d.nspname = 'rapid_assessment'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.1929509639739990234375;i:4;a:2:{i:0;a:5:{s:4:"file";s:87:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\models\ReportItemIncident.php";s:4:"line";i:28;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:127;s:8:"function";s:11:"__construct";s:5:"class";s:15:"yii\base\Object";s:4:"type";s:2:"->";}}}i:19;a:5:{i:0;s:1967:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'report_item'
+    and d.nspname = 'rapid_assessment'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.20195102691650390625;i:4;a:2:{i:0;a:5:{s:4:"file";s:87:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\models\ReportItemIncident.php";s:4:"line";i:28;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:127;s:8:"function";s:11:"__construct";s:5:"class";s:15:"yii\base\Object";s:4:"type";s:2:"->";}}}i:21;a:5:{i:0;s:686:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='report_item'
+    and ns.nspname='rapid_assessment'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2034759521484375;i:4;a:2:{i:0;a:5:{s:4:"file";s:87:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\models\ReportItemIncident.php";s:4:"line";i:28;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:127;s:8:"function";s:11:"__construct";s:5:"class";s:15:"yii\base\Object";s:4:"type";s:2:"->";}}}i:22;a:5:{i:0;s:686:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='report_item'
+    and ns.nspname='rapid_assessment'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2053339481353759765625;i:4;a:2:{i:0;a:5:{s:4:"file";s:87:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\models\ReportItemIncident.php";s:4:"line";i:28;s:8:"function";s:5:"__set";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:127;s:8:"function";s:11:"__construct";s:5:"class";s:15:"yii\base\Object";s:4:"type";s:2:"->";}}}i:24;a:5:{i:0;s:393:"INSERT INTO "rapid_assessment"."report_item" ("type", "timestamp_occurance", "longitude", "latitude", "address", "item_name", "description", "timestamp_created_at", "timestamp_updated_at", "wkt", "geom") VALUES ('incident', '2015-04-30 00:38:07', 85.3332, 27.7, '', 'Building Damage', 'no description', NOW(), NOW(), 'POINT(85.3332 27.7)', (SELECT ST_GeomFromText('POINT(85.3332 27.7)',4326)))";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.213675975799560546875;i:4;a:1:{i:0;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:150;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:25;a:5:{i:0;s:393:"INSERT INTO "rapid_assessment"."report_item" ("type", "timestamp_occurance", "longitude", "latitude", "address", "item_name", "description", "timestamp_created_at", "timestamp_updated_at", "wkt", "geom") VALUES ('incident', '2015-04-30 00:38:07', 85.3332, 27.7, '', 'Building Damage', 'no description', NOW(), NOW(), 'POINT(85.3332 27.7)', (SELECT ST_GeomFromText('POINT(85.3332 27.7)',4326)))";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2190530300140380859375;i:4;a:1:{i:0;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:150;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}}i:27;a:5:{i:0;s:66:"SELECT * FROM "file_management"."temp_uploaded_file" WHERE "id"=80";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.226151943206787109375;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:28;a:5:{i:0;s:66:"SELECT * FROM "file_management"."temp_uploaded_file" WHERE "id"=80";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2289180755615234375;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:30;a:5:{i:0;s:1973:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'temp_uploaded_file'
+    and d.nspname = 'file_management'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.229496002197265625;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:31;a:5:{i:0;s:1973:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'temp_uploaded_file'
+    and d.nspname = 'file_management'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2331058979034423828125;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:33;a:5:{i:0;s:692:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='temp_uploaded_file'
+    and ns.nspname='file_management'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2338650226593017578125;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:34;a:5:{i:0;s:692:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='temp_uploaded_file'
+    and ns.nspname='file_management'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.235557079315185546875;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:380;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:36;a:5:{i:0;s:1959:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'gallery_image'
+    and d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2373559474945068359375;i:4;a:3:{i:0;a:5:{s:4:"file";s:80:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryImageAr.php";s:4:"line";i:83;s:8:"function";s:10:"attributes";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:396;s:8:"function";s:13:"setAttributes";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:37;a:5:{i:0;s:1959:"SELECT
+    d.nspname AS table_schema,
+    c.relname AS table_name,
+    a.attname AS column_name,
+    t.typname AS data_type,
+    a.attlen AS character_maximum_length,
+    pg_catalog.col_description(c.oid, a.attnum) AS column_comment,
+    a.atttypmod AS modifier,
+    a.attnotnull = false AS is_nullable,
+    CAST(pg_get_expr(ad.adbin, ad.adrelid) AS varchar) AS column_default,
+    coalesce(pg_get_expr(ad.adbin, ad.adrelid) ~ 'nextval',false) AS is_autoinc,
+    array_to_string((select array_agg(enumlabel) from pg_enum where enumtypid=a.atttypid)::varchar[],',') as enum_values,
+    CASE atttypid
+         WHEN 21 /*int2*/ THEN 16
+         WHEN 23 /*int4*/ THEN 32
+         WHEN 20 /*int8*/ THEN 64
+         WHEN 1700 /*numeric*/ THEN
+              CASE WHEN atttypmod = -1
+               THEN null
+               ELSE ((atttypmod - 4) >> 16) & 65535
+               END
+         WHEN 700 /*float4*/ THEN 24 /*FLT_MANT_DIG*/
+         WHEN 701 /*float8*/ THEN 53 /*DBL_MANT_DIG*/
+         ELSE null
+      END   AS numeric_precision,
+      CASE
+        WHEN atttypid IN (21, 23, 20) THEN 0
+        WHEN atttypid IN (1700) THEN
+        CASE
+            WHEN atttypmod = -1 THEN null
+            ELSE (atttypmod - 4) & 65535
+        END
+           ELSE null
+      END AS numeric_scale,
+    CAST(
+             information_schema._pg_char_max_length(information_schema._pg_truetypid(a, t), information_schema._pg_truetypmod(a, t))
+             AS numeric
+    ) AS size,
+    a.attnum = any (ct.conkey) as is_pkey
+FROM
+    pg_class c
+    LEFT JOIN pg_attribute a ON a.attrelid = c.oid
+    LEFT JOIN pg_attrdef ad ON a.attrelid = ad.adrelid AND a.attnum = ad.adnum
+    LEFT JOIN pg_type t ON a.atttypid = t.oid
+    LEFT JOIN pg_namespace d ON d.oid = c.relnamespace
+    LEFT join pg_constraint ct on ct.conrelid=c.oid and ct.contype='p'
+WHERE
+    a.attnum > 0 and t.typname != ''
+    and c.relname = 'gallery_image'
+    and d.nspname = 'public'
+ORDER BY
+    a.attnum;";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2413809299468994140625;i:4;a:3:{i:0;a:5:{s:4:"file";s:80:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryImageAr.php";s:4:"line";i:83;s:8:"function";s:10:"attributes";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:396;s:8:"function";s:13:"setAttributes";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:39;a:5:{i:0;s:678:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='gallery_image'
+    and ns.nspname='public'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2422809600830078125;i:4;a:3:{i:0;a:5:{s:4:"file";s:80:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryImageAr.php";s:4:"line";i:83;s:8:"function";s:10:"attributes";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:396;s:8:"function";s:13:"setAttributes";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:40;a:5:{i:0;s:678:"select
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.conrelid and attnum = any(ct.conkey)) as columns,
+    fc.relname as foreign_table_name,
+    fns.nspname as foreign_table_schema,
+    (select string_agg(attname,',') attname from pg_attribute where attrelid=ct.confrelid and attnum = any(ct.confkey)) as foreign_columns
+from
+    pg_constraint ct
+    inner join pg_class c on c.oid=ct.conrelid
+    inner join pg_namespace ns on c.relnamespace=ns.oid
+    left join pg_class fc on fc.oid=ct.confrelid
+    left join pg_namespace fns on fc.relnamespace=fns.oid
+
+where
+    ct.contype='f'
+    and c.relname='gallery_image'
+    and ns.nspname='public'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1430354297.2440888881683349609375;i:4;a:3:{i:0;a:5:{s:4:"file";s:80:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryImageAr.php";s:4:"line";i:83;s:8:"function";s:10:"attributes";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:396;s:8:"function";s:13:"setAttributes";s:5:"class";s:14:"yii\base\Model";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:43;a:5:{i:0;s:16:"SAVEPOINT LEVEL1";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2447071075439453125;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:403;s:8:"function";s:16:"beginTransaction";s:5:"class";s:17:"yii\db\Connection";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:44;a:5:{i:0;s:16:"SAVEPOINT LEVEL1";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2451050281524658203125;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:403;s:8:"function";s:16:"beginTransaction";s:5:"class";s:17:"yii\db\Connection";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:46;a:5:{i:0;s:266:"INSERT INTO "gallery_image" ("type", "ownerId", "latitude", "longitude", "versions", "route", "extension") VALUES ('report_item', '757', 27.699999722222, 85.3332, (select '["small","medium","original","preview"]'::JSON), '/uploads/images/report_item/gallery', 'jpg')";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.245771884918212890625;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:404;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:47;a:5:{i:0;s:266:"INSERT INTO "gallery_image" ("type", "ownerId", "latitude", "longitude", "versions", "route", "extension") VALUES ('report_item', '757', 27.699999722222, 85.3332, (select '["small","medium","original","preview"]'::JSON), '/uploads/images/report_item/gallery', 'jpg')";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2468159198760986328125;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:404;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:49;a:5:{i:0;s:121:"UPDATE "gallery_image" SET "versions"=(select '["small","medium","original","preview"]'::JSON), "rank"=105 WHERE "id"=105";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2478129863739013671875;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:406;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:50;a:5:{i:0;s:121:"UPDATE "gallery_image" SET "versions"=(select '["small","medium","original","preview"]'::JSON), "rank"=105 WHERE "id"=105";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.2516710758209228515625;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:406;s:8:"function";s:4:"save";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:53;a:5:{i:0;s:24:"RELEASE SAVEPOINT LEVEL1";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.502255916595458984375;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:409;s:8:"function";s:6:"commit";s:5:"class";s:18:"yii\db\Transaction";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:54;a:5:{i:0;s:24:"RELEASE SAVEPOINT LEVEL1";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.502748966217041015625;i:4;a:3:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:409;s:8:"function";s:6:"commit";s:5:"class";s:18:"yii\db\Transaction";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:384;s:8:"function";s:8:"addImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}i:2;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:56;a:5:{i:0;s:66:"DELETE FROM "file_management"."temp_uploaded_file" WHERE "id"='80'";i:1;i:80;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.5039970874786376953125;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:385;s:8:"function";s:6:"delete";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}i:57;a:5:{i:0;s:66:"DELETE FROM "file_management"."temp_uploaded_file" WHERE "id"='80'";i:1;i:96;i:2;s:23:"yii\db\Command::execute";i:3;d:1430354297.504518985748291015625;i:4;a:2:{i:0;a:5:{s:4:"file";s:81:"C:\xampp\htdocs\girc\dmis\vendor\zxbodya\yii2-gallery-manager\GalleryBehavior.php";s:4:"line";i:385;s:8:"function";s:6:"delete";s:5:"class";s:19:"yii\db\ActiveRecord";s:4:"type";s:2:"->";}i:1;a:5:{s:4:"file";s:92:"C:\xampp\htdocs\girc\dmis\common\modules\rapid_assessment\actions\ReportItemCreateAction.php";s:4:"line";i:154;s:8:"function";s:20:"addTempUploadedImage";s:5:"class";s:43:"zxbodya\yii2\galleryManager\GalleryBehavior";s:4:"type";s:2:"->";}}}}}s:6:"assets";a:0:{}s:4:"mail";a:0:{}s:7:"summary";a:9:{s:3:"tag";s:13:"5541797912b85";s:3:"url";s:85:"http://10.0.2.2/girc/dmis/api/rapid_assessment/report-items/ReportItemIncident/create";s:4:"ajax";i:0;s:6:"method";s:4:"POST";s:2:"ip";s:9:"127.0.0.1";s:4:"time";i:1430354297;s:10:"statusCode";i:200;s:8:"sqlCount";i:13;s:9:"mailCount";i:0;}}

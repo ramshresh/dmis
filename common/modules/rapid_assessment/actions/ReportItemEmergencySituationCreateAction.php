@@ -26,10 +26,11 @@ class ReportItemEmergencySituationCreateAction extends MyBaseAction
     {
         $model = new ReportItemEmergencySituation();
         // obtaining related models dada via POST request
-        if (Yii::$app->request->post('ReportItemMultimedia', [])) {
+        if (Yii::$app->request->post('ReportItemNeed', [])) {
             //Loading $_POST data of related models
-            $model->reportItemMultimedia = Yii::$app->request->post('ReportItemMultimedia', []);
+            $model->needs = $model->findNeeds(Yii::$app->request->post('ReportItemNeed', []));
         }
+
         try {
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 $this->sendSuccessResponseOnAjaxFormSubmit('saved');
@@ -42,6 +43,8 @@ class ReportItemEmergencySituationCreateAction extends MyBaseAction
         }
         return $model;
     }
+
+
 }
 
 

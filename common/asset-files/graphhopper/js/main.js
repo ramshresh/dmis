@@ -1,4 +1,4 @@
-var host='http://localhost:8989';
+var host = 'http://116.90.239.21:8989';
 // Deployment-scripts can insert host here.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // We know that you love 'free', we love it too :)! And so our entire software stack is free and even Open Source!      
@@ -88,72 +88,73 @@ $(document).ready(function (e) {
 
     var urlParams = parseUrlWithHisto();
     $.when(ghRequest.fetchTranslationMap(urlParams.locale), ghRequest.getInfo())
-            .then(function (arg1, arg2) {
-                // init translation retrieved from first call (fetchTranslationMap)
-                var translations = arg1[0];
+        .then(function (arg1, arg2) {
+            // init translation retrieved from first call (fetchTranslationMap)
+            var translations = arg1[0];
 
-                // init language
-                // 1. determined by Accept-Language header, falls back to 'en' if no translation map available
-                // 2. can be overwritten by url parameter        
-                ghRequest.setLocale(translations["locale"]);
-                defaultTranslationMap = translations["default"];
-                enTranslationMap = translations["en"];
-                if (!defaultTranslationMap)
-                    defaultTranslationMap = enTranslationMap;
+            // init language
+            // 1. determined by Accept-Language header, falls back to 'en' if no translation map available
+            // 2. can be overwritten by url parameter
+            ghRequest.setLocale(translations["locale"]);
+            defaultTranslationMap = translations["default"];
+            enTranslationMap = translations["en"];
+            if (!defaultTranslationMap)
+                defaultTranslationMap = enTranslationMap;
 
-                i18nIsInitialized = true;
-                initI18N();
+            i18nIsInitialized = true;
+            initI18N();
 
-                // init bounding box from getInfo result
-                var json = arg2[0];
-                var tmp = json.bbox;
-                bounds.initialized = true;
-                bounds.minLon = tmp[0];
-                bounds.minLat = tmp[1];
-                bounds.maxLon = tmp[2];
-                bounds.maxLat = tmp[3];
-                var vehiclesDiv = $("#vehicles");
-                function createButton(vehicle) {
-                    var button = $("<button class='vehicle-btn' title='" + tr(vehicle) + "'/>");
-                    button.attr('id', vehicle);
-                    button.html("<img src='/girc/dmis/frontend/web/assets/4f12462e/img/" + vehicle + ".png' alt='" + tr(vehicle) + "'></img>");
-                    button.click(function () {
-                        ghRequest.initVehicle(vehicle);
-                        resolveAll()
-                        routeLatLng(ghRequest);
-                    });
-                    return button;
+            // init bounding box from getInfo result
+            var json = arg2[0];
+            var tmp = json.bbox;
+            bounds.initialized = true;
+            bounds.minLon = tmp[0];
+            bounds.minLat = tmp[1];
+            bounds.maxLon = tmp[2];
+            bounds.maxLat = tmp[3];
+            var vehiclesDiv = $("#vehicles");
+
+            function createButton(vehicle) {
+                var button = $("<button class='vehicle-btn' title='" + tr(vehicle) + "'/>");
+                button.attr('id', vehicle);
+                button.html("<img src='/girc/dmis/frontend/web/assets/4f12462e/img/" + vehicle + ".png' alt='" + tr(vehicle) + "'></img>");
+                button.click(function () {
+                    ghRequest.initVehicle(vehicle);
+                    resolveAll()
+                    routeLatLng(ghRequest);
+                });
+                return button;
+            }
+
+            if (json.features) {
+                ghRequest.features = json.features;
+
+                var vehicles = Object.keys(json.features);
+                if (vehicles.length > 0)
+                    ghRequest.initVehicle(vehicles[0]);
+
+                for (var key in json.features) {
+                    vehiclesDiv.append(createButton(key.toLowerCase()));
                 }
+            }
 
-                if (json.features) {
-                    ghRequest.features = json.features;
+            initMap(urlParams.layer);
 
-                    var vehicles = Object.keys(json.features);
-                    if (vehicles.length > 0)
-                        ghRequest.initVehicle(vehicles[0]);
+            // execute query
+            initFromParams(urlParams, true);
+        }, function (err) {
+            log(err);
+            $('#error').html('GraphHopper API offline? <a href="http://graphhopper.com/maps">Refresh</a>'
+            + '<br/>Status: ' + err.statusText + '<br/>' + host);
 
-                    for (var key in json.features) {
-                        vehiclesDiv.append(createButton(key.toLowerCase()));
-                    }
-                }
-
-                initMap(urlParams.layer);
-
-                // execute query
-                initFromParams(urlParams, true);
-            }, function (err) {
-                log(err);
-                $('#error').html('GraphHopper API offline? <a href="http://graphhopper.com/maps">Refresh</a>'
-                        + '<br/>Status: ' + err.statusText + '<br/>' + host);
-
-                bounds = {
-                    "minLon": -180,
-                    "minLat": -90,
-                    "maxLon": 180,
-                    "maxLat": 90
-                };
-                initMap();
-            });
+            bounds = {
+                "minLon": -180,
+                "minLat": -90,
+                "maxLon": 180,
+                "maxLat": 90
+            };
+            initMap();
+        });
 
     $(window).resize(function () {
         adjustMapSize();
@@ -190,7 +191,7 @@ $(document).ready(function (e) {
 function initFromParams(params, doQuery) {
     ghRequest.init(params);
     var fromAndTo = params.from && params.to,
-            routeNow = params.point && params.point.length >= 2 || fromAndTo;
+        routeNow = params.point && params.point.length >= 2 || fromAndTo;
 
     if (routeNow) {
         if (fromAndTo)
@@ -227,7 +228,7 @@ function resolveCoords(pointsAsStr, doQuery) {
 
 function checkInput() {
     var template = $('#pointTemplate').html(),
-            len = ghRequest.route.size();
+        len = ghRequest.route.size();
 
     // remove deleted points
     if ($('#locationpoints > div.pointDiv').length > len) {
@@ -249,7 +250,7 @@ function checkInput() {
         var toFrom = getToFrom(i);
         div.data("index", i);
         div.find(".pointFlag").attr("src",
-                (toFrom === FROM) ? '/girc/dmis/frontend/web/assets/4f12462e/img/marker-small-green.png' :
+            (toFrom === FROM) ? '/girc/dmis/frontend/web/assets/4f12462e/img/marker-small-green.png' :
                 ((toFrom === TO) ? '/girc/dmis/frontend/web/assets/4f12462e/img/marker-small-red.png' : '/girc/dmis/frontend/web/assets/4f12462e/img/marker-small-blue.png'));
         if (len > 2) {
             div.find(".pointDelete").click(function () {
@@ -386,24 +387,24 @@ function initMap(selectLayer) {
         contextmenu: true,
         contextmenuWidth: 140,
         contextmenuItems: [{
-                separator: true,
-                index: 3,
-                state: ['set_default']
-            }, {
-                text: 'Show coordinates',
-                callback: function (e) {
-                    alert(e.latlng.lat + "," + e.latlng.lng);
-                },
-                index: 4,
-                state: [1, 2, 3]
-            }, {
-                text: 'Center map here',
-                callback: function (e) {
-                    map.panTo(e.latlng);
-                },
-                index: 5,
-                state: [1, 2, 3]
-            }],
+            separator: true,
+            index: 3,
+            state: ['set_default']
+        }, {
+            text: 'Show coordinates',
+            callback: function (e) {
+                alert(e.latlng.lat + "," + e.latlng.lng);
+            },
+            index: 4,
+            state: [1, 2, 3]
+        }, {
+            text: 'Center map here',
+            callback: function (e) {
+                map.panTo(e.latlng);
+            },
+            index: 5,
+            state: [1, 2, 3]
+        }],
         zoomControl: false,
         loadingControl: false
     });
@@ -457,7 +458,7 @@ function initMap(selectLayer) {
     L.control.scale().addTo(map);
 
     map.fitBounds(new L.LatLngBounds(new L.LatLng(bounds.minLat, bounds.minLon),
-            new L.LatLng(bounds.maxLat, bounds.maxLon)));
+        new L.LatLng(bounds.maxLat, bounds.maxLon)));
 
     if (isProduction())
         map.setView(new L.LatLng(0, 0), 2);
@@ -492,20 +493,20 @@ function initMap(selectLayer) {
         style: {color: "#00cc33", "weight": 5, "opacity": 0.6}, // route color and style
         contextmenu: true,
         contextmenuItems: [{
-                text: 'Route ',
-                disabled: true,
-                index: 0,
-                state: 3
-            }, {
-                text: 'Set intermediate',
-                callback: setIntermediateCoord,
-                index: 1,
-                state: 3
-            }, {
-                separator: true,
-                index: 2,
-                state: 3
-            }],
+            text: 'Route ',
+            disabled: true,
+            index: 0,
+            state: 3
+        }, {
+            text: 'Set intermediate',
+            callback: setIntermediateCoord,
+            index: 1,
+            state: 3
+        }, {
+            separator: true,
+            index: 2,
+            state: 3
+        }],
         contextmenuAtiveState: 3
     };
     /*
@@ -519,14 +520,14 @@ function initMap(selectLayer) {
 
 function setToStart(e) {
     var latlng = e.target.getLatLng(),
-            index = ghRequest.route.getIndexByCoord(latlng);
+        index = ghRequest.route.getIndexByCoord(latlng);
     ghRequest.route.move(index, 0);
     routeIfAllResolved();
 }
 
 function setToEnd(e) {
     var latlng = e.target.getLatLng(),
-            index = ghRequest.route.getIndexByCoord(latlng);
+        index = ghRequest.route.getIndexByCoord(latlng);
     ghRequest.route.move(index, -1);
     routeIfAllResolved();
 }
@@ -586,47 +587,47 @@ function getToFrom(index) {
 function setFlag(coord, index) {
     if (coord.lat) {
         var toFrom = getToFrom(index),
-                marker = L.marker([coord.lat, coord.lng], {
-                    icon: ((toFrom === FROM) ? iconFrom : ((toFrom === TO) ? iconTo : iconInt)),
-                    draggable: true,
-                    contextmenu: true,
-                    contextmenuItems: [{
-                            text: 'Marker ' + ((toFrom === FROM) ? 'Start' : ((toFrom === TO) ? 'End' : 'Intermediate')),
-                            disabled: true,
-                            index: 0,
-                            state: 2
-                        }, {
-                            text: 'Set as ' + ((toFrom !== TO) ? 'End' : 'Start'),
-                            callback: (toFrom !== TO) ? setToEnd : setToStart,
-                            index: 2,
-                            state: 2
-                        }, {
-                            text: 'Delete from Route',
-                            callback: deleteCoord,
-                            index: 3,
-                            state: 2,
-                            disabled: (toFrom !== -1 && ghRequest.route.size() === 2) ? true : false // prevent to and from
-                        }, {
-                            separator: true,
-                            index: 4,
-                            state: 2
-                        }],
-                    contextmenuAtiveState: 2
-                }).addTo(routingLayer).bindPopup(((toFrom === FROM) ? 'Start' : ((toFrom === TO) ? 'End' : 'Intermediate')));
+            marker = L.marker([coord.lat, coord.lng], {
+                icon: ((toFrom === FROM) ? iconFrom : ((toFrom === TO) ? iconTo : iconInt)),
+                draggable: true,
+                contextmenu: true,
+                contextmenuItems: [{
+                    text: 'Marker ' + ((toFrom === FROM) ? 'Start' : ((toFrom === TO) ? 'End' : 'Intermediate')),
+                    disabled: true,
+                    index: 0,
+                    state: 2
+                }, {
+                    text: 'Set as ' + ((toFrom !== TO) ? 'End' : 'Start'),
+                    callback: (toFrom !== TO) ? setToEnd : setToStart,
+                    index: 2,
+                    state: 2
+                }, {
+                    text: 'Delete from Route',
+                    callback: deleteCoord,
+                    index: 3,
+                    state: 2,
+                    disabled: (toFrom !== -1 && ghRequest.route.size() === 2) ? true : false // prevent to and from
+                }, {
+                    separator: true,
+                    index: 4,
+                    state: 2
+                }],
+                contextmenuAtiveState: 2
+            }).addTo(routingLayer).bindPopup(((toFrom === FROM) ? 'Start' : ((toFrom === TO) ? 'End' : 'Intermediate')));
         // intercept openPopup
         marker._openPopup = marker.openPopup;
         marker.openPopup = function () {
             var latlng = this.getLatLng(),
-                    locCoord = ghRequest.route.getIndexFromCoord(latlng),
-                    content;
+                locCoord = ghRequest.route.getIndexFromCoord(latlng),
+                content;
             if (locCoord.resolvedList && locCoord.resolvedList[0] && locCoord.resolvedList[0].locationDetails) {
                 var address = locCoord.resolvedList[0].locationDetails;
                 content =
-                        ((address.road) ? address.road + ', ' : '') +
-                        ((address.postcode) ? address.postcode + ', ' : '') +
-                        ((address.city) ? address.city + ', ' : '') +
-                        ((address.country) ? address.country : '')
-                        ;
+                    ((address.road) ? address.road + ', ' : '') +
+                    ((address.postcode) ? address.postcode + ', ' : '') +
+                    ((address.city) ? address.city + ', ' : '') +
+                    ((address.country) ? address.country : '')
+                ;
                 // at last update the content and update
                 this._popup.setContent(content).update();
             }
@@ -731,82 +732,82 @@ function createAmbiguityList(locCoord) {
         return tmpDefer;
     } else if (locCoord.lat && locCoord.lng) {
         var url = nominatimReverseURL + "?lat=" + locCoord.lat + "&lon="
-                + locCoord.lng + "&format=json&zoom=16";
+            + locCoord.lng + "&format=json&zoom=16";
         return $.ajax({
             url: url,
             type: "GET",
             dataType: "json",
             timeout: timeout
         }).then(
-                function (json) {
-                    if (!json) {
-                        locCoord.error = "No description found for coordinate";
-                        return [locCoord];
-                    }
-                    var address = json.address;
-                    var point = {};
-                    point.lat = locCoord.lat;
-                    point.lng = locCoord.lng;
-                    point.bbox = json.boundingbox;
-                    point.positionType = json.type;
-                    point.locationDetails = formatLocationEntry(address);
-                    // point.address = json.address;
-                    locCoord.resolvedList.push(point);
-                    return [locCoord];
-                },
-                function (err) {
-                    log("[nominatim_reverse] Error while looking up coordinate lat=" + locCoord.lat + "&lon=" + locCoord.lng);
-                    locCoord.error = "Problem while looking up location.";
+            function (json) {
+                if (!json) {
+                    locCoord.error = "No description found for coordinate";
                     return [locCoord];
                 }
+                var address = json.address;
+                var point = {};
+                point.lat = locCoord.lat;
+                point.lng = locCoord.lng;
+                point.bbox = json.boundingbox;
+                point.positionType = json.type;
+                point.locationDetails = formatLocationEntry(address);
+                // point.address = json.address;
+                locCoord.resolvedList.push(point);
+                return [locCoord];
+            },
+            function (err) {
+                log("[nominatim_reverse] Error while looking up coordinate lat=" + locCoord.lat + "&lon=" + locCoord.lng);
+                locCoord.error = "Problem while looking up location.";
+                return [locCoord];
+            }
         );
     } else {
         return doGeoCoding(locCoord.input, 10, timeout).then(
-                function (jsonArgs) {
-                    if (!jsonArgs || jsonArgs.length === 0) {
-                        locCoord.error = "No area description found";
-                        return [locCoord];
-                    }
-                    var prevImportance = jsonArgs[0].importance;
-                    var address;
-                    for (var index in jsonArgs) {
-                        var json = jsonArgs[index];
-                        // if we have already some results ignore unimportant
-                        if (prevImportance - json.importance > 0.4)
-                            break;
-
-                        // de-duplicate via ignoring boundary stuff => not perfect as 'Freiberg' would no longer be correct
-                        // if (json.type === "administrative")
-                        //    continue;
-
-                        // if no different properties => skip!
-                        if (address && JSON.stringify(address) === JSON.stringify(json.address))
-                            continue;
-
-                        address = json.address;
-                        prevImportance = json.importance;
-                        var point = {};
-                        point.lat = round(json.lat);
-                        point.lng = round(json.lon);
-                        point.locationDetails = formatLocationEntry(address);
-                        point.bbox = json.boundingbox;
-                        point.positionType = json.type;
-                        locCoord.resolvedList.push(point);
-                    }
-                    if (locCoord.resolvedList.length === 0) {
-                        locCoord.error = "No area description found";
-                        return [locCoord];
-                    }
-                    var list = locCoord.resolvedList;
-                    locCoord.lat = list[0].lat;
-                    locCoord.lng = list[0].lng;
-                    // locCoord.input = dataToText(list[0]);
-                    return [locCoord];
-                },
-                function () {
-                    locCoord.error = "Problem while looking up address";
+            function (jsonArgs) {
+                if (!jsonArgs || jsonArgs.length === 0) {
+                    locCoord.error = "No area description found";
                     return [locCoord];
                 }
+                var prevImportance = jsonArgs[0].importance;
+                var address;
+                for (var index in jsonArgs) {
+                    var json = jsonArgs[index];
+                    // if we have already some results ignore unimportant
+                    if (prevImportance - json.importance > 0.4)
+                        break;
+
+                    // de-duplicate via ignoring boundary stuff => not perfect as 'Freiberg' would no longer be correct
+                    // if (json.type === "administrative")
+                    //    continue;
+
+                    // if no different properties => skip!
+                    if (address && JSON.stringify(address) === JSON.stringify(json.address))
+                        continue;
+
+                    address = json.address;
+                    prevImportance = json.importance;
+                    var point = {};
+                    point.lat = round(json.lat);
+                    point.lng = round(json.lon);
+                    point.locationDetails = formatLocationEntry(address);
+                    point.bbox = json.boundingbox;
+                    point.positionType = json.type;
+                    locCoord.resolvedList.push(point);
+                }
+                if (locCoord.resolvedList.length === 0) {
+                    locCoord.error = "No area description found";
+                    return [locCoord];
+                }
+                var list = locCoord.resolvedList;
+                locCoord.lat = list[0].lat;
+                locCoord.lng = list[0].lng;
+                // locCoord.input = dataToText(list[0]);
+                return [locCoord];
+            },
+            function () {
+                locCoord.error = "Problem while looking up address";
+                return [locCoord];
+            }
         );
     }
 }
@@ -837,7 +838,7 @@ function formatLocationEntry(address) {
     locationDetails.country = address.country;
 
     if (address.city || address.suburb || address.town
-            || address.village || address.hamlet || address.locality) {
+        || address.village || address.hamlet || address.locality) {
         text = "";
         if (address.locality)
             text = insComma(text, address.locality);
@@ -881,8 +882,8 @@ function doGeoCoding(input, limit, timeout) {
         dataType: "json",
         timeout: timeout
     }).fail(
-            createCallback("[nominatim] Problem while looking up location " + input)
-            );
+        createCallback("[nominatim] Problem while looking up location " + input)
+    );
 }
 
 function createCallback(errorFallback) {
@@ -1048,7 +1049,7 @@ function routeLatLng(request, doQuery) {
             });
             $("#info").append(toggly);
             var infoStr = "took: " + round(json.info.took / 1000, 1000) + "s"
-                    + ", points: " + path.points.coordinates.length;
+                + ", points: " + path.points.coordinates.length;
 
             hiddenDiv.append("<span>" + infoStr + "</span>");
 
@@ -1071,7 +1072,7 @@ function routeLatLng(request, doQuery) {
                 addToGoogle = "&dirflg=w";
                 addToBing = "&mode=W";
             } else if ((request.vehicle.toUpperCase().indexOf("BIKE") >= 0) ||
-                    (request.vehicle.toUpperCase() === "MTB")) {
+                (request.vehicle.toUpperCase() === "MTB")) {
                 addToGoogle = "&dirflg=b";
                 // ? addToBing = "&mode=B";
             }
@@ -1152,8 +1153,8 @@ function addInstruction(main, instr, instrIndex, lngLat) {
 
     if (distance > 0) {
         str += " <td class='instr_distance'><span>"
-                + createDistanceString(distance) + "<br/>"
-                + createTimeString(instr.time) + "</span></td>";
+        + createDistanceString(distance) + "<br/>"
+        + createTimeString(instr.time) + "</span></td>";
     }
 
     if (sign !== "continue") {
@@ -1170,9 +1171,9 @@ function addInstruction(main, instr, instrIndex, lngLat) {
                 map.removeLayer(routeSegmentPopup);
 
             routeSegmentPopup = L.popup().
-                    setLatLng([lngLat[1], lngLat[0]]).
-                    setContent(title).
-                    openOn(map);
+                setLatLng([lngLat[1], lngLat[0]]).
+                setContent(title).
+                openOn(map);
         });
     }
     main.append(instructionDiv);
@@ -1242,10 +1243,10 @@ function parseUrl(query) {
 
 function mySubmit() {
     var fromStr,
-            toStr,
-            viaStr,
-            allStr = [],
-            inputOk = true;
+        toStr,
+        viaStr,
+        allStr = [],
+        inputOk = true;
     var location_points = $("#locationpoints > div.pointDiv > input.pointInput");
     var len = location_points.size();
     $.each(location_points, function (index) {

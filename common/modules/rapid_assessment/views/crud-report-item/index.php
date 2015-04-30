@@ -18,7 +18,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a(Yii::t('app', 'Create Report Item'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <?php \yii\widgets\Pjax::begin([
+        'id'=>'pjax1',
+        'timeout' => false,
+        'enablePushState' => false,
+        'clientOptions' => ['method' => 'POST'],
+    ]); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -51,8 +56,10 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'address',
             // 'user_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+            ],
         ],
     ]); ?>
-
+    <?php \yii\widgets\Pjax::end(); ?>
 </div>

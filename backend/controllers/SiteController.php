@@ -55,4 +55,12 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionDashboard(){
+        if(Yii::$app->request->isAjax){
+            if(isset($_GET['view'])){
+                return $this->renderAjax($_GET['view']);
+            }
+        }
+        return $this->render('dashboard/main');
+    }
 }

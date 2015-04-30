@@ -6,8 +6,11 @@ use common\modules\rapid_assessment\models\ReportItemMultimedia;
 use common\modules\rapid_assessment\models\search\ReportItemMultimediaSearch;
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
+use zxbodya\yii2\galleryManager\GalleryManagerAction;
 
 /**
  * CrudReportItemMultimediaController implements the CRUD actions for ReportItemMultimedia model.
@@ -25,6 +28,7 @@ class CrudReportItemMultimediaController extends Controller
             ],
         ];
     }
+
 
     /**
      * Lists all ReportItemMultimedia models.
@@ -61,6 +65,13 @@ class CrudReportItemMultimediaController extends Controller
     public function actionCreate()
     {
         $model = new ReportItemMultimedia();
+
+        if(Yii::$app->request->isPost){
+            if(UploadedFile::getInstance($model,'file')){
+                $model->file= UploadedFile::getInstance($model,'file')->tempName;
+                echo 'before '.Json::encode($model->file);
+            }
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -118,4 +129,18 @@ class CrudReportItemMultimediaController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actions()
+    {
+        return [
+            'galleryApi' => [
+                'class' => GalleryManagerAction::className(),
+                // mappings between type names and model classes (should be the same as in behaviour)
+                'types' => [
+               'report_item_multimedia' => ReportItemMultimedia::className()
+           ]
+       ],
+    ];
+}
+
 }

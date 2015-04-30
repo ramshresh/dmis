@@ -1,4 +1,0 @@
-Allow from all
-# Do not allow directory listing
-# reference--> http://www.htaccess-guide.com/disable-directory-listings/
-IndexIgnore *

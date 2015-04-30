@@ -1,5 +1,6 @@
 
-/*DROP TABLE IF EXISTS "rapid_assessment".report_item_multimedia;
+/*
+DROP TABLE IF EXISTS "rapid_assessment".report_item_multimedia;
 DROP TABLE IF EXISTS "rapid_assessment".report_item_rating;
 DROP TABLE IF EXISTS "rapid_assessment".report_item_child;
 DROP TABLE IF EXISTS "rapid_assessment".report_item;
@@ -7,7 +8,8 @@ DROP TABLE IF EXISTS "rapid_assessment".report_item;
 DROP TABLE IF EXISTS "rapid_assessment".item_child;
 DROP TABLE IF EXISTS "rapid_assessment".item_class;
 DROP TABLE IF EXISTS "rapid_assessment".item_type;
-DROP TABLE IF EXISTS "rapid_assessment".item;*/
+DROP TABLE IF EXISTS "rapid_assessment".item;
+*/
 
 DROP SCHEMA IF EXISTS rapid_assessment CASCADE ;
 

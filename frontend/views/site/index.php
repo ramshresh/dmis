@@ -1,17 +1,16 @@
 <?php
 /* @var $this yii\web\View */
-
-
 use common\assets\Ol3PopupAsset;
 use common\assets\PlaceAutocompleteAsset;
 use common\modules\rapid_assessment\models\ReportItem;
-use frontend\widgets\social_media_gallery\SocialMediaGalleryWidget;
+
+
 use kartik\widgets\Select2;
 use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\web\JsExpression;
 
-$this->title = 'My Yii Application';
+$this->title = 'DMIS-Geospatial Lab';
 ?>
 
 <?php \common\assets\Ol3Asset::register($this); ?>
@@ -31,13 +30,6 @@ $css = <<<CSS
         .ol-full-screen {
             right: 0.5em;
             top: 3.2em;
-        }
-
-        .ol-zoom {
-            position:absolute;
-            left: auto;
-            right: 0.5em;
-            top: 6em;
         }
 
         .ol-control button {
@@ -178,105 +170,68 @@ $this->registerCss($css);
 
 --><?php /*\yii\widgets\Pjax::end(); */ ?>
 <!-- }}} ./Implement Pjax -->
+<style>
+	.atss a{
+		right:0.5em;
+		width:40px;
+		margin:0.05em;
+	}
+	a.at-svc-twitter, a.at-svc-google_plusone_share, a.at-svc-blogger,
+	a.at-svc-linkedin,a.at-svc-pinterest_share, a.at-svc-facebook
+	{
+		background:rgba(57,52,86,0.8);
+	}
 
+</style>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54c7a096649ea7d0" async="async"></script>
+
+<style>
+.open>.dropdown-menu {
+  display: block;
+  padding: 1em;
+}
+</style>
 
 <div id="navbar" class="ol-unselectable ol-control" style='display:inline-flex;top:0.5em;left:20%; z-index:9999999999;'>
-    <div class="dropdown">
-        <button id="report" class="ol-has-tooltip dropdown-toggle " aria-expanded="false" data-toggle="dropdown"
-                type="button">
-            <i style="font-size: 22px;" class="icon-reporting"></i>
-        </button>
-        <ul class="dropdown-menu" role="menu" style="">
-            <li>Reporting Module</li>
-            <li id="report_emergency_situation">
-                <icon class="icon-need"></icon>
-                Emergency Situation
-            </li>
-            <li id="report_event">
-                <icon class="icon-need"></icon>
-                Event
-            </li>
-            <li id="report_incident">
-                <icon class="icon-need"></icon>
-                Incident
-            </li>
-            <li id="report_damage">
-                <icon class="icon-need"></icon>
-                Damage
-            </li>
-            <li id="report_need">
-                <icon class="icon-need"></icon>
-                Need
-            </li>
-        </ul>
-        <?php
-        echo \common\modules\reporting\widgets\emergency_situation\Create::widget([
-            'jqToggleBtnSelector' => '#report_emergency_situation',
-            'widgetId' => 'emergency-situation-form-widget',
-            'formId' => 'emergency-situation-form',
-            'actionRoute' => 'site/emergency-situation-create'
-        ]);
-        ?>
-        <?php
-        echo \common\modules\reporting\widgets\event\Create::widget([
-            'jqToggleBtnSelector' => '#report_event',
-            'widgetId' => 'event-form-widget',
-            'formId' => 'event-form',
-            'actionRoute' => 'site/event-create'
-        ]);
-        ?>
-        <?php
-        echo \common\modules\reporting\widgets\incident\Create::widget([
-            'jqToggleBtnSelector' => '#report_incident',
-            'widgetId' => 'incident-form-widget',
-            'formId' => 'incident-form',
-            'actionRoute' => 'site/incident-create'
-        ]);
-        ?>
-        <?php
-        echo \common\modules\reporting\widgets\damage\Create::widget([
-            'jqToggleBtnSelector' => '#report_damage',
-            'widgetId' => 'damage-form-widget',
-            'formId' => 'damage-form',
-            'actionRoute' => 'site/damage-create'
-        ]);
-        ?>
 
-        <?php
-        echo \common\modules\reporting\widgets\need\Create::widget([
-            'jqToggleBtnSelector' => '#report_need',
-            'widgetId' => 'need-form-widget',
-            'formId' => 'need-form',
-            'actionRoute' => 'site/need-create'
-        ]);
-        ?>
-    </div>
     <div class="dropdown">
         <button id="report" class="ol-has-tooltip dropdown-toggle " aria-expanded="false" data-toggle="dropdown"
                 type="button">
             <i style="font-size: 22px;" class="icon-reporting"></i>
         </button>
         <ul class="dropdown-menu" role="menu" style="">
-            <li>Rapid Assessment Module</li>
-            <li id="rapid_assessment_es">
-                <icon class="icon-need"></icon>
+            <li style="font-weight:bold; text-align:center;">Submit Report</li>
+            <li class="divider"></li>
+			<li id="rapid_assessment_es"><a  href="#">
+                <icon class="icon-emergency_situation"></icon>
                 Emergency Situation
+				</a>
             </li>
-            <li id="rapid_assessment_ev">
-                <icon class="icon-need"></icon>
+			<li class="divider"></li>
+            <li id="rapid_assessment_ev"><a  href="#">
+                <icon class="icon-event"></icon>
                 Event
+				</a>
             </li>
-            <li id="rapid_assessment_in">
-                <icon class="icon-need"></icon>
+			<li class="divider"></li>
+            <li id="rapid_assessment_in"><a  href="#">
+                <icon class="icon-incident"></icon>
                 Incident
+				</a>
             </li>
-            <li id="rapid_assessment_im">
-                <icon class="icon-need"></icon>
-                Damage
+			<li class="divider"></li>
+            <li id="rapid_assessment_im"><a  href="#">
+                <icon class="icon-damage"></icon>
+                Impact
+				</a>
             </li>
-            <li id="rapid_assessment_nd">
+			<li class="divider"></li>
+            <li id="rapid_assessment_nd"><a  href="#">
                 <icon class="icon-need"></icon>
                 Need
+				</a>
             </li>
         </ul>
         <?php
@@ -331,15 +286,20 @@ $this->registerCss($css);
                 type="button">
             <i style="font-size: 22px;" class="icon-resource"></i>
         </button>
-        <ul class="dropdown-menu" role="menu" style="">
+  <ul class="dropdown-menu" role="menu" style="">
             <li id="search_ambulance">
-                <icon class="icon-need"></icon>
+			<a  href="#">
+                <icon class="icon-search"></icon>
                 Search Ambulance
+				</a>
             </li>
+			<li class="divider"></li>
             <?php if (!Yii::$app->user->isGuest): ?>
                 <li id="register_driver">
-                    <icon class="icon-need"></icon>
+				<a  href="#">
+                    <icon class="icon-user2"></icon>
                     Driver Registration
+					</a>
                 </li>
                 <?php
                 echo common\modules\tracking\widgets\driver\Registration::widget([
@@ -351,8 +311,9 @@ $this->registerCss($css);
                 ?>
             <?php endif; ?>
         </ul>
+		
     </div>
-
+<!--
     <button id="directions" class="ol-has-tooltip" type="button">
         <i style="font-size: 22px;" class="icon-routing"></i>
     </button>
@@ -360,10 +321,14 @@ $this->registerCss($css);
     <button id="geofence" class="ol-has-tooltip" type="button">
         <i style="font-size: 22px;" class="icon-geofence"></i>
     </button>
+-->
 
-
-    <button id="updates" class="ol-has-tooltip" type="button">
-        <span role="tooltip">Updates</span><i style="font-size: 22px;" class="icon-update"></i>
+    <button id="filter" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Filter</span><i style="font-size: 22px;" class="icon-search"></i>
+    </button>
+	
+	 <button id="amenities-search" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Amenities</span>A
     </button>
 
 
@@ -412,14 +377,14 @@ $this->registerCss($css);
 
                 <li id="login">
                     <a href="<?= Url::toRoute(['/user/login']) ?>">
-                        <icon class="icon-need"></icon>
+						<icon class="icon-power-off"></icon>
                         Login</a>
                 </li>
             <?php else: ?>
-                <li><?= Yii::$app->getUser()->getId(); ?></li>
+                <li><?= Yii::$app->getUser()->getDisplayName(); ?></li>
                 <li id="logout">
                     <a href="<?= Url::toRoute(['/user/logout']) ?>">
-                        <icon class="icon-need"></icon>
+                        <icon class="icon-power-off"></icon>
                         Logout</a>
                 </li>
             <?php endif; ?>
@@ -428,7 +393,15 @@ $this->registerCss($css);
 </div>
 
 
-<div id="toolbar" class="ol-unselectable ol-control" style="top:6.5em;left:0.5em; z-index:9999999999;">
+<div  class="ol-unselectable ol-control" style="top:6.5em;left:0.5em; z-index:9999999999;">
+
+    <button id="geolocate" class="ol-has-tooltip" type="button" data-user_location >
+        <span role="tooltip"></span>
+        <i style="font-size: 25px;" class="icon-target"></i>
+    </button>
+</div>
+<!--
+<div id="toolbar" class="ol-unselectable ol-control" style="top:10.5em;left:0.5em; z-index:9999999999;">
 
     <button id="hospital" class="ol-has-tooltip" type="button">
         <span role="tooltip">Hospital</span>
@@ -448,9 +421,9 @@ $this->registerCss($css);
     </button>
 
 </div>
+-->
 
-
-<div id="socialmedia" class="ol-unselectable ol-control" style="top:18.2em;left:0.5em; z-index:9999999999">
+<div id="socialmedia" class="ol-unselectable ol-control" style="top:9.7em;left:0.5em; z-index:9999999999">
 
     <button id="social_facebook" class="ol-has-tooltip" type="button">
         <span role="tooltip">Facebook</span><i style="font-size: 22px;" class="icon-facebook"></i>
@@ -460,29 +433,32 @@ $this->registerCss($css);
         <span role="tooltip">Twitter</span><i style="font-size: 22px;" class="icon-twitter"></i>
     </button>
 </div>
+<!--
+<div id="amenities" class="ol-unselectable ol-control" style="top:28.4em;left:0.5em; z-index:9999999999">
 
-<div id="analytics" class="ol-unselectable ol-control" style="top:24.4em;left:0.5em; z-index:9999999999">
-
-    <button id="" class="ol-has-tooltip" type="button">
-        <span role="tooltip">Analytics</span>A
+    <button id="amenities-search" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Amenities</span>A
     </button>
 
 
 </div>
-
+-->
 
 <div id="map" data-map></div>
 
-
-<div class="pullout-right-footer" style="padding-top:10px; padding-bottom:15px; height:15.5em;">
-    <div><?php echo SocialMediaGalleryWidget::widget() ?></div>
+<div class="addthis_sharing_toolbox" style="position:absolute;bottom:0.5em;right:50%;">Share</div>
+<div class="pullout-right-footer" style="padding-top:10px; padding-bottom:15px; height:20em;">
+    <div><?php echo \common\modules\social_media\widgets\social_media_gallery\SocialMediaGalleryWidget::widget() ?></div>
     <div id="images"></div>
 
 </div>
 
 <!--Pull up and down icon-->
 <div class="pullout-right-footer-btn"><i class='icon-file-image-o'></i>
-</div></div>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+
+</div>
+</div>
 
 <div id="twitter_box"></div>
 <div id="facebook_box"></div>
@@ -525,397 +501,150 @@ echo Select2::widget([
     ],
 ]);
 ?>
+<style>
+	.ol-popup-closer:after {
+		  content: "[x]";
+		  color: red;
+		  font-size: 16px;
+		}
+	
+	.ol-popup {
+	  display: none;
+	  position: absolute;
+	  background-color: white;
+	  padding: 15px;
+	  border: 1px solid rgb(57,52,86);;
+	  bottom: 12px;
+	  left: -50px;
+	}
+
+	
+	.ol-popup:before {
+	  border-top-color: rgb(57,52,86);
+	  border-width: 11px;
+	  left: 48px;
+	  margin-left: -11px;
+	}	
+</style>
+
 <?php
 $jsMap = <<<JS
 /* Defining basic Map with OSM as basemap*/
 
+/*******************Overlay Group*****************/ 
+     var overlayGroup = new ol.layer.Group({
+            title: 'Overlays',
+            layers: []
+        });    
+ 
+/*******************Report Items*****************/ 
+ var report_item = new ol.layer.Tile(
+    {
+        'name': 'Report Items',
+		'title':'Report Items',
+		'type':'overlay',
+        'source': new ol.source.TileWMS(
+            ({
+                url: 'http://116.90.239.21:8080/geoserver/wms',
+                params: {'LAYERS': 'dmis:report_item', 'TILED': true}
+            }))
+    }
+);
+/*******************Ambulance tracking*****************/
+var tracking_driver = new ol.layer.Tile({
+        title:'Tracking Driver',
+        name : 'Tracking Driver',
+        type : 'overlay',
+        source : new ol.source.TileWMS(
+           // ({  url: 'http://localhost:8080/geoserver/wms',
+            ({  url: 'http://116.90.239.21:8080/geoserver/wms',
+            //    params: {'LAYERS': 'fra:ambulance', 'TILED': true}
+                params: {'LAYERS': 'dmis:tracking_driver', 'TILED': true}
+            }))
+    });
+
+/*******************Disaster Tweets*****************/		   
+var tweets = new ol.layer.Tile({
+        title:'Tweets',
+        name : 'Tweets',
+        type : 'overlay',
+        source : new ol.source.TileWMS(
+            ({  url: 'http://116.90.239.21:8080/geoserver/wms',
+                params: {'LAYERS': 'dmis:tweet', 'TILED': true,'STYLES':'tweet_point'}
+            }))
+    });	
+
+/*******************Adding layer to layerSwitcher*****************/	
+overlayGroup.getLayers().push(report_item); 
+overlayGroup.getLayers().push(tracking_driver); 
+overlayGroup.getLayers().push(tweets); 
+
+
+ 
 var view = new ol.View({
 
     center: ol.proj.transform([87, 29], 'EPSG:4326', 'EPSG:3857'),
-    zoom: 3
+    zoom: 6
 });
 var osm = new ol.layer.Tile({
         title:'OSM',
         type:'base',
         source: new ol.source.OSM()
     });
+	
+/*******************ol3 map object*****************/	
     map = new ol.Map({
         target: 'map',
-        layers: [
-           osm
-        ],
-        view: view
-    });
-
-    map.addControl(new ol.control.FullScreen());
-    map.addControl(new ol.control.LayerSwitcher());
-     var popup = new ol.Overlay.Popup();
-     map.addOverlay(popup);
-
-/* ./Defining basic Map */
-
-//{{{ Defining Overlay Layers
-//{{{ reportitems
-var reportitems_all = new ol.layer.Tile(
-    {
-        'name': 'Report Items',
-        'source': new ol.source.TileWMS(
-            ({
-                //   url: 'http://116.90.239.21:8080/geoserver/wms',
-                url: 'http://116.90.239.21:8080/geoserver/wms',
-                params: {
-                    'LAYERS': 'dmis:reportitems_all', 'TILED': true
-                    //   params: {'LAYERS': 'fra:ambulance', 'TILED': true
-                    //'cql_filter':"subcategory='trapped'"
-                    //        'STYLES':'disaster_hazard'
-                    //    'SLD' :'styles/all_feature_style.sld'
-
-                },
-                //styles:"",
-                serverType: 'geoserver'
-                //   request:'GetMap'
-
-            }))
-    }
-);
-var reportitems_all_clickHandler = function (evt) {
-    tilewmsSource = reportitems_all;
-    viewResolution = view.getResolution();
-    viewProjection = view.getProjection();
-    //  console.log(evt.coordinate);
-    var url = tilewmsSource.getSource().getGetFeatureInfoUrl(
-        evt.coordinate, viewResolution, viewProjection,
-        {
-            'INFO_FORMAT': 'text/javascript'
-            //   'propertyName': 'status',''
-        });
-
-    if (url) {
-        var parser = new ol.format.GeoJSON();
-        $.ajax({
-            url: url,
-            dataType: 'jsonp',
-            jsonpCallback: 'parseResponse'
-        }).then(function (response) {
-            var result = parser.readFeatures(response);
-            //console.log(result);
-
-            if (result.length) {
-                var popupContent = '';
-                for (var i = 0, ii = result.length; i < ii; ++i) {
-                    var values = result[i].values_;
-                    console.log(values);
-                    console.log(result[i].values_.reportitem_item_name);
-                    console.log(result[i].values_.reportitem_subtype_name);
-                    console.log(result[i].values_.reportitem_timestamp_created);
-                    console.log(result[i].values_.reportitem_is_verified);
-                    isVerified = undefined;
-
-                    popupContent = values.reportitem_item_name;
-                    popupContent += '(' + values.reportitem_subtype_name + ')';
-
-
-                    switch (values.reportitem_type) {
-                        case 0:
-
-                            break;
-                        case 1:
-                            if (values.event_timestamp_occurance)
-                                popupContent += '<br> time: ' + String(values.event_timestamp_occurance);
-                            break;
-                        case 2:
-
-                            break;
-                        case 3:
-                            if (values.damage_quantity)
-                                popupContent += '<br> ' + String(values.damage_quantity);
-                            if (values.damage_units_shortname)
-                                popupContent += ' ' + String(values.damage_units_shortname);
-                            break;
-                        case 4:
-                            if (values.need_quantity)
-                                popupContent += '<br> ' + String(values.need_quantity);
-                            if (values.need_units_shortname)
-                                popupContent += ' ' + String(values.need_units_shortname);
-                            break;
-                        default :
-                            break;
-                    }
-                    if (values.reportitem_is_verified) {
-                        isVerified = 'verified'
-                    } else {
-                        isVerified = 'not verified'
-                    }
-                    popupContent += '<br>' + isVerified;
-
-                }
-                ////container.innerHTML = info.join(', ');
-                popup.show(evt.coordinate, popupContent);
-            } else {
-                //popup.show(evt.coordinate, 'Nothing to show!');
-                //container.innerHTML = '&nbsp;';
-            }
-        });
-    }
-};
-//map.addLayer(reportitems_all);
-map.on('click', reportitems_all_clickHandler);
-//}}}./reportitems
-
-//{{{ tracking_driver wms : http://116.90.239.21:8080/geoserver/dmis/wms?service=WMS&version=1.1.0&request=GetMap&layers=dmis:tracking_driver&styles=&bbox=33.0,22.0,88.0,33.0&width=1650&height=330&srs=EPSG:4326&format=application/openlayers
-var tracking_driver = new ol.layer.Tile({
-        title:'tracking_driver',
-        name : 'tracking_driver',
-        type : 'overlay',
-        source : new ol.source.TileWMS(
-            ({  url: 'http://116.90.239.21:8080/geoserver/wms',
-                params: {'LAYERS': 'dmis:tracking_driver', 'TILED': true}
-            }))
-    });
-    map.addLayer(tracking_driver);
-
-      /*
-            Refreshing a layer at an interval
-            */
-           map.once("postcompose", function(){
-                       //start refreshing each 3 seconds
-                       window.setInterval(function(){
-                           /// call your function here
-                           var params = tracking_driver.getSource().getParams();
-                           params.t = new Date().getMilliseconds()
-                           tracking_driver.getSource().updateParams(params);
-                       }, 3000);
-                   }
-           );
-//}}}./tracking_driver wms
-
-
-//{{{ tracking_driver wfs
-/*var driverGeoJSONSource = new ol.source.Vector();
-var geojsonFormat = new ol.format.GeoJSON();
-driverVectorLayer=new ol.layer.Vector({ source: driverGeoJSONSource});
-map.addLayer(driverVectorLayer);
-
-  $.ajax({
-        url:'http://116.90.239.21/github/php_postgres/postgis_geojson.php',
-       data:{
-           geotable:"\"tracking\".tracking_driver",
-           geomfield:"geom"
-       },
-      success:function(data) {
-        var features = geojsonFormat.readFeatures(data,
-            {featureProjection:"EPSG:3857"});
-        driverGeoJSONSource.clear();
-        driverGeoJSONSource.addFeatures(features);
-      }
-  });*/
-
- /* var timer = null;
-var vectorSource = new ol.source.ServerVector({
-    format: new ol.format.GeoJSON(),
-    loader: function(extent, resolution, projection) {
-        if (timer != null) {
-            clearInterval(timer);
-            timer = null;
-        }
-        //var url = 'http://116.90.239.21:8000/geoserver/cite/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=cite:MyFeature&maxFeatures=50&outputFormat=application/json';
-        var url = 'http://116.90.239.21/github/php_postgres/postgis_geojson.php';
-        $.ajax({
-        url:url,
-           data:{
-               geotable:"\"tracking\".tracking_driver",
-               geomfield:"geom"
-           },
-          success:function(data) {
-            var features = geojsonFormat.readFeatures(data,
-                {featureProjection:"EPSG:3857"});
-            driverGeoJSONSource.clear();
-            driverGeoJSONSource.addFeatures(features);
-          }
-        });//.done(loadFeatures);
-    }
-});*/
-
-/*var vectorSource = new ol.source.ServerVector({
-    format: new ol.format.GeoJSON(),
-    loader: function(extent, resolution, projection) {
-        var url = 'http://116.90.239.21:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis%3Atracking_driver&maxFeatures=50&outputformat=application%2Fjson';
-        $.ajax({
-            url: url,
-            success:function(data){
-                console.log(data);
-            }
-        })
-    }
-});
-map.addLaer(vectorSource);*/
-//}}}./ tracking_driver wfs
-//}}}./Defining overlay Layers
-
-//http://116.90.239.21:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:reportitems_all&maxFeatures=50&outputFormat=text%2Fjavascript
-
-
-
-
-   /* {{{ Original */
-    /*var osm = new ol.layer.Tile({
-        title:'OSM',
-        type:'base',
-        source: new ol.source.OSM()
-    });
-
-    var tilewmsSource = new ol.source.TileWMS(
-        ({
-            //   url: 'http://116.90.239.21:8080/geoserver/wms',
-            url: 'http://116.90.239.21:8080/geoserver/wms',
-            params: {'LAYERS': 'dmis:reportitems_all', 'TILED': true
-                //   params: {'LAYERS': 'fra:ambulance', 'TILED': true
-                //'cql_filter':"subcategory='trapped'"
-                //        'STYLES':'disaster_hazard'
-                //    'SLD' :'styles/all_feature_style.sld'
-
-            },
-            //styles:"",
-            serverType: 'geoserver'
-            //   request:'GetMap'
-
-        }));
-
-    var tile_wms =
-        new ol.layer.Tile({
-            title:'tile wms',
-            name: 'tiled layer',
-            type:'overlay',
-            source: tilewmsSource
-        });
-
-    var fra_ambulance = new ol.layer.Tile({
-        title:'ambulance',
-        name : 'ambulance',
-        type : 'overlay',
-        source : new ol.source.TileWMS(
-            ({  url: 'http://116.90.239.21:8080/geoserver/wms',
-                params: {'LAYERS': 'fra:ambulance', 'TILED': true}
-            }))
-    });
-
-    var vectorSource = new ol.source.ServerVector({
-        format: new ol.format.GeoJSON({
-            //    projection: 'EPSG:3857'
-        }),
-        loader: function(extent, resolution, projection) {
-            //    var url='http://116.90.239.21:8080/geoserver/fra/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=fra%3Aambulance&srsname=EPSG:3857&maxFeatures=50&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
-            var url='http://116.90.239.21:8080/geoserver/disaster/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=disaster%3Ahazard0,disaster:kbl0&srsname=EPSG:3857&maxFeatures=50&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
-            //   var url = 'http://116.90.239.21:8080/geoserver/disaster/ows?service=WFS&version=1.0.0&request=GetFeature&layer=disaster:hazard0&outputformat=text/javascript&srsname=EPSG:4326';
-
-            $.ajax({
-                url: url,
-                dataType: 'jsonp',
-                success:function(data) {
-                    console.log(data);
-                },
-                error:function(data) {
-                    //  console.log(data);
-                },
-                timeout: 30000 // 1 minute timeout
-            });
-        },
-        strategy: ol.loadingstrategy.createTile(new ol.tilegrid.XYZ({
-            maxZoom: 19
-        }))
-        //   projection: 'EPSG:3857'
-    });
-
-
-    var defaultStyle=new ol.style.Style({
-        image: new ol.style.Circle({
-            radius: 3,
-//                fill: new ol.style.Fill({color: '#AA0000'}),
-            stroke: new ol.style.Stroke({color: 'red', width: 1})
-        })
-    })
-    var testdata_geopnt = new ol.layer.Vector({
-
-        type:'overlay',
-        name:'vectorLayer',
-        title:'vectorLayer',
-        source: vectorSource
-        // style: defaultStyle
-    });
-    window.testdata_geopnt = testdata_geopnt;
-
-    //var clusterSource = new ol.source.Cluster({
-    //    distance: 40,
-    //    source: vectorSource
-    //});
-    var loadFeatures = function (response) {
-        vectorSource.addFeatures(vectorSource.readFeatures(response));
-    };
-    window.loadFeatures = loadFeatures;
-
-    var overlayGroup = new ol.layer.Group({
-        title: 'Overlays',
-        layers: [testdata_geopnt
-        ]
-    });
-
-    var view = new ol.View({
-        //    projection:'EPSG:3857',
-        zoom: 3,
-        center: ol.proj.transform([85,27], 'EPSG:4326', 'EPSG:3857')
-    });
-
-    //function init() {
-    var init=function() {
-
-
-        // Create a map
-        map = new ol.Map({
-            target: 'map',
-//                    layers: [
-//                        raster,
-//                        //new ol.layer.Tile({
-//                        //  source: new ol.source.OSM()
-//                        // }),
-//                        vector_layer
-//                    ],
-
-            layers: [
-                new ol.layer.Group({
-                    'title': 'Base maps',
-                    layers: [osm ]
-                }),
-                overlayGroup
-            ],
-            view: view,
-            controls:// ol.control.defaults().extend(
-                [
-                    //  new ol.control.ScaleLine({className: 'ol-scale-line', target: document.getElementById('scale-line')}),
+		renderer : 'canvas',
+         layers: [
+                    new ol.layer.Group({
+                        'title': 'Base',
+                        layers: [osm ]
+                    }),
+                    overlayGroup
+                ],
+         controls:// ol.control.defaults().extend(
+                        [
+                  //  new ol.control.ScaleLine({className: 'ol-scale-line', target: document.getElementById('scale-line')}),
                     new ol.control.FullScreen(),
                     new ol.control.LayerSwitcher(),
                     new ol.control.Zoom({element:document.getElementById('info')})
-                ]
-            //)
-        });
+                ],
+        view: view
+    });
+	
+var popup = new ol.Overlay.Popup();
+map.addOverlay(popup);	
 
-        overlayGroup.getLayers().push(tile_wms);
-        overlayGroup.getLayers().push(fra_ambulance);
+/*******************Function for popup*****************/
+function popup_content(layer,attribute){
+		
+var reverse_geocoder = function(coordinate){
+ $.ajax({
+            url: 'http://nominatim.openstreetmap.org/reverse?format=json&lat='+coordinate[1]+'&lon='+coordinate[0]+'&zoom=27&addressdetails=1',
+			async : false
+	   }).then(function (response) {
+			locationOfFeature = response.display_name;
+			})
+			
+		return locationOfFeature;	
+}
 
 
+var clickHandler = function (evt) {
 
-        var reportitems_all_clickHandler = function (evt) {
-
-
-    tilewmsSource = tilewmsSource;
+    //layer_item = report_item;
+    layer_item = layer;
     viewResolution = view.getResolution();
     viewProjection = view.getProjection();
     //  console.log(evt.coordinate);
-    var url = tilewmsSource.getSource().getGetFeatureInfoUrl(
+    var url = layer_item.getSource().getGetFeatureInfoUrl(
         evt.coordinate, viewResolution, viewProjection,
-        {
-            'INFO_FORMAT': 'text/javascript'
-            //   'propertyName': 'status',''
-        });
+        {'INFO_FORMAT': 'text/javascript'});
+	
+		coordinate_epsg4326 = ol.proj.transform(evt.coordinate,'EPSG:3857','EPSG:4326');
+		//reverse_geocoder(coordinate_epsg4326);
+
 
     if (url) {
         var parser = new ol.format.GeoJSON();
@@ -924,78 +653,107 @@ map.addLaer(vectorSource);*/
             dataType: 'jsonp',
             jsonpCallback: 'parseResponse'
         }).then(function (response) {
-            var result = parser.readFeatures(response);
-            //console.log(result);
-
+             
+			 result = parser.readFeatures(response);
+			 console.log(result);
+			
             if (result.length) {
                 var popupContent = '';
                 for (var i = 0, ii = result.length; i < ii; ++i) {
-                    var values = result[i].values_;
-                    console.log(values);
-                    console.log(result[i].values_.reportitem_item_name);
-                    console.log(result[i].values_.reportitem_subtype_name);
-                    console.log(result[i].values_.reportitem_timestamp_created);
-                    console.log(result[i].values_.reportitem_is_verified);
-                    isVerified = undefined;
-
-                    popupContent = values.reportitem_item_name;
-                    popupContent += '(' + values.reportitem_subtype_name + ')';
-
-
-                    switch (values.reportitem_type) {
-                        case 0:
-
-                            break;
-                        case 1:
-                            if (values.event_timestamp_occurance)
-                                popupContent += '<br> time: ' + String(values.event_timestamp_occurance);
-                            break;
-                        case 2:
-
-                            break;
-                        case 3:
-                            if (values.damage_quantity)
-                                popupContent += '<br> ' + String(values.damage_quantity);
-                            if (values.damage_units_shortname)
-                                popupContent += ' ' + String(values.damage_units_shortname);
-                            break;
-                        case 4:
-                            if (values.need_quantity)
-                                popupContent += '<br> ' + String(values.need_quantity);
-                            if (values.need_units_shortname)
-                                popupContent += ' ' + String(values.need_units_shortname);
-                            break;
-                        default :
-                            break;
-                    }
-                    if (values.reportitem_is_verified) {
-                        isVerified = 'verified'
-                    } else {
-                        isVerified = 'not verified'
-                    }
-                    popupContent += '<br>' + isVerified;
-
+					values = result[i].values_;
+						
+						$.each(attribute,function(index,value){
+						console.log(values);
+					popupContent += '<strong>'+ value+'</strong>'+': '+values[value] +'<br>';
+						})
+					//	popupContent += '<hr><strong>'+'Location: '+'</strong>' + reverse_geocoder(coordinate_epsg4326); + ')'+'<br>';
                 }
-                ////container.innerHTML = info.join(', ');
                 popup.show(evt.coordinate, popupContent);
             } else {
-                //popup.show(evt.coordinate, 'Nothing to show!');
-                //container.innerHTML = '&nbsp;';
-            }
+				$(".ol-popup").hide();
+            } 
+			
         });
-    }
 };
-var popup = new ol.Overlay.Popup();
-map.addOverlay(popup);
 
-map.on('click', reportitems_all_clickHandler);
+}
 
-        $('#map').data('map',map);
+var clickHandlerReportItem = function (evt) {
+
+    //layer_item = report_item;
+    layer_item = report_item;
+    viewResolution = view.getResolution();
+    viewProjection = view.getProjection();
+    //  console.log(evt.coordinate);
+    var url = layer_item.getSource().getGetFeatureInfoUrl(
+        evt.coordinate, viewResolution, viewProjection,
+        {'INFO_FORMAT': 'text/javascript'});
+
+		coordinate_epsg4326 = ol.proj.transform(evt.coordinate,'EPSG:3857','EPSG:4326');
+		//reverse_geocoder(coordinate_epsg4326);
 
 
-    }
-    init();*/
-    /*}}} ./Original */
+    if (url) {
+        var parser = new ol.format.GeoJSON();
+        $.ajax({
+            url: url,
+            dataType: 'jsonp',
+            jsonpCallback: 'parseResponse'
+        }).then(function (response) {
+            result = parser.readFeatures(response);
+            if (result.length) {
+                var popupContent = '';
+                for (var i = 0, ii = result.length; i < ii; ++i) {
+					values = result[i].values_;
+					        console.log('values');
+						    console.log(values);
+						    console.log('values');
+
+					        popupContent += '<strong>'+ 'item_name'+'</strong>'+': '+values.item_name +'<br>';
+					        popupContent += '<strong>'+ 'type'+'</strong>'+': '+values.type +'<br>';
+					        if(values.address)
+					            popupContent += '<strong>'+ 'address'+'</strong>'+': '+values.address +'<br>';
+					        if(values.description)
+					            popupContent += '<strong>'+ 'description'+'</strong>'+': '+values.description +'<br>';
+
+					//	popupContent += '<hr><strong>'+'Location: '+'</strong>' + reverse_geocoder(coordinate_epsg4326); + ')'+'<br>';
+                }
+                popup.show(evt.coordinate, popupContent);
+            } else {
+				$(".ol-popup").hide();
+            }
+
+        });
+};
+
+}
+   //map.on('click', clickHandler);
+   map.on('click', clickHandlerReportItem);
+
+}
+
+
+//popup_content(report_item,["type","item_name"]);
+//popup_content(tracking_driver,["Firstname","Lastname","Ambulance_Number"]);
+popup_content(tweets,["tweets"]);
+      /*
+            Refreshing a layer at an interval
+            */
+			var refresh_layer = function(layer,time){
+		  map.once("postcompose", function(){
+                       //start refreshing each 3 seconds
+                       window.setInterval(function(){
+                           /// call your function here
+                           var params = layer.getSource().getParams();
+                           params.t = new Date().getMilliseconds();
+                           layer.getSource().updateParams(params);
+                       }, time);
+                   }
+           );
+		   }
+
+		   refresh_layer(tracking_driver,7000);
+		   refresh_layer(tweets,10000);
 JS;
 $this->registerJs($jsMap, $this::POS_READY);
 ?>
@@ -1073,7 +831,7 @@ $("#geofence").click(function(){
     })
 })
 
-/*$("#updates").click(function(){
+/*$("#filter").click(function(){
     $( "#fbalbum_box" ).dialog({
         title:'Facebook Photo',
         open: function(event, ui) {
@@ -1108,7 +866,7 @@ $("#geofence").click(function(){
 
 $('.pullout-right-footer-btn').click(function() {
   //  $( ".pullout-right-footer" ) .load('gallery.html');
-    $( "#images" ) .load('gallery.html');
+  //  $( "#images" ) .load('gallery.html');
 
 });
 
@@ -1143,7 +901,7 @@ $js2 = <<<JS
     var pullout_right_footer_btn = $('div.pullout-right-footer-btn');
     pullout_right_footer_btn.click(function() {
         if (!$(this).hasClass("open")) {
-            $(this).css("bottom", "15.5em");
+            $(this).css("bottom", "20em");
            // $(this).css("position", "relative");
             pullout_right_footer.css("right", "0");
             $(this).addClass("open");
@@ -1155,6 +913,34 @@ $js2 = <<<JS
     });
 JS;
 $this->registerJs($js2, $this::POS_READY);
+
+$jsGeolocation = <<<JS
+	
+ var geolocation = new ol.Geolocation({
+  tracking: true
+});
+geolocation.bindTo('projection', map.getView());
+geolocation.on('change', function(evt) {
+	 var pos = geolocation.getPosition();
+	$("#geolocate").data('user_location',pos);
+ }) 
+
+ $( "#geolocate" ).click(function() {
+	map.getOverlays().clear();
+	var position = $("#geolocate").data('user_location');
+	 var marker = new ol.Overlay({
+		  position:position ,
+		  positioning: 'center-center',
+		  element: $('<img src="http://116.90.239.21/girc/dmis/img/location.png" style="height:32px;width:auto;">'),
+		  stopEvent: false
+	});
+	map.addOverlay(marker);
+	map.getView().setCenter(position);
+	map.getView().setZoom(16);	
+ })
+JS;
+$this->registerJs($jsGeolocation, $this::POS_READY);
+
 ?>
 
 
@@ -1162,7 +948,7 @@ $this->registerJs($js2, $this::POS_READY);
 
 <?php
 $JsAddressSearch = <<<JS
-  $("#input-search").placeAutocomplete({});
+  
 
         $("#input-search").autocomplete({
             delay: 500,
@@ -1216,7 +1002,7 @@ $JsAddressSearch = <<<JS
                                   'html': true,
                                   'content':'<strong>'+ui.item.label+'</strong>'
                                 })
-                                .on('click', function (e) { $(".location-popover").not(this).popover('hide'); })
+                               .on('click', function (e) { $(".location-popover").not(this).popover('hide').close; })
                 }));
             }
         });
@@ -1469,3 +1255,57 @@ JS;
 $this->registerJs($jsDriverSearch, $this::POS_READY);
 ?>
 <div id="geometry_picker_container"></div>
+
+
+
+<div id="filter_container"></div>
+<div id="amenities_search_conatiner"></div>
+
+<?php
+$jsFilterReportItem=<<<JS
+$("#filter").click(function(){
+    $( "#filter_container" ).dialog({
+        title:'Filter',
+		height:'400',
+		width:'403px',
+        open: function(event, ui) {
+            $( "#filter_container" ) .load('site/filter-report-item');
+			$('#filter_container').css('overflow-x','hidden');$('.ui-widget-overlay').css('width','100%'); 
+        },
+        buttons:{ "Close": function() {
+        //    $(this).hide();//.dialog('remove');
+            $(this).dialog('close');//.dialog('remove');
+        } },
+        close: function(ev, ui) {
+			 $(this).dialog('close');
+        }
+    })
+});
+JS;
+$this->registerJs($jsFilterReportItem,$this::POS_READY);
+?>
+
+<?php
+$jsAmenitiesSearch=<<<JS
+$("#amenities-search").click(function(){
+    $( "#amenities_search_conatiner" ).dialog({
+        title:'Search Amenities',
+		height:'400',
+		width:'403px',
+        open: function(event, ui) {
+            $( "#amenities_search_container" ) .load('site/amenties-search/index.php');
+         //   $( "#amenities_search_container" ) .load('http://116.90.239.21/girc/dmis/frontend/web/amenities-search/index.php');
+			$('#amenities_search_container').css('overflow-x','hidden');$('.ui-widget-overlay').css('width','100%'); 
+        },
+        buttons:{ "Close": function() {
+        //    $(this).hide();//.dialog('remove');
+            $(this).dialog('close');//.dialog('remove');
+        } },
+        close: function(ev, ui) {
+			 $(this).dialog('close');
+        }
+    })
+});
+JS;
+$this->registerJs($jsAmenitiesSearch,$this::POS_READY);
+?>

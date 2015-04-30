@@ -11,7 +11,7 @@ $baseUrl = str_replace('/backend/web', '/admin', (new Request)->getBaseUrl());//
 //}}} ./Removing backend/web from url
 
 return [
-    'id' => 'app-backend',
+    'id' => 'GIRC-Admin',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -22,10 +22,7 @@ return [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'k69dPn6pHcjC0eeXjFll7xpwYI0XUb6U',
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-        ],
+        'urlManager' => require(__DIR__ . '/components/urlManager.php'),
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

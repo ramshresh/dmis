@@ -2,7 +2,7 @@
 
 namespace api\modules\tracking;
 
-class Module extends \yii\base\Module
+class Module extends \common\modules\tracking\Module
 {
     public $controllerNamespace = 'api\modules\tracking\controllers';
 

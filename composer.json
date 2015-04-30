@@ -33,7 +33,11 @@
     "ramshresh/yii2-geo": "dev-master",
     "yiisoft/yii2-jui": "*",
     "mdmsoft/yii2-widgets": "~1.0",
-    "c006/yii2-migration-utility": "dev-master"
+    "c006/yii2-migration-utility": "dev-master",
+    "miloschuman/yii2-highcharts-widget": "dev-master",
+    "zxbodya/yii2-gallery-manager": "*@dev",
+    "npm-asset/osmtogeojson": "*",
+    "dmstr/yii2-adminlte-asset": "2.*@beta"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",

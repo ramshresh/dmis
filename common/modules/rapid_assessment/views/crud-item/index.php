@@ -25,11 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'name',
             'display_name',
-            'tags',
-            'meta_hstore',
+            //'tags',
+            //'meta_hstore',
             // 'meta_json',
             // 'is_verified:boolean',
 

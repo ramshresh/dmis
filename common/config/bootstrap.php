@@ -7,8 +7,10 @@ Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
 Yii::setAlias('api', dirname(dirname(__DIR__)) . '/api');
 
 // Custom directories
-Yii::setAlias('cgi-bin', dirname(__DIR__));
-Yii::setAlias('uploads', dirname(__DIR__));
+Yii::setAlias('cgi-bin', dirname(dirname(__DIR__)) . '/cgi-bin');
+Yii::setAlias('contentRoot', dirname(dirname(__DIR__)) . '/content_root');
+Yii::setAlias('uploads', dirname(dirname(__DIR__)) . '/uploads');
+Yii::setAlias('images', dirname(dirname(__DIR__)) . '/images');
 
 //----------------------------------------------Sync Assets---------------------------------------------
 //---Enable to force copy the asset files---//

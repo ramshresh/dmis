@@ -2,11 +2,11 @@
 namespace frontend\controllers;
 
 use common\components\MyBaseContoller;
-use common\modules\reporting\models\Damage;
-use common\modules\reporting\models\Geometry;
+use common\modules\rapid_assessment\models\ItemType;
+use common\components\AppHelper;
 use Yii;
+use yii\helpers\Json;
 use yii\helpers\Url;
-use yii\jui\JuiAsset;
 
 /**
  * DemoGeo controller
@@ -37,13 +37,13 @@ class DemoGeoController extends MyBaseContoller
     public function actionIndex()
     {
         $links = [];
-        $links[] = ['url' => Url::to('place-autocomplete-widget'), 'title' => 'Place Autocomplete Widget'];
-        $links[] = ['url' => Url::to('point-picker-widget'), 'title' => 'PointPickerWidget'];
-        $links[] = ['url' => Url::to('point-picker-ol3-widget'), 'title' => 'PointPicker Widget with Openlayers 3 and Jquery Ui Dialog'];
-        $links[] = ['url' => Url::to('point-picker-ol3-bootstrap-modal-widget'), 'title' => 'PointPicker Widget with Openlayers 3 and Bootstrap Modal'];
-        $links[] = ['url' => Url::to('ol3-map-simple'), 'title' => 'Simple Openlayers 3 Map'];
-        $links[] = ['url' => Url::to('ol3-map-custom-controls'), 'title' => 'Custom Controls North button to map'];
-        $links[] = ['url' => Url::to('ol3-map-with-widget-form'), 'title' => 'Openlayers 3 Map with widget form of Yii 2!'];
+        $links[] = ['url' => Url::to(['demo-geo/place-autocomplete-widget']), 'title' => 'Place Autocomplete Widget'];
+        $links[] = ['url' => Url::to(['demo-geo/point-picker-widget']), 'title' => 'PointPickerWidget'];
+        $links[] = ['url' => Url::to(['demo-geo/point-picker-ol3-widget']), 'title' => 'PointPicker Widget with Openlayers 3 and Jquery Ui Dialog'];
+        $links[] = ['url' => Url::to(['demo-geo/point-picker-ol3-bootstrap-modal-widget']), 'title' => 'PointPicker Widget with Openlayers 3 and Bootstrap Modal'];
+        $links[] = ['url' => Url::to(['demo-geo/ol3-map-simple']), 'title' => 'Simple Openlayers 3 Map'];
+        $links[] = ['url' => Url::to(['demo-geo/ol3-map-custom-controls']), 'title' => 'Custom Controls North button to map'];
+        $links[] = ['url' => Url::to(['demo-geo/ol3-map-with-widget-form']), 'title' => 'Openlayers 3 Map with widget form of Yii 2!'];
 
         return $this->render('index', ['links' => $links]);
     }
@@ -85,8 +85,18 @@ class DemoGeoController extends MyBaseContoller
 
     public function actionTest()
     {
-        return $this->render('test');
+        /**
+         * @var $urlManagerFrontEnd \yii\web\UrlManager
+         * @var $urlManagerBackEnd \yii\web\UrlManager
+         */
+        $urlManagerFrontEnd=Yii::$app->urlManagerFrontEnd;
+        $urlManagerBackendEnd=Yii::$app->urlManagerBackEnd;
+        $urlManager= Yii::$app->urlManager;
+        $url = $urlManagerFrontEnd->createUrl(['user/registration/confirm','key'=>'jhgfd']);
+        $url = Yii::$app->urlManager->getScriptUrl();
+        echo json_encode(AppHelper::getApplicationConfig('backend'));
 
     }
 
 }
+

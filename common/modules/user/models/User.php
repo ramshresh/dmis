@@ -6,6 +6,7 @@ use ReflectionClass;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\helpers\Inflector;
+use yii\helpers\Json;
 use yii\swiftmailer\Mailer;
 use yii\swiftmailer\Message;
 use yii\web\IdentityInterface;
@@ -479,6 +480,7 @@ class User extends ActiveRecord implements IdentityInterface
         $message  = $mailer->compose('confirmEmail', compact("subject", "user", "profile", "userKey"))
             ->setTo($email)
             ->setSubject($subject);
+
 
         // check for messageConfig before sending (for backwards-compatible purposes)
         if (empty($mailer->messageConfig["from"])) {

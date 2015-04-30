@@ -78,6 +78,11 @@ class DriverController extends \yii\rest\ActiveController
             'update' => [
                 'class' => 'common\modules\tracking\actions\rest\DriverUpdateAction',
                 'modelClass' => $this->modelClass,
+                'findModel'=>function ($id, $action) {
+                         // $id is the primary key value. If composite primary key, the key values
+                         // will be separated by comma.
+                         // $action is the action object currently running
+                     },
                 //'checkAccess' => [$this, 'checkAccess'],
                 //'scenario' => SCENARIO_UPDATE,
             ],

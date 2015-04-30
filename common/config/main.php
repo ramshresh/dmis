@@ -1,7 +1,29 @@
 <?php
+use \yii\web\Request;
+
+$baseUrlFrontend = str_replace('/frontend/web', '', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
+$baseUrlBackend = str_replace('/frontend/web', 'admin', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
+$baseUrlApi = str_replace('/frontend/web', 'api', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
+
+//$baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
+
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'facebook' => [
+                    'class' => 'yii\authclient\clients\Facebook',
+                    'clientId' => '362267747300970',
+                    'clientSecret' => 'dbb3570914415338188ccc1179b33903',
+                    'scope' => 'email',
+                ],
+            ],
+        ],
+        'routing' => [
+            'class' => 'common\modules\routing\Module',
+        ],
         'user' => [
             //'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -14,21 +36,49 @@ return [
             //'linkAssets' => true, //disabled because not working in windows
             'linkAssets' => true,
             // Overriding with Custom jqueryui
-            'bundles' => [ 'yii\jui\JuiAsset' => [
-                'sourcePath' => '@common/asset-files/jqueryui/1/11/2/custom',
-                'css' => [
-                    'jquery-ui.css',
+            'bundles' => [
+                'yii\jui\JuiAsset' => [
+                    'sourcePath' => '@common/asset-files/jqueryui/1/11/2/custom',
+                    'css' => [
+                        'jquery-ui.css',
+                    ],
+                    'js'=>[
+                        'jquery-ui.js',
+                    ],
                 ],
-                'js'=>[
-                    'jquery-ui.js',
-                ],
-
-            ] ]
+               /* 'kartik\select2\Select2Asset'=>[
+                    'sourcePath'=>'@common/asset-files/select2',
+                    'css' => [
+                        'select2.min.css',
+                    ],
+                    'js' => [
+                        'select2.min.js',
+                    ],
+                    'depends' => [
+                        'yii\web\YiiAsset',
+                        'yii\bootstrap\BootstrapAsset',
+                        'yii\web\JqueryAsset',
+                    ],
+                ],*/
+            ]
+        ],
+        'urlManagerBackEnd' =>[
+            'class'=>'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'baseUrl' => '/admin',
+        ],
+        'urlManagerFrontEnd' => [
+            'class'=>'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'baseUrl' => '/',
         ],
     ],
     'modules' => [
         'user' => [
             'class' => 'common\modules\user\Module',
+            'emailViewPath'=>'@common/modules/user/mail',
         ],
         'reporting' => [
             'class' => 'common\modules\reporting\Module',
@@ -50,6 +100,9 @@ return [
         ],
         'social_media' => [
             'class' => 'common\modules\social_media\Module',
+        ],
+        'file_management' => [
+            'class' => 'common\modules\file_management\Module',
         ],
     ],
 

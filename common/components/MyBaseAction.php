@@ -59,9 +59,9 @@ class MyBaseAction extends Action implements MyYiiActiveFormJsAjaxFormInterface{
      * @param $message string
      *
      */
-    public function sendSuccessResponseOnAjaxFormSubmit($message)
+    public function sendSuccessResponseOnAjaxFormSubmit($message,$object=null)
     {
-        echo json_encode(['status' => $this::STATUS_SUCCESS, 'msg' => $message]);
+        echo json_encode(['status' => $this::STATUS_SUCCESS, 'msg' => $message,'object'=>$object]);
         Yii::$app->end(0);
     }
 

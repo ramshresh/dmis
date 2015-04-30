@@ -4,8 +4,16 @@ Options -Indexes
   RewriteEngine on
 
   RewriteCond %{REQUEST_URI} !^public
+
+
+  RewriteRule ^api/cgi-bin/(.*)$ cgi-bin/$1 [L]
+  RewriteRule ^admin/cgi-bin/(.*)$ cgi-bin/$1 [L]
   RewriteRule ^cgi-bin(.*)$ cgi-bin$1 [L]
+
+  RewriteRule ^api/uploads/(.*)$ uploads/$1 [L]
+  RewriteRule ^admin/uploads/(.*)$ uploads/$1 [L]
   RewriteRule ^uploads(.*)$ uploads$1 [L]
+
   RewriteRule ^admin(.*)$ backend/web/$1 [L]
   RewriteRule ^api(.*)$ api/web/$1 [L]
   RewriteRule ^(.*)$ frontend/web/$1 [L]

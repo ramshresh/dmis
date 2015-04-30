@@ -4,6 +4,7 @@ namespace common\modules\user\models\forms;
 
 use Yii;
 use yii\base\Model;
+use yii\helpers\Json;
 use yii\swiftmailer\Mailer;
 use yii\swiftmailer\Message;
 

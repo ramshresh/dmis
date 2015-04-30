@@ -1,0 +1,53 @@
+Message-ID: <41ed3400b528f06e177d3f36dafa7176@localhost>
+Date: Mon, 13 Apr 2015 12:03:38 +0200
+Subject: Email Confirmation
+From: Admin <gircgeomatics@gmail.com>
+To: ram_shresh@hotmail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift_v4_1428919418_3c088e0a62254ef784f4a9dbcc5671ea_=_"
+
+
+--_=_swift_v4_1428919418_3c088e0a62254ef784f4a9dbcc5671ea_=_
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Email Confirmation
+
+Please confirm your email address by clicking=
+ the link below:
+
+Click Here to Confirm
+
+--_=_swift_v4_1428919418_3c088e0a62254ef784f4a9dbcc5671ea_=_
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.=
+org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org=
+/1999/xhtml">
+<head>
+    <meta http-equiv=3D"Content-Type" con=
+tent=3D"text/html; charset=3DUTF-8" />
+    <title></title>
+    <=
+/head>
+<body>
+
+<h3>Email Confirmation</h3>
+
+<p>Pl=
+ease confirm your email address by clicking the link below:<=
+/p>
+
+<p><a href=3D"http://localhost/girc/dmis/admin/user/registr=
+ation/confirm?key=3DBnOekdwJrOboChZJoGPrtI5vwfbLkPdJ">Click Here to Confir=
+m</a>
+<!--<p><a href=3D"--><?//=3D Url::toRoute(["/user/registration=
+/confirm", "key" =3D> $userKey->key], true); ?><!--">Click Here to Confirm=
+</a>--></body>
+</html>
+
+
+--_=_swift_v4_1428919418_3c088e0a62254ef784f4a9dbcc5671ea_=_--

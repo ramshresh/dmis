@@ -101,7 +101,6 @@ function repoFormatSelection(repo) {
             }else{self.elem = $('#'+elem);}
             self.$elem = $(elem);
 
-
             self.latId = self.options.latId;
             self.lonId = self.options.lonId;
 
@@ -109,7 +108,6 @@ function repoFormatSelection(repo) {
             self.$lonId = $('#'+self.lonId);
             self.lat = (self.options.lat)?self.options.lat:self.$latId.val();
             self.lon = (self.options.lon)?self.options.lon:self.$lonId.val();
-
         },
 
         reverseGeocode:function(lon,lat){

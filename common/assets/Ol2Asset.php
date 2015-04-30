@@ -17,7 +17,7 @@ class Ol2Asset extends AssetBundle
         'green_theme/style.css',
     ];
     public $js = [
-        'lib/OpenLayers.js',
+        'OpenLayers.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

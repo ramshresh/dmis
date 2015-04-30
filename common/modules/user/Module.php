@@ -89,6 +89,8 @@ class Module extends \yii\base\Module
      */
     public $emailViewPath = "@user/mail";
 
+
+
     /**
      * @var array Model classes, e.g., ["User" => "common\modules\user\models\User"]
      * Usage:
@@ -133,6 +135,7 @@ class Module extends \yii\base\Module
                 //'forceTranslation' => true,
             ];
         }
+
 
         // override modelClasses
         $this->modelClasses = array_merge($this->getDefaultModelClasses(), $this->modelClasses);
@@ -230,7 +233,7 @@ class Module extends \yii\base\Module
      *
      * @inheritdoc
      */
-    public function createController($route)
+   /* public function createController($route)
     {
         // check valid routes
         $validRoutes = [$this->defaultRoute, "admin", "copy", "auth"];
@@ -245,7 +248,7 @@ class Module extends \yii\base\Module
         return (empty($route) or $isValidRoute)
             ? parent::createController($route)
             : parent::createController("{$this->defaultRoute}/{$route}");
-    }
+    }*/
 
     /**
      * Get a list of actions for this module. Used for debugging/initial installations
@@ -258,19 +261,21 @@ class Module extends \yii\base\Module
             "/{$this->id}/admin" => "Admin CRUD",
             "/{$this->id}/login" => "Login page",
             "/{$this->id}/logout" => "Logout page",
-            "/{$this->id}/register" => "Register page",
+            "/{$this->id}/registration/register" => "Register page",
             "/{$this->id}/auth/login" => "Register/login via social account",
             "/{$this->id}/auth/connect" => "Connect social account to currently logged in user account",
             "/{$this->id}/account" => "User account page (email, username, password)",
             "/{$this->id}/profile" => "Profile page",
-            "/{$this->id}/forgot" => "Forgot password page",
-            "/{$this->id}/reset?key=zzzzz" => "Reset password page. Automatically generated from forgot password page",
-            "/{$this->id}/resend" => "Resend email confirmation (for both activation and change of email)",
-            "/{$this->id}/resend-change" => "Resend email change confirmation (quick link on the 'Account' page)",
-            "/{$this->id}/cancel" => "Cancel email change confirmation (quick link on the 'Account' page)",
-            "/{$this->id}/confirm?key=zzzzz" => "Confirm email address. Automatically generated upon registration/email change",
+            "/{$this->id}/registration/forgot" => "Forgot password page",
+            "/{$this->id}/registration/reset?key=zzzzz" => "Reset password page. Automatically generated from forgot password page",
+            "/{$this->id}/registration/resend" => "Resend email confirmation (for both activation and change of email)",
+            "/{$this->id}/registration/resend-change" => "Resend email change confirmation (quick link on the 'Account' page)",
+            "/{$this->id}/registration/cancel" => "Cancel email change confirmation (quick link on the 'Account' page)",
+            "/{$this->id}/registration/confirm?key=zzzzz" => "Confirm email address. Automatically generated upon registration/email change",
             "/{$this->id}/auth/login?authclient=zzzzz" => "Register/login via social authentication",
             "/{$this->id}/auth/connect?authclient=zzzzz" => "Connect social authentication account to currently logged in user",
         ];
     }
+
+
 }

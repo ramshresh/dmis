@@ -9,6 +9,7 @@
 namespace common\modules\rapid_assessment\models;
 
 use common\modules\rapid_assessment\models\query\ReportItemQuery;
+use yii\base\Exception;
 use yii\helpers\Json;
 
 /**
@@ -73,5 +74,102 @@ class ReportItemEmergencySituation extends ReportItem{
             //->onCondition(['type'=>ReportItem::TYPE_NEED])
             //viaTable(ReportItemChild::tableName(), ['parent_id' => 'id','parent_type' => 'type']);
             ->via('reportItemChildren');
+    }
+
+
+
+    /**
+     *
+     * @param $items_posted \common\modules\rapid_assessment\models\ReportItemNeed[]
+     * @return array
+     */
+    public function loadMultipleNeeds($items_posted)
+    {
+        $needs = [];
+        foreach ($items_posted as $item_post) {
+            $need = null;
+            if (!empty($item_post['id'])) {
+                $need = $this->findNeed($item_post['id']);
+            }
+            if (is_null($need)) {
+                $need = new ReportItemNeed();
+            }
+            unset($item_post['id']);
+            // Remove primary key
+            $need->attributes = $item_post;
+            //    if($need->save()){
+                    array_push($needs, $need);
+             //   }
+        }
+        return $needs;
+    }
+
+    /**
+     *
+     * @param $items_posted \common\modules\rapid_assessment\models\ReportItemNeed[]
+     * @return array
+     */
+    public function loadMultipleIncidents($items_posted)
+    {
+        $incidents = [];
+        foreach ($items_posted as $item_post) {
+            $incident = null;
+            if (!empty($item_post['id'])) {
+                $incident = $this->findIncident($item_post['id']);
+            }
+            if (is_null($incident)) {
+                $incident = new ReportItemIncident();
+            }
+            unset($item_post['id']);
+            // Remove primary key
+            $incident->attributes = $item_post;
+            //    if($need->save()){
+            array_push($incidents, $incident);
+            //   }
+        }
+        return $incidents;
+    }
+
+    public function createNeeds($items_posted){
+        $needs = [];
+        foreach ($items_posted as $item_post) {
+            $need = null;
+            if (!empty($item_post['id'])) {
+                $need = $this->findNeed($item_post['id']);
+            }
+            if (is_null($need)) {
+                $need = new ReportItemNeed();
+            }
+            unset($item_post['id']);
+            // Remove primary key
+            $need->attributes = $item_post;
+            $need->save();
+            $this->link('needs',$need);
+
+            array_push($needs, $need);
+        }
+        return $needs;
+    }
+
+    public function findNeed($id)
+    {
+        $need = null;
+        foreach ($this->needs as $s) {
+            if ($s->id == $id) {
+                $need = $s;
+            }
+        }
+        return $need;
+    }
+
+    public function findIncident($id)
+    {
+        $incident = null;
+        foreach ($this->incidents as $s) {
+            if ($s->id == $id) {
+                $incident = $s;
+            }
+        }
+        return $incident;
     }
 }

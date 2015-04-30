@@ -46,22 +46,27 @@ class Create extends Widget
             case strtolower(ReportItem::TYPE_EMERGENCY_SITUATION):
                 $this->model = new ReportItemEmergencySituation();
                 $this->viewFile = 'emergency-situation/_form';
+                $this->actionRoute = [$this->actionRoute,'model'=>'ReportItemEmergencySituation'];
                 break;
             case strtolower(ReportItem::TYPE_EVENT):
                 $this->model = new ReportItemEvent();
                 $this->viewFile = 'event/_form';
+                $this->actionRoute = [$this->actionRoute,'model'=>'ReportItemEvent'];
                 break;
             case strtolower(ReportItem::TYPE_INCIDENT):
                 $this->model = new ReportItemIncident();
                 $this->viewFile = 'incident/_form';
+                $this->actionRoute = [$this->actionRoute,'model'=>'ReportItemIncident'];
                 break;
             case strtolower(ReportItem::TYPE_IMPACT):
                 $this->model = new ReportItemImpact();
                 $this->viewFile = 'impact/_form';
+                $this->actionRoute = [$this->actionRoute,'model'=>'ReportItemImpact'];
                 break;
             case strtolower(ReportItem::TYPE_NEED):
                 $this->model = new ReportItemNeed();
                 $this->viewFile = 'need/_form';
+                $this->actionRoute = [$this->actionRoute,'model'=>'ReportItemNeed'];;
                 break;
             default:
                 $this->model = new ReportItem();

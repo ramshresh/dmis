@@ -3,6 +3,7 @@
 use common\modules\rapid_assessment\widgets\tabular_input\report_item_multimedia\Create;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use zxbodya\yii2\galleryManager\GalleryManager;
 
 /* @var $this yii\web\View */
 /* @var $model common\modules\rapid_assessment\models\ReportItem */
@@ -60,6 +61,20 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'address')->textInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'user_id')->textInput() ?>
+
+    <?php
+    if ($model->isNewRecord) {
+        echo 'Can not upload images for new record';
+    } else {
+        echo GalleryManager::widget(
+            [
+                'model' => $model,
+                'behaviorName' => 'galleryBehavior',
+                'apiRoute' => '/rapid_assessment/crud-report-item/galleryApi'
+            ]
+        );
+    }
+    ?>
     <?php
    echo Create::widget(['form'=>$form]);
     ?>

@@ -34,9 +34,9 @@ use yii\widgets\ActiveForm;
         </div>
 </div>
     <h6>
-        <?= Html::a("*Register", ["/user/register"]) ?>
-        <?= Html::a("*Forgot password" . "?", ["/user/forgot"]) ?>
-        <?= Html::a("*Resend confirmation email", ["/user/resend"]) ?>
+        <?= Html::a("*Register", ["/user/registration/register"]) ?>
+        <?= Html::a("*Forgot password" . "?", ["/user/registration/forgot"]) ?>
+        <?= Html::a("*Resend confirmation email", ["/user/registration/resend"]) ?>
     </h6>
     <?php ActiveForm::end(); ?>
 </div>

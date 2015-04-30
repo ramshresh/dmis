@@ -1,5 +1,6 @@
 <?php
 
+use common\components\AppHelper;
 use yii\helpers\Url;
 
 /**
@@ -14,4 +15,4 @@ use yii\helpers\Url;
 
 <p><?= Yii::t("user", "Please confirm your email address by clicking the link below:") ?></p>
 
-<p><?= Url::toRoute(["/user/confirm", "key" => $userKey->key], true); ?></p>
+<p><a href="<?= AppHelper::getAppUrlToRoute('backend',["/user/registration/confirm", "key" => $userKey->key]); ?>">Click Here to Confirm</a>

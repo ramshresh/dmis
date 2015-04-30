@@ -5,6 +5,7 @@ namespace api\modules\rapid_assessment\controllers;
 use yii\data\ActiveDataProvider;
 use yii\db\Exception;
 use yii\db\Query;
+use yii\filters\auth\HttpBasicAuth;
 use yii\rest\Controller;
 
 class ItemController extends Controller
@@ -160,7 +161,6 @@ class ItemController extends Controller
         $columnNames = $model::getTableSchema()->getColumnNames();
         $result = [];
         foreach ($columnNames as $column) {
-
             $query = new Query();
             $query->addSelect([$countAlias => 'COUNT(*)']);
             $query->addSelect([$propertyAlias => $column]);

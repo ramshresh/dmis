@@ -1,0 +1,16 @@
+Allow from all
+# Allow cgi-script execution with extension .cgi (use .cgi or cgi) in file name
+# added py extension for python script (use .py or py)
+# reference--> http://www.htaccess-guide.com/enable-cgi-outside-of-the-cgi-bin/
+AddHandler cgi-script cgi py
+Options +ExecCGI 
+#Alternatively use to execute all files in the directory as cgi scripts
+#<--
+# Options +ExecCGI
+# SetHandler cgi-script 
+#-->
+# Do not allow directory listing
+# reference--> http://www.htaccess-guide.com/disable-directory-listings/
+IndexIgnore * 
+
+
