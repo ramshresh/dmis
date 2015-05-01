@@ -113,6 +113,8 @@ return [
                     'extraPatterns' => [
                         'GET unique/<property:\w+>' => 'unique',
                         'GET time-line/<type:\w+>' => 'time-line',
+                        'GET with-query' => 'with-query',
+                        'GET spatial-query' => 'spatial-query',
                         'GET get-drop-down-item-names' => 'get-drop-down-item-names',
                         'GET get-drop-down-item-children-names' => 'get-drop-down-item-children-names',
                         'GET attributes' => 'attributes',

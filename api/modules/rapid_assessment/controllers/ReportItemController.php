@@ -249,6 +249,58 @@ class ReportItemController extends \yii\rest\ActiveController
             $query->all(), 'item_name', 'item_name');
     }
 
+    public function actionWithQuery(){
+
+        $subQuery = (new Query())->select('COUNT(*)')->from(ReportItem::tableName());
+
+// SELECT `id`, (SELECT COUNT(*) FROM `user`) AS `count` FROM `post`
+        $query = (new Query())->select(['id', 'count' => $subQuery])->from(ReportItem::tableName());
+
+        return $query->all();
+    }
+    public function actionSpatialQuery(){
+        /*
+               WITH group_count AS (
+                SELECT vdc_name, count(id)
+                                    FROM "rapid_assessment".ri_in_vdc
+                                    WHERE type = 'incident'
+				    AND item_name='Fire'
+                                    GROUP BY vdc_name
+                                    ORDER BY vdc_name
+            )
+            select gr.vdc_name ,gr.count,vdc.geom FROM group_count as gr  JOIN "shapefile_data".vdc_ethnic as vdc ON gr.vdc_name = vdc.vdc_name;
+         */
+        if(isset($_GET['type'])){
+            $type = $_GET['type'];
+        }
+        if(isset($_GET['item_name'])){
+            $item_name = $_GET['item_name'];
+        }
+
+        if(!(isset($_GET['group_by']))){
+            throw new Exgception('group_by must be set');
+        }
+        $groupBy = $_GET['group_by'];
+
+        $sql = <<<SQL
+   WITH group_count AS (
+                SELECT $groupBy, count(id)
+                                    FROM "rapid_assessment".ri_in_vdc
+                                    WHERE type = :type
+				    AND item_name=:item_name
+                                    GROUP BY $groupBy
+                                    ORDER BY $groupBy
+            )
+            select gr.vdc_name ,gr.count,vdc.geom FROM group_count as gr  JOIN "shapefile_data".vdc_ethnic as vdc ON gr.vdc_name = vdc.vdc_name;
+
+SQL;
+        $query = \Yii::$app->db->createCommand($sql)
+            ->bindParam(':type',$type)
+            ->bindParam(':item_name',$item_name)
+            ->queryAll();
+return $query;
+    }
+
     public function actionTimeLine(){
         $tableName =ReportItem::tableName();
         if(!isset($_GET['type'])){
@@ -261,6 +313,8 @@ class ReportItemController extends \yii\rest\ActiveController
         }
         $attribute =$_GET['attribute'];
 
+
+$sql='';
         switch(strtolower($_GET['type'])){
             case 'interval':
                 if(!isset($_GET['interval'])){
@@ -268,15 +322,42 @@ class ReportItemController extends \yii\rest\ActiveController
                 }
                 $interval =$_GET['interval'];
 
-                $sql= <<<SQL
-            WITH groupedby_timestamp AS (
+                if(isset($_GET['filter_by_attribute']) && isset($_GET['filter_by_value']) ){
+                    $key=$_GET['filter_by_attribute'];
+                    $value=$_GET['filter_by_value'];
+                    $sql1= <<<SQL
+
+                   WITH groupedby_timestamp AS (
                 SELECT  date_trunc(:interval, timestamp_occurance::TIMESTAMP), count($attribute)
                                     FROM "rapid_assessment".report_item
+SQL;
+
+
+
+                            $whereSql=" WHERE $key  =  '$value'";
+
+                    $sql2=<<<SQL
                                     GROUP BY date_trunc(:interval, timestamp_occurance::TIMESTAMP)
                                     ORDER BY date_trunc(:interval, timestamp_occurance::TIMESTAMP)
             )
             select date_part('epoch', date_trunc) AS unixtime ,groupedby_timestamp.count AS count FROM groupedby_timestamp ;
 SQL;
+
+                    $sql = $sql1.$whereSql.$sql2;
+                }else{
+                    $sql= <<<SQL
+            WITH groupedby_timestamp AS (
+                SELECT  date_trunc(:interval, timestamp_occurance::TIMESTAMP), count($attribute)
+                                    FROM "rapid_assessment".report_item
+
+                                    GROUP BY date_trunc(:interval, timestamp_occurance::TIMESTAMP)
+                                    ORDER BY date_trunc(:interval, timestamp_occurance::TIMESTAMP)
+            )
+            select date_part('epoch', date_trunc) AS unixtime ,groupedby_timestamp.count AS count FROM groupedby_timestamp ;
+SQL;
+                }
+
+
                 $query = \Yii::$app->db->createCommand($sql)
                     ->bindParam(':interval',$interval)
                     ->queryAll();
