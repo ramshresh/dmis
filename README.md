@@ -1,3 +1,27 @@
+Installation Guide
+1. Clone the repository in web directory of your server
+git clone https://github.com/ramshresh/dmis.git
+2. Update libraries using composer.phar Go to the root directory ( like C:\xampp\htdocs\dmis  in windows) and run command
+composer.phar update.
+--OR--
+if you have installed composer globally then simply do
+composer update.
+
+2. Initialize the application. Go to the root directory example C:\xampp\htdocs\dmis in windows xampp. Then. do
+php init
+
+
+
+
+
+
+
+
+
+
+
+
+
 # DMIS Disaster Management Information System
 ===================================
 DMIS is developed on Yii 2 PHP framework
