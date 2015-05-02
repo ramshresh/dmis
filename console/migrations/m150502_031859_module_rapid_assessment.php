@@ -15,7 +15,7 @@ class m150502_031859_module_rapid_assessment extends Migration
 
     public function safeDown()
     {
-
+        Yii::$app->db->createCommand('DROP SCHEMA IF EXISTS "rapid_assessment"')->execute();
              /*echo "m150502_005701_rapid_assessment_create_schema cannot be reverted.\n";
         return false;*/
     }
