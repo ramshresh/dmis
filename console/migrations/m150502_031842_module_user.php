@@ -4,7 +4,7 @@ use yii\db\Schema;
 use yii\db\Migration;
 
 class m150502_031842_module_user extends Migration
-{
+{ 
 
     public function safeUp()
     {
