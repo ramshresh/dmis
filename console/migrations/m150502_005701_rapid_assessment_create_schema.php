@@ -8,7 +8,7 @@ class m150502_005701_rapid_assessment_create_schema extends Migration
     public function safeUp()
     {
         Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS rapid_assessment')->execute();
-        $this->createTables();
+       // $this->createTables();
     }
 
     public function safeDown()
