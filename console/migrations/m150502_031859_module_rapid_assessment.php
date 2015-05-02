@@ -5,28 +5,24 @@ use yii\db\Migration;
 
 class m150502_031859_module_rapid_assessment extends Migration
 {
-    public function up()
+    public function safeUp()
     {
-
-        Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS rapid_assessment')->execute();
+        Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS "rapid_assessment"')->execute();
+        Yii::$app->db->createCommand('CREATE EXTENSION IF NOT EXISTS postgis;')->execute();
+        Yii::$app->db->createCommand('CREATE EXTENSION IF NOT EXISTS hstore;')->execute();
         $this->createTables();
 
     }
 
-    public function down()
+    public function safeDown()
     {
 
-        Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS rapid_assessment')->execute();
-
-        /*echo "m150502_005701_rapid_assessment_create_schema cannot be reverted.\n";
+             /*echo "m150502_005701_rapid_assessment_create_schema cannot be reverted.\n";
         return false;*/
     }
 
     public function createTables(){
         $sql = <<<SQL
-
-            CREATE EXTENSION IF NOT EXISTS hstore;
-            CREATE EXTENSION IF NOT EXISTS postgis;
 
             CREATE TABLE "rapid_assessment".item
             (
