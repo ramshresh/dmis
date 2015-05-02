@@ -1,214 +1,242 @@
 <?php
 
-use yii\db\Schema;
 use yii\db\Migration;
 
 class m150502_031859_module_rapid_assessment extends Migration
 {
 
-    public function safeUp()
+    public function up()
     {
-        Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS "user"')->execute();
-        $this->createTables();
-        //$this->populateTables();
+        Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS "rapid_assessment";')->execute();
+        Yii::$app->db->createCommand('CREATE EXTENSION IF NOT EXISTS hstore;')->execute();
+        Yii::$app->db->createCommand('CREATE EXTENSION IF NOT EXISTS postgis;')->execute();
+        Yii::$app->db->createCommand($this->createItem())->execute();
+        Yii::$app->db->createCommand($this->createItemType())->execute();
+        Yii::$app->db->createCommand($this->createItemClass())->execute();
+        Yii::$app->db->createCommand($this->createItemChild())->execute();
+        Yii::$app->db->createCommand($this->createReportItem())->execute();
+        Yii::$app->db->createCommand($this->createReportItemChild())->execute();
+        Yii::$app->db->createCommand($this->createReportItemMultimedia())->execute();
+        Yii::$app->db->createCommand($this->createReportItemRating())->execute();
     }
 
-    public function createTables()
+    public function down()
+    {
+        Yii::$app->db->createCommand('DROP SCHEMA IF EXISTS "rapid_assessment" CASCADE')->execute();
+        return true;
+    }
+
+
+    public function createItem()
     {
         $sql = <<<SQL
--- Table: "user".role
-
--- DROP TABLE "user".role;
-
-CREATE TABLE IF NOT EXISTS "user".role
+CREATE TABLE rapid_assessment.item
 (
-  id serial NOT NULL,
+  id bigserial NOT NULL ,
   name character varying(255) NOT NULL,
-  create_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  update_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  can_admin smallint NOT NULL DEFAULT 0,
-  CONSTRAINT role_pkey PRIMARY KEY (id)
+  display_name character varying(255) DEFAULT NULL::character varying,
+  tags character varying(255)[] DEFAULT NULL::character varying[],
+  meta_hstore hstore,
+  meta_json json,
+  is_verified boolean DEFAULT false,
+  CONSTRAINT pk_item_id PRIMARY KEY (id),
+  CONSTRAINT unique_item_display_name UNIQUE (display_name),
+  CONSTRAINT unique_item_name UNIQUE (name)
 )
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE "user".role
-  OWNER TO postgres;
-
-  -- Table: "user"."user"
-
--- DROP TABLE "user"."user";
-
-CREATE TABLE IF NOT EXISTS "user"."user"
-(
-  id bigserial NOT NULL,
-  role_id integer NOT NULL,
-  status smallint NOT NULL,
-  email character varying(255) DEFAULT NULL::character varying,
-  new_email character varying(255) DEFAULT NULL::character varying,
-  username character varying(255) DEFAULT NULL::character varying,
-  password character varying(255) DEFAULT NULL::character varying,
-  auth_key character varying(255) DEFAULT NULL::character varying,
-  api_key character varying(255) DEFAULT NULL::character varying,
-  login_ip character varying(255) DEFAULT NULL::character varying,
-  login_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  create_ip character varying(255) DEFAULT NULL::character varying,
-  create_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  update_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  ban_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  ban_reason character varying(255) DEFAULT NULL::character varying,
-  CONSTRAINT user_pkey PRIMARY KEY (id),
-  CONSTRAINT user_role_id FOREIGN KEY (role_id)
-      REFERENCES "user".role (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE "user"."user"
-  OWNER TO postgres;
-
--- Index: "user".user_email
-
--- DROP INDEX "user".user_email;
-
-CREATE UNIQUE INDEX user_email
-  ON "user"."user"
-  USING btree
-  (email COLLATE pg_catalog."default");
-
--- Index: "user".user_username
-
--- DROP INDEX "user".user_username;
-
-CREATE UNIQUE INDEX user_username IF NOT EXISTS
-  ON "user"."user"
-  USING btree
-  (username COLLATE pg_catalog."default");
-
--- Table: "user".profile
-
--- DROP TABLE "user".profile;
-
-CREATE TABLE IF NOT EXISTS "user".profile
-(
-  id bigserial NOT NULL,
-  user_id bigint NOT NULL,
-  create_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  update_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  full_name character varying(255) DEFAULT NULL::character varying,
-  CONSTRAINT profile_pkey PRIMARY KEY (id),
-  CONSTRAINT profile_user_id FOREIGN KEY (user_id)
-      REFERENCES "user"."user" (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE "user".profile
-  OWNER TO postgres;
--- Table: "user".user_auth
-
--- DROP TABLE "user".user_auth;
-
-CREATE TABLE IF NOT EXISTS "user".user_auth
-(
-  id bigserial NOT NULL,
-  user_id bigint NOT NULL,
-  provider character varying(255) NOT NULL,
-  provider_id character varying(255) NOT NULL,
-  provider_attributes text NOT NULL,
-  create_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  update_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  CONSTRAINT user_auth_pkey PRIMARY KEY (id),
-  CONSTRAINT user_auth_user_id FOREIGN KEY (user_id)
-      REFERENCES "user"."user" (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE "user".user_auth
-  OWNER TO postgres;
-
--- Index: "user".user_auth_provider_id
-
--- DROP INDEX "user".user_auth_provider_id;
-
-CREATE INDEX user_auth_provider_id IF NOT EXISTS
-  ON "user".user_auth
-  USING btree
-  (provider_id COLLATE pg_catalog."default");
-
--- Table: "user".user_key
-
--- DROP TABLE "user".user_key;
-
-CREATE TABLE IF NOT EXISTS "user".user_key
-(
-  id bigserial NOT NULL,
-  user_id bigint NOT NULL,
-  type smallint NOT NULL,
-  key character varying(255) NOT NULL,
-  create_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  consume_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  expire_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
-  CONSTRAINT user_key_pkey PRIMARY KEY (id),
-  CONSTRAINT user_key_user_id FOREIGN KEY (user_id)
-      REFERENCES "user"."user" (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE "user".user_key
-  OWNER TO postgres;
-
--- Index: "user".user_key_key
-
--- DROP INDEX "user".user_key_key;
-
-CREATE UNIQUE  INDEX IF NOT EXISTS user_key_key
-  ON "user".user_key
-  USING btree
-  (key COLLATE pg_catalog."default");
-
-
 SQL;
-
-
+        return $sql;
     }
 
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
+    public function createItemType()
     {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
-
-    public function safeDown()
-    {
-        echo "m150502_020718_user cannot be reverted.\n";
-
-        return false;
-    }
-
-    public function populateTables()
-    {
-        $password='$2y$13$itgfOLHC51n7cuRFG7bN4O0VQrQa1gRxSa6TlMaBsPFphLVh7zWKe';
         $sql = <<<SQL
-INSERT INTO "user".role (name,create_time,can_admin) VALUES ('Admin',now()::timestamp,1),('User',now()::timestamp,0);
 
-INSERT INTO "user".user (role_id,email,username,password,status,create_time,auth_key,api_key) VALUES (1,'neo@neo.com','neo','$password',1,now()::TIMESTAMP ,'X-tW6jgeJ5h0Iu0gaPyIoozrxiv_zBGA','u11L7tK7iAc11ISKrU6op5UCLvuxgvD0');
-INSERT INTO "user".profile (user_id,full_name,create_time) VALUES (1,'My name is Neo',now()::TIMESTAMP);
+CREATE TABLE "rapid_assessment".item_type
+(
+  id bigserial NOT NULL,
+  item_name character varying(255) NOT NULL,
+  type character varying(255) NOT NULL,
+  description character varying(255) DEFAULT NULL::character varying,
+  is_verified boolean DEFAULT false,
+  CONSTRAINT pk_itemtype_id PRIMARY KEY (id),
+  CONSTRAINT unique_itemtype_item_name_and_type UNIQUE (item_name, type)
+);
 SQL;
+        return $sql;
+    }
 
+    public function createItemClass()
+    {
+        $sql = <<<SQL
 
+CREATE TABLE "rapid_assessment".item_class
+(
+  id bigserial NOT NULL,
+  item_name character varying(255) NOT NULL,
+  basis character varying(255) NOT NULL,
+  name character varying(255) NOT NULL,
+  display_name character varying(255) DEFAULT NULL::character varying,
+  range double precision,
+  range_units character varying(255) DEFAULT NULL::character varying,
+  standard character varying(255),
+  description character varying(255) DEFAULT NULL::character varying,
+  is_verified boolean DEFAULT false,
+  CONSTRAINT pk_itemclass_id_as PRIMARY KEY (id),
+  CONSTRAINT unique_itemclass_item_name_and_basis_and_name UNIQUE (item_name, basis, name)
+);
+SQL;
+        return $sql;
+    }
 
-        Yii::$app->db->createCommand($sql,[])->execute();
+    public function createItemChild()
+    {
+        $sql = <<<SQL
+
+CREATE TABLE rapid_assessment.item_child
+(
+  id bigserial NOT NULL,
+  parent_name character varying(255) NOT NULL,
+  child_name character varying(255) NOT NULL,
+  parent_type character varying(255) NOT NULL,
+  child_type character varying(255) NOT NULL,
+  is_verified boolean DEFAULT false,
+  CONSTRAINT pk_itemchild_id PRIMARY KEY (id),
+  CONSTRAINT fk_itemchild_child_name_and_child_type_itemtype FOREIGN KEY (child_name, child_type)
+      REFERENCES rapid_assessment.item_type (item_name, type) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT fk_itemchild_parent_name_and_parent_type_itemtype FOREIGN KEY (parent_name, parent_type)
+      REFERENCES rapid_assessment.item_type (item_name, type) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT unique_itemchild_child_name_type_parent_name_type UNIQUE (child_name, child_type, parent_name, parent_type)
+);
+SQL;
+        return $sql;
+    }
+
+    public function createReportItem(){
+        $sql=<<<SQL
+CREATE TABLE "rapid_assessment".report_item
+(
+  id bigserial NOT NULL,
+  type character varying(255) NOT NULL,
+  item_name character varying(255) NOT NULL,
+  class_basis character varying(255) DEFAULT NULL::character varying,
+  class_name character varying(255) DEFAULT NULL::character varying,
+  title character varying(255) DEFAULT NULL::character varying,
+  description text,
+  is_verified boolean DEFAULT false,
+  status character varying(255),
+  timestamp_occurance timestamp without time zone,
+  timestamp_created_at timestamp without time zone,
+  timestamp_updated_at timestamp without time zone,
+  tags character varying(255)[] DEFAULT NULL::character varying[],
+  meta_hstore hstore,
+  meta_json json,
+  declared_by character varying(255),
+  timestamp_declared_at timestamp without time zone,
+  magnitude double precision,
+  units character varying(255),
+  wkt text,
+  geom geometry,
+  latitude double precision,
+  longitude double precision,
+  address character varying(255) DEFAULT NULL::character varying,
+  user_id bigint,
+  CONSTRAINT pk_reportitem_id PRIMARY KEY (id),
+  CONSTRAINT fk_reportitem_userid_user FOREIGN KEY (user_id)
+      REFERENCES "user".user (id) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT unique_reportitem_id_and_type UNIQUE (id, type),
+  CONSTRAINT unique_reportitem_id_class_basis_and_class_name UNIQUE (id, class_basis, class_name)
+);
+
+SQL;
+        return $sql;
+    }
+
+    public function createReportItemChild(){
+        $sql=<<<SQL
+CREATE TABLE "rapid_assessment".report_item_child
+(
+  id bigserial NOT NULL,
+  parent_id bigint NOT NULL,
+  child_id bigint NOT NULL,
+  parent_type character varying(255) NOT NULL,
+  child_type character varying(255) NOT NULL,
+  CONSTRAINT pk_reportitemchild_id PRIMARY KEY (id),
+  CONSTRAINT fk_reportitemchild_child_id_and_child_type_reportitem FOREIGN KEY (child_id, child_type)
+      REFERENCES "rapid_assessment".report_item (id, type) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT fk_reportitemchild_parent_id_and_parent_type_reportitem FOREIGN KEY (parent_id, parent_type)
+      REFERENCES "rapid_assessment".report_item (id, type) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT unique_reportitemchild_child_id_parent_id UNIQUE (child_id, parent_id)
+);
+
+SQL;
+        return $sql;
+    }
+
+    public function createReportItemMultimedia(){
+        $sql =<<<SQL
+CREATE TABLE rapid_assessment.report_item_multimedia
+(
+  id bigserial NOT NULL,
+  report_item_id bigint,
+  type character varying(255) DEFAULT NULL::character varying,
+  title character varying(255) DEFAULT NULL::character varying,
+  extension character varying(255) DEFAULT NULL::character varying,
+  thumbnail_url text,
+  description character varying(255) DEFAULT NULL::character varying,
+  latitude double precision,
+  longitude double precision,
+  url text,
+  path text,
+  timestamp_taken_at timestamp without time zone,
+  caption character varying(255) DEFAULT NULL::character varying,
+  resolution_x integer,
+  resolution_y integer,
+  size_bytes integer,
+  is_verified boolean,
+  tags character varying(255)[] DEFAULT NULL::character varying(255)[],
+  meta_hstore hstore,
+  meta_json json,
+  CONSTRAINT pk_reportitemmultimedia_id PRIMARY KEY (id),
+  CONSTRAINT fk_reportitemmultimedia_report_item_id_reportitem_as_fk FOREIGN KEY (report_item_id)
+      REFERENCES rapid_assessment.report_item (id) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE
+);
+SQL;
+        return $sql;
+    }
+
+    public function createReportItemRating(){
+        $sql = <<<SQL
+-- Table: rapid_assessment.report_item_rating
+
+-- DROP TABLE rapid_assessment.report_item_rating;
+
+CREATE TABLE rapid_assessment.report_item_rating
+(
+  id bigserial NOT NULL,
+  report_item_id bigint NOT NULL,
+  rating smallint NOT NULL,
+  comment character varying(225),
+  is_valid boolean DEFAULT true,
+  user_id bigint NOT NULL,
+  timestamp_created_at timestamp without time zone,
+  timestamp_updated_at timestamp without time zone,
+  CONSTRAINT pk_reportitemrating_id PRIMARY KEY (id),
+  CONSTRAINT fk_reportitemrating_report_item_id_reportitem FOREIGN KEY (report_item_id)
+      REFERENCES rapid_assessment.report_item (id) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT fk_reportitemrating_user_id_user FOREIGN KEY (user_id)
+      REFERENCES "user"."user" (id) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT unique_reportitemrating_report_item_id_and_user_id UNIQUE (report_item_id, user_id)
+);
+SQL;
+        return $sql;
+
     }
 }
