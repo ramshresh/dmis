@@ -9,7 +9,7 @@ class m150502_031842_module_user extends Migration
     public function safeUp()
     {
         Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS user')->execute();
-        $this->createTables();
+       // $this->createTables();
     }
 
     public function createTables()
@@ -200,6 +200,7 @@ SQL;
     {
 
         $sql = <<<SQL
+
 INSERT INTO "user".role (name,create_time,can_admin) VALUES ('Admin',now()::timestamp,1);
 INSERT INTO "user".role (name,create_time,can_admin) VALUES ('User',now()::timestamp,0);
 
