@@ -6,7 +6,7 @@
  * Time: 2:15 AM
  */
 return [
-    'class' => 'yii\web\UrlManager',
+    'class' => 'yii\web\urlManager',
     'enablePrettyUrl' => true,
     'showScriptName' => false,
 ];
