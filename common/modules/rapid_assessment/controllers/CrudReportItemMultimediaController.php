@@ -10,7 +10,7 @@ use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
-use zxbodya\yii2\galleryManager\GalleryManagerAction;
+use ramshresh\yii2\galleryManager\GalleryManagerAction;
 
 /**
  * CrudReportItemMultimediaController implements the CRUD actions for ReportItemMultimedia model.

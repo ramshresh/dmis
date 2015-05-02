@@ -10,7 +10,7 @@ use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use zxbodya\yii2\galleryManager\GalleryManagerAction;
+use ramshresh\yii2\galleryManager\GalleryManagerAction;
 
 /**
  * CrudReportItemController implements the CRUD actions for ReportItem model.

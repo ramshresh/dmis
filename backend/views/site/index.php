@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 
+use ramshresh\behaviors\ar\ExtendedBehavior;
 use yii\helpers\Url;
 
 $this->title = 'My Yii Application';
@@ -41,5 +42,7 @@ $this->title = 'My Yii Application';
 
     </div>
 </div>
+
+<?= \ramshresh\behaviors\ar\AutoloadExample::widget(); ?>
 
 

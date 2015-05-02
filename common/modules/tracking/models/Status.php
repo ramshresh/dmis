@@ -62,7 +62,7 @@ class Status extends \yii\db\ActiveRecord
     {
         return [
             [
-                'class' => 'mdm\behaviors\ar\IsABehavior',
+                'class' => 'ramshresh\behaviors\ar\IsABehavior',
                 'relationClass' => Driver::className(),
                 'relationKey' => ['IMEI' => 'IMEI'],
             ],

@@ -34,9 +34,9 @@
     "mdmsoft/yii2-widgets": "~1.0",
     "c006/yii2-migration-utility": "dev-master",
     "miloschuman/yii2-highcharts-widget": "dev-master",
-    "zxbodya/yii2-gallery-manager": "*@dev",
     "dmstr/yii2-adminlte-asset": "2.*@beta",
-    "ramshresh/yii2-ar-behaviors": "dev-master"
+    "ramshresh/yii2-ar-behaviors": "dev-master",
+    "ramshresh/yii2-gallery-manager": "dev-master"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",

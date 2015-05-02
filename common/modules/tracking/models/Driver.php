@@ -93,10 +93,10 @@ class Driver extends \yii\db\ActiveRecord
     {
         return [
             [
-                'class' => 'mdm\behaviors\ar\RelatedBehavior',
+                'class' => 'ramshresh\behaviors\ar\RelatedBehavior',
             ],
             [
-                'class' => 'mdm\behaviors\ar\RelationBehavior',
+                'class' => 'ramshresh\behaviors\ar\RelationBehavior',
             ],
         ];
     }

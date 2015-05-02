@@ -59,7 +59,7 @@ class Incident extends ReportItem
     {
         return [
             [
-                'class' => 'mdm\behaviors\ar\IsABehavior',
+                'class' => 'ramshresh\behaviors\ar\IsABehavior',
                 'relationClass' => ReportItem::className(),
                 'relationKey' => ['reportitem_id' => 'id'],
             ],

@@ -4,7 +4,7 @@ use kartik\widgets\FileInput;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-use zxbodya\yii2\galleryManager\GalleryManager;
+use ramshresh\yii2\galleryManager\GalleryManager;
 
 /* @var $this yii\web\View */
 /* @var $model common\modules\rapid_assessment\models\ReportItemMultimedia */

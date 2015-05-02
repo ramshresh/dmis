@@ -62,7 +62,7 @@ class EmergencySituation extends ReportItem
     {
         return [
             [//For Event IS_A ReportItem Relationship.
-                'class' => 'mdm\behaviors\ar\IsABehavior',
+                'class' => 'ramshresh\behaviors\ar\IsABehavior',
                 'relationClass' => ReportItem::className(),
                 'relationKey' => ['reportitem_id' => 'id'],
             ]

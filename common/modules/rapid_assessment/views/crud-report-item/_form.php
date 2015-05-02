@@ -3,7 +3,7 @@
 use common\modules\rapid_assessment\widgets\tabular_input\report_item_multimedia\Create;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use zxbodya\yii2\galleryManager\GalleryManager;
+use ramshresh\yii2\galleryManager\GalleryManager;
 
 /* @var $this yii\web\View */
 /* @var $model common\modules\rapid_assessment\models\ReportItem */

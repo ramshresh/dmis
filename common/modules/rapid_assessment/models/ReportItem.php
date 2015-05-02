@@ -13,8 +13,8 @@ use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\helpers\Url;
-use zxbodya\yii2\galleryManager\GalleryBehavior;
-use zxbodya\yii2\galleryManager\GalleryImageAr;
+use ramshresh\yii2\galleryManager\GalleryBehavior;
+use ramshresh\yii2\galleryManager\GalleryImageAr;
 
 /**
  * This is the model class for table "rapid_assessment.report_item".

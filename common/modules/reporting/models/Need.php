@@ -18,7 +18,7 @@ use Yii;
  * @property Units $unitsDisplayname
  *
  * These are the available properties of model<ReportItem>
- * defined via  @Behavior<mdm\behaviors\ar\IsABehavior> in this model
+ * defined via  @Behavior<ramshresh\behaviors\ar\IsABehavior> in this model
  * They can be used to directly save ReportItem model while saving $this model itself
  * example. $model= new Damage(); $model->item_name = Earthquake; $model->save();
  * Validation Rules and Scenarios for these properties are defined in model <ReportItem> itself
@@ -73,7 +73,7 @@ class Need extends ReportItem
     {
         return [
             [
-                'class' => 'mdm\behaviors\ar\IsABehavior',
+                'class' => 'ramshresh\behaviors\ar\IsABehavior',
                 'relationClass' => ReportItem::className(),
                 'relationKey' => ['reportitem_id' => 'id'],
             ],

@@ -5,7 +5,7 @@ namespace common\modules\rapid_assessment\models;
 use Imagine\Image\Box;
 use Yii;
 use yii\helpers\Url;
-use zxbodya\yii2\galleryManager\GalleryBehavior;
+use ramshresh\yii2\galleryManager\GalleryBehavior;
 
 /**
  * This is the model class for table "rapid_assessment.report_item_multimedia".

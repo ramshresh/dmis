@@ -4,51 +4,53 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d83a2468d014dd72887ccafa1521b379",
+    "hash": "98fc5f71112363a69ed73a65420eea74",
     "packages": [
         {
-            "name": "amnah/yii2-user",
-            "version": "dev-master",
+            "name": "bower-asset/admin-lte",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/amnah/yii2-user.git",
-                "reference": "596937ec03d10a569aebc95ed189dd25aa027f78"
+                "url": "https://github.com/almasaeed2010/AdminLTE.git",
+                "reference": "c25a8710f419a1be142f9b46037be00388a7272c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amnah/yii2-user/zipball/596937ec03d10a569aebc95ed189dd25aa027f78",
-                "reference": "596937ec03d10a569aebc95ed189dd25aa027f78",
+                "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/c25a8710f419a1be142f9b46037be00388a7272c",
+                "reference": "c25a8710f419a1be142f9b46037be00388a7272c",
                 "shasum": ""
             },
-            "require": {
-                "yiisoft/yii2": "*",
-                "yiisoft/yii2-authclient": "*"
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "index2.html",
+                    "dist/css/AdminLTE.css",
+                    "dist/js/app.js",
+                    "build/less/AdminLTE.less"
+                ],
+                "bower-asset-ignore": [
+                    "/.*",
+                    "node_modules",
+                    "bower_components",
+                    "composer.json",
+                    "documentaion"
+                ]
             },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "amnah\\yii2\\user\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "amnah",
-                    "email": "amnah.dev@gmail.com"
-                }
-            ],
-            "description": "Yii 2 user authentication module",
+            "description": "Admin dashboard and control panel template",
             "keywords": [
-                "Authentication",
-                "auth",
-                "user",
-                "yii",
-                "yii2"
-            ],
-            "time": "2015-02-21 16:44:17"
+                "admin",
+                "backend",
+                "bootstrap",
+                "css",
+                "html",
+                "js",
+                "responsive",
+                "template",
+                "theme"
+            ]
         },
         {
             "name": "bower-asset/bootstrap",
@@ -104,16 +106,16 @@
         },
         {
             "name": "bower-asset/jquery",
-            "version": "2.1.3",
+            "version": "2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jquery/jquery.git",
-                "reference": "8f2a9d9272d6ed7f32d3a484740ab342c02541e0"
+                "reference": "7751e69b615c6eca6f783a81e292a55725af6b85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery/zipball/8f2a9d9272d6ed7f32d3a484740ab342c02541e0",
-                "reference": "8f2a9d9272d6ed7f32d3a484740ab342c02541e0",
+                "url": "https://api.github.com/repos/jquery/jquery/zipball/7751e69b615c6eca6f783a81e292a55725af6b85",
+                "reference": "7751e69b615c6eca6f783a81e292a55725af6b85",
                 "shasum": ""
             },
             "require-dev": {
@@ -128,6 +130,7 @@
                 "bower-asset-ignore": [
                     "**/.*",
                     "build",
+                    "dist/cdn",
                     "speed",
                     "test",
                     "*.md",
@@ -383,6 +386,103 @@
             "time": "2015-03-06 05:21:16"
         },
         {
+            "name": "cebe/yii2-gravatar",
+            "version": "1.1",
+            "target-dir": "cebe/gravatar",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cebe/yii2-gravatar.git",
+                "reference": "c9c01bd14c9bdee9e5ae1ef1aad23f80c182c057"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cebe/yii2-gravatar/zipball/c9c01bd14c9bdee9e5ae1ef1aad23f80c182c057",
+                "reference": "c9c01bd14c9bdee9e5ae1ef1aad23f80c182c057",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-0": {
+                    "cebe\\gravatar\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc",
+                    "homepage": "http://cebe.cc/",
+                    "role": "Core framework development"
+                }
+            ],
+            "description": "Gravatar Widget for Yii 2",
+            "keywords": [
+                "gravatar",
+                "yii"
+            ],
+            "time": "2013-12-10 17:49:58"
+        },
+        {
+            "name": "dmstr/yii2-adminlte-asset",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmstr/yii2-adminlte-asset.git",
+                "reference": "9f3c5b8b771bac729f5c88a375ad5a0fab84f30c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmstr/yii2-adminlte-asset/zipball/9f3c5b8b771bac729f5c88a375ad5a0fab84f30c",
+                "reference": "9f3c5b8b771bac729f5c88a375ad5a0fab84f30c",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/admin-lte": "~2.0",
+                "cebe/yii2-gravatar": "1.*",
+                "rmrevin/yii2-fontawesome": "2.9.*",
+                "yiisoft/yii2": "2.*",
+                "yiisoft/yii2-bootstrap": "2.*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dmstr\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "tobias@diemeisterei.de"
+                },
+                {
+                    "name": "Evgeniy Tkachenko",
+                    "email": "et.coder@gmail.com"
+                }
+            ],
+            "description": "Backend theme for Yii2 Framework",
+            "keywords": [
+                "AdminLTE",
+                "extension",
+                "yii2"
+            ],
+            "time": "2015-05-01 01:07:21"
+        },
+        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.6.0",
             "source": {
@@ -425,6 +525,54 @@
                 "html"
             ],
             "time": "2013-11-30 08:25:19"
+        },
+        {
+            "name": "fortawesome/font-awesome",
+            "version": "v4.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0",
+                "reference": "41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0",
+                "shasum": ""
+            },
+            "require-dev": {
+                "jekyll": "1.0.2",
+                "lessc": "1.4.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OFL-1.1",
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Gandy",
+                    "email": "dave@fontawesome.io",
+                    "homepage": "http://twitter.com/davegandy",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The iconic font and CSS framework",
+            "homepage": "http://fontawesome.io/",
+            "keywords": [
+                "FontAwesome",
+                "awesome",
+                "bootstrap",
+                "font",
+                "icon"
+            ],
+            "time": "2015-01-22 18:09:42"
         },
         {
             "name": "imagine/imagine",
@@ -480,16 +628,16 @@
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
-            "version": "v4.1.8",
+            "version": "v4.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "dead0e4302567e87e66296290b62da936ec6793e"
+                "reference": "00bf2212c4c005850267dd27803dba350e90a5be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/dead0e4302567e87e66296290b62da936ec6793e",
-                "reference": "dead0e4302567e87e66296290b62da936ec6793e",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/00bf2212c4c005850267dd27803dba350e90a5be",
+                "reference": "00bf2212c4c005850267dd27803dba350e90a5be",
                 "shasum": ""
             },
             "type": "library",
@@ -524,7 +672,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2015-03-31 07:23:22"
+            "time": "2015-05-02 11:29:22"
         },
         {
             "name": "kartik-v/bootstrap-star-rating",
@@ -573,12 +721,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/dependent-dropdown.git",
-                "reference": "541c99f9d88b8f99761eb22702177a63b959a201"
+                "reference": "1e3afadd1a244b1836cbb0ba627790e99195dc92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/dependent-dropdown/zipball/541c99f9d88b8f99761eb22702177a63b959a201",
-                "reference": "541c99f9d88b8f99761eb22702177a63b959a201",
+                "url": "https://api.github.com/repos/kartik-v/dependent-dropdown/zipball/1e3afadd1a244b1836cbb0ba627790e99195dc92",
+                "reference": "1e3afadd1a244b1836cbb0ba627790e99195dc92",
                 "shasum": ""
             },
             "type": "library",
@@ -607,7 +755,7 @@
                 "option",
                 "select"
             ],
-            "time": "2015-03-04 12:15:28"
+            "time": "2015-04-21 15:47:42"
         },
         {
             "name": "kartik-v/yii2-builder",
@@ -615,12 +763,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-builder.git",
-                "reference": "e7ef7de89e5b40bb174fd27004acc96363a767cf"
+                "reference": "0145817429f80d66f4f8f069df5392426a823dc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-builder/zipball/e7ef7de89e5b40bb174fd27004acc96363a767cf",
-                "reference": "e7ef7de89e5b40bb174fd27004acc96363a767cf",
+                "url": "https://api.github.com/repos/kartik-v/yii2-builder/zipball/0145817429f80d66f4f8f069df5392426a823dc6",
+                "reference": "0145817429f80d66f4f8f069df5392426a823dc6",
                 "shasum": ""
             },
             "require": {
@@ -654,7 +802,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-03-15 09:08:45"
+            "time": "2015-05-02 07:55:55"
         },
         {
             "name": "kartik-v/yii2-date-range",
@@ -1788,54 +1936,6 @@
             "time": "2014-11-09 19:54:17"
         },
         {
-            "name": "mdmsoft/yii2-ar-behaviors",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mdmsoft/yii2-ar-behaviors.git",
-                "reference": "8a852844e64727475027fe7f82f05b160e10c72d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mdmsoft/yii2-ar-behaviors/zipball/8a852844e64727475027fe7f82f05b160e10c72d",
-                "reference": "8a852844e64727475027fe7f82f05b160e10c72d",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "~2.0"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "bootstrap": "mdm\\behaviors\\ar\\Bootstrap",
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "mdm\\behaviors\\ar\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Misbahul Munir",
-                    "email": "misbahuldmunir@gmail.com"
-                }
-            ],
-            "description": "Behaviors for Yii2",
-            "keywords": [
-                "Behavior",
-                "activerecord",
-                "query scope",
-                "yii2"
-            ],
-            "time": "2015-03-04 03:15:28"
-        },
-        {
             "name": "mdmsoft/yii2-widgets",
             "version": "1.0.0",
             "source": {
@@ -1860,7 +1960,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "mdm\\widgets\\": ""
+                    "ramshresh\\widgets\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1887,12 +1987,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/miloschuman/yii2-highcharts.git",
-                "reference": "4739b04fc4c18a24de62b0963d5f6fdc3c56dc50"
+                "reference": "c6c2e163d2cb537b09c5f46b65fc73adc604e904"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/miloschuman/yii2-highcharts/zipball/4739b04fc4c18a24de62b0963d5f6fdc3c56dc50",
-                "reference": "4739b04fc4c18a24de62b0963d5f6fdc3c56dc50",
+                "url": "https://api.github.com/repos/miloschuman/yii2-highcharts/zipball/c6c2e163d2cb537b09c5f46b65fc73adc604e904",
+                "reference": "c6c2e163d2cb537b09c5f46b65fc73adc604e904",
                 "shasum": ""
             },
             "require": {
@@ -1924,7 +2024,78 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-03-05 20:25:24"
+            "time": "2015-04-29 19:14:33"
+        },
+        {
+            "name": "ramshresh/yii2-ar-behaviors",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramshresh/yii2-ar-behaviors.git",
+                "reference": "fb8370a85099d33be9f2703d1bda839c0f57e97e"
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "ramshresh\\behaviors\\ar\\Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "ramshresh\\behaviors\\ar\\": ""
+                }
+            },
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "ramshresh",
+                    "email": "sendmail4ram@gmail.com"
+                }
+            ],
+            "description": "ar-behaviors",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2015-05-02 19:43:23"
+        },
+        {
+            "name": "ramshresh/yii2-gallery-manager",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramshresh/yii2-gallery-manager.git",
+                "reference": "461fc75698ab4dd0276b043dcb1f9578732f9484"
+            },
+            "require": {
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-imagine": "*",
+                "yiisoft/yii2-jui": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "ramshresh\\yii2\\galleryManager\\": ""
+                }
+            },
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "ramshresh",
+                    "email": "sendmail4ram@gmail.com"
+                }
+            ],
+            "description": "yii2-gallery-manager",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2015-05-02 20:10:27"
         },
         {
             "name": "ramshresh/yii2-geo",
@@ -1958,6 +2129,52 @@
                 "yii2"
             ],
             "time": "2015-02-05 06:52:32"
+        },
+        {
+            "name": "rmrevin/yii2-fontawesome",
+            "version": "2.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmrevin/yii2-fontawesome.git",
+                "reference": "717747ffd1f5169e4217b3f17e407366b51d22ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rmrevin/yii2-fontawesome/zipball/717747ffd1f5169e4217b3f17e407366b51d22ca",
+                "reference": "717747ffd1f5169e4217b3f17e407366b51d22ca",
+                "shasum": ""
+            },
+            "require": {
+                "fortawesome/font-awesome": "4.3.*",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "2.0.*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "rmrevin\\yii\\fontawesome\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Revin",
+                    "email": "xgismox@gmail.com",
+                    "homepage": "http://rmrevin.ru/"
+                }
+            ],
+            "description": "Asset Bundle for Yii2 with Font Awesome",
+            "keywords": [
+                "asset",
+                "awesome",
+                "bundle",
+                "font",
+                "yii"
+            ],
+            "time": "2015-04-28 20:15:13"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2095,54 +2312,6 @@
             "homepage": "http://www.yiiframework.com/",
             "keywords": [
                 "framework",
-                "yii2"
-            ],
-            "time": "2015-03-01 06:22:44"
-        },
-        {
-            "name": "yiisoft/yii2-authclient",
-            "version": "2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yiisoft/yii2-authclient.git",
-                "reference": "ef6634cecba6568029bf4f98b323acfac00e4a13"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/ef6634cecba6568029bf4f98b323acfac00e4a13",
-                "reference": "ef6634cecba6568029bf4f98b323acfac00e4a13",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "yii\\authclient\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Paul Klimov",
-                    "email": "klimov.paul@gmail.com"
-                }
-            ],
-            "description": "External authentication via OAuth and OpenID for the Yii framework",
-            "keywords": [
-                "OpenId",
-                "auth",
-                "oauth",
                 "yii2"
             ],
             "time": "2015-03-01 06:22:44"
@@ -2383,49 +2552,6 @@
                 "yii2"
             ],
             "time": "2015-03-01 06:22:44"
-        },
-        {
-            "name": "zxbodya/yii2-gallery-manager",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zxbodya/yii2-gallery-manager.git",
-                "reference": "7ad05c08427f28c0c29e942ef760ee32a7c6f9e3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zxbodya/yii2-gallery-manager/zipball/7ad05c08427f28c0c29e942ef760ee32a7c6f9e3",
-                "reference": "7ad05c08427f28c0c29e942ef760ee32a7c6f9e3",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2-imagine": "*",
-                "yiisoft/yii2-jui": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "zxbodya\\yii2\\galleryManager\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bogdan Savluk",
-                    "email": "savluk.bogdan@gmail.com"
-                }
-            ],
-            "description": "Extension for yii, that allows to manage image galleries",
-            "keywords": [
-                "extension",
-                "gallery",
-                "image",
-                "yii2"
-            ],
-            "time": "2015-03-19 00:42:10"
         }
     ],
     "packages-dev": [
@@ -2732,12 +2858,12 @@
     "stability-flags": {
         "kartik-v/dependent-dropdown": 20,
         "kartik-v/yii2-builder": 20,
-        "mdmsoft/yii2-ar-behaviors": 20,
         "ramshresh/yii2-geo": 20,
         "c006/yii2-migration-utility": 20,
         "miloschuman/yii2-highcharts-widget": 20,
-        "zxbodya/yii2-gallery-manager": 20,
-        "amnah/yii2-user": 20
+        "dmstr/yii2-adminlte-asset": 10,
+        "ramshresh/yii2-ar-behaviors": 20,
+        "ramshresh/yii2-gallery-manager": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -34,7 +34,7 @@ return [
         'rapid_assessment'=>[
            'class'=>'api\modules\rapid_assessment\Module' ,
            'controllerMap'=>[
-               'gallery'=>'zxbodya\yii2\galleryManager\rest\GalleryImageController',
+               'gallery'=>'ramshresh\yii2\galleryManager\rest\GalleryImageController',
            ]
         ],
         'file_management' => [
