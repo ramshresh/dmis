@@ -3,13 +3,13 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m150502_031842_module_user extends Migration
+class m150502_031842_module_user extends yii\db\Migration
 {
 
-    public function up()
+    public function Up()
     {
 
-        Yii::$app->db->createCommand('CREATE SCHEMA user')->execute();
+        Yii::$app->db->createCommand('CREATE SCHEMA "user"')->execute();
         //$this->createTables();
     }
 
@@ -190,7 +190,7 @@ SQL;
     }
     */
 
-    public function down()
+    public function safeDown()
     {
         echo "m150502_020718_user cannot be reverted.\n";
 
