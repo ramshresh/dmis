@@ -24,7 +24,7 @@ First, we'll need to set up the social accounts by adding the components config:
 ```php
 // @app/config/web.php
 'components' => [
-    'authclientCollection' => [
+    'authClientCollection' => [
         'class' => 'yii\authclient\Collection',
         'clients' => [
             'facebook' => [
@@ -70,7 +70,7 @@ view file.
 
 ```php
 // view file
-// note that this won't show anything unless the "authclientCollection" component is set up
+// note that this won't show anything unless the "authClientCollection" component is set up
 <?= yii\authclient\widgets\AuthChoice::widget([
     'baseAuthUrl' => ['/user/auth/connect']
 ]) ?>
@@ -126,7 +126,7 @@ And similarly to connecting, we can add a widget to the desired view file:
 
 ```php
 // view file
-// note that this won't show anything unless the "authclientCollection" component is set up
+// note that this won't show anything unless the "authClientCollection" component is set up
 <?= yii\authclient\widgets\AuthChoice::widget([
     'baseAuthUrl' => ['/user/auth/login'] // "login" instead of "connect"
 ]) ?>

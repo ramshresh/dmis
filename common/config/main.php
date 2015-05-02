@@ -10,7 +10,7 @@ $baseUrlApi = str_replace('/frontend/web', 'api', (new Request)->getBaseUrl());/
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
-        'authclientCollection' => [
+        'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
             'clients' => [
                 'facebook' => [

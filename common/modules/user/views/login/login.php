@@ -46,9 +46,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<?php ActiveForm::end(); ?>
 
-    <?php if (Yii::$app->get("authclientCollection", false)): ?>
+    <?php if (Yii::$app->get("authClientCollection", false)): ?>
         <div class="col-lg-offset-2">
-            <?= yii\authclient\widgets\AuthChoice::widget([
+            <?= \yii\authclient\widgets\AuthChoice::widget([
                 'baseAuthUrl' => ['/user/auth/login']
             ]) ?>
         </div>

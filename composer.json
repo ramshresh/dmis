@@ -36,7 +36,8 @@
     "miloschuman/yii2-highcharts-widget": "dev-master",
     "dmstr/yii2-adminlte-asset": "2.*@beta",
     "ramshresh/yii2-ar-behaviors": "dev-master",
-    "ramshresh/yii2-gallery-manager": "dev-master"
+    "ramshresh/yii2-gallery-manager": "dev-master",
+    "yiisoft/yii2-authclient": "~2.0"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
