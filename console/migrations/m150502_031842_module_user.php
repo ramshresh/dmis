@@ -203,7 +203,7 @@ SQL;
         $sql = <<<SQL
 INSERT INTO "user".role (name,create_time,can_admin) VALUES ('Admin',now()::timestamp,1);
 INSERT INTO "user".role (name,create_time,can_admin) VALUES ('User',now()::timestamp,0);
-INSERT INTO "user".user (role_id,email,username,password,status,create_time,auth_key,api_key) VALUES (1,'neo@neo.com','neo',$password,1,now()::TIMESTAMP ,'X-tW6jgeJ5h0Iu0gaPyIoozrxiv_zBGA','u11L7tK7iAc11ISKrU6op5UCLvuxgvD0');
+INSERT INTO "user".user (role_id,email,username,password,status,create_time,auth_key,api_key) VALUES (1,'neo@neo.com','neo','$password',1,now()::TIMESTAMP ,'X-tW6jgeJ5h0Iu0gaPyIoozrxiv_zBGA','u11L7tK7iAc11ISKrU6op5UCLvuxgvD0');
 INSERT INTO "user".profile (user_id,full_name,create_time) VALUES (1,'My name is Neo',now()::TIMESTAMP);
 SQL;
 
