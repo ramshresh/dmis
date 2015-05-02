@@ -1,6 +1,5 @@
 <?php
 
-use yii\db\Schema;
 use yii\db\Migration;
 
 class m150502_031842_module_user extends Migration
@@ -9,17 +8,23 @@ class m150502_031842_module_user extends Migration
     public function safeUp()
     {
         Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS "user"')->execute();
-        $this->createTables();
-        //$this->populateTables();
+
+        Yii::$app->db->createCommand($this->createTableRole())->execute();
+        Yii::$app->db->createCommand($this->createTableUser())->execute();
+        Yii::$app->db->createCommand($this->createTableProfile())->execute();
+        Yii::$app->db->createCommand($this->createTableUserAuth())->execute();
+        Yii::$app->db->createCommand($this->createTableUserKey())->execute();
+
+        Yii::$app->db->createCommand($this->createIndexUserEmail())->execute();
+        Yii::$app->db->createCommand($this->createIndexUserUsername())->execute();
+        Yii::$app->db->createCommand($this->createIndexUserAuthProviderId())->execute();
+        Yii::$app->db->createCommand($this->createIndexUserKeyKey())->execute();
+
     }
 
-    public function createTables()
+    public function createTableRole()
     {
         $sql = <<<SQL
--- Table: "user".role
-
--- DROP TABLE "user".role;
-
 CREATE TABLE IF NOT EXISTS "user".role
 (
   id serial NOT NULL,
@@ -28,17 +33,14 @@ CREATE TABLE IF NOT EXISTS "user".role
   update_time timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
   can_admin smallint NOT NULL DEFAULT 0,
   CONSTRAINT role_pkey PRIMARY KEY (id)
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE "user".role
-  OWNER TO postgres;
+SQL;
+        return $sql;
+    }
 
-  -- Table: "user"."user"
-
--- DROP TABLE "user"."user";
-
+    public function createTableUser()
+    {
+        $sql = <<<SQL
 CREATE TABLE IF NOT EXISTS "user"."user"
 (
   id bigserial NOT NULL,
@@ -61,35 +63,14 @@ CREATE TABLE IF NOT EXISTS "user"."user"
   CONSTRAINT user_role_id FOREIGN KEY (role_id)
       REFERENCES "user".role (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE "user"."user"
-  OWNER TO postgres;
+SQL;
+        return $sql;
+    }
 
--- Index: "user".user_email
-
--- DROP INDEX "user".user_email;
-
-CREATE UNIQUE INDEX user_email
-  ON "user"."user"
-  USING btree
-  (email COLLATE pg_catalog."default");
-
--- Index: "user".user_username
-
--- DROP INDEX "user".user_username;
-
-CREATE UNIQUE INDEX user_username IF NOT EXISTS
-  ON "user"."user"
-  USING btree
-  (username COLLATE pg_catalog."default");
-
--- Table: "user".profile
-
--- DROP TABLE "user".profile;
-
+    public function createTableProfile()
+    {
+        $sql = <<<SQL
 CREATE TABLE IF NOT EXISTS "user".profile
 (
   id bigserial NOT NULL,
@@ -101,16 +82,14 @@ CREATE TABLE IF NOT EXISTS "user".profile
   CONSTRAINT profile_user_id FOREIGN KEY (user_id)
       REFERENCES "user"."user" (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE "user".profile
-  OWNER TO postgres;
--- Table: "user".user_auth
+SQL;
+        return $sql;
+    }
 
--- DROP TABLE "user".user_auth;
-
+    public function createTableUserAuth()
+    {
+        $sql = <<<SQL
 CREATE TABLE IF NOT EXISTS "user".user_auth
 (
   id bigserial NOT NULL,
@@ -124,26 +103,14 @@ CREATE TABLE IF NOT EXISTS "user".user_auth
   CONSTRAINT user_auth_user_id FOREIGN KEY (user_id)
       REFERENCES "user"."user" (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE "user".user_auth
-  OWNER TO postgres;
+SQL;
+        return $sql;
+    }
 
--- Index: "user".user_auth_provider_id
-
--- DROP INDEX "user".user_auth_provider_id;
-
-CREATE INDEX user_auth_provider_id IF NOT EXISTS
-  ON "user".user_auth
-  USING btree
-  (provider_id COLLATE pg_catalog."default");
-
--- Table: "user".user_key
-
--- DROP TABLE "user".user_key;
-
+    public function createTableUserKey()
+    {
+        $sql = <<<SQL
 CREATE TABLE IF NOT EXISTS "user".user_key
 (
   id bigserial NOT NULL,
@@ -157,49 +124,66 @@ CREATE TABLE IF NOT EXISTS "user".user_key
   CONSTRAINT user_key_user_id FOREIGN KEY (user_id)
       REFERENCES "user"."user" (id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-WITH (
-  OIDS=FALSE
 );
-ALTER TABLE "user".user_key
-  OWNER TO postgres;
+SQL;
+        return $sql;
+    }
 
--- Index: "user".user_key_key
+    public function createIndexUserEmail()
+    {
+        $sql = <<<SQL
+CREATE UNIQUE INDEX user_email
+  ON "user"."user"
+  USING btree
+  (email COLLATE pg_catalog."default");
+SQL;
+        return $sql;
+    }
 
--- DROP INDEX "user".user_key_key;
+    public function createIndexUserUsername()
+    {
+        $sql = <<<SQL
+        CREATE UNIQUE INDEX user_username IF NOT EXISTS
+  ON "user"."user"
+  USING btree
+  (username COLLATE pg_catalog."default");
+SQL;
+        return $sql;
+    }
 
-CREATE UNIQUE  INDEX IF NOT EXISTS user_key_key
+    public function createIndexUserAuthProviderId()
+    {
+        $sql = <<<SQL
+       CREATE INDEX user_auth_provider_id IF NOT EXISTS
+  ON "user".user_auth
+  USING btree
+  (provider_id COLLATE pg_catalog."default");
+SQL;
+        return $sql;
+    }
+
+    public function createIndexUserKeyKey()
+    {
+        $sql = <<<SQL
+        CREATE UNIQUE  INDEX IF NOT EXISTS user_key_key
   ON "user".user_key
   USING btree
   (key COLLATE pg_catalog."default");
 
-
 SQL;
-
-
+        return $sql;
     }
 
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
 
     public function safeDown()
     {
-    }
-    */
-
-    public function safeDown()
-    {
-        echo "m150502_020718_user cannot be reverted.\n";
-
-        return false;
+        Yii::$app->db->createCommand('DROP SCHEMA IF EXISTS "user" CASCADE;')->execute();
+        return true;
     }
 
     public function populateTables()
     {
-        $password='$2y$13$itgfOLHC51n7cuRFG7bN4O0VQrQa1gRxSa6TlMaBsPFphLVh7zWKe';
+        $password = '$2y$13$itgfOLHC51n7cuRFG7bN4O0VQrQa1gRxSa6TlMaBsPFphLVh7zWKe';
         $sql = <<<SQL
 INSERT INTO "user".role (name,create_time,can_admin) VALUES ('Admin',now()::timestamp,1),('User',now()::timestamp,0);
 
@@ -208,7 +192,6 @@ INSERT INTO "user".profile (user_id,full_name,create_time) VALUES (1,'My name is
 SQL;
 
 
-
-        Yii::$app->db->createCommand($sql,[])->execute();
+        Yii::$app->db->createCommand($sql, [])->execute();
     }
 }
