@@ -5,14 +5,14 @@ use yii\db\Migration;
 
 class m150502_031859_module_rapid_assessment extends Migration
 {
-    public function safeUp()
+    public function up()
     {
         Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS rapid_assessment')->execute();
         $this->createTables();
 
     }
 
-    public function safeDown()
+    public function down()
     {
 
         Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS rapid_assessment')->execute();
