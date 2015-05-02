@@ -1,4 +1,15 @@
 Installation Guide
+sudo apt-get install php5-curl
+sudo apt-get install php5-cli
+sudo apt-get install php5-mcrypt
+sudo php5enmod mcrypt
+sudo apt-get install php5-mysql
+sudo apt-get install php5-gd
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+composer global require "fxp/composer-asset-plugin:1.0.0"
+./yii migrate
+
 1. Clone the repository in web directory of your server
 git clone https://github.com/ramshresh/dmis.git
 2. Update libraries using composer.phar Go to the root directory ( like C:\xampp\htdocs\dmis  in windows) and run command
