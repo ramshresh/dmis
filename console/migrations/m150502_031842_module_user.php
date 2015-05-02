@@ -20,6 +20,10 @@ class m150502_031842_module_user extends Migration
         Yii::$app->db->createCommand($this->createIndexUserAuthProviderId())->execute();
         Yii::$app->db->createCommand($this->createIndexUserKeyKey())->execute();
 
+        Yii::$app->db->createCommand($this->populateTableRole())->execute();
+        Yii::$app->db->createCommand($this->populateTableUser())->execute();
+        Yii::$app->db->createCommand($this->populateTableProfile())->execute();
+
     }
 
     public function createTableRole()
@@ -182,17 +186,28 @@ SQL;
         return true;
     }
 
-    public function populateTables()
-    {
-        $password = '$2y$13$itgfOLHC51n7cuRFG7bN4O0VQrQa1gRxSa6TlMaBsPFphLVh7zWKe';
-        $sql = <<<SQL
-INSERT INTO "user".role (name,create_time,can_admin) VALUES ('Admin',now()::timestamp,1),('User',now()::timestamp,0);
 
-INSERT INTO "user".user (role_id,email,username,password,status,create_time,auth_key,api_key) VALUES (1,'neo@neo.com','neo','$password',1,now()::TIMESTAMP ,'X-tW6jgeJ5h0Iu0gaPyIoozrxiv_zBGA','u11L7tK7iAc11ISKrU6op5UCLvuxgvD0');
-INSERT INTO "user".profile (user_id,full_name,create_time) VALUES (1,'My name is Neo',now()::TIMESTAMP);
+    public function populateTableRole($columns=[],$values=[]){
+            $sql = <<<SQL
+INSERT INTO "user".role (id,name,create_time,can_admin) VALUES (1,'Admin',now()::timestamp,1),(2,'User',now()::timestamp,0);
 SQL;
+            Yii::$app->db->createCommand($sql)->execute();
+    }
 
+    public function populateTableUser(){
 
-        Yii::$app->db->createCommand($sql, [])->execute();
+        $password = '$2y$13$itgfOLHC51n7cuRFG7bN4O0VQrQa1gRxSa6TlMaBsPFphLVh7zWKe';
+
+        $sql=<<<SQL
+INSERT INTO "user".user (role_id,email,username,password,status,create_time,auth_key,api_key) VALUES (1,'neo@neo.com','neo','$password',1,now()::TIMESTAMP ,'X-tW6jgeJ5h0Iu0gaPyIoozrxiv_zBGA','u11L7tK7iAc11ISKrU6op5UCLvuxgvD0');
+SQL;
+        Yii::$app->db->createCommand($sql)->execute();
+    }
+    public function populateTableProfile()
+    {
+        $sql = <<<SQL
+INSERT INTO "user".profile (id,user_id,full_name,create_time) VALUES (1,1,'My name is Neo',now()::TIMESTAMP);
+SQL;
+        Yii::$app->db->createCommand($sql)->execute();
     }
 }
