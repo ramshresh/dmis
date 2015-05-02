@@ -8,7 +8,7 @@ class m150502_031842_module_user extends Migration
 
     public function safeUp()
     {
-        Yii::$app->db->createCommand('CREATE SCHEMA  user')->execute();
+       // Yii::$app->db->createCommand('CREATE SCHEMA  user')->execute();
        // $this->createTables();
     }
 
