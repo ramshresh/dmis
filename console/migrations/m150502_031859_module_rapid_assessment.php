@@ -7,6 +7,7 @@ class m150502_031859_module_rapid_assessment extends Migration
 {
     public function up()
     {
+
         Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS rapid_assessment')->execute();
         $this->createTables();
 
