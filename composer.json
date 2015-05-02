@@ -36,7 +36,7 @@
     "c006/yii2-migration-utility": "dev-master",
     "miloschuman/yii2-highcharts-widget": "dev-master",
     "zxbodya/yii2-gallery-manager": "*@dev",
-    "npm-asset/osmtogeojson": "*",
+
     "dmstr/yii2-adminlte-asset": "2.*@beta"
   },
   "require-dev": {
