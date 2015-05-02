@@ -153,6 +153,7 @@ SQL;
 
     public function createIndexUserAuthProviderId()
     {
+
         $sql = <<<SQL
        CREATE INDEX user_auth_provider_id
   ON "user".user_auth

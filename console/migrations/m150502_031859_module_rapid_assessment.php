@@ -212,6 +212,7 @@ SQL;
 
     public function createReportItemRating(){
         $sql = <<<SQL
+
 -- Table: rapid_assessment.report_item_rating
 
 -- DROP TABLE rapid_assessment.report_item_rating;
