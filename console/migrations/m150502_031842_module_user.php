@@ -6,7 +6,7 @@ use yii\db\Migration;
 class m150502_031842_module_user extends Migration
 {
 
-    public function safeUp()
+    public function up()
     {
 
         Yii::$app->db->createCommand('CREATE SCHEMA user')->execute();
@@ -190,7 +190,7 @@ SQL;
     }
     */
 
-    public function safeDown()
+    public function down()
     {
         echo "m150502_020718_user cannot be reverted.\n";
 
