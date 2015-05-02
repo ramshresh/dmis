@@ -143,7 +143,7 @@ SQL;
     public function createIndexUserUsername()
     {
         $sql = <<<SQL
-        CREATE UNIQUE INDEX user_username IF NOT EXISTS
+        CREATE UNIQUE INDEX user_username
   ON "user"."user"
   USING btree
   (username COLLATE pg_catalog."default");
@@ -154,7 +154,7 @@ SQL;
     public function createIndexUserAuthProviderId()
     {
         $sql = <<<SQL
-       CREATE INDEX user_auth_provider_id IF NOT EXISTS
+       CREATE INDEX user_auth_provider_id
   ON "user".user_auth
   USING btree
   (provider_id COLLATE pg_catalog."default");
@@ -165,7 +165,7 @@ SQL;
     public function createIndexUserKeyKey()
     {
         $sql = <<<SQL
-        CREATE UNIQUE  INDEX IF NOT EXISTS user_key_key
+        CREATE UNIQUE  INDEX  user_key_key
   ON "user".user_key
   USING btree
   (key COLLATE pg_catalog."default");
