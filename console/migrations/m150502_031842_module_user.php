@@ -10,7 +10,7 @@ class m150502_031842_module_user extends Migration
     {
 
         Yii::$app->db->createCommand('CREATE SCHEMA IF NOT EXISTS user')->execute();
-        $this->createTables();
+        //$this->createTables();
     }
 
     public function createTables()
