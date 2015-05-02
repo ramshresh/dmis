@@ -71,7 +71,7 @@ class m150502_031859_module_rapid_assessment extends Migration
 
             CREATE TABLE "rapid_assessment".item_class
             (
-              id big SERIALIZABLE NOT NULL ,,
+              id bigserial NOT NULL ,,
               item_name character varying(255) NOT NULL,
               basis character varying(255) NOT NULL,
               name character varying(255) NOT NULL,
