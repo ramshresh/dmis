@@ -11,6 +11,7 @@ use yii\base\Exception;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\helpers\Url;
 use zxbodya\yii2\galleryManager\GalleryBehavior;
 use zxbodya\yii2\galleryManager\GalleryImageAr;
@@ -229,8 +230,8 @@ class ReportItem extends \yii\db\ActiveRecord
      * @added-by Ram Shrestha
      * @todo validate its usecase
      */
-    public function getParents() {
-        return $this->hasMany(ReportItem::className(), ['id' => 'parent_id','type' => 'parent_type'])
+    public function getParent() {
+        return $this->hasOne(ReportItem::className(), ['id' => 'parent_id','type' => 'parent_type'])
             ->viaTable(ReportItemChild::tableName(), ['child_id' => 'id','child_type' => 'type']);
     }
 
@@ -242,10 +243,10 @@ class ReportItem extends \yii\db\ActiveRecord
     {
         return [
             [
-                'class' => 'mdm\behaviors\ar\RelatedBehavior',
+                'class' => 'ramshresh\behaviors\ar\RelatedBehavior',
             ],
             [
-                'class' => 'mdm\behaviors\ar\RelationBehavior',
+                'class' => 'ramshresh\behaviors\ar\RelationBehavior',
 
             ],
             [// Auto populates Timestamp for created and update events
@@ -293,6 +294,9 @@ class ReportItem extends \yii\db\ActiveRecord
         $this->timestamp_occurance = date('Ymdhis', strtotime($this->timestamp_occurance));
     }
 
+
+
+
     public function extraFields()
     {
         return ArrayHelper::merge(
@@ -328,7 +332,12 @@ class ReportItem extends \yii\db\ActiveRecord
             if($this->wkt){
                 $this->geom=new Expression("(SELECT ST_GeomFromText('".$this->wkt."',".$this::SRID."))");
             }
-
+            if($this->tags){
+                if(is_array($this->tags)){
+                    $this->tags = Json::encode($this->tags);
+                }
+                $this->tags=new Expression("(select '".$this->tags."'::JSON)");
+            }
 
             //if($this->wkt){
             //    $this->geom=new Expression("(SELECT ST_GeomFromText('".$this->wkt."',".$this::SRID."))");
