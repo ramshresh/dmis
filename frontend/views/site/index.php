@@ -729,6 +729,7 @@ var clickHandlerReportItem = function (evt) {
                                 id:report_item_id
                             },
                             success:function(data){
+                                console.log(data[0]);
                                 console.log(data[0].galleryImages[0]);
                             }
                         });
