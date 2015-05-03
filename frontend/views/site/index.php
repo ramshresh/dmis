@@ -715,12 +715,12 @@ var clickHandlerReportItem = function (evt) {
 						    console.log(values);
 						    console.log('values');
 
-					        popupContent += values.class_name +'<br>';
-					        popupContent += '<strong>'+ 'type'+'</strong>'+': '+values.class_name +'<br>';
+					        popupContent += values.item_name +'<br>';
+					        popupContent += '('+values.class_name +')<br>';
 					        if(values.address)
 					            popupContent += '('+values.address +')<br>';
 					        if(values.description)
-					            popupContent += values.description +'<br>';
+					            popupContent += '<hr>'+values.description +'<br>';
 
                         $.ajax({
                             url:'/girc/dmis/api/rapid_assessment/report-items',
