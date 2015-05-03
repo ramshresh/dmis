@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?/*= $form->field($model, 'meta_json')->textInput() */?>
 
-    --><?/*= $form->field($model, 'is_verified')->checkbox() */?>
+    <?/*= $form->field($model, 'is_verified')->checkbox() */?>-->
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
