@@ -15,10 +15,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'item_name')->textInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'type')->textInput() ?>
+<!--
+    <?/*= $form->field($model, 'description')->textInput(['maxlength' => 255]) */?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'is_verified')->checkbox() ?>
+    <?/*= $form->field($model, 'is_verified')->checkbox() */?>-->
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
