@@ -75,6 +75,8 @@ class ReportItem extends \yii\db\ActiveRecord
 
     const SCENARIO_SEARCH = 'search';
     const SCENARION_HIGHCHARTS ='highcharts';
+
+    public $images;
     /**
      * Single table inheritance
      * @github-reference https://github.com/samdark/yii2-cookbook/blob/master/book/ar-single-table-inheritance.md
