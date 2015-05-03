@@ -730,7 +730,7 @@ var clickHandlerReportItem = function (evt) {
                             },
                             success:function(data){
 
-                                console.log(data[0].galleryImages[0]);
+                                console.log(data[0].galleryImages[0].src);
                             }
                         });
 					//	popupContent += '<hr><strong>'+'Location: '+'</strong>' + reverse_geocoder(coordinate_epsg4326); + ')'+'<br>';
