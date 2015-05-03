@@ -746,14 +746,14 @@ var clickHandlerReportItem = function (evt) {
                                 }
 
                                 if(src){
-                                    popupContent += '<span><img src="'+src+'" alt=""></span>'
+                                    popupContent += '<img src="'+src+'" alt="">'
                                 }
-
+                                popup.show(evt.coordinate, popupContent);
                             }
                         });
 					//	popupContent += '<hr><strong>'+'Location: '+'</strong>' + reverse_geocoder(coordinate_epsg4326); + ')'+'<br>';
                 }
-                popup.show(evt.coordinate, popupContent);
+                //popup.show(evt.coordinate, popupContent);
             } else {
 				$(".ol-popup").hide();
             }
