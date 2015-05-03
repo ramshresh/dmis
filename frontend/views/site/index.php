@@ -729,8 +729,26 @@ var clickHandlerReportItem = function (evt) {
                                 id:report_item_id
                             },
                             success:function(data){
+                                var src;
+                                if(data){
+                                    if(data[0]){
+                                        if(data[0].galleryImages[0]){
+                                            if(data[0].galleryImages[0].src){
+                                                src = data[0].galleryImages[0].src;
+                                                console.log(src);
 
-                                console.log(data[0].galleryImages[0].src);
+
+                                            }
+                                        }
+                                    }
+                                }else{
+                                    console.log('no photo');
+                                }
+
+                                if(src){
+                                    popupContent += '<span><img src="'+src+'" alt=""></span>'
+                                }
+
                             }
                         });
 					//	popupContent += '<hr><strong>'+'Location: '+'</strong>' + reverse_geocoder(coordinate_epsg4326); + ')'+'<br>';
