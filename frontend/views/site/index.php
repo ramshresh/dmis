@@ -701,7 +701,7 @@ var clickHandlerReportItem = function (evt) {
             jsonpCallback: 'parseResponse'
         }).then(function (response) {
 
-        console.log(response.features[0].id.split('.'));
+        console.log(response.features[0].id.split('.')[1]);
             result = parser.readFeatures(response);
             if (result.length) {
                 var popupContent = '';
