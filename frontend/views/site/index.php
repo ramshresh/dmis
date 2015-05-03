@@ -706,7 +706,7 @@ var clickHandlerReportItem = function (evt) {
                 for (var i = 0, ii = result.length; i < ii; ++i) {
 					values = result[i].values_;
 					        console.log('values');
-						    console.log(values.fid);
+						    console.log(values);
 						    console.log('values');
 
 					        popupContent += '<strong>'+ 'item_name'+'</strong>'+': '+values.item_name +'<br>';
@@ -735,7 +735,7 @@ var clickHandlerReportItem = function (evt) {
 
 //popup_content(report_item,["type","item_name"]);
 //popup_content(tracking_driver,["Firstname","Lastname","Ambulance_Number"]);
-popup_content(tweets,["tweets"]);
+popup_content(tweets,["tweets","fid"]);
       /*
             Refreshing a layer at an interval
             */
