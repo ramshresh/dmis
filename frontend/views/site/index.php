@@ -729,7 +729,7 @@ var clickHandlerReportItem = function (evt) {
                                 id:report_item_id
                             },
                             success:function(data){
-                                console.log(data[0]);
+                                console.log(data[0].galleryImages[0].images);
                             }
                         });
 					//	popupContent += '<hr><strong>'+'Location: '+'</strong>' + reverse_geocoder(coordinate_epsg4326); + ')'+'<br>';
