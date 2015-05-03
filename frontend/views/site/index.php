@@ -706,7 +706,7 @@ var clickHandlerReportItem = function (evt) {
                 for (var i = 0, ii = result.length; i < ii; ++i) {
 					values = result[i].values_;
 					        console.log('values');
-						    console.log(values);
+						    console.log(values.id);
 						    console.log('values');
 
 					        popupContent += '<strong>'+ 'item_name'+'</strong>'+': '+values.item_name +'<br>';
