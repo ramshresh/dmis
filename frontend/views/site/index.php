@@ -723,7 +723,7 @@ var clickHandlerReportItem = function (evt) {
 					            popupContent += '<strong>'+ 'description'+'</strong>'+': '+values.description +'<br>';
 
                         $.ajax({
-                            url:'/girc/dmis/api/rapid_assessment/report_items',
+                            url:'/girc/dmis/api/rapid_assessment/report-items',
                             data:{
                                 expand:'galleryImages',
                                 id:report_item_id
