@@ -702,6 +702,10 @@ var clickHandlerReportItem = function (evt) {
         }).then(function (response) {
 
         console.log(response.features[0].id.split('.')[1]);
+
+        var report_item_id =response.features[0].id.split('.')[1];
+
+
             result = parser.readFeatures(response);
             if (result.length) {
                 var popupContent = '';
@@ -718,6 +722,16 @@ var clickHandlerReportItem = function (evt) {
 					        if(values.description)
 					            popupContent += '<strong>'+ 'description'+'</strong>'+': '+values.description +'<br>';
 
+                        $.ajax({
+                            url:'/girc/dmis/api/rapid_assessment/report_items',
+                            data:{
+                                expand:'galleryImages',
+                                id:report_item_id
+                            },
+                            success:function(data){
+                                console.log(data);
+                            }
+                        });
 					//	popupContent += '<hr><strong>'+'Location: '+'</strong>' + reverse_geocoder(coordinate_epsg4326); + ')'+'<br>';
                 }
                 popup.show(evt.coordinate, popupContent);
