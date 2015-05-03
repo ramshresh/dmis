@@ -113,14 +113,14 @@ class ReportItemCreateAction extends MyBaseAction
                 break;
             case ('ReportItemIncident'):
 
-                $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+               /* $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
                 //$txt = "Mickey Mouse\n";
                 $uf=Yii::$app->request->getBodyParam('ReportItemMultimedia');
 
                 $txt = Json::encode($uf);
 
                 fwrite($myfile, $txt);
-                fclose($myfile);
+                fclose($myfile);*/
 
                 $transaction = Yii::$app->db->beginTransaction();
                 try {
