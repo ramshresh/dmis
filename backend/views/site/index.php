@@ -4,7 +4,7 @@
 use ramshresh\behaviors\ar\ExtendedBehavior;
 use yii\helpers\Url;
 
-$this->title = 'My Yii Application';
+$this->title = 'Disaster Information Management System';
 ?>
 <div class="site-index">
 
