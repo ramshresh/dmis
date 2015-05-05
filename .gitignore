@@ -30,12 +30,12 @@ phpunit.phar
 /phpunit.xml
 
 # custom directories
-uploads/
-lab/
-api/runtime/
-api/web/assets/
-backend/runtime/
-backend/web/assets/
-frontend/runtime/
-frontend/web/assets/
+/uploads/
+/lab/
+/api/runtime/
+/api/web/assets/
+/backend/runtime/
+/backend/web/assets/
+/frontend/runtime/
+/frontend/web/assets/
 
