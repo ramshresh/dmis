@@ -1,153 +1,74 @@
 <?php
-
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
-/**
- * @var yii\web\View $this
- * @var yii\widgets\ActiveForm $form
- */
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model \common\modules\user\models\forms\LoginForm */
 
-$this->title = Yii::t('user', 'Login');
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Sign In';
+
+$fieldOptions1 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-envelope form-control-feedback'></span>"
+];
+
+$fieldOptions2 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
+];
 ?>
-<div class="user-default-login">
 
-	<!--<h1><?/*= Html::encode($this->title) */?></h1>-->
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><b>DMIS - Administrator</b><hr><h5>Disaster Management Information System</h5></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Sign in to start your session</p>
 
-	<p><?= Yii::t("user", "Please fill out the following fields to login:") ?></p>
+        <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
 
-	<?php $form = ActiveForm::begin([
-		'id' => 'login-form',
-		'options' => ['class' => 'form-horizontal'],
-		'fieldConfig' => [
-			'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
-			'labelOptions' => ['class' => 'col-lg-2 control-label'],
-		],
+        <?= $form
+            ->field($model, 'username', $fieldOptions1)
+            ->label(false)
+            ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
 
-	]); ?>
+        <?= $form
+            ->field($model, 'password', $fieldOptions2)
+            ->label(false)
+            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
 
-	<?= $form->field($model, 'username') ?>
-	<?= $form->field($model, 'password')->passwordInput() ?>
-	<?= $form->field($model, 'rememberMe', [
-		'template' => "{label}<div class=\"col-lg-offset-2 col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
-	])->checkbox() ?>
-
-	<div class="form-group">
-		<div class="col-lg-offset-2 col-lg-10">
-			<?= Html::submitButton(Yii::t('user', 'Login'), ['class' => 'btn btn-primary']) ?>
-
-            <br/><br/>
-            <?= Html::a(Yii::t("user", "Register"), ["/user/registration/register"]) ?> /
-            <?= Html::a(Yii::t("user", "Forgot password") . "?", ["/user/registration/forgot"]) ?> /
-            <?= Html::a(Yii::t("user", "Resend confirmation email"), ["/user/registration/resend"]) ?>
-		</div>
-	</div>
-
-	<?php ActiveForm::end(); ?>
-
-    <?php if (Yii::$app->get("authClientCollection", false)): ?>
-        <div class="col-lg-offset-2">
-            <?= \yii\authclient\widgets\AuthChoice::widget([
-                'baseAuthUrl' => ['/user/auth/login']
-            ]) ?>
+        <div class="row">
+            <div class="col-xs-8">
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-4">
+                <?= Html::submitButton('Sing in', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+            </div>
+            <!-- /.col -->
         </div>
-    <?php endif; ?>
-
-	<div class="col-lg-offset-2" style="color:#999;">
-		You may login with <strong>neo/neo</strong>.<br>
-		To modify the username/password, log in first and then <?= HTML::a("update your account", ["/user/account"]) ?>.
-	</div>
-
-</div>
-
-<?php
-$loginFormJs = <<<JS
-(function($){
-//{{{
-    /**
-    * Enabling ajax submission
-    * prevents normal submission of form by overriding on-submit event of form
-    * prevents normal on-click event of <button type='submit'>
-    */
-
-    /**
-    * Disabling form submission by yiiActiveForm by unbinding the 'submit.yiiActiveForm' event
-    * @see line:196 of JavaScript widget used by the ActiveForm widget. which is:
-    * line:196 | .on('submit.yiiActiveForm', methods.submitForm);
-    */
-
-    $('#login-form').on('beforeSubmit', function () {
-        /*yiiActiveForm=$('#login-form').data('yiiActiveForm');
-        console.log(yiiActiveForm.submitting);*/
-        var form=this;
-            $.ajax({
-                url:$(form).attr('action'),
-                method:$(form).attr('method'),
-                data:$(form).serialize(),
-                success:function(data){
-                    data = JSON.parse(data);
-                    if(data.status=='error'){
-                        /*<data> must be as: by controller/action with following content. SiteController-actionLogin
-                        {
-                            "status":-1,
-                            "msg":"Model validation error",
-                            "errors":[{"password":"Incorrect username or password"}]
-                        }
-                        */
-                        if(data.errors!=undefined){
-                            errorsModels =data.errors;
-                            for(var k=0;k<errorsModels.length;k++ ){
-                                errors=errorsModels[k];
-                                errKeys = Object.keys(errors);
-                            yiiActiveForm=$(form).data('yiiActiveForm');
-                            errAttr=[];
-
-                            for(i=0;i<errKeys.length;i++){
-                                for(j = 0;j<yiiActiveForm.attributes.length;j++){
-                                    if(yiiActiveForm.attributes[j].name in errors){
-                                        errAttr.push(
-                                            {
-                                            formAttribute:yiiActiveForm.attributes[j],
-                                            errorMessage:errors[errKeys[i]]
-                                            }
-                                        );
-
-                                    }
-                                }
-                            }
 
 
-                            for(i = 0;i<errAttr.length;i++){
-                                formAttribute = errAttr[i].formAttribute;
-                                errorMessage = errAttr[i].errorMessage;
+        <?php ActiveForm::end(); ?>
 
-                                containerClass =formAttribute.container;
-                                errorClass=formAttribute.error;
-                                errSelector= containerClass+' '+errorClass;
+        <!-- social-auth-links -->
+        <!--<div class="social-auth-links text-center">
+            <p>- OR -</p>
+            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in
+                using Facebook</a>
+            <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign
+                in using Google+</a>
+        </div>-->
+        <!-- /.social-auth-links -->
 
-                                $(errSelector).html(errorMessage);
-                                $(containerClass).addClass(yiiActiveForm.settings.errorCssClass)
-                            }
-                            console.log(yiiActiveForm);
-                            }
-                        }
-                    }
-                    console.log('success')
-                }
-            })
-            .done(function(result){
-                console.log('done');
-                console.log(result)
-            })
-            .fail(function(){
-                console.log('failed');
-                console.log('server error');
-            });
-        return false;
-    });
-//}}}
-})(jQuery);
-JS;
-$this->registerJs($loginFormJs, $this::POS_READY);
-?>
+        <?= Html::a('I forgot my password',Url::to(['/user/registration/forgot']))?>
+        <br>
+        <?= Html::a('Register',Url::to(['/user/registration/register']))?>
+        <hr>
+        <section>*for demo login with admin / admin</section>
+    </div>
+    <!-- /.login-box-body -->
+</div><!-- /.login-box -->
