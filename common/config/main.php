@@ -76,6 +76,12 @@ return [
         ],
     ],
     'modules' => [
+        'event' => [
+            'class' => 'common\modules\event\Module',
+        ],
+        'incident' => [
+            'class' => 'common\modules\incident\Module',
+        ],
         'user' => [
             'class' => 'common\modules\user\Module',
             'emailViewPath'=>'@common/modules/user/mail',
@@ -105,5 +111,4 @@ return [
             'class' => 'common\modules\file_management\Module',
         ],
     ],
-
 ];

@@ -705,7 +705,6 @@ var clickHandlerReportItem = function (evt) {
 
         var report_item_id =response.features[0].id.split('.')[1];
 
-
             result = parser.readFeatures(response);
             if (result.length) {
                 var popupContent = '';
@@ -721,7 +720,7 @@ var clickHandlerReportItem = function (evt) {
 					            popupContent += '('+values.address +')<br>';
 					        if(values.description)
 					            popupContent += '<hr>'+values.description +'<br>';
-
+                        //tag:
                         $.ajax({
                             url:'/girc/dmis/api/rapid_assessment/report-items',
                             data:{
@@ -736,8 +735,6 @@ var clickHandlerReportItem = function (evt) {
                                             if(data[0].galleryImages[0].src){
                                                 src = data[0].galleryImages[0].src;
                                                 console.log(src);
-
-
                                             }
                                         }
                                     }

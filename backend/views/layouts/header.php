@@ -245,22 +245,23 @@ $avatar = (Yii::$app->user->isGuest)?"$directoryAsset/img/avatar.png":"$director
                                     <small>Member since April. 2015</small>
                                 </p>
                             <?php else: ?>
-
+                                <small>Be a registered user...</small>
                             <?php endif;?>
 
                         </li>
+                        <!-- ./User image -->
 
                         <?php if (!Yii::$app->user->isGuest): ?>
                         <!-- Menu Body Registered User -->
                         <li class="user-body">
                             <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
+                                <a href="#">Submitted Reports</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
+                                <a href="#">Subscriptions</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
+                                <a href="#">Statistics</a>
                             </div>
                         </li>
                         <?php else:?>
