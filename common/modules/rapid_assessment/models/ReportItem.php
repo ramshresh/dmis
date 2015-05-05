@@ -44,6 +44,9 @@ use ramshresh\yii2\galleryManager\GalleryImageAr;
  * @property double $longitude
  * @property string $address
  * @property string $user_id
+ * @property string $owner_name
+ * @property string $owner_contact
+ * @property string $supplied_per_person
  *
  * @property ReportItemChild[] $reportItemChildren
  * @property ReportItemChild[] $reportItemChildrenParent
@@ -115,12 +118,13 @@ class ReportItem extends \yii\db\ActiveRecord
     {
         return [
             [['type','item_name'], 'required'],
-            [['user_id'], 'integer'],
+            [['user_id','supplied_per_person'], 'integer'],
             [['description', 'tags', 'meta_hstore', 'meta_json', 'wkt', 'geom'], 'string'],
             [['is_verified'], 'boolean'],
             [['timestamp_occurance', 'timestamp_created_at', 'timestamp_updated_at', 'timestamp_declared_at'], 'safe'],
             [['magnitude', 'latitude', 'longitude'], 'number'],
-            [['type','item_name', 'class_basis', 'class_name', 'title', 'status', 'declared_by', 'units', 'address'], 'string', 'max' => 255]
+            [['owner_name','owner_contact',], 'string', 'max' => 100],
+            [['type','item_name', 'class_basis', 'class_name', 'title', 'status', 'declared_by', 'units', 'address'], 'string', 'max' => 255],
         ];
     }
 
@@ -155,6 +159,10 @@ class ReportItem extends \yii\db\ActiveRecord
             'longitude' => Yii::t('app', 'Longitude'),
             'address' => Yii::t('app', 'Address'),
             'user_id' => Yii::t('app', 'User ID'),
+            'owner_name'=>'Owner Name',
+            'Owner_contact'=>'Owner Contact',
+            'supplied_per_person'=>'Supplied Per Person',
+
         ];
     }
 
@@ -162,8 +170,8 @@ class ReportItem extends \yii\db\ActiveRecord
     {
         $reportItemScenarios =[
             //This scenario is to be used for Search Model by instance of <ReporItem> or any <class that inherits ReportItem>
-            'search' => ['type','item_name', 'class_name'],
-            'hc_timestamp'=>['id','type','item_name','class_basis','class_name','title','description','is_verified','status','timestamp_occurance','timestamp_created_at','timestamp_updated_at','latitude','longitude','address','user_id','timestamp_declared_at','magnitude','units']
+            'search' => ['type','item_name', 'class_name','owner_name','owner_contact'],
+            'hc_timestamp'=>['owner_name','owner_contact','supplied_per_person','id','type','item_name','class_basis','class_name','title','description','is_verified','status','timestamp_occurance','timestamp_created_at','timestamp_updated_at','latitude','longitude','address','user_id','timestamp_declared_at','magnitude','units']
         ];
         return ArrayHelper::merge(parent::scenarios(),$reportItemScenarios);
     }
