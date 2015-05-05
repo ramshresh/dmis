@@ -1,0 +1,50 @@
+Message-ID: <291e143ac081725f945080bbdcf08c1b@localhost>
+Date: Wed, 11 Mar 2015 10:30:44 +0100
+Subject: Email Confirmation
+From: Admin <gircgeomatics@gmail.com>
+To: ram_shresh@hotmail.com
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift_v4_1426066244_f6b88ebcaaef442b2d8a78ae2149d413_=_"
+
+
+--_=_swift_v4_1426066244_f6b88ebcaaef442b2d8a78ae2149d413_=_
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Email Confirmation
+
+Please confirm your email address by clicking=
+ the link below:
+
+http://localhost/girc/dmis/backend/web/user/co=
+nfirm?key=3DzgpmOQxQ8Lss917loh3_DKjdoqpFPHjF
+
+--_=_swift_v4_1426066244_f6b88ebcaaef442b2d8a78ae2149d413_=_
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.=
+org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org=
+/1999/xhtml">
+<head>
+    <meta http-equiv=3D"Content-Type" con=
+tent=3D"text/html; charset=3DUTF-8" />
+    <title></title>
+    <=
+/head>
+<body>
+
+<h3>Email Confirmation</h3>
+
+<p>Pl=
+ease confirm your email address by clicking the link below:<=
+/p>
+
+<p>http://localhost/girc/dmis/backend/web/user/confirm?ke=
+y=3DzgpmOQxQ8Lss917loh3_DKjdoqpFPHjF</p></body>
+</html>
+
+
+--_=_swift_v4_1426066244_f6b88ebcaaef442b2d8a78ae2149d413_=_--
