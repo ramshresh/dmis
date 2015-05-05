@@ -2,6 +2,7 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use yii\web\Controller;
 
 /**
@@ -54,7 +55,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        if(Yii::$app->user->can('admin'))
+            return $this->render('index');
+        else
+            $this->redirect(Url::to(['/site/login']));
     }
 
     public function actionLogin(){

@@ -38,42 +38,42 @@ $avatar = (Yii::$app->user->isGuest)?"$directoryAsset/img/avatar.png":"$director
                 'encodeLabels' => false,
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
-                    '<li class="header">Menu Yii2</li>',
+                    '<li class="header">Menu</li>',
                     [
-                        'label' => '<span class="fa fa-user"></span> Users',
+                        'label' => '<span class="fa fa-dashboard text-green"></span> Dashboard',
                         'url' => ['/user'],
-                        'items' => [
-                            '<li class="header">User Management</li>',
-                            ['label' => '<span class="fa fa-user"></span> User Management', 'url' => ['/user']],
-                            [
-                                'label' => '<span class="glyphicon glyphicon-eye-open"></span> Admin', //for basic
-                                'url' => ["user/admin"],
-                                'visible' =>Yii::$app->user->isGuest
-                            ],
-                        ],
                     ],
                     [
-                        'label' => '<span class="glyphicon glyphicon-lock"></span> Sing in', //for basic
+                        'label' => '<span class="fa fa-users text-aqua"></span> Users',
+                        'url' => ['/user'],
+                    ],
+                    [
+                        'label' => '<span class="fa fa-sign-in text-blue"></span> Sing in', //for basic
                         'url' => ['/site/login'],
                         'visible' =>Yii::$app->user->isGuest
+                    ],
+                    [
+                        'label' => '<span class="fa fa-sign-out text-red"></span> Sing out', //for basic
+                        'url' => ['/site/logout'],
+                        'visible' =>!Yii::$app->user->isGuest
                     ],
                 ],
             ]
         );
         ?>
-
+<hr>
         <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-share"></i> <span>Same tools</span>
+                    <i class="fa fa-circle-thin"></i> <span>Event</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= \yii\helpers\Url::to(['/gii']) ?>"><span class="fa fa-file-code-o"></span> Gii</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/event/event/create']) ?>"><span class="fa fa-plus-square"></span> Add</a>
                     </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/debug']) ?>"><span class="fa fa-dashboard"></span> Debug</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/event/event/index']) ?>"><span class="fa fa-table"></span> Table</a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
                             <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
@@ -87,9 +87,38 @@ $avatar = (Yii::$app->user->isGuest)?"$directoryAsset/img/avatar.png":"$director
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
             </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-circle-thin"></i> <span>Incident</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?= \yii\helpers\Url::to(['/incident/incident/create']) ?>"><span class="fa fa-plus-square"></span> Add</a>
+                    </li>
+                    <li><a href="<?= \yii\helpers\Url::to(['/incident/incident/index']) ?>"><span class="fa fa-table"></span> Table</a>
+                    </li>
+                    <!--<li>
+                        <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>-->
+                </ul>
+            </li>
+
         </ul>
     </section>
 </aside>

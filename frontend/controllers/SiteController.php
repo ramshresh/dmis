@@ -106,6 +106,7 @@ class SiteController extends MyBaseContoller
         return $this->render('index');
     }
 
+
     public function actionContact()
     {
         $model = new ContactForm();

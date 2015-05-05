@@ -13,8 +13,8 @@ $this->title = Yii::t('user', 'Forgot password');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-default-forgot">
-
-	<h1><?= Html::encode($this->title) ?></h1>
+<!--
+	<h1><?/*= Html::encode($this->title) */?></h1>-->
 
 	<?php if ($flash = Yii::$app->session->getFlash('Forgot-success')): ?>
 

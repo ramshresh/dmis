@@ -35,6 +35,11 @@ class LoginAction extends MyBaseAction
         }else {
             $this->sendErrorResponseOnAjaxFormSubmit([$model]);
         }
+
+        // render
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 
 
