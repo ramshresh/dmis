@@ -79,6 +79,16 @@ class ReportItemController extends \yii\rest\ActiveController
                                 }
                             }
 
+                            // filter based on date
+                            if(isset($_GET['datefilter_from']))
+                            {
+                                $query->andWhere("timestamp_occurance >= '".$_GET['datefilter_from']."' ");
+                            }
+                            if(isset($_GET['datefilter_to']))
+                            {
+                                $query->andWhere("timestamp_occurance <= '".$_GET['datefilter_to']."' ");
+                            }
+
                             if (isset($_GET['dwithin'])) {
                                 //$pointWkt="'POINT(81.5 29.5)'";
                                 //$polygonWkt="'POLYGON((-81 -27,-81 27,181 27,81 -27,-81 -27))'";
