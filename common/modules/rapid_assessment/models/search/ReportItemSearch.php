@@ -19,7 +19,7 @@ class ReportItemSearch extends ReportItem
     {
         return [
             [['id', 'type', 'user_id'], 'integer'],
-            [['item_name', 'class_basis', 'class_name', 'title', 'description', 'status', 'timestamp_occurance', 'timestamp_created_at', 'timestamp_updated_at', 'tags', 'meta_hstore', 'meta_json', 'declared_by', 'timestamp_declared_at', 'units', 'wkt', 'geom', 'address'], 'safe'],
+            [['event','item_name', 'class_basis', 'class_name', 'title', 'description', 'status', 'timestamp_occurance', 'timestamp_created_at', 'timestamp_updated_at', 'tags', 'meta_hstore', 'meta_json', 'declared_by', 'timestamp_declared_at', 'units', 'wkt', 'geom', 'address'], 'safe'],
             [['is_verified'], 'boolean'],
             [['magnitude', 'latitude', 'longitude'], 'number'],
         ];
@@ -69,6 +69,7 @@ class ReportItemSearch extends ReportItem
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
             'user_id' => $this->user_id,
+            'event'=>$this->event,
         ]);
 
         $query->andFilterWhere(['like', 'item_name', $this->item_name])
@@ -84,7 +85,8 @@ class ReportItemSearch extends ReportItem
             ->andFilterWhere(['like', 'units', $this->units])
             ->andFilterWhere(['like', 'wkt', $this->wkt])
             ->andFilterWhere(['like', 'geom', $this->geom])
-            ->andFilterWhere(['like', 'address', $this->address]);
+            ->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'event', $this->event]);
 
         return $dataProvider;
     }
