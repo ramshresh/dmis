@@ -79,7 +79,6 @@ class ReportItemController extends \yii\rest\ActiveController
                             }
                         }
                         // filter based on date
-
                         if(isset($_GET['datefilter_from']))
                             {
                                 $query->andWhere("timestamp_created >= '".$_GET['datefilter_from']."' ");

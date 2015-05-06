@@ -65,13 +65,13 @@ $avatar = (Yii::$app->user->isGuest)?"$directoryAsset/img/avatar.png":"$director
         <ul class="sidebar-menu">
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-circle-thin"></i> <span>Event</span>
+                    <i class="fa fa-circle-thin"></i> <span>Items</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= \yii\helpers\Url::to(['/event/event/create']) ?>"><span class="fa fa-plus-square"></span> Add</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/rapid_assessment/crud-item/create']) ?>"><span class="fa fa-plus-square"></span> Add</a>
                     </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/event/event/index']) ?>"><span class="fa fa-table"></span> Table</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/rapid_assessment/crud-item/index']) ?>"><span class="fa fa-table"></span> Table</a>
                     </li>
                     <!--<li>
                         <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
@@ -93,13 +93,13 @@ $avatar = (Yii::$app->user->isGuest)?"$directoryAsset/img/avatar.png":"$director
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-circle-thin"></i> <span>Incident</span>
+                    <i class="fa fa-circle-thin"></i> <span>Item Types</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?= \yii\helpers\Url::to(['/incident/incident/create']) ?>"><span class="fa fa-plus-square"></span> Add</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/rapid_assessment/crud-item-type/create']) ?>"><span class="fa fa-plus-square"></span> Add</a>
                     </li>
-                    <li><a href="<?= \yii\helpers\Url::to(['/incident/incident/index']) ?>"><span class="fa fa-table"></span> Table</a>
+                    <li><a href="<?= \yii\helpers\Url::to(['/rapid_assessment/crud-item-type/index']) ?>"><span class="fa fa-table"></span> Table</a>
                     </li>
                     <!--<li>
                         <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>

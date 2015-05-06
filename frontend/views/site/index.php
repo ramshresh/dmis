@@ -13,6 +13,9 @@ use yii\web\JsExpression;
 $this->title = 'DMIS-Geospatial Lab';
 ?>
 
+<?php \frontend\assets\GsapAsset::register($this);?>
+<?php //\frontend\assets\NeonAsset::register($this);?>
+<?php \frontend\assets\IcheckAsset::register($this);?>
 <?php \common\assets\Ol3Asset::register($this); ?>
 <?php \common\assets\Ol3LayerSwitcherAsset::register($this); ?>
 <?php \common\assets\IconsReportingAsset::register($this); ?>

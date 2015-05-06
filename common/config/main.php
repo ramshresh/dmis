@@ -76,12 +76,10 @@ return [
         ],
     ],
     'modules' => [
-        'event' => [
-            'class' => 'common\modules\event\Module',
+        'vdc' => [
+            'class' => 'common\modules\vdc\Module',
         ],
-        'incident' => [
-            'class' => 'common\modules\incident\Module',
-        ],
+
         'user' => [
             'class' => 'common\modules\user\Module',
             'emailViewPath'=>'@common/modules/user/mail',
