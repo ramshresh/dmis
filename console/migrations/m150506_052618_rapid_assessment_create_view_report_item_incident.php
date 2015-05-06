@@ -16,7 +16,7 @@ SQL;
     public function safeDown()
     {
 $sql=<<<SQL
-DELETE VIEW "rapid_assessment".report_item_incident CASCADE ;
+DROP VIEW "rapid_assessment".report_item_incident CASCADE ;
 SQL;
 
         Yii::$app->db->createCommand($sql)->execute();
