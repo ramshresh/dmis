@@ -25,10 +25,11 @@ class AppHelper extends Component {
     public static function getAppUrlToRoute($appName=null,$route=null){
 
 
-        $appName = 'backend'; // 'frontend', 'api'
-        $appAlias = 'admin';
+        //$appName = 'backend'; // 'frontend', 'api'
+        //$appAlias = 'admin';
         //$appAlias = '';
-        $appWebRoot = 'admin/'; // can be backend/web that has been rewrite by apache
+        //$appWebRoot = 'admin/'; // can be backend/web that has been rewrite by apache
+        $appWebRoot = '/'; // can be backend/web that has been rewrite by apache
        // $appWebRoot = ''; // can be backend/web that has been rewrite by apache
 
         //$route =['user/registration/reset','key'=>'asadasasd9087t67rfgevjbhskjdnfk'];
