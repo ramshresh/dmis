@@ -8,6 +8,11 @@ if (Yii::$app->controller->action->id === 'login' ) {
         'main-login',
         ['content' => $content]
     );
+} elseif (Yii::$app->controller->action->id === 'error' ){
+    echo $this->render(
+        'main-error',
+        ['content' => $content]
+    );
 } else {
 
     if (class_exists('backend\assets\AppAsset')) {
