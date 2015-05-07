@@ -8,6 +8,7 @@ $baseUrlApi = str_replace('/frontend/web', 'api', (new Request)->getBaseUrl());/
 //$baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
 
 return [
+    'name'=>'DMIS',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'authClientCollection' => [
