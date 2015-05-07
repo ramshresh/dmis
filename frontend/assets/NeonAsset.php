@@ -11,6 +11,7 @@ class NeonAsset extends AssetBundle
 {
     public $basePath = '@webroot/lib/neon';
     public $baseUrl = '@web/lib/neon';
+
     public $css = [
         'css/neon.css',
         'css/neon-core.css',
