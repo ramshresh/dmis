@@ -8,26 +8,26 @@ class m150507_042527_add_column_gallery_image_public extends Migration
     public function up()
     {
  $sql = <<<SQL
-ALTER TABLE "public".gallery_image ADD COLUMN NULLIF NOT EXISTS latitude DOUBLE PRECISION;
+ALTER TABLE "public".gallery_image ADD COLUMN  latitude DOUBLE PRECISION;
 SQL;
         Yii::$app->db->createCommand($sql)->execute();
         $sql = <<<SQL
-ALTER TABLE "public".gallery_image ADD COLUMN NULLIF NOT EXISTS longitude DOUBLE PRECISION;
+ALTER TABLE "public".gallery_image ADD COLUMN  longitude DOUBLE PRECISION;
 SQL;
         Yii::$app->db->createCommand($sql)->execute();
         $sql = <<<SQL
-ALTER TABLE "public".gallery_image ADD COLUMN NULLIF NOT EXISTS versions JSON;
-SQL;
-        Yii::$app->db->createCommand($sql)->execute();
-
-        $sql = <<<SQL
-ALTER TABLE "public".gallery_image ADD COLUMN NULLIF NOT EXISTS route CHARACTER VARYING (255);
+ALTER TABLE "public".gallery_image ADD COLUMN  versions JSON;
 SQL;
         Yii::$app->db->createCommand($sql)->execute();
 
+        $sql = <<<SQL
+ALTER TABLE "public".gallery_image ADD COLUMN  route CHARACTER VARYING (255);
+SQL;
+        Yii::$app->db->createCommand($sql)->execute();
+
 
         $sql = <<<SQL
-ALTER TABLE "public".gallery_image ADD COLUMN NULLIF NOT EXISTS extension CHARACTER VARYING (255);
+ALTER TABLE "public".gallery_image ADD COLUMN  extension CHARACTER VARYING (255);
 SQL;
         Yii::$app->db->createCommand($sql)->execute();
     }
