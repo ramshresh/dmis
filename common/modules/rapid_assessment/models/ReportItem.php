@@ -47,7 +47,7 @@ use ramshresh\yii2\galleryManager\GalleryImageAr;
  * @property string $owner_name
  * @property string $owner_contact
  * @property string $supplied_per_person
- * @property string $event
+ * @property string $event_name
  *
  * @property ReportItemChild[] $reportItemChildren
  * @property ReportItemChild[] $reportItemChildrenParent
@@ -121,7 +121,7 @@ class ReportItem extends \yii\db\ActiveRecord
             [['type','item_name'], 'required'],
             [['user_id','supplied_per_person'], 'integer'],
             [['description', 'tags', 'meta_hstore', 'meta_json', 'wkt', 'geom'], 'string'],
-            [['event'],'string','max'=>255],
+            [['event_name'],'string','max'=>255],
             [['is_verified'], 'boolean'],
             [['timestamp_occurance', 'timestamp_created_at', 'timestamp_updated_at', 'timestamp_declared_at'], 'safe'],
             [['magnitude', 'latitude', 'longitude'], 'number'],
@@ -164,7 +164,7 @@ class ReportItem extends \yii\db\ActiveRecord
             'owner_name'=>'Owner Name',
             'Owner_contact'=>'Owner Contact',
             'supplied_per_person'=>'Supplied Per Person',
-            'event'=>'Event',
+            'event_name'=>'Event Name',
         ];
     }
 
@@ -172,8 +172,8 @@ class ReportItem extends \yii\db\ActiveRecord
     {
         $reportItemScenarios =[
             //This scenario is to be used for Search Model by instance of <ReporItem> or any <class that inherits ReportItem>
-            'search' => ['event','type','item_name', 'class_name','owner_name','owner_contact'],
-            'hc_timestamp'=>['event','owner_name','owner_contact','supplied_per_person','id','type','item_name','class_basis','class_name','title','description','is_verified','status','timestamp_occurance','timestamp_created_at','timestamp_updated_at','latitude','longitude','address','user_id','timestamp_declared_at','magnitude','units']
+            'search' => ['event_name','type','item_name', 'class_name','owner_name','owner_contact'],
+            'hc_timestamp'=>['event_name','owner_name','owner_contact','supplied_per_person','id','type','item_name','class_basis','class_name','title','description','is_verified','status','timestamp_occurance','timestamp_created_at','timestamp_updated_at','latitude','longitude','address','user_id','timestamp_declared_at','magnitude','units']
         ];
         return ArrayHelper::merge(parent::scenarios(),$reportItemScenarios);
     }
