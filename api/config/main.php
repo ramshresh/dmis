@@ -42,7 +42,11 @@ return [
         ],
         'user'=>[
             'class'=>'api\modules\user\Module',
+        ],
+        'vdc'=>[
+            'class'=>'api\modules\vdc\Module',
         ]
+
     ],
     'components' => [
 
@@ -109,6 +113,7 @@ return [
                     'controller' => [
                         'rapid_assessment/report-item',
                         'rapid_assessment/gallery',
+                        'vdc/nepal-vdc',
                     ],
                     'pluralize'=>true,
                     'extraPatterns' => [
