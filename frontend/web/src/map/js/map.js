@@ -5,8 +5,8 @@
 $(document).ready(function() {
     /*******************Overlay Group*****************/
     var http = location.protocol;
-    //var hostName=window.location.hostname;
-    var hostName='116.90.239.21';
+    var hostName=window.location.hostname;
+   // var hostName='116.90.239.21';
 
     var host = http.concat("//").concat(hostName);
     var geoserverPort = 8080;
