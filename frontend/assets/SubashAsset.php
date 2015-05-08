@@ -12,7 +12,7 @@ class SubashAsset extends AssetBundle
     public $baseUrl = '@web/lib/subash';
     public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
     public $css = [
-        "assets/css/bootstrap.css",
+        //"assets/css/bootstrap-custom.css",
 
         "assets/css/neon-core.css",
         "assets/css/neon-theme.css",
@@ -73,7 +73,7 @@ class SubashAsset extends AssetBundle
     ];
     public $depends = [
         "yii\web\JqueryAsset",
-        //"yii\bootstrap\BootstrapAsset",
+        "yii\bootstrap\BootstrapAsset",
         "yii\bootstrap\BootstrapPluginAsset",
 //       / "frontend\assets\AppAsset",
         //"yii\web\YiiAsset",
