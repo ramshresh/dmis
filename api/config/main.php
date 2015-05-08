@@ -104,6 +104,7 @@ return [
                     ]
                 ],
                 [
+
                     'class' => 'yii\rest\UrlRule',
                     'controller' => [
                         'rapid_assessment/report-item',
