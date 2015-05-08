@@ -135,7 +135,26 @@ class NepalVdcController extends \yii\rest\ActiveController
         $query->groupBy($propertyAlias);
         $query->orderBy([$countAlias => SORT_ASC]);
 
-        return $query->all();
+        if (!empty($_GET)) {
+            // Filter based on model attribute values with like operator
+            foreach ($_GET as $key => $value) {
+                if ($model->hasAttribute($key)) {
+                    //Compare with model attributes
+                    if (strpos($value, ',')) {
+                        // Comma separated values is exploded to array  to make OR WHERE
+                        $values = explode(',', $value);
+                        foreach ($values as $value) {
+                            $query->orWhere([$key => $value]);
+                        }
+                    }else {
+                        // Single Value
+                        $query->andFilterWhere(['=', $key, $value]);
+                    }
+                }
+            }
+        }
+
+            return $query->all();
     }
 
     public
