@@ -19,8 +19,4 @@ class Ol3Asset extends AssetBundle
     public $js = [
         'ol-debug.js',
     ];
-    public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
-    ];
 }
