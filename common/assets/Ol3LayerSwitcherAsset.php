@@ -20,8 +20,6 @@ class Ol3LayerSwitcherAsset extends AssetBundle
         'lib/js/ol3-layerswitcher.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
         'common\assets\Ol3Asset',
     ];
 
