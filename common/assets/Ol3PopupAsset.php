@@ -19,8 +19,6 @@ class Ol3PopupAsset extends AssetBundle
         'js/ol3-popup.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
         'common\assets\Ol3Asset',
     ];
 }
