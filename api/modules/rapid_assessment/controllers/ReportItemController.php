@@ -103,11 +103,11 @@ class ReportItemController extends \yii\rest\ActiveController
                             // filter based on date
                             if(isset($queryParams['datefilter_from']))
                             {
-                                //$query->andWhere("timestamp_occurance >= '".$queryParams['datefilter_from']."' ");
+                                $query->andWhere("timestamp_occurance >= '".$queryParams['datefilter_from']."' ");
                             }
                             if(isset($queryParams['datefilter_to']))
                             {
-                                //$query->andWhere("timestamp_occurance <= '".$queryParams['datefilter_to']."' ");
+                                $query->andWhere("timestamp_occurance <= '".$queryParams['datefilter_to']."' ");
                             }
 
                             if (isset($queryParams['dwithin'])) {
@@ -516,6 +516,7 @@ SELECT ST_Within(
                    $query->orderBy(['count' => SORT_ASC]);
 
                    return ['ids' => $ids, 'data' => $query->createCommand()->queryAll()];*/
+
         $dataProvider->pagination=false;
         return $dataProvider;
     }
