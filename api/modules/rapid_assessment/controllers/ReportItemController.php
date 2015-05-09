@@ -464,11 +464,11 @@ SQL;
             // filter based on date
             if(isset($_GET['datefilter_from']))
             {
-                $query->andWhere("timestamp_occurance >= '".str_replace(['-',':','.'],'',$_GET['datefilter_from'])."' ");
+                $query->andWhere("extract(timestamp_occurance) >= '".strtotime($_GET['datefilter_from'])."' ");
             }
             if(isset($_GET['datefilter_to']))
             {
-                $query->andWhere("timestamp_occurance <= '".str_replace(['-',':','.'],'',$_GET['datefilter_to'])."' ");
+                $query->andWhere("(timestamp_occurance) <= '".strtotime($_GET['datefilter_to'])."' ");
             }
 
             if (isset($_GET['dwithin'])) {
