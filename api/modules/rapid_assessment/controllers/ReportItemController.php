@@ -39,9 +39,30 @@ class ReportItemController extends \yii\rest\ActiveController
                         $model = new $this->modelClass;
                         $query = $model::find();
                         $dataProvider = new ActiveDataProvider(['query' => $query]);
-                        if (!empty($_GET)) {
+
+                        $queryParams = \Yii::$app->request->queryParams;
+
+                        if (!empty($queryParams)) {
+
+
+                            if(isset($queryParams['search_attribute']) && isset($queryParams['search_value'])){
+                                if ($model->hasAttribute($queryParams['search_attribute'])) {
+                                    $query->andFilterWhere(['=', $queryParams['search_attribute'], $queryParams['search_value']]);
+                                }
+                            }
+
+                            if(isset($queryParams['district_name'])){
+
+                            }
+                            if(isset($queryParams['vdc_name'])){
+
+                            }
+
+
+
+
                             // Filter based on model attribute values with like operator
-                            foreach ($_GET as $key => $value) {
+                            foreach ($queryParams as $key => $value) {
                                 if ($model->hasAttribute($key)) {
                                     //Compare with model attributes
                                     if (strpos($value, ',')) {
@@ -80,19 +101,19 @@ class ReportItemController extends \yii\rest\ActiveController
                             }
 
                             // filter based on date
-                            if(isset($_GET['datefilter_from']))
+                            if(isset($queryParams['datefilter_from']))
                             {
-                                $query->andWhere("timestamp_occurance >= '".$_GET['datefilter_from']."' ");
+                                //$query->andWhere("timestamp_occurance >= '".$queryParams['datefilter_from']."' ");
                             }
-                            if(isset($_GET['datefilter_to']))
+                            if(isset($queryParams['datefilter_to']))
                             {
-                                $query->andWhere("timestamp_occurance <= '".$_GET['datefilter_to']."' ");
+                                //$query->andWhere("timestamp_occurance <= '".$queryParams['datefilter_to']."' ");
                             }
 
-                            if (isset($_GET['dwithin'])) {
+                            if (isset($queryParams['dwithin'])) {
                                 //$pointWkt="'POINT(81.5 29.5)'";
                                 //$polygonWkt="'POLYGON((-81 -27,-81 27,181 27,81 -27,-81 -27))'";
-                                $polygonWkt = $_GET['dwithin'];
+                                $polygonWkt = $queryParams['dwithin'];
                                 $srid = 4326;
                                 /*SELECT ST_Within(
                                     (select ST_GeomFromText('POINT(81.5 29.5)',4326))
@@ -134,6 +155,7 @@ class ReportItemController extends \yii\rest\ActiveController
                                    $query->orderBy(['count' => SORT_ASC]);
 
                                    return ['ids' => $ids, 'data' => $query->createCommand()->queryAll()];*/
+//return $query->createCommand()->rawSql;
                         $dataProvider->pagination=false;
                         return $dataProvider;
                     }
@@ -391,4 +413,110 @@ SQL;
          */
     }
 
+    public function actionSearch(){
+       // search_type=item_name&search_subtype=Building&datefilter_from=2015-05-12&datefilter_to=2015-05-13&district_name=DADELDHURA&vdc_name=AJAYMERU
+        /* @var $model  \common\modules\tracking\models\search\Status */
+        /* @var $query \yii\db\ActiveQuery */
+        $model = new $this->modelClass;
+        $query = $model::find();
+        $dataProvider = new ActiveDataProvider(['query' => $query]);
+
+        if (!empty($_GET)) {
+            // Filter based on model attribute values with like operator
+            foreach ($_GET as $key => $value) {
+                if ($model->hasAttribute($key)) {
+                    //Compare with model attributes
+                    if (strpos($value, ',')) {
+                        // Comma separated values is exploded to array  to make OR WHERE
+                        $values = explode(',', $value);
+                        foreach ($values as $value) {
+                            $query->orWhere([$key => $value]);
+                        }
+                    }else {
+                        // Single Value
+                        $query->andFilterWhere(['=', $key, $value]);
+                    }
+                }else {
+                    //try exploding attributes
+                    $param = explode('->', $key, 2);
+                    if (in_array($param[0], $model->extraFields())) {
+                        if ($model->getRelation($param[0])->multiple) {
+                            //The relation is: current model has_many related models
+                            //@todo Implement
+                        }else {
+                            //The relation is: current model has_one related models
+                            $query->joinWith($param[0]);
+                            $key = $param[0] . '.' . $param[1];
+                            if (strpos($value, ',')) {
+                                // Comma separated values is exploded to array  to make OR WHERE
+                                $values = explode(',', $value);
+                                foreach ($values as $value) {
+                                    $query->orWhere([$key => $value]);
+                                }
+                            }else {
+                                $query->andFilterWhere(['=', $key, $value]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // filter based on date
+            if(isset($_GET['datefilter_from']))
+            {
+                $query->andWhere("timestamp_occurance >= '".$_GET['datefilter_from']."' ");
+            }
+            if(isset($_GET['datefilter_to']))
+            {
+                $query->andWhere("timestamp_occurance <= '".$_GET['datefilter_to']."' ");
+            }
+
+            if (isset($_GET['dwithin'])) {
+                //$pointWkt="'POINT(81.5 29.5)'";
+                //$polygonWkt="'POLYGON((-81 -27,-81 27,181 27,81 -27,-81 -27))'";
+                $polygonWkt = $_GET['dwithin'];
+                $srid = 4326;
+                /*SELECT ST_Within(
+                    (select ST_GeomFromText('POINT(81.5 29.5)',4326))
+                    ,(select ST_GeomFromText('POLYGON((81 29,81 30,85 30,85 29,81 29))',4326))
+                ) As point_within_polygon*/
+                /* select *from "tracking".tracking_driver as driver
+where(
+SELECT ST_Within(
+                     driver.geom
+                     ,(select ST_GeomFromText('POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))',4326))
+) As point_within_polygon
+)*/
+                /*
+                 WITH driver AS ( SELECT *,ST_Within(geom,(select ST_GeomFromText('POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))',4326))) as if_within_polygon from "tracking".tracking_driver)
+                SELECT * FROM driver where driver.if_within_polygon=true;
+                 */
+
+
+                $query->andWhere("(SELECT ST_Within(geom,(select ST_GeomFromText($polygonWkt,$srid))))");
+
+            }
+        }
+
+        /*           $result = [];
+                   // return $query->createCommand()->sql;
+                   $with_ids = true;
+                   if ($with_ids) {
+                       $ids = [];
+                       foreach ($query->createCommand()->queryAll() as $single) {
+                           $ids[] = $single['id'];
+                       }
+                   }
+                   $property = 'type';
+                   $query = new Query();
+                   $query->addSelect(['count' => 'COUNT(*)']);
+                   $query->addSelect(['value' => $property]);
+                   $query->from([$model::tableName()]);
+                   $query->groupBy($property);
+                   $query->orderBy(['count' => SORT_ASC]);
+
+                   return ['ids' => $ids, 'data' => $query->createCommand()->queryAll()];*/
+        $dataProvider->pagination=false;
+        return $dataProvider;
+    }
 }
