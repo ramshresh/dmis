@@ -5,10 +5,13 @@
 use common\assets\Ol3Asset;
 use common\assets\Ol3LayerSwitcherAsset;
 use common\assets\Ol3PopupAsset;
+use yii\jui\JuiAsset;
 
+dmstr\web\AdminLteAsset::register($this);
 Ol3Asset::register($this);
 Ol3LayerSwitcherAsset::register($this);
 Ol3PopupAsset::register($this);
+JuiAsset::register($this);
 ?>
     <style>
         .ol-popup-closer:after {
@@ -299,7 +302,7 @@ Ol3PopupAsset::register($this);
                 <li class="dropdown">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-placement="bottom"><i style="font-size: 22px;color:orange" class="icon-resource"></i></button>
 
-                    <ul class="dropdown-menu">
+                    <!--<ul class="dropdown-menu">
                         <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
@@ -309,12 +312,12 @@ Ol3PopupAsset::register($this);
                         <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                    </ul>
+                    </ul>-->
                 </li>
                 <li class="dropdown">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-placement="bottom"><i style="font-size: 22px;color:#734286" class="icon-routing"></i></button>
 
-                    <ul class="dropdown-menu">
+                    <!--<ul class="dropdown-menu">
                         <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
@@ -324,7 +327,7 @@ Ol3PopupAsset::register($this);
                         <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
                         <li class="divider"></li>
                         <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                    </ul>
+                    </ul>-->
                 </li>
 
             </ul>
@@ -340,7 +343,7 @@ Ol3PopupAsset::register($this);
 
         <div class="col-lg-5 col-md-12 col-sm-12">
             <div class="input-group">
-                <input type="text" class="form-control search" placeholder="Enter Location Here">
+                <input id="input-search" type="text" class="form-control search" placeholder="Enter Location Here">
 				<span class="input-group-btn search_btn">
 					<button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="entypo-search"></i></button>
 				</span>
@@ -353,7 +356,85 @@ Ol3PopupAsset::register($this);
         </div>
 
     </div>
+<?php
+$JsAddressSearch = <<<JS
+        $("#input-search").autocomplete({
+            delay: 500,
+            minLength: 3,
+            source: function(request, response) {
+                $.getJSON("http://open.mapquestapi.com/nominatim/v1/search.php?format=json", {
+                    // do not copy the api key; get your own at developer.rottentomatoes.com
 
+                    q: request.term
+
+                }, function(data) {
+                    // data is an array of objects and must be transformed for autocomplete to use
+                    var array = data.error ? [] : $.map(data, function(m) {
+                        return {
+                            label: m.display_name,
+                            lat : parseFloat(m.lat),
+                            lon : parseFloat(m.lon),
+                            url: m.icon
+                        };
+                    });
+                    response(array);
+                });
+            },
+            search:function(event, ui){
+                var self=this;
+                   $('#input-search').addClass('loadinggif');
+                },
+            response:function( event, ui ){
+                var self= this;
+                   $('#input-search').removeClass('loadinggif');
+            },
+            focus: function(event, ui) {
+                // prevent autocomplete from updating the textbox
+                event.preventDefault();
+            },
+            select: function(event, ui) {
+                // prevent autocomplete from updating the textbox
+                event.preventDefault();
+                var position =ol.proj.transform(
+                [ui.item.lon,ui.item.lat], 'EPSG:4326', 'EPSG:3857'
+                );
+                map.getView().setCenter(position);
+                map.getView().setZoom(12);
+                // Adding overlay marker
+                map.addOverlay(new ol.Overlay({
+                  position:position,
+                  element:  $('<img src="http://116.90.239.21/girc/dmis/img/location.png" style="width:32px;height:auto;">')
+                                 .css({marginTop: '-200%', marginLeft: '-50%', cursor: 'pointer'})
+                                .popover({
+                                  'placement': 'top',
+                                  'html': true,
+                                  'content':'<strong>'+ui.item.label+'</strong>'
+                                })
+                               .on('click', function (e) { $(".location-popover").not(this).popover('hide').close; })
+                }));
+            }
+        });
+        $("#input-search").autocomplete( "instance" )._renderItem = function( ul, item ) {
+          return $( "<li>" )
+            .append( "<a>" + item.label + "</a></br>" )
+            .append( "<a>(" + item.lat +' '+item.lon + ")</a>" )
+            .appendTo( ul );
+        };
+        $("#input-search").autocomplete( "instance" )._renderMenu= function( ul, items ) {
+          var that = this;
+          $.each( items, function( index, item ) {
+            that._renderItemData( ul, item );
+          });
+          $( ul ).find( "li:odd" ).addClass( "odd" );
+          $( ul ).find( "li:even" ).addClass( "even" );
+        };
+        $("#input-search").autocomplete( "instance" )._resizeMenu= function() {
+           var ul = this.menu.element;
+             ul.outerWidth(this.element.outerWidth());
+        };
+JS;
+$this->registerJs($JsAddressSearch, $this::POS_READY);
+?>
 <!--    <div class="clearfix"></div>-->
 
     <div id="toolbar">
