@@ -8,6 +8,7 @@ use yii\helpers\Html;
 /* @var $exception Exception */
 
 $this->title = $name;
+
 ?>
 <!-- Main content -->
 <section class="content">

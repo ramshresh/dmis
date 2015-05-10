@@ -36,9 +36,9 @@ class SubashAsset extends AssetBundle
         //"assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css",
         "assets/css/font-icons/entypo/css/entypo.css",
         //"assets/css/font-icons/entypo/css/entypo.css",
-        "http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic",
+        //"http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic",
         "assets/css/font-icons/font-awesome/css/font-awesome.min.css",
-
+        "lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css",
         "assets/css/custom.css",
         "assets/css/style.css",
     ];
@@ -70,6 +70,7 @@ class SubashAsset extends AssetBundle
         "assets/js/neon-chat.js",
         "assets/js/neon-custom.js",
         "assets/js/neon-demo.js",
+        "lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js",
     ];
     public $depends = [
         "yii\web\JqueryAsset",

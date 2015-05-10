@@ -12,6 +12,7 @@ namespace api\modules\rapid_assessment\controllers;
 use common\modules\rapid_assessment\models\ItemClass;
 use common\modules\rapid_assessment\models\ItemType;
 use common\modules\rapid_assessment\models\ReportItem;
+use common\modules\vdc\models\NepalVdc;
 use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveQuery;
@@ -110,6 +111,18 @@ class ReportItemController extends \yii\rest\ActiveController
                                 $query->andWhere("timestamp_occurance <= '".$queryParams['datefilter_to']."' ");
                             }
 
+                            if(isset($queryParams['district_name']))
+                            {
+                                $subQuery = new ActiveQuery(NepalVdc::className());
+                                $subQuery->addSelect(['dgeom'=>'ST_Union(geom)']);
+                                $subQuery->andFilterWhere(['like', 'dname', $queryParams['district_name']]);
+
+                                $query->leftJoin(['selDist'=>$subQuery],[],[]);
+
+                                //$geom=$subQuery->createCommand()->queryOne()->geom;
+                                $query->andWhere("(SELECT ST_Within(geom,st_collect)))");
+                            }
+
                             if (isset($queryParams['dwithin'])) {
                                 //$pointWkt="'POINT(81.5 29.5)'";
                                 //$polygonWkt="'POLYGON((-81 -27,-81 27,181 27,81 -27,-81 -27))'";
@@ -156,6 +169,8 @@ class ReportItemController extends \yii\rest\ActiveController
 
                                    return ['ids' => $ids, 'data' => $query->createCommand()->queryAll()];*/
 //return $query->createCommand()->rawSql;
+
+                        return $query->createCommand()->rawSql;
                         $dataProvider->pagination=false;
                         return $dataProvider;
                     }

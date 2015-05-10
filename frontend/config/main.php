@@ -1,4 +1,5 @@
 <?php
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -42,6 +43,9 @@ return [
     'modules' => [
         'test-tabular-input' => [
             'class' => 'frontend\modules\testtabularinput\Module',
+        ],
+        'rapid_assessment' => [
+            'class' => 'frontend\modules\rapid_assessment\Module',
         ],
     ],
     'params' => $params,

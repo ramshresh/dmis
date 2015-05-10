@@ -1,0 +1,32 @@
+.ol-popup-closer:after {
+    content: "[x]";
+    color: red;
+    font-size: 16px;
+}
+
+.ol-popup {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 15px;
+    border: 1px solid rgb(57, 52, 86);;
+    bottom: 12px;
+    left: -50px;
+    height: auto;
+    width: 250px;
+
+}
+
+.ol-popup-content {
+    width: 250px;
+    height: auto;
+    max-height: none;
+    max-width: 230px;
+}
+
+.ol-popup:before {
+    border-top-color: rgb(57, 52, 86);
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+}

@@ -148,6 +148,7 @@ class ReportItemCreateAction extends MyBaseAction
                         ->all();*/
 
                     if($model->load(Yii::$app->getRequest()->getBodyParams()) && $model->save() ){
+
                         if(Yii::$app->request->post('photo')){
                             $photo = Json::decode(Yii::$app->request->post('photo'));//Yii::$app->request->post('photo');
                             if(isset($photo['id']))
