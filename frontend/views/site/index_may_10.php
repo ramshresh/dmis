@@ -34,9 +34,6 @@ Ol3PopupAsset::register($this);
             left: 48px;
             margin-left: -11px;
         }
-        .layer-switcher{
-            top:150px
-        }
     </style>
 
 <div id="map"></div>
@@ -228,7 +225,7 @@ Ol3PopupAsset::register($this);
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="field-1" placeholder="No.">
                                 </div>
-<!--                                <div class="clearfix"></div>-->
+                                <div class="clearfix"></div>
 
                                 <div class="panel-title" style="margin-left:10px;padding:10px 0;color:#04C9A6">
                                     Needs
@@ -354,7 +351,7 @@ Ol3PopupAsset::register($this);
 
     </div>
 
-<!--    <div class="clearfix"></div>-->
+    <div class="clearfix"></div>
 
     <div id="toolbar">
         <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Geo-Location" data-original-title="Geo Location"><i style="color:#04C9A6;" class="icon-target"></i></button>
@@ -400,7 +397,7 @@ Ol3PopupAsset::register($this);
                 //    var url='http://localhost:8080/geoserver/fra/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=fra%3Aambulance&srsname=EPSG:3857&maxFeatures=50&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
                 //var url='http://116.90.239.21:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&filter=<PropertyIsEqualTo><PropertyName>type</PropertyName><Literal>incident</Literal></PropertyIsEqualTo>&format_options=callback:loadFeatures&bbox=' + extent.join(',');
                 //var url='http://116.90.239.21:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&cql_filter='+filter+'&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures' ;//+ extent.join(',');
-                var url = 'http://118.91.160.230:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item_incident&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
+                var url = 'http://118.91.160.230:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
 
 
                 //var url="http://116.90.239.21:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures" + extent.join(',');
@@ -515,7 +512,6 @@ Ol3PopupAsset::register($this);
             source: new ol.source.BingMaps({key: key, imagerySet: 'Aerial'})
         });
         baseGroup.getLayers().push(osm);
-        baseGroup.getLayers().push(imagery);
 
 
         /*******************ol3 map object*****************/
@@ -644,7 +640,6 @@ Ol3PopupAsset::register($this);
             return img_src;
         }
         var highlight;
-        var ids_array;
         var displayFeatureInfo = function (pixel) {
 
             var feature = map.forEachFeatureAtPixel(pixel, function (feature, layer) {
@@ -667,18 +662,13 @@ Ol3PopupAsset::register($this);
                     popup.show(coor_feature, '<h4>' + feature.values_.features[0].values_.item_name + '</h4>Human Casulty : ' + feature.values_.features[0].values_.magnitude + image(id));
                 }
                 else {
-
+                    console.log(feature);
                     var text = '';
                     var text_array = [];
-                    var ids_array = [];
-                    var user_id_array=[]
                     $.each(feature.values_.features, function (index, value) {
-                        ids_array.push(value.id_);
-                        user_id_array.push(value.values_.user_id);
                         text_array.push(value.values_.item_name);
-                    });
-
-
+                    })
+                    //console.log($.unique(text_array));
                     var result = unique_count(text_array);
 
                     if (result[0].length == result[1].length) {
@@ -694,16 +684,8 @@ Ol3PopupAsset::register($this);
                         var popup_content = '<h4>Report Detail</h4><hr>';
                         $.each(list, function (index, value) {
                             popup_content += value.value + ' : ' + value.count + '<br>';
-                        });
-                            popup_content+='<hr> <a id = "popupimages" >view images</a>';
-
-
+                        })
                         popup.show(coor_feature, popup_content);
-
-                        $('a#popupimages').click(function(evet){
-
-                            showPopupImages(ids_array);
-                        });
 
                     } else {
                         alert('error arrays not equal');
@@ -714,14 +696,7 @@ Ol3PopupAsset::register($this);
             }
 
         };
-
-        function showPopupImages(ids){
-            console.log(ids)
-        }
-
-
         map.on('click', function (evt) {
-
             displayFeatureInfo(evt.pixel);
         });
         ////////////////////////////////////////////////////////////////////////
