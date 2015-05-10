@@ -1,850 +1,1350 @@
 <?php
-/**
- * @var $this yii\web\View;
- */
+/* @var $this yii\web\View */
+use common\assets\IconsReportingAsset;
 use common\assets\Ol3Asset;
 use common\assets\Ol3LayerSwitcherAsset;
 use common\assets\Ol3PopupAsset;
+use common\assets\PlaceAutocompleteAsset;
+use common\modules\rapid_assessment\models\ReportItem;
 
-Ol3Asset::register($this);
-Ol3LayerSwitcherAsset::register($this);
-Ol3PopupAsset::register($this);
+
+use frontend\assets\GsapAsset;
+use frontend\assets\IcheckAsset;
+use frontend\assets\NeonAsset;
+use kartik\widgets\Select2;
+use yii\grid\GridView;
+use yii\helpers\Url;
+use yii\web\JsExpression;
+
+$this->title = 'DMIS-Geospatial Lab';
 ?>
-    <style>
-        .ol-popup-closer:after {
-            content: "[x]";
-            color: red;
-            font-size: 16px;
+
+<?php GsapAsset::register($this)?>
+<?php NeonAsset::register($this);?>
+<?php IcheckAsset::register($this);?>
+<?php Ol3Asset::register($this); ?>
+<?php Ol3LayerSwitcherAsset::register($this); ?>
+<?php IconsReportingAsset::register($this); ?>
+<?php PlaceAutocompleteAsset::register($this); ?>
+<?php Ol3PopupAsset::register($this); ?>
+
+<?php
+$css = <<<CSS
+         hr{
+            border-width: 1px 0 0;
+            margin-bottom: 5px;
+            margin-top: 5px;
         }
 
-        .ol-popup {
-            display: none;
+        .ol-full-screen {
+            right: 0.5em;
+            top: 3.2em;
+        }
+
+        .ol-control button {
+            background-color: rgba(57, 52, 86, 0.8);
+
+        }
+      /*  #navbar >* {
+            background-color: rgba(57, 52, 86, 0.8);
+            width:auto;
+
+        }*/
+
+
+
+
+        /* pullout css */
+        div.pullout-right-footer-btn {
             position: absolute;
-            background-color: white;
-            padding: 15px;
-            border: 1px solid rgb(57,52,86);;
-            bottom: 12px;
-            left: -50px;
+            border-radius: 0.1em;
+            bottom: 3px;
+            right: 0.5em;
+            background: rgba(57, 52, 86, 0.8);
+            padding: 1em 0.2em 0.5em 0.5em;
+            font-size: 14px;
+            z-index: 99999;
+            cursor: pointer;
+            color: #ddd;
+        }
+        div.pullout-right-footer {
+            background: none repeat scroll 0 0 rgba(57, 52, 86, 0.8);
+            bottom: 3px;
+            height: 167px;
+            position: fixed;
+            right: -100%;
+            width: 100%;
+            z-index: 2147483647;
+        }
+        /* tags and other css */
+        img {
+            display: inline-block;
+            height: auto;
+            max-width: 100%;
+        }
+        html,
+        body,
+        #map {
+            margin-top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /*for z-index of a dialog box */
+        .ui-dialog{
+            display: block;
+            z-index: 1000;
+        }
+
+        .ui-widget-header {
+            background: none repeat scroll 0 0 rgba(57, 52, 86, 0.8);
+            border: 1px solid #e78f08;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .ui-dialog .ui-dialog-titlebar {
+            padding: 0.2em 1em;
+            position: relative;
+        }
+
+        .toolbar
+        {
+            background: none repeat scroll 0 0 rgba(57, 52, 86, 0.8);
+            border-color: #d8d8d8;/* -moz-use-text-color #d8d8d8 #d8d8d8;*/
+            border-image: none;
+            border-radius: 3px;
+            border-style: solid none solid solid;
+            border-width: 1px medium 1px 1px;
+            padding: 5px;
+            position: absolute;
+            right: 0.5em;
+            top: 11.2em;
+            width: 25px;
+            z-index: 999;
         }
 
 
-        .ol-popup:before {
-            border-top-color: rgb(57,52,86);
-            border-width: 11px;
-            left: 48px;
-            margin-left: -11px;
+        hr{
+            border-width: 1px 0 0;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+
+        .ol-full-screen {
+            right: 0.5em;
+            top: 0.5em;
+        }
+
+        .ol-zoom {
+            position:absolute;
+            right:auto;
+            left: 0.5em;
+            top: 0.5em;
+        }
+
+        .ol-control button {
+            background-color: rgba(57, 52, 86, 0.8);
+            font-size: 2em;
+            /*padding:0em;*/
+
+        }
+     /*   *:before, *:after {
+            box-sizing: border-box;
+        }*/
+
+        .ol-attribution, .ol-control button, .ol-has-tooltip [role="tooltip"], .ol-scale-line-inner {
+            top: 2em;
+        }
+CSS;
+$this->registerCss($css);
+?>
+<?php
+/*echo  \common\modules\reporting\widgets\event\Create::widget([
+    'jqToggleBtnSelector'=>'#report',
+    'widgetId'=>'event-form-widget',
+    'formId'=>'event-form',
+]);*/
+?>
+<!-- {{{ Implement Pjax -->
+<!--<div id="formsection">
+</div>
+<?php /*\yii\widgets\Pjax::begin(); */ ?>
+<?php
+/*    echo \yii\helpers\Html::a(
+        'get event-report-create-widget',
+        [ '','widget_name'=>'event-report-create'],
+        ['data-pjax'=> '#formsection']);
+    */ ?>
+
+--><?php /*\yii\widgets\Pjax::end(); */ ?>
+<!-- }}} ./Implement Pjax -->
+<style>
+	.atss a{
+		right:0.5em;
+		width:40px;
+		margin:0.05em;
+	}
+	a.at-svc-twitter, a.at-svc-google_plusone_share, a.at-svc-blogger,
+	a.at-svc-linkedin,a.at-svc-pinterest_share, a.at-svc-facebook
+	{
+		background:rgba(57,52,86,0.8);
+	}
+
+</style>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54c7a096649ea7d0" async="async"></script>
+
+<style>
+.open>.dropdown-menu {
+  display: block;
+  padding: 1em;
+}
+</style>
+
+<div id="navbar" class="ol-unselectable ol-control" style='display:inline-flex;top:0.5em;left:20%; z-index:9999999999;'>
+
+    <div class="dropdown">
+        <button id="report" class="ol-has-tooltip dropdown-toggle " aria-expanded="false" data-toggle="dropdown"
+                type="button">
+            <i style="font-size: 22px;" class="icon-reporting"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu" style="">
+            <li style="font-weight:bold; text-align:center;">Submit Report</li>
+            <li class="divider"></li>
+			<li id="rapid_assessment_es"><a  href="#">
+                <icon class="icon-emergency_situation"></icon>
+                Emergency Situation
+				</a>
+            </li>
+			<li class="divider"></li>
+            <li id="rapid_assessment_ev"><a  href="#">
+                <icon class="icon-event"></icon>
+                Event
+				</a>
+            </li>
+			<li class="divider"></li>
+            <li id="rapid_assessment_in"><a  href="#">
+                <icon class="icon-incident"></icon>
+                Incident
+				</a>
+            </li>
+			<li class="divider"></li>
+            <li id="rapid_assessment_im"><a  href="#">
+                <icon class="icon-damage"></icon>
+                Impact
+				</a>
+            </li>
+			<li class="divider"></li>
+            <li id="rapid_assessment_nd"><a  href="#">
+                <icon class="icon-need"></icon>
+                Need
+				</a>
+            </li>
+        </ul>
+        <?php
+        echo \common\modules\rapid_assessment\widgets\report_item\Create::widget([
+            'jqToggleBtnSelector' => '#rapid_assessment_es',
+            //'widgetId' => 'ebbvent-form-widget',
+            //'formId' => 'evehnt-form',
+            'actionRoute' => 'site/report-item-create',
+            'reportItemType' => ReportItem::TYPE_EMERGENCY_SITUATION,
+        ]);
+        ?>
+        <?php
+        echo \common\modules\rapid_assessment\widgets\report_item\Create::widget([
+            'jqToggleBtnSelector' => '#rapid_assessment_ev',
+            // 'widgetId' => 'ebbvent-form-widget',
+            // 'formId' => 'evehnt-form',
+            'actionRoute' => 'site/report-item-create',
+            'reportItemType' => ReportItem::TYPE_EVENT,
+        ]);
+        ?>
+        <?php
+        echo \common\modules\rapid_assessment\widgets\report_item\Create::widget([
+            'jqToggleBtnSelector' => '#rapid_assessment_in',
+            //'widgetId' => 'ebbvent-form-widget',
+            //'formId' => 'evehnt-form',
+            'actionRoute' => 'site/report-item-create',
+            'reportItemType' => ReportItem::TYPE_INCIDENT,
+        ]);
+        ?>
+        <?php
+        echo \common\modules\rapid_assessment\widgets\report_item\Create::widget([
+            'jqToggleBtnSelector' => '#rapid_assessment_im',
+            // 'widgetId' => 'ebbvent-form-widget',
+            // 'formId' => 'evehnt-form',
+            'actionRoute' => 'site/report-item-create',
+            'reportItemType' => ReportItem::TYPE_IMPACT,
+        ]);
+        ?>
+        <?php
+        echo \common\modules\rapid_assessment\widgets\report_item\Create::widget([
+            'jqToggleBtnSelector' => '#rapid_assessment_nd',
+            // 'widgetId' => 'ebbvent-form-widget',
+            // 'formId' => 'evehnt-form',
+            'actionRoute' => 'site/report-item-create',
+            'reportItemType' => ReportItem::TYPE_NEED,
+        ]);
+        ?>
+    </div>
+    <div class="dropdown">
+        <button id="tracking" class="ol-has-tooltip dropdown-toggle " aria-expanded="false"
+                data-toggle="dropdown"
+                type="button">
+            <i style="font-size: 22px;" class="icon-resource"></i>
+        </button>
+  <ul class="dropdown-menu" role="menu" style="">
+            <li id="search_ambulance">
+			<a  href="#">
+                <icon class="icon-search"></icon>
+                Search Ambulance
+				</a>
+            </li>
+			<li class="divider"></li>
+            <?php if (!Yii::$app->user->isGuest): ?>
+                <li id="register_driver">
+				<a  href="#">
+                    <icon class="icon-user2"></icon>
+                    Driver Registration
+					</a>
+                </li>
+                <?php
+                echo common\modules\tracking\widgets\driver\Registration::widget([
+                    'jqToggleBtnSelector' => '#register_driver',
+                    'widgetId' => 'register-driver-form-widget',
+                    'formId' => 'driver-form',
+                    'actionRoute' => 'site/register-driver'
+                ]);
+                ?>
+            <?php endif; ?>
+        </ul>
+		
+    </div>
+<!--
+    <button id="directions" class="ol-has-tooltip" type="button">
+        <i style="font-size: 22px;" class="icon-routing"></i>
+    </button>
+
+    <button id="geofence" class="ol-has-tooltip" type="button">
+        <i style="font-size: 22px;" class="icon-geofence"></i>
+    </button>
+-->
+
+    <button id="filter" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Filter</span><i style="font-size: 22px;" class="icon-search"></i>
+    </button>
+	
+	 <button id="amenities-search" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Amenities</span>A
+    </button>
+
+
+    <style>
+        .ui-autocomplete {
+            max-height: 150px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+            /* add padding to account for vertical scrollbar */
+            padding-right: 20px;
+        }
+
+        /* IE 6 doesn't support max-height
+         * we use height instead, but this forces the menu to always be this tall
+         */
+        * html .ui-autocomplete {
+            height: 100px;
+        }
+
+        .loadinggif {
+            background: url('http://www.hsi.com.hk/HSI-Net/pages/images/en/share/ajax-loader.gif') no-repeat right center;
+        }
+
+        .ui-autocomplete li.odd {
+            background-color: rgba(200, 200, 200, 0.4);
+        }
+
+        ,
+        .ui-autocomplete li.even {
+            background-color: rgba(250, 250, 250, 0.4);
         }
     </style>
 
-<div id="map"></div>
+    <input id="input-search" type="text" placeholder="Search Address"
+           style="background-color: #fff;border-top: 1px solid #d9d9d9;">
 
-    <div id="navbar" class="col-lg-12 col-md-12 col-sm-12">
-        <div class="col-lg-4 col-md-4 col-sm-12 toolbar-menu">
-            <ul class="nav navbar-nav">
-                <!--filter by parameters start-->
-                <li class="dropdown">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-placement="bottom"><i style="font-size: 22px;color:#04C9A6;" class="icon-line-chart"></i></button>
 
-                    <ul class="dropdown-menu">
-                        <form
-                            id="report_item_search"
-                            role="form" method="get" action="/girc/dmis/rapid_assessment/report-items"
-                            class="form-horizontal form-groups-bordered">
-                            <div class="form-group" style="margin-top:25px !important;">
-                                <div class="col-md-6">
-                                    <!--							<select name="test" class="selectboxit" id="search_type">-->
-                                    <select name="search_type" class="" id="search_type">
-                                        <option value="">Select type</option>
-                                    </select>
-                                </div>
+    <div class="dropdown">
+        <button id="user-menu" class="ol-has-tooltip dropdown-toggle " aria-expanded="false" data-toggle="dropdown"
+                type="button">
+            <i style="font-size: 22px;" class="icon-user"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu" style="">
+            <?php if (Yii::$app->getUser()->getIsGuest()): ?>
 
-                                <div class="col-md-6">
-                                    <!--							<select name="test" class="selectboxit"  id="search_subtype">-->
-                                    <select name="search_subtype" class=""  id="search_subtype">
-                                        <optgroup label="Sub Type">
-                                            <option value="1">Select subtype</option>
-                                        </optgroup>
-                                    </select>
-
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-group">
-                                        <input name="datefilter_from" type="text" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="From" id="search_start_date">
-
-                                        <div class="input-group-addon">
-                                            <a href="#"><i class="entypo-calendar"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-group">
-                                        <input type="text" name="datefilter_to" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder='To' id="search_end_date">
-                                        <div class="input-group-addon">
-                                            <a href="#"><i class="entypo-calendar"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <!--							<select name="test" class="selectboxit">-->
-                                    <select id="district_name" name="district_name" class="">
-                                        <option value="">Select District</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <!--							<select name="test" class="selectboxit">-->
-                                    <select id="vdc_name" name="vdc_name" class="">
-                                        <option value="">Select VDC/Municipality</option>
-                                    </select>
-                                </div>
-                                <br>
-                                <div class="col-md-6">
-                                    <button id="btn_report_item_search" type="button" class="btn-primary col-md-12">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="form-group" style="margin:0;padding:0">
-                            <div class="row" style="margin:0 5px">
-
-                                <ul class="nav nav-tabs left-aligned">
-                                    <li class="active"><a href="#search_summary" data-toggle="tab">
-                                            <span class="visible-xs"><i class="entypo-home"></i></span>
-                                            <span class="hidden-xs">Summary</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#search_table" data-toggle="tab">
-                                            <span class="visible-xs"><i class="entypo-user"></i></span>
-                                            <span class="hidden-xs">Table</span>
-                                        </a>
-                                    </li>
-                                </ul>
-
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="home-2">
-
-                                        <div class="scrollable" data-height="220" style="padding:0 10px;" id="search_summary" >
-
-                                            <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
-
-                                            <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
-
-                                            <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
-
-                                            <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="tab-pane" id="search_table">
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Type</th>
-                                                <th>Location</th>
-                                                <th>Route</th>
-
-                                            </tr>
-                                            </thead>
-
-                                            <tbody>
-                                            <tr>
-                                                <td>Subash</td>
-                                                <td>Nushi</td>
-                                                <td>Kathmandu</td>
-                                                <td>Test</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Subash</td>
-                                                <td>Nushi</td>
-                                                <td>Kathmandu</td>
-                                                <td>Test</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Subash</td>
-                                                <td>Nushi</td>
-                                                <td>Kathmandu</td>
-                                                <td>Test</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <br />
-
-                            </div>
-                        </div>
-
-                    </ul>
+                <li id="login">
+                    <a href="<?= Url::toRoute(['/user/login']) ?>">
+						<icon class="icon-power-off"></icon>
+                        Login</a>
                 </li>
-                <!--filter by parameters end-->
-
-                <li class="dropdown">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-placement="bottom"><i style="font-size: 22px;color:#DE007B" class="icon-reporting"></i></button>
-
-                    <ul class="dropdown-menu" style="min-width:350px;">
-                        <form role="form" class="form-horizontal form-groups-bordered" style="margin-top:20px !important">
-                            <div class="form-group" style="margin:25px 0 !important;">
-                                <div class="col-md-12">
-                                    <select name="test" class="selectboxit">
-                                        <option value="1">Select Incident</option>
-                                        <option value="2">Building Damage</option>
-                                        <option value="3">Public Building Damage</option>
-                                        <option value="4">Infastructure Damage</option>
-                                        <option value="5">Washington</option>
-
-                                    </select>
-
-                                </div>
-                                <div class="col-md-12">
-                                    <select name="test" class="selectboxit">
-                                        <option value="1">Damage Type</option>
-                                        <option value="2">Fully</option>
-                                        <option value="3">Moderate</option>
-                                        <option value="4">Not</option>
-
-                                    </select>
-
-                                </div>
-                                <div class="panel-title" style="margin-left:10px;padding:10px 0;color:orange">
-                                    Impacts
-                                </div>
-                                <label for="field-1" class="col-md-2 control-label">Dead</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="field-1" placeholder="No.">
-                                </div>
-                                <label for="field-1" class="col-md-2 control-label">Injured</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="field-1" placeholder="No.">
-                                </div>
-                                <label for="field-1" class="col-md-2 control-label">Missing</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="field-1" placeholder="No.">
-                                </div>
-                                <div class="clearfix"></div>
-
-                                <div class="panel-title" style="margin-left:10px;padding:10px 0;color:#04C9A6">
-                                    Needs
-                                </div>
-                                <label for="field-1" class="col-md-2 control-label">Tent</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="field-1" placeholder="No.">
-                                </div>
-                                <label for="field-1" class="col-md-2 control-label">Food</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="field-1" placeholder="No.">
-                                </div>
-                                <label for="field-1" class="col-md-2 control-label">Medicine</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="field-1" placeholder="No.">
-                                </div>
-                                <label for="field-1" class="col-md-2 control-label">Water</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="field-1" placeholder="No.">
-                                </div>
-                                <label for="field-1" class="col-md-2 control-label">Ambulance</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="field-1" placeholder="No.">
-                                </div>
-                                <label for="field-1" class="col-md-2 control-label">Fuel</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" id="field-1" placeholder="No.">
-                                </div>
-                                <button type="button" class="btn btn-success" style="margin-left:35%;margin-top:10px;padding:6px 20px;">Submit</button>
-                            </div>
-                        </form>
-                    </ul>
+            <?php else: ?>
+                <li><?= Yii::$app->getUser()->getDisplayName(); ?></li>
+                <li id="logout">
+                    <a href="<?= Url::toRoute(['/user/logout']) ?>">
+                        <icon class="icon-power-off"></icon>
+                        Logout</a>
                 </li>
-                <li class="dropdown">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-placement="bottom"><i style="font-size: 22px;color:royalblue" class="icon-search"></i></button>
-
-                    <ul class="dropdown-menu" style="min-width:300px";>
-                        <form role="form" class="form-horizontal form-groups-bordered">
-                            <div class="form-group" style="margin:15px 0 !important;">
-                                <button type="button" class="btn btn-orange" style="margin-left:30%;margin-top:10px;padding:6px 20px;">Quick Search</button>
-
-                                <div class="col-md-12" style="margin-top:20px">
-                                    <select name="test" class="selectboxit">
-                                        <option value="1">Select Option</option>
-                                        <option value="2">Building Damage</option>
-                                        <option value="3">Public Building Damage</option>
-                                        <option value="4">Infastructure Damage</option>
-                                        <option value="5">Washington</option>
-
-                                    </select>
-
-                                </div>
-                                <div class="col-md-12">
-                                    <select name="test" class="selectboxit">
-                                        <option value="1">Select District</option>
-                                        <option value="2">Fully</option>
-                                        <option value="3">Moderate</option>
-                                        <option value="4">Not</option>
-
-                                    </select>
-
-                                </div>
-                                <button type="button" class="btn btn-success" style="margin-left:35%;margin-top:10px;padding:6px 20px;">Submit</button>
-                            </div>
-                        </form>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-placement="bottom"><i style="font-size: 22px;color:orange" class="icon-resource"></i></button>
-
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-placement="bottom"><i style="font-size: 22px;color:#734286" class="icon-routing"></i></button>
-
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </div>
-
-        <!--
-        <div class="col-md-4">
-        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Direction"><i style="font-size: 18px;" class="icon-routing"></i></button>
-        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Geofence"><i style="font-size: 18px;" class="icon-geofence"></i></i></button>
-        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Resources"><i style="font-size: 18px;" class="icon-resource"></i></i></button>
-        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Updates"><i style="font-size: 18px;" class="icon-update"></i></i></button>
-        </div>-->
-
-        <div class="col-lg-5 col-md-12 col-sm-12">
-            <div class="input-group">
-                <input type="text" class="form-control search" placeholder="Enter Location Here">
-				<span class="input-group-btn search_btn">
-					<button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="entypo-search"></i></button>
-				</span>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-3 col-sm-12 toolbar-menu">
-            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Graph" data-original-title="Graph"><i style="font-size: 22px;color:#E47124;" class="icon-earthquake"></i></button>
-
-        </div>
-
+            <?php endif; ?>
+        </ul>
     </div>
-
-    <div class="clearfix"></div>
-
-    <div id="toolbar">
-        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Geo-Location" data-original-title="Geo Location"><i style="color:#04C9A6;" class="icon-target"></i></button>
-    </div>
+</div>
 
 
-    <div id="toolbar-left">
+<div  class="ol-unselectable ol-control" style="top:6.5em;left:0.5em; z-index:9999999999;">
 
-        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="" data-original-title="Download-Apps"><i style="font-size:100px; color:#f1f1f1;" class="fa fa-android"></i></button>
+    <button id="geolocate" class="ol-has-tooltip" type="button" data-user_location >
+        <span role="tooltip"></span>
+        <i style="font-size: 25px;" class="icon-target"></i>
+    </button>
+</div>
+<!--
+<div id="toolbar" class="ol-unselectable ol-control" style="top:10.5em;left:0.5em; z-index:9999999999;">
 
-    </div>
+    <button id="hospital" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Hospital</span>
+        <i style="font-size: 25px;" class="icon-hospital"></i>
+    </button>
+
+    <button id="police_station" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Police Station</span><i style="font-size: 25px;" class="icon-policestation"></i>
+    </button>
+
+    <button id="openspace" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Open Space</span><i style="font-size: 25px;" class="icon-openspace"></i>
+    </button>
+
+    <button id="camp" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Camp</span><i style="font-size: 25px;" class="icon-shelter"></i>
+    </button>
+
+</div>
+-->
+
+<div id="socialmedia" class="ol-unselectable ol-control" style="top:9.7em;left:0.5em; z-index:9999999999">
+
+    <button id="social_facebook" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Facebook</span><i style="font-size: 22px;" class="icon-facebook"></i>
+    </button>
+
+    <button id="social_twitter" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Twitter</span><i style="font-size: 22px;" class="icon-twitter"></i>
+    </button>
+</div>
+<!--
+<div id="amenities" class="ol-unselectable ol-control" style="top:28.4em;left:0.5em; z-index:9999999999">
+
+    <button id="amenities-search" class="ol-has-tooltip" type="button">
+        <span role="tooltip">Amenities</span>A
+    </button>
 
 
+</div>
+-->
 
-    <script>
+<div id="map" data-map></div>
 
-        <?php $this->beginBlock('scriptPosReady')?>
-        var http = location.protocol;
-        var hostName = window.location.hostname;
-        var host = http.concat("//").concat(hostName);
-        var geoserverPort = 8080;
-        var geoserverHost = host.concat(':').concat(geoserverPort);
+<div class="addthis_sharing_toolbox" style="position:absolute;bottom:0.5em;right:50%;">Share</div>
+<div class="pullout-right-footer" style="padding-top:10px; padding-bottom:15px; height:20em;">
+    <div><?php echo \common\modules\social_media\widgets\social_media_gallery\SocialMediaGalleryWidget::widget() ?></div>
+    <div id="images"></div>
 
-        /*******************Overlay Group*****************/
-        var overlayGroup = new ol.layer.Group({
+</div>
+
+<!--Pull up and down icon-->
+<div class="pullout-right-footer-btn"><i class='icon-file-image-o'></i>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+
+</div>
+</div>
+
+<div id="twitter_box"></div>
+<div id="facebook_box"></div>
+<div id="resources_box" style="display:none;width:auto;"></div>
+<div id="geometryPicker_box" style="display:none;width:auto;"></div>
+<div id="fbalbum_box" style="display:none;width:auto;"></div>
+<?php
+// The controller action that will return
+$url = '/girc/dmis/api/web/report-items/describe-feature-type';
+// Script to initialize the selection based on the value of the select2 element
+$initScript = <<< SCRIPT
+function (element, callback) {
+var type=\$(element).val();
+alert('hello');
+if (type !== "") {
+\$.ajax("{$url}?type=" + type, {
+dataType: "json"
+}).done(
+function(data) {
+callback(data.results);
+});
+}
+}
+SCRIPT;
+// The widget
+echo Select2::widget([
+    'name' => 'layer-property',
+    'size' => Select2::SMALL,
+    'options' => ['placeholder' => 'Search for a city ...'],
+    'pluginOptions' => [
+        'allowClear' => true,
+        'minimumInputLength' => 1,
+        'ajax' => [
+            'url' => $url,
+            'dataType' => 'json',
+            'data' => new JsExpression('function(type,page) { return {type:type}; }'),
+            'results' => new JsExpression('function(data,page) {results=[]; for(i=0;i<data.length;i++){result={}; result.id=data[i];result.name=data[i];results.push(result);}console.log("*********");console.log(results);console.log("*********");return {results:results};}'),
+        ],
+        'initSelection' => new JsExpression($initScript)
+    ],
+]);
+?>
+<style>
+	.ol-popup-closer:after {
+		  content: "[x]";
+		  color: red;
+		  font-size: 16px;
+		}
+	
+	.ol-popup {
+	  display: none;
+	  position: absolute;
+	  background-color: white;
+	  padding: 15px;
+	  border: 1px solid rgb(57,52,86);;
+	  bottom: 12px;
+	  left: -50px;
+	}
+
+	
+	.ol-popup:before {
+	  border-top-color: rgb(57,52,86);
+	  border-width: 11px;
+	  left: 48px;
+	  margin-left: -11px;
+	}	
+</style>
+
+<?php
+$jsMap = <<<JS
+/* Defining basic Map with OSM as basemap*/
+
+/*******************Overlay Group*****************/ 
+     var overlayGroup = new ol.layer.Group({
             title: 'Overlays',
             layers: []
+        });    
+ 
+/*******************Report Items*****************/ 
+ var report_item = new ol.layer.Tile(
+    {
+        'name': 'Report Items',
+		'title':'Report Items',
+		'type':'overlay',
+        'source': new ol.source.TileWMS(
+            ({
+                url: 'http://116.90.239.21:8080/geoserver/wms',
+                params: {'LAYERS': 'dmis:report_item', 'TILED': true}
+            }))
+    }
+);
+/*******************Ambulance tracking*****************/
+var tracking_driver = new ol.layer.Tile({
+        title:'Tracking Driver',
+        name : 'Tracking Driver',
+        type : 'overlay',
+        source : new ol.source.TileWMS(
+           // ({  url: 'http://localhost:8080/geoserver/wms',
+            ({  url: 'http://116.90.239.21:8080/geoserver/wms',
+            //    params: {'LAYERS': 'fra:ambulance', 'TILED': true}
+                params: {'LAYERS': 'dmis:tracking_driver', 'TILED': true}
+            }))
+    });
+
+/*******************Disaster Tweets*****************/		   
+var tweets = new ol.layer.Tile({
+        title:'Tweets',
+        name : 'Tweets',
+        type : 'overlay',
+        source : new ol.source.TileWMS(
+            ({  url: 'http://116.90.239.21:8080/geoserver/wms',
+                params: {'LAYERS': 'dmis:tweet', 'TILED': true,'STYLES':'tweet_point'}
+            }))
+    });	
+
+/*******************Adding layer to layerSwitcher*****************/	
+overlayGroup.getLayers().push(report_item); 
+overlayGroup.getLayers().push(tracking_driver); 
+overlayGroup.getLayers().push(tweets); 
+
+
+ 
+var view = new ol.View({
+
+    center: ol.proj.transform([87, 29], 'EPSG:4326', 'EPSG:3857'),
+    zoom: 6
+});
+var osm = new ol.layer.Tile({
+        title:'OSM',
+        type:'base',
+        source: new ol.source.OSM()
+    });
+	
+/*******************ol3 map object*****************/	
+    map = new ol.Map({
+        target: 'map',
+		renderer : 'canvas',
+         layers: [
+                    new ol.layer.Group({
+                        'title': 'Base',
+                        layers: [osm ]
+                    }),
+                    overlayGroup
+                ],
+         controls:// ol.control.defaults().extend(
+                        [
+                  //  new ol.control.ScaleLine({className: 'ol-scale-line', target: document.getElementById('scale-line')}),
+                    new ol.control.FullScreen(),
+                    new ol.control.LayerSwitcher(),
+                    new ol.control.Zoom({element:document.getElementById('info')})
+                ],
+        view: view
+    });
+	
+var popup = new ol.Overlay.Popup();
+map.addOverlay(popup);	
+
+/*******************Function for popup*****************/
+function popup_content(layer,attribute){
+		
+var reverse_geocoder = function(coordinate){
+ $.ajax({
+            url: 'http://nominatim.openstreetmap.org/reverse?format=json&lat='+coordinate[1]+'&lon='+coordinate[0]+'&zoom=27&addressdetails=1',
+			async : false
+	   }).then(function (response) {
+			locationOfFeature = response.display_name;
+			})
+			
+		return locationOfFeature;	
+}
+
+
+var clickHandler = function (evt) {
+
+    //layer_item = report_item;
+    layer_item = layer;
+    viewResolution = view.getResolution();
+    viewProjection = view.getProjection();
+    //  console.log(evt.coordinate);
+    var url = layer_item.getSource().getGetFeatureInfoUrl(
+        evt.coordinate, viewResolution, viewProjection,
+        {'INFO_FORMAT': 'text/javascript'});
+	
+		coordinate_epsg4326 = ol.proj.transform(evt.coordinate,'EPSG:3857','EPSG:4326');
+		//reverse_geocoder(coordinate_epsg4326);
+
+
+    if (url) {
+        var parser = new ol.format.GeoJSON();
+        $.ajax({
+            url: url,
+            dataType: 'jsonp',
+            jsonpCallback: 'parseResponse'
+        }).then(function (response) {
+             
+			 result = parser.readFeatures(response);
+			 console.log(result);
+			
+            if (result.length) {
+                var popupContent = '';
+                for (var i = 0, ii = result.length; i < ii; ++i) {
+					values = result[i].values_;
+						
+						$.each(attribute,function(index,value){
+						console.log(values);
+					popupContent += '<strong>'+ value+'</strong>'+': '+values[value] +'<br>';
+						})
+					//	popupContent += '<hr><strong>'+'Location: '+'</strong>' + reverse_geocoder(coordinate_epsg4326); + ')'+'<br>';
+                }
+                popup.show(evt.coordinate, popupContent);
+            } else {
+				$(".ol-popup").hide();
+            } 
+			
         });
+};
 
-        var baseGroup = new ol.layer.Group({
-            'title': 'Base',
-            layers: []
-        })
-        /*
-         * earthquake impact clustering start
-         * */
-        var vectorSource = new ol.source.ServerVector({
-            format: new ol.format.GeoJSON({
-                //    projection: 'EPSG:3857'
-            }),
-            //   'crossOrigin':'anonymous',
-            loader: function (extent, resolution, projection) {
-                //    var url='http://localhost:8080/geoserver/fra/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=fra%3Aambulance&srsname=EPSG:3857&maxFeatures=50&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
-                //var url='http://116.90.239.21:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&filter=<PropertyIsEqualTo><PropertyName>type</PropertyName><Literal>incident</Literal></PropertyIsEqualTo>&format_options=callback:loadFeatures&bbox=' + extent.join(',');
-                //var url='http://116.90.239.21:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&cql_filter='+filter+'&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures' ;//+ extent.join(',');
-                var url = 'http://118.91.160.230:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
+}
+
+var clickHandlerReportItem = function (evt) {
+
+    //layer_item = report_item;
+    layer_item = report_item;
+    viewResolution = view.getResolution();
+    viewProjection = view.getProjection();
+    //  console.log(evt.coordinate);
+    var url = layer_item.getSource().getGetFeatureInfoUrl(
+        evt.coordinate, viewResolution, viewProjection,
+        {'INFO_FORMAT': 'text/javascript'});
+
+		coordinate_epsg4326 = ol.proj.transform(evt.coordinate,'EPSG:3857','EPSG:4326');
+		//reverse_geocoder(coordinate_epsg4326);
 
 
-                //var url="http://116.90.239.21:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures" + extent.join(',');
-                //   var url = 'http://localhost:8080/geoserver/disaster/ows?service=WFS&version=1.0.0&request=GetFeature&layer=disaster:hazard0&outputformat=text/javascript&srsname=EPSG:4326';
-                //var url='http://116.90.239.21:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'jsonp',
-                    //jsonp:'jsonp',
-                    success: function (data) {
-                        //  console.log(data);
-                    },
-                    error: function (data) {
-                        //  console.log(data);
-                    },
-                    timeout: 30000 // 1 minute timeout
+    if (url) {
+        var parser = new ol.format.GeoJSON();
+        $.ajax({
+            url: url,
+            dataType: 'jsonp',
+            jsonpCallback: 'parseResponse'
+        }).then(function (response) {
+
+        console.log(response.features[0].id.split('.')[1]);
+
+        var report_item_id =response.features[0].id.split('.')[1];
+
+            result = parser.readFeatures(response);
+            if (result.length) {
+                var popupContent = '';
+                for (var i = 0, ii = result.length; i < ii; ++i) {
+					values = result[i].values_;
+					        console.log('values');
+						    console.log(values);
+						    console.log('values');
+
+					        popupContent += values.item_name +'<br>';
+					        popupContent += '('+values.class_name +')<br>';
+					        if(values.address)
+					            popupContent += '('+values.address +')<br>';
+					        if(values.description)
+					            popupContent += '<hr>'+values.description +'<br>';
+                        //tag:
+                        $.ajax({
+                            url:'/girc/dmis/api/rapid_assessment/report-items',
+                            data:{
+                                expand:'galleryImages',
+                                id:report_item_id
+                            },
+                            success:function(data){
+                                var src;
+                                if(data){
+                                    if(data[0]){
+                                        if(data[0].galleryImages[0]){
+                                            if(data[0].galleryImages[0].src){
+                                                src = data[0].galleryImages[0].src;
+                                                console.log(src);
+                                            }
+                                        }
+                                    }
+                                }else{
+                                    console.log('no photo');
+                                }
+
+                                if(src){
+                                    popupContent += '<img src="'+src+'" alt="">'
+                                }
+                                popup.show(evt.coordinate, popupContent);
+                            }
+                        });
+					//	popupContent += '<hr><strong>'+'Location: '+'</strong>' + reverse_geocoder(coordinate_epsg4326); + ')'+'<br>';
+                }
+                //popup.show(evt.coordinate, popupContent);
+            } else {
+				$(".ol-popup").hide();
+            }
+
+        });
+};
+
+}
+   //map.on('click', clickHandler);
+   map.on('click', clickHandlerReportItem);
+
+}
+
+
+//popup_content(report_item,["type","item_name"]);
+//popup_content(tracking_driver,["Firstname","Lastname","Ambulance_Number"]);
+popup_content(tweets,["tweets","fid"]);
+      /*
+            Refreshing a layer at an interval
+            */
+			var refresh_layer = function(layer,time){
+		  map.once("postcompose", function(){
+                       //start refreshing each 3 seconds
+                       window.setInterval(function(){
+                           /// call your function here
+                           var params = layer.getSource().getParams();
+                           params.t = new Date().getMilliseconds();
+                           layer.getSource().updateParams(params);
+                       }, time);
+                   }
+           );
+		   }
+
+		   refresh_layer(tracking_driver,7000);
+		   refresh_layer(tweets,10000);
+JS;
+$this->registerJs($jsMap, $this::POS_READY);
+?>
+
+<?php
+$js1 = <<<JS
+
+/*    $('#camp').click(function() {
+        $('#toolbar').fullscreen();
+        return false;
+    });*/
+
+$("#social_twitter").click(function(){
+    $( "#twitter_box" ).dialog({
+        title:'Twitter Timeline',
+        open: function(event, ui) {
+            $( "#twitter_box" ) .load('twitter_timeline.html');
+        }
+    });
+})
+
+$("#social_facebook").click(function(){
+    $( "#facebook_box" ).dialog({
+        width:"auto",
+        title:'Facebook Timeline',
+        open: function(event, ui) {
+            $( "#facebook_box" ) .load('facebook_timeline.html');
+        }
+        /*buttons: [
+            {
+                text: "OK",
+                click: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        ]*/
+    });
+})
+
+/*
+$("#resources").click(function(){
+    $( "#resources_box" ).dialog({
+        title:'Search Ambulance',
+        modal:false,
+        resizeable:false,
+     //   height:"auto",
+       width:"auto",
+       minHeight: 0,
+        create: function() {
+            $(this).css("maxHeight", 120);
+        }
+    });
+})
+*/
+
+$("#resources").click(function(){
+    $( "#resources_box" ).dialog({
+        title:'Search Ambulance',
+        open: function(event, ui) {
+            $( "#resources_box" ) .load('ambulance_search.html');
+        }
+    });
+})
+
+
+$("#geofence").click(function(){
+    $( "#geometryPicker_box" ).dialog({
+        title:'Geometry Picker',
+        open: function(event, ui) {
+            $( "#geometryPicker_box" ) .load('geometry_picker.html');
+        },
+        close:function(){
+
+        }
+    })
+})
+
+/*$("#filter").click(function(){
+    $( "#fbalbum_box" ).dialog({
+        title:'Facebook Photo',
+        open: function(event, ui) {
+            $( "#fbalbum_box" ) .load('fb_gallery/index.php');
+		 //  $( "#fbalbum_box" ).open('fb_gallery/index.php');
+        },
+        close:function(){
+
+        }
+    })
+})*/
+
+
+
+    /*------Dialog box ----*/
+    $('#report').click(function() {
+        //   $('#dialog').dialog('open');
+
+        var elem = $("#dialog");
+        elem.dialog({
+            modal: false,
+            resizable: false,
+            title: 'Resource Locator',
+            width:'auto',
+            height:'auto'
+        }); // end dialog
+        elem.dialog('open');
+
+    });
+
+
+
+$('.pullout-right-footer-btn').click(function() {
+  //  $( ".pullout-right-footer" ) .load('gallery.html');
+  //  $( "#images" ) .load('gallery.html');
+
+});
+
+
+  /*  *//*------Carousel----*//*
+    $('#myCarousel').carousel({
+        interval: 10000
+    })
+
+
+
+    $('.carousel .item').each(function() {
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        for (var i = 0; i < 2; i++) {
+            next = next.next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+
+            next.children(':first-child').clone().appendTo($(this));
+        }
+    });*/
+JS;
+$this->registerJs($js1, $this::POS_READY);
+$js2 = <<<JS
+   var pullout_right_footer = $('div.pullout-right-footer');
+    var pullout_right_footer_btn = $('div.pullout-right-footer-btn');
+    pullout_right_footer_btn.click(function() {
+        if (!$(this).hasClass("open")) {
+            $(this).css("bottom", "20em");
+           // $(this).css("position", "relative");
+            pullout_right_footer.css("right", "0");
+            $(this).addClass("open");
+        } else {
+            $(this).css("bottom", "0");
+            pullout_right_footer.css("right", "-100%");
+            $(this).removeClass("open")
+        }
+    });
+JS;
+$this->registerJs($js2, $this::POS_READY);
+
+$jsGeolocation = <<<JS
+	
+ var geolocation = new ol.Geolocation({
+  tracking: true
+});
+geolocation.bindTo('projection', map.getView());
+geolocation.on('change', function(evt) {
+	 var pos = geolocation.getPosition();
+	$("#geolocate").data('user_location',pos);
+ }) 
+
+ $( "#geolocate" ).click(function() {
+	map.getOverlays().clear();
+	var position = $("#geolocate").data('user_location');
+	 var marker = new ol.Overlay({
+		  position:position ,
+		  positioning: 'center-center',
+		  element: $('<img src="http://116.90.239.21/girc/dmis/img/location.png" style="height:32px;width:auto;">'),
+		  stopEvent: false
+	});
+	map.addOverlay(marker);
+	map.getView().setCenter(position);
+	map.getView().setZoom(16);	
+ })
+JS;
+$this->registerJs($jsGeolocation, $this::POS_READY);
+
+?>
+
+
+
+
+<?php
+$JsAddressSearch = <<<JS
+        $("#input-search").autocomplete({
+            delay: 500,
+            minLength: 3,
+            source: function(request, response) {
+                $.getJSON("http://open.mapquestapi.com/nominatim/v1/search.php?format=json", {
+                    // do not copy the api key; get your own at developer.rottentomatoes.com
+
+                    q: request.term
+
+                }, function(data) {
+                    // data is an array of objects and must be transformed for autocomplete to use
+                    var array = data.error ? [] : $.map(data, function(m) {
+                        return {
+                            label: m.display_name,
+                            lat : parseFloat(m.lat),
+                            lon : parseFloat(m.lon),
+                            url: m.icon
+                        };
+                    });
+                    response(array);
                 });
             },
-            strategy: ol.loadingstrategy.createTile(new ol.tilegrid.XYZ({
-                maxZoom: 19
-            }))
-            //   projection: 'EPSG:3857'
-        });
-        var styleCache = {};
-        var vector = new ol.layer.Vector({
-
-            source: new ol.source.Cluster({
-                distance: 40,
-                source: vectorSource
-            }),
-            //style: styleFunction
-            style: function (feature, resolution) {
-                var size = feature.get('features').length;
-                //console.log(feature);
-
-
-                //  var style = styleCache[size];
-                var stroke = new ol.style.Stroke({color: 'black', width: 2});
-                var fill = new ol.style.Fill({color: 'red'});
-                if (size === 1) {
-                    style = [new ol.style.Style({
-                        image: new ol.style.Icon(({
-                            src: 'png/need.png',
-                            //  src: src_icon(),
-                            offset: [1, 1]
-                        }))
-                    })]
-                } else {
-                    // styleCache[size] = style;
-                    style = styleCache[size];
-                    if (!style) {
-                        style = [
-                            new ol.style.Style({
-                                image: new ol.style.Circle({
-                                    radius: 17,
-                                    stroke: new ol.style.Stroke({
-                                        color: '#ffcc33'
-                                    }),
-                                    fill: new ol.style.Fill({
-                                        color: '#000000'
-                                    })
-                                }),
-                                text: new ol.style.Text({
-                                    textAlign: "center",
-                                    textBaseline: "middle",
-                                    font: 'Normal 12px Arial',
-                                    text: size.toString(),
-                                    fill: new ol.style.Fill({
-                                        color: '#ffcc33'
-                                    }),
-                                    stroke: new ol.style.Stroke({
-                                        color: '#000000',
-                                        width: 1
-                                    }),
-                                    offsetX: 0,
-                                    offsetY: 0,
-                                    rotation: 0
+            search:function(event, ui){
+                var self=this;
+                   $('#input-search').addClass('loadinggif');
+                },
+            response:function( event, ui ){
+                var self= this;
+                   $('#input-search').removeClass('loadinggif');
+            },
+            focus: function(event, ui) {
+                // prevent autocomplete from updating the textbox
+                event.preventDefault();
+            },
+            select: function(event, ui) {
+                // prevent autocomplete from updating the textbox
+                event.preventDefault();
+                var position =ol.proj.transform(
+                [ui.item.lon,ui.item.lat], 'EPSG:4326', 'EPSG:3857'
+                );
+                map.getView().setCenter(position);
+                map.getView().setZoom(12);
+                // Adding overlay marker
+                map.addOverlay(new ol.Overlay({
+                  position:position,
+                  element:  $('<img src="http://116.90.239.21/girc/dmis/img/location.png" style="width:32px;height:auto;">')
+                                 .css({marginTop: '-200%', marginLeft: '-50%', cursor: 'pointer'})
+                                .popover({
+                                  'placement': 'top',
+                                  'html': true,
+                                  'content':'<strong>'+ui.item.label+'</strong>'
                                 })
-                            })];
-                        styleCache[size] = style;
-                    }
-
-
-                }
-
-                return style;
+                               .on('click', function (e) { $(".location-popover").not(this).popover('hide').close; })
+                }));
             }
         });
-        window.vector = vector;
-        var loadFeatures = function (response) {
-            vectorSource.addFeatures(vectorSource.readFeatures(response));
+        $("#input-search").autocomplete( "instance" )._renderItem = function( ul, item ) {
+          return $( "<li>" )
+            .append( "<a>" + item.label + "</a></br>" )
+            .append( "<a>(" + item.lat +' '+item.lon + ")</a>" )
+            .appendTo( ul );
         };
-        window.loadFeatures = loadFeatures;
-        //vector.getSource().clear();
-        overlayGroup.getLayers().push(vector);
-        /*end*/
-        var view = new ol.View({
-
-            center: ol.proj.transform([87, 29], 'EPSG:4326', 'EPSG:3857'),
-            zoom: 2
-        });
-        var osm = new ol.layer.Tile({
-            title: 'OSM',
-            type: 'base',
-            source: new ol.source.OSM()
-        });
-
-        var key = 'Ak-dzM4wZjSqTlzveKz5u0d4IQ4bRzVI309GxmkgSVr1ewS6iPSrOvOKhA-CJlm3';
-
-        var imagery = new ol.layer.Tile({
-            source: new ol.source.BingMaps({key: key, imagerySet: 'Aerial'})
-        });
-        baseGroup.getLayers().push(osm);
+        $("#input-search").autocomplete( "instance" )._renderMenu= function( ul, items ) {
+          var that = this;
+          $.each( items, function( index, item ) {
+            that._renderItemData( ul, item );
+          });
+          $( ul ).find( "li:odd" ).addClass( "odd" );
+          $( ul ).find( "li:even" ).addClass( "even" );
+        };
+        $("#input-search").autocomplete( "instance" )._resizeMenu= function() {
+           var ul = this.menu.element;
+             ul.outerWidth(this.element.outerWidth());
+        };
+JS;
+$this->registerJs($JsAddressSearch, $this::POS_READY);
+?>
 
 
-        /*******************ol3 map object*****************/
-        map = new ol.Map({
-            target: 'map',
-            renderer: 'canvas',
-            layers: [
-                baseGroup,
-                overlayGroup
-            ],
-            controls: ol.control.defaults({
-                attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
-                    collapsible: false
-                })
-            }).extend([
-                new ol.control.LayerSwitcher(),
-                new ol.control.ZoomToExtent({
-                    //extent: [-180,-90,180,90]
-                    extent: [8858052.801082317, 2602714.8048996064, 10081045.253645137, 3825707.2574624266]
-                })
-            ]),
 
-            view: view
-        });
-        /***********function for counting unique values in an array**********/
-        function unique_count(arr) {
-            var a = [], b = [], prev;
 
-            arr.sort();
-            for (var i = 0; i < arr.length; i++) {
-                if (arr[i] !== prev) {
-                    a.push(arr[i]);
-                    b.push(1);
-                } else {
-                    b[b.length - 1]++;
-                }
-                prev = arr[i];
-            }
+<div id="gv-driver-search">
+    <?php
+    $searchModel = new \common\modules\tracking\models\search\Driver();
+    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-            return [a, b];
+    $dataProvider->pagination = ['pageSize' => 0];
+
+
+    \yii\widgets\Pjax::begin();
+    echo GridView::widget([
+        'id' => 'gridview-drivers',
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            'Firstname',
+            'Lastname',
+            //'Address',
+            //'Phonr',
+            //'IMEI',
+            // 'Gender',
+            'Ambulance_Number',
+            // 'id',
+            // ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]);
+    \yii\widgets\Pjax::end();
+
+    $this->registerJs('$("gridview-drivers").on("afterFilter", function(event){
+    alert(1);
+})', \yii\web\View::POS_READY);
+    /*$this->registerJs('$("body").on("keyup.yiiGridView", "#gridview-drivers .filters input", function(){
+        $("#gridview-drivers").yiiGridView("applyFilter");
+    })', \yii\web\View::POS_READY);*/
+
+    ?>
+
+</div>
+
+
+<div id="ambulance_search_container">
+    <select id="all_options" class="btn btn-default dropdown-toggle">
+        <option selected="true" style="display:none;">Search By</option>
+        <option value="ambulance">Ambulance no</option>
+        <option value="driver">Driver name</option>
+    </select>
+
+    <select id="drivers" class="btn btn-default dropdown-toggle">
+        <option selected="true" style="display:none;">Select Driver</option>
+    </select>
+    <select id="ambulance_no" class="btn btn-default dropdown-toggle">
+        <option selected="true" style="display:none;">Select Ambulance No</option>
+    </select>
+
+    <button class="btn btn-primary" id="search">Search</button>
+</div>
+
+<?php
+$jsDriverSearch = <<<JS
+    var driverAttribute, driverValue;
+ $.ajax({
+       url: '/girc/dmis/api/tracking/tracking-drivers/attributes'
+       , dataType: 'json'
+       , success: function(response){
+                for (var i = 0; i < response.length; i++){
+                    var columnName=response[i];
+                    $("#driver-attributes").append($('<option/>', {
+                    value: columnName,
+                    text : columnName
+            }));
         }
-        var highlightStyleCache = {};
+       },
+       error: function(msg){
+           console.log(msg);
+       }
+    });
 
-        var featureOverlay = new ol.FeatureOverlay({
-            map: map,
-            style: function (feature, resolution) {
-                //console.log(feature);
-                //console.log(resolution);
-                // var text = resolution < 5000 ? feature.get('name') : '';
-                var size = feature.get('features').length;
-                if (size == 1) {
-                    var text = resolution < 5000 ? (feature.values_.features[0].values_.item_name) : '';
-                }
-                else {
-                    var text = '';
-                    var text_array = [];
-                    $.each(feature.values_.features, function (index, value) {
-                        if (value.values_.type === "need") {
-                            text_array.push(value.values_.item_name);
-                        }
-                    })
-                    //console.log($.unique(text_array));
-                    var result = unique_count(text_array);
-                    //console.log('[' + result[0] + '][' + result[1] + ']')
-                }
-
-                if (!highlightStyleCache[text]) {
-                    highlightStyleCache[text] = [new ol.style.Style({
-                        stroke: new ol.style.Stroke({
-                            color: '#f00',
-                            width: 1
-                        }),
-                        fill: new ol.style.Fill({
-                            color: 'rgba(0,150,0,0.1)'
-                        }),
-                        text: new ol.style.Text({
-                            font: '12px Calibri,sans-serif',
-                            text: text,
-                            fill: new ol.style.Fill({
-                                color: '#000'
-                            }),
-                            stroke: new ol.style.Stroke({
-                                color: '#00f',
-                                width: 3
-                            })
-                        })
-                    })];
-                }
-                return highlightStyleCache[text];
-            }
-        });
-
-        var popup = new ol.Overlay.Popup();
-        map.addOverlay(popup);
-        var image = function (id) {
-            $.ajax({
-                url: 'http://116.90.239.21/girc/dmis/api/rapid_assessment/report-items',
-                data: {
-                    expand: 'galleryImages',
-                    id: id
-                },
-                success: function (data) {
-                    var src;
-                    if (data) {
-                        if (data[0]) {
-                            if (data[0].galleryImages[0]) {
-                                if (data[0].galleryImages[0].src) {
-                                    src = data[0].galleryImages[0].src;
-                                    console.log(src);
-                                }
-                            }
-                        }
-                    } else {
-                        console.log('no photo');
+    $("#driver-attributes").on('change',function(e){
+            $("#driver-attribute-values").empty();
+         $.ajax({
+               url: '/girc/dmis/api/tracking/tracking-drivers/unique/'+$("#driver-attributes").val()
+               , dataType: 'json'
+               ,data:{
+                    count_alias:'count'
+                    ,property_alias:'value'
+               }
+               , success: function(response){
+                         console.log(response);
+                        for (var i = 0; i < response.length; i++){
+                            var value=response[i].value;
+                           // var count=response[i].count;
+                            $("#driver-attribute-values").append($('<option/>', {
+                            value: value,
+                            text : value
                     }
-
-                    if (src) {
-                        img_src = '<img src="http://116.90.239.21' + src + '" alt="" style="height:auto;width:200px;">';
-                    }
-                    else {
-                        img_src = '';
-                    }
+                    )
+                    );
                 }
-            });
-            console.log(img_src);
-            return img_src;
-        }
-        var highlight;
-        var displayFeatureInfo = function (pixel) {
-
-            var feature = map.forEachFeatureAtPixel(pixel, function (feature, layer) {
-                return feature;
+               },
+               error: function(msg){
+                   console.log(msg);
+               }
             });
 
-            var info = document.getElementById('info');
-            size = feature.get('features').length;
-            if (feature) {
-                coor_feature = feature.values_.geometry.flatCoordinates;
-                if (size == 1) {
-                    console.log(feature);
-                    //fid = feature.values_.features[0].id_;
-                    //id = fid.split('-')[1];
-                    id = feature.values_.features[0].id;
-                    console.log("id");
-                    console.log(id);
-                    console.log("id");
-                    //	info.innerHTML = feature.getId() + ': ' + feature.get('name');
-                    popup.show(coor_feature, '<h4>' + feature.values_.features[0].values_.item_name + '</h4>Human Casulty : ' + feature.values_.features[0].values_.magnitude + image(id));
-                }
-                else {
-                    console.log(feature);
-                    var text = '';
-                    var text_array = [];
-                    $.each(feature.values_.features, function (index, value) {
-                        text_array.push(value.values_.item_name);
-                    })
-                    //console.log($.unique(text_array));
-                    var result = unique_count(text_array);
+    });
 
-                    if (result[0].length == result[1].length) {
-                        length = result[0].length;
+$("#ambulance_no").hide();
+$("#drivers").hide();
 
-                        list = [];
-                        for (var i = 0; i < length; i++) {
-                            row = {};
-                            row.value = result[0][i];
-                            row.count = result[1][i];
-                            list.push(row);
-                        }
-                        var popup_content = '<h4>Report Detail</h4><hr>';
-                        $.each(list, function (index, value) {
-                            popup_content += value.value + ' : ' + value.count + '<br>';
-                        })
-                        popup.show(coor_feature, popup_content);
+$('#search_ambulance').on('click',function(){
+    $('#ambulance_search_container').dialog({
+        title:'Search Ambulance',
+        resizable: false,
+        modal: true,
+        width:'auto'});
+        /*Ambulance search */
+           var  drivers = [];
+			var ambulance_no = [];
+			var longitude = [];
+			var latitude = [];
+			var center_lat, center_lon;
+			dropdown = function(data){
+				features = data.features;
+				features_length = data.features.length;
+				drivers=[];
+				ambulance_no = [];
+			    longitude = [];
+                latitude = [];
 
-                    } else {
-                        alert('error arrays not equal');
-                    }
+				for (i = 0; i < features_length; i++) {
+					var driver_name = features[i].properties.Firstname + '' + features[i].properties.Lastname;
+					drivers.push(driver_name);
+					ambulance_no.push(features[i].properties.Ambulance_Number);
+					latitude.push(features[i].geometry.coordinates[0]);
+					longitude.push(features[i].geometry.coordinates[1]);
+					$("#drivers").append('<option value="'+drivers[i]+'">'+drivers[i]+'</option>');
+					$("#ambulance_no").append('<option value="'+ambulance_no[i]+'">'+ambulance_no[i]+'</option>');
+				};
+			};
 
-                }
-            } else {
-            }
+			$("#drivers").on('change',function(){
+									index = drivers.indexOf($(this).val());
+									center_lon = parseFloat(longitude[index]);
+									center_lat=parseFloat(latitude[index]);
+								});
+                $("#ambulance_no").on('change',function(){
+									index = ambulance_no.indexOf($(this).val());
+									center_lon = parseFloat(longitude[index]);
+									center_lat=parseFloat(latitude[index]);
+								});
 
-        };
-        map.on('click', function (evt) {
-            displayFeatureInfo(evt.pixel);
-        });
-        ////////////////////////////////////////////////////////////////////////
-        var ajaxFirstCall = function(url,dom){
-            $.ajax({
-                //async: false,
-                type: "GET",
-                url: url,
-                success: function(data) {
-                        data.forEach(function(entry) {
-                            $("#"+dom).append($('<option></option>').val(entry).html(entry));
-                        });
-                },
-                error:function(){
-                    console.log('ajaxFirstCall error');
-                }
-            })
-        };
-        var ajaxSecondCall = function(url,dom){
-            console.log(url);
-            $.ajax({
-                async: false,
-                type: "GET",
-                url: url,
-                success: function(data) {
-                            json_data = data;
-                            console.log(data);
-
-                            $.each(data, function(key, value){
-                                //$.each(value, function(_key, _value){
-
-                                $("#"+dom).append('<option value='+value.value+'>'+value.value+'</option>');
-                                    console.log(value.value);
-                                //	console.log(value)
-                                //})
-
-                            });
-
-                        }
-            })
-        };
-
-        var ajaxFirstCall = function(url,dom){
-            $.ajax({
-                //async: false,
-                type: "GET",
-                url: url,
-                success: function(data) {
-                        data.forEach(function(entry) {
-                            $("#"+dom).append($('<option></option>').val(entry).html(entry));
-                        });
-                },
-                error:function(){
-                    console.log('ajaxFirstCall error');
-                }
-            })
-        };
-
-        var ajaxSecondCall = function(url,dom){
-            console.log(url);
-            $.ajax({
-                async: false,
-                type: "GET",
-                url: url,
-                success: function(data) {
-                            json_data = data;
-                            console.log(data);
-
-                            $.each(data, function(key, value){
-                                //$.each(value, function(_key, _value){
-
-                                $("#"+dom).append('<option value='+value.value+'>'+value.value+'</option>');
-                                    console.log(value.value);
-                                //	console.log(value)
-                                //})
-
-                            });
-
-                        }
-            })
-        };
-
-        var ajaxFirstCallUniqueApi = function(url,dom){
-            console.log(url);
-            $.ajax({
-                async: false,
-                type: "GET",
-                url: url,
-                success: function(data) {
-                            json_data = data;
-                            console.log(data);
-
-                            $.each(data, function(key, value){
-                                //$.each(value, function(_key, _value){
-
-                                $("#"+dom).append('<option value='+value.value+'>'+value.value+'</option>');
-                                    console.log(value.value);
-                                //	console.log(value)
-                                //})
-
-                            });
-
-                        }
-            })
-        };
-
-        /**
-            queryData={
-                "attr_value":[
-                    {"type":"emergency_situation"},
-                    {"item_name":"Emergency Situation"},
-                    {"class_name":"Regional"}
-                ],
-                "date_filter":[
-                    {"datefilter_from":"2015-02-15 12:00:00","datefilter_to":"2015-02-15 12:00:00"}
-                ]
-            }
-         */
-         var queryData={};
-         var first_search_value;
-
-        ajaxFirstCall(host+'/girc/dmis/api/rapid_assessment/report-items/attributes?_format=json','search_type');
-
-        $("#search_type").change ( function () {
-                 first_search_value = $(this).val();
-                 $("#search_subtype").html('');
-                 //ajaxSecondCall('http://116.90.239.21/girc/dmis/api/rapid_assessment/report-items/unique/'+first_search_value+'?_format=json','second_search');
-                 console.log(first_search_value);
-                 ajaxSecondCall(host+'/girc/dmis/api/rapid_assessment/report-items/unique/'+first_search_value+'?_format=json','search_subtype');
-            });
-
-        //ajaxFirstCallUniqueApi(host+'/girc/dmis/api/vdc/nepal-vdcs/unique/dname?_format=json&count=false','district_name');
-        ajaxSecondCall(host+'/girc/dmis/api/vdc/nepal-vdcs/unique/dname?_format=json','district_name');
-
-        $("#district_name").change ( function () {
-                         first_search_value = $(this).val();
-                         $("#vdc_name").html('');
-                         //ajaxSecondCall('http://116.90.239.21/girc/dmis/api/rapid_assessment/report-items/unique/'+first_search_value+'?_format=json','second_search');
-                         console.log(first_search_value);
-                         ajaxSecondCall(host+'/girc/dmis/api/vdc/nepal-vdcs/unique/aan?_format=json'+'&dname='+first_search_value,'vdc_name');
+				$("#all_options").on('change',function(){
+						opt_val = $(this).val();
+						 if (opt_val=="driver"){
+							//	$("#drivers").append('<option value="'+drivers[i]+'">'+drivers[i]+'</option>');
+								$("#ambulance_no").hide();
+								$("#drivers").show();
+						}
+						else{
+						//	$("#ambulance_no").append('<option value="'+ambulance_no[i]+'">'+ambulance_no[i]+'</option>');
+							$("#drivers").hide();
+							$("#ambulance_no").show();
+						}
+					});
+			            $("#search").click(function(){
+			            if(center_lat!=undefined && center_lon!=undefined){
+			            								//		map.setCenter(new OpenLayers.LonLat(longitude[index],latitude[index]), 12);
+								map.getView().setCenter(ol.proj.transform([center_lon,center_lat], 'EPSG:4326', 'EPSG:3857'));
+								//map.getView().setCenter(ol.proj.transform([center_lon,center_lat ], 'EPSG:4326', 'EPSG:3857'));
+								map.getView().setZoom(12);
+			            }else{
+			            alert('could not find location');
+			            }
                     });
 
-                    $('#btn_report_item_search').click(function(){
-                        alert('clicked');
-                        var data=$("#report_item_search").serialize();
-                        console.log(data);
+			var getJson =  function(){
+	alert("hello");
+ };
+  var url = "http://116.90.239.21:8080/geoserver/dmis/ows?service=WFS&version=1.1.0&request=GetFeature&typeName=dmis:tracking_driver&outputFormat=text/javascript&format_options=callback:getJson";
+ // var url = "http://localhost:8080/geoserver/dmis/ows?service=WFS&version=1.1.0&request=GetFeature&typeName=dmis:tracking_driver&outputFormat=application/json";
+	var json_data;
+                    $.ajax({
+                        jsonp: false,
+                       jsonpCallback: 'getJson',
+                        type: 'GET',
+                        url: url,
+                        async: false,
+                        dataType: 'jsonp',
+                       // dataType: 'json',
+                        success: function(data) {
+							console.log(data);
+                           dropdown(data);
+                        },
+                        error:function(jqXHR){
+                            console.log(jqXHR);
+                        }
                     });
+});
 
-        <?php $this->endBlock(); ?>
-    </script>
-<?php $this->registerJs($this->blocks['scriptPosReady'], $this::POS_READY); ?>
+$('#gv-driver-search').dialog({ resizable: false,
+autoOpen:false,
+        modal: true,
+        width:'auto'});
+
+
+
+$("#directions").click(function(){
+    $( "#geometry_picker_container" ).dialog({
+        title:'Geom Picker',
+        open: function(event, ui) {
+            $( "#geometry_picker_container" ) .load('site/geometry-picker');
+        },
+        close: function(ev, ui) {
+            map.removeInteraction(draw_interaction);
+            vector_layer.getSource().clear();
+          //  $(this).close();
+        }
+    });
+})
+
+JS;
+$this->registerJs($jsDriverSearch, $this::POS_READY);
+?>
+<div id="geometry_picker_container"></div>
+
+
+
+<div id="filter_container"></div>
+<div id="amenities_search_conatiner"></div>
+
+<?php
+$jsFilterReportItem=<<<JS
+$("#filter").click(function(){
+    $( "#filter_container" ).dialog({
+        title:'Filter',
+		height:'400',
+		width:'403px',
+        open: function(event, ui) {
+            $( "#filter_container" ) .load('site/filter-report-item');
+			$('#filter_container').css('overflow-x','hidden');$('.ui-widget-overlay').css('width','100%'); 
+        },
+        buttons:{ "Close": function() {
+        //    $(this).hide();//.dialog('remove');
+            $(this).dialog('close');//.dialog('remove');
+        } },
+        close: function(ev, ui) {
+			 $(this).dialog('close');
+        }
+    })
+});
+JS;
+$this->registerJs($jsFilterReportItem,$this::POS_READY);
+?>
+
+<?php
+$jsAmenitiesSearch=<<<JS
+$("#amenities-search").click(function(){
+    $( "#amenities_search_conatiner" ).dialog({
+        title:'Search Amenities',
+		height:'400',
+		width:'403px',
+        open: function(event, ui) {
+            $( "#amenities_search_container" ) .load('site/amenties-search/index.php');
+         //   $( "#amenities_search_container" ) .load('http://116.90.239.21/girc/dmis/frontend/web/amenities-search/index.php');
+			$('#amenities_search_container').css('overflow-x','hidden');$('.ui-widget-overlay').css('width','100%'); 
+        },
+        buttons:{ "Close": function() {
+        //    $(this).hide();//.dialog('remove');
+            $(this).dialog('close');//.dialog('remove');
+        } },
+        close: function(ev, ui) {
+			 $(this).dialog('close');
+        }
+    })
+});
+JS;
+$this->registerJs($jsAmenitiesSearch,$this::POS_READY);
+?>
