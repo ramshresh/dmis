@@ -46,20 +46,18 @@ class ReportItemController extends \yii\rest\ActiveController
                         if (!empty($queryParams)) {
 
 
-                            if(isset($queryParams['search_attribute']) && isset($queryParams['search_value'])){
+                            if (isset($queryParams['search_attribute']) && isset($queryParams['search_value'])) {
                                 if ($model->hasAttribute($queryParams['search_attribute'])) {
                                     $query->andFilterWhere(['=', $queryParams['search_attribute'], $queryParams['search_value']]);
                                 }
                             }
 
-                            if(isset($queryParams['district_name'])){
+                            if (isset($queryParams['district_name'])) {
 
                             }
-                            if(isset($queryParams['vdc_name'])){
+                            if (isset($queryParams['vdc_name'])) {
 
                             }
-
-
 
 
                             // Filter based on model attribute values with like operator
@@ -102,22 +100,19 @@ class ReportItemController extends \yii\rest\ActiveController
                             }
 
                             // filter based on date
-                            if(isset($queryParams['datefilter_from']))
-                            {
-                                $query->andWhere("timestamp_occurance >= '".$queryParams['datefilter_from']."' ");
+                            if (isset($queryParams['datefilter_from'])) {
+                                $query->andWhere("timestamp_occurance >= '" . $queryParams['datefilter_from'] . "' ");
                             }
-                            if(isset($queryParams['datefilter_to']))
-                            {
-                                $query->andWhere("timestamp_occurance <= '".$queryParams['datefilter_to']."' ");
+                            if (isset($queryParams['datefilter_to'])) {
+                                $query->andWhere("timestamp_occurance <= '" . $queryParams['datefilter_to'] . "' ");
                             }
 
-                            if(isset($queryParams['district_name']))
-                            {
+                            if (isset($queryParams['district_name'])) {
                                 $subQuery = new ActiveQuery(NepalVdc::className());
-                                $subQuery->addSelect(['dgeom'=>'ST_Union(geom)']);
+                                $subQuery->addSelect(['dgeom' => 'ST_Union(geom)']);
                                 $subQuery->andFilterWhere(['like', 'dname', $queryParams['district_name']]);
 
-                                $query->leftJoin(['selDist'=>$subQuery],[],[]);
+                                $query->leftJoin(['selDist' => $subQuery], [], []);
 
                                 //$geom=$subQuery->createCommand()->queryOne()->geom;
                                 $query->andWhere("(SELECT ST_Within(geom,st_collect)))");
@@ -170,8 +165,8 @@ class ReportItemController extends \yii\rest\ActiveController
                                    return ['ids' => $ids, 'data' => $query->createCommand()->queryAll()];*/
 //return $query->createCommand()->rawSql;
 
-                        return $query->createCommand()->rawSql;
-                        $dataProvider->pagination=false;
+                        //return $query->createCommand()->rawSql;
+                        $dataProvider->pagination = false;
                         return $dataProvider;
                     }
                 ],
@@ -296,7 +291,8 @@ class ReportItemController extends \yii\rest\ActiveController
             $query->all(), 'item_name', 'item_name');
     }
 
-    public function actionWithQuery(){
+    public function actionWithQuery()
+    {
 
         $subQuery = (new Query())->select('COUNT(*)')->from(ReportItem::tableName());
 
@@ -305,7 +301,9 @@ class ReportItemController extends \yii\rest\ActiveController
 
         return $query->all();
     }
-    public function actionSpatialQuery(){
+
+    public function actionSpatialQuery()
+    {
         /*
                WITH group_count AS (
                 SELECT vdc_name, count(id)
@@ -317,14 +315,14 @@ class ReportItemController extends \yii\rest\ActiveController
             )
             select gr.vdc_name ,gr.count,vdc.geom FROM group_count as gr  JOIN "shapefile_data".vdc_ethnic as vdc ON gr.vdc_name = vdc.vdc_name;
          */
-        if(isset($_GET['type'])){
+        if (isset($_GET['type'])) {
             $type = $_GET['type'];
         }
-        if(isset($_GET['item_name'])){
+        if (isset($_GET['item_name'])) {
             $item_name = $_GET['item_name'];
         }
 
-        if(!(isset($_GET['group_by']))){
+        if (!(isset($_GET['group_by']))) {
             throw new Exgception('group_by must be set');
         }
         $groupBy = $_GET['group_by'];
@@ -342,37 +340,38 @@ class ReportItemController extends \yii\rest\ActiveController
 
 SQL;
         $query = \Yii::$app->db->createCommand($sql)
-            ->bindParam(':type',$type)
-            ->bindParam(':item_name',$item_name)
+            ->bindParam(':type', $type)
+            ->bindParam(':item_name', $item_name)
             ->queryAll();
-return $query;
+        return $query;
     }
 
-    public function actionTimeLine(){
-        $tableName =ReportItem::tableName();
-        if(!isset($_GET['type'])){
+    public function actionTimeLine()
+    {
+        $tableName = ReportItem::tableName();
+        if (!isset($_GET['type'])) {
             throw new Exception('timeline type must be set!');
         }
         $type = $_GET['type'];
 
-        if(!isset($_GET['attribute'])){
+        if (!isset($_GET['attribute'])) {
             throw new Exception('attribute to count and group by must be set!');
         }
-        $attribute =$_GET['attribute'];
+        $attribute = $_GET['attribute'];
 
 
-$sql='';
-        switch(strtolower($_GET['type'])){
+        $sql = '';
+        switch (strtolower($_GET['type'])) {
             case 'interval':
-                if(!isset($_GET['interval'])){
+                if (!isset($_GET['interval'])) {
                     throw new Exception('Interval must be set to count and group by must be set!');
                 }
-                $interval =$_GET['interval'];
+                $interval = $_GET['interval'];
 
-                if(isset($_GET['filter_by_attribute']) && isset($_GET['filter_by_value']) ){
-                    $key=$_GET['filter_by_attribute'];
-                    $value=$_GET['filter_by_value'];
-                    $sql1= <<<SQL
+                if (isset($_GET['filter_by_attribute']) && isset($_GET['filter_by_value'])) {
+                    $key = $_GET['filter_by_attribute'];
+                    $value = $_GET['filter_by_value'];
+                    $sql1 = <<<SQL
 
                    WITH groupedby_timestamp AS (
                 SELECT  date_trunc(:interval, timestamp_occurance::TIMESTAMP), count($attribute)
@@ -380,19 +379,18 @@ $sql='';
 SQL;
 
 
+                    $whereSql = " WHERE $key  =  '$value'";
 
-                            $whereSql=" WHERE $key  =  '$value'";
-
-                    $sql2=<<<SQL
+                    $sql2 = <<<SQL
                                     GROUP BY date_trunc(:interval, timestamp_occurance::TIMESTAMP)
                                     ORDER BY date_trunc(:interval, timestamp_occurance::TIMESTAMP)
             )
             select date_part('epoch', date_trunc) AS unixtime ,groupedby_timestamp.count AS count FROM groupedby_timestamp ;
 SQL;
 
-                    $sql = $sql1.$whereSql.$sql2;
-                }else{
-                    $sql= <<<SQL
+                    $sql = $sql1 . $whereSql . $sql2;
+                }else {
+                    $sql = <<<SQL
             WITH groupedby_timestamp AS (
                 SELECT  date_trunc(:interval, timestamp_occurance::TIMESTAMP), count($attribute)
                                     FROM "rapid_assessment".report_item
@@ -406,7 +404,7 @@ SQL;
 
 
                 $query = \Yii::$app->db->createCommand($sql)
-                    ->bindParam(':interval',$interval)
+                    ->bindParam(':interval', $interval)
                     ->queryAll();
                 break;
             case 'continuous':
@@ -428,8 +426,9 @@ SQL;
          */
     }
 
-    public function actionSearch(){
-       // search_type=item_name&search_subtype=Building&datefilter_from=2015-05-12&datefilter_to=2015-05-13&district_name=DADELDHURA&vdc_name=AJAYMERU
+    public function actionSearch()
+    {
+        // search_type=item_name&search_subtype=Building&datefilter_from=2015-05-12&datefilter_to=2015-05-13&district_name=DADELDHURA&vdc_name=AJAYMERU
         /* @var $model  \common\modules\tracking\models\search\Status */
         /* @var $query \yii\db\ActiveQuery */
         $model = new $this->modelClass;
@@ -477,13 +476,11 @@ SQL;
             }
 
             // filter based on date
-            if(isset($_GET['datefilter_from']))
-            {
-                $query->andWhere("timestamp_occurance >= '".$_GET['datefilter_from']."' ");
+            if (isset($_GET['datefilter_from'])) {
+                $query->andWhere("timestamp_occurance >= '" . $_GET['datefilter_from'] . "' ");
             }
-            if(isset($_GET['datefilter_to']))
-            {
-                $query->andWhere("timestamp_occurance <= '".$_GET['datefilter_to']."' ");
+            if (isset($_GET['datefilter_to'])) {
+                $query->andWhere("timestamp_occurance <= '" . $_GET['datefilter_to'] . "' ");
             }
 
             if (isset($_GET['dwithin'])) {
@@ -532,7 +529,7 @@ SELECT ST_Within(
 
                    return ['ids' => $ids, 'data' => $query->createCommand()->queryAll()];*/
 
-        $dataProvider->pagination=false;
+        $dataProvider->pagination = false;
         return $dataProvider;
     }
 }
