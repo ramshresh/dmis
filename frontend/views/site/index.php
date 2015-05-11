@@ -512,7 +512,7 @@ $this->registerJs($JsAddressSearch, $this::POS_READY);
                 if (size === 1) {
                     style = [new ol.style.Style({
                         image: new ol.style.Icon(({
-                            src: 'png/need.png',
+                            src: 'http://vignette2.wikia.nocookie.net/fallout/images/7/73/Icon_damage.png/revision/latest?cb=20091010164957',
                             //  src: src_icon(),
                             offset: [1, 1]
                         }))
