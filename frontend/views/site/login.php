@@ -9,6 +9,7 @@ use yii\helpers\Url;
 
 $this->title = 'Sign In';
 
+
 $fieldOptions1 = [
     'options' => ['class' => 'form-group has-feedback'],
     'inputTemplate' => "{input}<span class='glyphicon glyphicon-envelope form-control-feedback'></span>"
@@ -20,10 +21,7 @@ $fieldOptions2 = [
 ];
 ?>
 
-<div class="login-box">
-    <div class="login-logo">
-        <a href="#"><b>DMIS - Administrator</b><hr><h5>Disaster Management Information System</h5></a>
-    </div>
+<div class="login-box" >
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>

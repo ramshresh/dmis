@@ -2,6 +2,7 @@
 
 use frontend\assets\SubashAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 SubashAsset::register($this);
 
@@ -52,8 +53,9 @@ $this->beginPage() ?>
             </div>
             <div class="col-md-2">
                 <ul class="nav navbar-nav nav-right">
-                    <li data-toggle="modal" data-target="#basicModal"><a href="#">Register</a></li>
-                    <li data-toggle="modal" data-target="#login"><a href="#">Login</a></li>
+                    <!--<li data-toggle="modal" data-target="#basicModal"><a href="<?/*=Url::to(['site/login'])*/?>">Register</a></li>-->
+                    <!--<li data-toggle="modal" data-target="#login"><a href="#">Login</a></li>-->
+                    <li data-toggle="modal" ><a href="<?=Url::to(['/site/login'])?>">Login</a></li>
                 </ul>
             </div>
         </div>

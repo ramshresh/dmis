@@ -76,16 +76,7 @@ use yii\widgets\ActiveForm;
 <?php ActiveForm::end(); ?>
 </div>
 
-<?php
-Modal::begin([
-    'header'=>'File Input inside Modal',
-    'toggleButton' => [
-        'label'=>'Upload Photo', 'class'=>'btn btn-orange'
-    ],
-]);
-?>
 <div id="photo-upload">
-
     <form
         id="photo-upload-form"
         enctype="multipart/form-data"
@@ -94,47 +85,25 @@ Modal::begin([
         action="/girc/dmis/api/file_management/upload/file"
         >
         <div class="col-md-12">
-            <?php
-            echo FileInput::widget([
-                'name' => 'file',
-                'options'=>[
-                    'multiple'=>false
-                ],
-                'pluginOptions' => [
-                    'uploadUrl' => '/girc/dmis/api/file_management/upload/file',
-                    'uploadExtraData' => [
-                        'latitude' => 27,
-                        'longitude' => '81'
-                    ],
-                    'maxFileCount' => 1
-                ]
-            ]);
+            <?=
+            Html::fileInput('file');
             ?>
         </div>
-        <iframe id="upload_target" name="upload_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
         <div class="col-md-12">
-            <?=Html::textInput('latitude')?>
+            <?=Html::hiddenInput('latitude')?>
         </div>
         <div class="col-md-12">
-            <?=Html::textInput('longitude')?>
-        </div>
-        <div class="col-md-12">
-            <?= Html::button('Upload',['type'=>'button','class'=>'btn-primary','id'=>'btn_upload'])?>
+            <?=Html::hiddenInput('longitude')?>
         </div>
     </form
 </div>
-<?php Modal::end(); ?>
 
 <script>
-
     <?php $this->beginBlock('scriptPosReady')?>
-
     $('#btn_upload').click(function(){
         $form = $("#photo-upload-form");
         $form.submit();
     });
-
-
     <?php $this->endBlock(); ?>
 </script>
 <?php $this->registerJs($this->blocks['scriptPosReady'], $this::POS_READY); ?>

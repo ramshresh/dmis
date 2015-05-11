@@ -3,7 +3,9 @@
 /* @var $content string */
 
 use yii\bootstrap\Nav;
-$avatar = (Yii::$app->user->isGuest)?"$directoryAsset/img/avatar.png":"$directoryAsset/img/user2-160x160.jpg";
+//$avatar = (Yii::$app->user->isGuest)?"$directoryAsset/img/avatar.png":"$directoryAsset/img/user2-160x160.jpg";
+$avatar = (Yii::$app->user->isGuest)?"$appAsset/img/user-avatar-placeholder.png":"$appAsset/img/user-avatar-placeholder.png";
+
 ?>
 <aside class="main-sidebar">
 

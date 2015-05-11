@@ -5,9 +5,8 @@
 use common\assets\Ol3Asset;
 use common\assets\Ol3LayerSwitcherAsset;
 use common\assets\Ol3PopupAsset;
-use yii\jui\JuiAsset;
 
-dmstr\web\AdminLteAsset::register($this);
+use yii\jui\JuiAsset;
 Ol3Asset::register($this);
 Ol3LayerSwitcherAsset::register($this);
 Ol3PopupAsset::register($this);
@@ -403,7 +402,7 @@ $JsAddressSearch = <<<JS
                 // Adding overlay marker
                 map.addOverlay(new ol.Overlay({
                   position:position,
-                  element:  $('<img src="http://116.90.239.21/girc/dmis/img/location.png" style="width:32px;height:auto;">')
+                  element:  $('<img src="/girc/dmis/img/location.png" style="width:32px;height:auto;">')
                                  .css({marginTop: '-200%', marginLeft: '-50%', cursor: 'pointer'})
                                 .popover({
                                   'placement': 'top',

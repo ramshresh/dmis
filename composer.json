@@ -34,11 +34,11 @@
     "mdmsoft/yii2-widgets": "~1.0",
     "c006/yii2-migration-utility": "dev-master",
     "miloschuman/yii2-highcharts-widget": "dev-master",
-    "dmstr/yii2-adminlte-asset": "2.*@beta",
     "ramshresh/yii2-ar-behaviors": "dev-master",
     "ramshresh/yii2-gallery-manager": "dev-master",
     "yiisoft/yii2-authclient": "~2.0",
-    "kartik-v/yii2-editable": "*"
+    "kartik-v/yii2-editable": "*",
+    "ramshresh/yii2-assets-adminlte": "dev-master"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
@@ -71,6 +71,10 @@
     {
       "type": "git",
       "url": "https://github.com/ramshresh/yii2-gallery-manager.git"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/ramshresh/yii2-assets-adminlte.git"
     }
   ]
 }
