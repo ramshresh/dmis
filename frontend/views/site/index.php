@@ -679,6 +679,7 @@ $this->registerJs($JsAddressSearch, $this::POS_READY);
 
         var popup = new ol.Overlay.Popup();
         map.addOverlay(popup);
+        var img_src;
         var image = function (id) {
             $.ajax({
                 url: '/girc/dmis/api/rapid_assessment/report-items',
