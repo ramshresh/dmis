@@ -514,7 +514,8 @@ $this->registerJs($JsAddressSearch, $this::POS_READY);
                         image: new ol.style.Icon(({
                             src: 'http://vignette2.wikia.nocookie.net/fallout/images/7/73/Icon_damage.png/revision/latest?cb=20091010164957',
                             //  src: src_icon(),
-                            offset: [1, 1]
+                            offset: [1, 1],
+                            scale: 0.1
                         }))
                     })]
                 } else {
@@ -680,7 +681,7 @@ $this->registerJs($JsAddressSearch, $this::POS_READY);
         map.addOverlay(popup);
         var image = function (id) {
             $.ajax({
-                url: 'http://116.90.239.21/girc/dmis/api/rapid_assessment/report-items',
+                url: '/girc/dmis/api/rapid_assessment/report-items',
                 data: {
                     expand: 'galleryImages',
                     id: id
@@ -701,7 +702,7 @@ $this->registerJs($JsAddressSearch, $this::POS_READY);
                     }
 
                     if (src) {
-                        img_src = '<img src="http://116.90.239.21' + src + '" alt="" style="height:auto;width:200px;">';
+                        img_src = '<img src="' + src + '" alt="" style="height:auto;width:200px;">';
                     }
                     else {
                         img_src = '';
