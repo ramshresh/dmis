@@ -165,7 +165,7 @@ class ReportItemController extends \yii\rest\ActiveController
                                    return ['ids' => $ids, 'data' => $query->createCommand()->queryAll()];*/
 //return $query->createCommand()->rawSql;
 
-                        return $query->createCommand()->rawSql;
+                       // return $query->createCommand()->rawSql;
                         $dataProvider->pagination = false;
                         return $dataProvider;
                     }
