@@ -4,7 +4,7 @@
 
 use yii\bootstrap\Nav;
 //$avatar = (Yii::$app->user->isGuest)?"$directoryAsset/img/avatar.png":"$directoryAsset/img/user2-160x160.jpg";
-$avatar = (Yii::$app->user->isGuest)?"$appAsset/img/user-avatar-placeholder.png":"$appAsset/img/user-avatar-placeholder.png";
+$avatar = (Yii::$app->user->isGuest)?Yii::$aliases['@web']."/img/user-avatar-placeholder.png":Yii::$aliases['@web']."/img/user-avatar-placeholder.png";
 
 ?>
 <aside class="main-sidebar">
@@ -12,15 +12,15 @@ $avatar = (Yii::$app->user->isGuest)?"$appAsset/img/user-avatar-placeholder.png"
     <section class="sidebar">
 
         <!-- Sidebar user panel -->
-        <div class="user-panel">
+       <!-- <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $avatar ?>" class="img-circle" alt="User Image"/>
+                <img src="<?/*= $avatar */?>" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p><?= Yii::$app->getUser()->getDisplayName()?></p>
+                <p><?/*= Yii::$app->getUser()->getDisplayName()*/?></p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
-        </div>
+        </div>-->
 
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">

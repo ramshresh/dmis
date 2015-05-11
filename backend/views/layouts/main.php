@@ -23,7 +23,7 @@ if (Yii::$app->controller->action->id === 'login' ) {
     ramshresh\assets\adminlte\web\AdminLteAsset::register($this);
 
     $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@bower/admin-lte/dist');
-    $appAsset = Yii::$app->assetManager->getPublishedUrl('@webroot/img');
+
     ?>
     <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -40,7 +40,7 @@ if (Yii::$app->controller->action->id === 'login' ) {
     <div class="wrapper">
         <?= $this->render(
             'header.php',
-            ['directoryAsset' => $directoryAsset,'appAsset'=>$appAsset]
+            ['directoryAsset' => $directoryAsset,]
         ) ?>
         <div class="wrapper row-offcanvas row-offcanvas-left">
 
@@ -48,13 +48,12 @@ if (Yii::$app->controller->action->id === 'login' ) {
                 'left.php',
                 [
                     'directoryAsset' => $directoryAsset,
-                    'appAsset'=>$appAsset
                 ]
             )
             ?>
             <?= $this->render(
                 'content.php',
-                ['content' => $content, 'directoryAsset' => $directoryAsset,'appAsset'=>$appAsset]
+                ['content' => $content, 'directoryAsset' => $directoryAsset,]
             ) ?>
         </div>
     </div>
