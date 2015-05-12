@@ -1,10 +1,15 @@
 <?php
-
+/**
+ * @var $this \yii\web\View
+ * @var $content
+ */
+use frontend\assets\AppAsset;
 use frontend\assets\SubashAsset;
+use ramshresh\assets\adminlte\web\AdminLteAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
-
-SubashAsset::register($this);
+AdminLteAsset::register($this);
+AppAsset::register($this);
 
 $this->beginPage() ?>
     <!DOCTYPE html>
@@ -48,8 +53,8 @@ $this->beginPage() ?>
                 </nav>
             </div>
             <div class="col-md-1 social-media">
-                <i class="entypo-facebook" style="color:royalblue;"></i>
-                <i class="entypo-twitter" style="color:lightblue;"></i>
+                <i class="fa fa-facebook" style="color:royalblue;"></i>
+                <i class="fa fa-twitter" style="color:lightblue;"></i>
             </div>
             <div class="col-md-2">
                 <ul class="nav navbar-nav nav-right">

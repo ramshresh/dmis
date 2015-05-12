@@ -2,6 +2,7 @@
 /**
  * @var $this yii\web\View;
  */
+use common\assets\IconsReportingAsset;
 use common\assets\Ol3Asset;
 use common\assets\Ol3LayerSwitcherAsset;
 use common\assets\Ol3PopupAsset;
@@ -10,9 +11,19 @@ use yii\jui\JuiAsset;
 Ol3Asset::register($this);
 Ol3LayerSwitcherAsset::register($this);
 Ol3PopupAsset::register($this);
+IconsReportingAsset::register($this);
+rmrevin\yii\fontawesome\AssetBundle::register($this);
 JuiAsset::register($this);
 ?>
     <style>
+        .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info{
+         background-color: #fff;
+     }
+.btn-info{
+    background-color: #fff;
+    box-shadow: 2px 2px 5px #aaa;
+    border-color: #fff;
+}
         .ol-popup-closer:after {
             content: "[x]";
             color: red;
@@ -58,14 +69,14 @@ JuiAsset::register($this);
                             <div class="form-group" style="margin-top:25px !important;">
                                 <div class="col-md-6">
                                     <!--							<select name="test" class="selectboxit" id="search_type">-->
-                                    <select name="search_type" class="" id="search_type">
+                                    <select name="search_type" class="form-control" id="search_type">
                                         <option value="">Select type</option>
                                     </select>
                                 </div>
 
                                 <div class="col-md-6">
                                     <!--							<select name="test" class="selectboxit"  id="search_subtype">-->
-                                    <select name="search_subtype" class=""  id="search_subtype">
+                                    <select name="search_subtype" class="form-control"  id="search_subtype">
                                         <optgroup label="Sub Type">
                                             <option value="1">Select subtype</option>
                                         </optgroup>
@@ -77,7 +88,7 @@ JuiAsset::register($this);
                                         <input name="datefilter_from" type="text" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder="From" id="search_start_date">
 
                                         <div class="input-group-addon">
-                                            <a href="#"><i class="entypo-calendar"></i></a>
+                                            <a href="#"><i class="fa fa-calendar"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -85,26 +96,26 @@ JuiAsset::register($this);
                                     <div class="input-group">
                                         <input type="text" name="datefilter_to" class="form-control datepicker" data-format="yyyy-mm-dd" placeholder='To' id="search_end_date">
                                         <div class="input-group-addon">
-                                            <a href="#"><i class="entypo-calendar"></i></a>
+                                            <a href="#"><i class="fa fa-calendar"></i></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <!--							<select name="test" class="selectboxit">-->
-                                    <select id="district_name" name="district_name" class="">
+                                    <select id="district_name" name="district_name" class="form-control">
                                         <option value="">Select District</option>
                                     </select>
                                 </div>
 
                                 <div class="col-md-6">
                                     <!--							<select name="test" class="selectboxit">-->
-                                    <select id="vdc_name" name="vdc_name" class="">
+                                    <select id="vdc_name" name="vdc_name" class="form-control">
                                         <option value="">Select VDC/Municipality</option>
                                     </select>
                                 </div>
                                 <br>
                                 <div class="col-md-6">
-                                    <button id="btn_report_item_search" type="button" class="btn-primary col-md-12">Submit</button>
+                                    <button id="btn_report_item_search" type="button" class="btn btn-success" style="margin-left:80%;margin-top:10px;padding:6px 20px;">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -113,13 +124,13 @@ JuiAsset::register($this);
 
                                 <ul class="nav nav-tabs left-aligned">
                                     <li class="active"><a href="#search_summary" data-toggle="tab">
-                                            <span class="visible-xs"><i class="entypo-home"></i></span>
+                                            <span class="visible-xs"><i class="fa fa-home"></i></span>
                                             <span class="hidden-xs">Summary</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#search_table" data-toggle="tab">
-                                            <span class="visible-xs"><i class="entypo-user"></i></span>
+                                            <span class="visible-xs"><i class="fa fa-user"></i></span>
                                             <span class="hidden-xs">Table</span>
                                         </a>
                                     </li>
@@ -189,13 +200,13 @@ JuiAsset::register($this);
                 <!--filter by parameters end-->
 
                 <li class="dropdown">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-placement="bottom"><i style="font-size: 22px;color:#DE007B" class="icon-reporting"></i></button>
+                    <button type="button" class="btn btn-info  dropdown-toggle" data-toggle="dropdown" data-placement="bottom"><i style="font-size: 22px;color:#DE007B" class="icon-reporting"></i></button>
 
                     <ul class="dropdown-menu" style="min-width:350px;">
                         <form role="form" class="form-horizontal form-groups-bordered" style="margin-top:20px !important">
                             <div class="form-group" style="margin:25px 0 !important;">
                                 <div class="col-md-12">
-                                    <select name="test" class="selectboxit">
+                                    <select name="test" class="form-control selectboxit">
                                         <option value="1">Select Incident</option>
                                         <option value="2">Building Damage</option>
                                         <option value="3">Public Building Damage</option>
@@ -206,7 +217,7 @@ JuiAsset::register($this);
 
                                 </div>
                                 <div class="col-md-12">
-                                    <select name="test" class="selectboxit">
+                                    <select name="test" class="form-control selectboxit">
                                         <option value="1">Damage Type</option>
                                         <option value="2">Fully</option>
                                         <option value="3">Moderate</option>
@@ -273,7 +284,7 @@ JuiAsset::register($this);
                                 <button type="button" class="btn btn-orange" style="margin-left:30%;margin-top:10px;padding:6px 20px;">Quick Search</button>
 
                                 <div class="col-md-12" style="margin-top:20px">
-                                    <select name="test" class="selectboxit">
+                                    <select name="test" class="form-control selectboxit">
                                         <option value="1">Select Option</option>
                                         <option value="2">Building Damage</option>
                                         <option value="3">Public Building Damage</option>
@@ -284,7 +295,7 @@ JuiAsset::register($this);
 
                                 </div>
                                 <div class="col-md-12">
-                                    <select name="test" class="selectboxit">
+                                    <select name="test" class="form-control selectboxit">
                                         <option value="1">Select District</option>
                                         <option value="2">Fully</option>
                                         <option value="3">Moderate</option>
@@ -344,7 +355,7 @@ JuiAsset::register($this);
             <div class="input-group">
                 <input id="input-search" type="text" class="form-control search" placeholder="Enter Location Here">
 				<span class="input-group-btn search_btn">
-					<button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="entypo-search"></i></button>
+					<button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="fa fa-search"></i></button>
 				</span>
             </div>
         </div>
