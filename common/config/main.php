@@ -84,6 +84,7 @@ return [
         'user' => [
             'class' => 'common\modules\user\Module',
             'emailViewPath'=>'@common/modules/user/mail',
+            'emailConfirmation'=>false,
         ],
         'reporting' => [
             'class' => 'common\modules\reporting\Module',
