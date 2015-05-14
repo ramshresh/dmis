@@ -15,7 +15,8 @@ $params = array_merge(
 // {{{ Removing api/web from url @see http://www.yiiframework.com/wiki/755/how-to-hide-frontend-web-in-url-addresses-on-apache/*/
 use \yii\web\Request;
 
-
+$baseUrlFrontend = str_replace('/api/web', '/', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
+$baseUrlBackend = str_replace('/api/web', '/admin', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
 $baseUrl = str_replace('/api/web', '/api', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
 
 //}}} ./Removing api/web from url
@@ -74,6 +75,18 @@ return [
                 ],
             ],
         ],
+        'urlManagerBackEnd' =>[
+            'class'=>'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'baseUrl' => $baseUrlBackend,
+        ],
+        'urlManagerFrontEnd' => [
+            'class'=>'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'baseUrl' => $baseUrlFrontend,
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'enableStrictParsing' => true,
@@ -82,6 +95,9 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule', 'controller' => ['site'],
                     'pluralize'=>false,
+                    'extraPatterns' => [
+                        'GET test-url' => 'test-url',
+                    ]
                 ],
                 [
                     'class' => 'yii\rest\UrlRule', 'controller' => ['user/default'],

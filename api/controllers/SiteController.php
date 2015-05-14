@@ -24,6 +24,7 @@ class SiteController extends \yii\rest\Controller
 {
     public function actionIndex()
     {
+
         /*SELECT COUNT(*), "status" FROM  "tracking"."status" GROUP BY "status" ORDER BY "status" DESC*/
         $query = new Query();
         $query->select(['COUNT(*)','value'=>'status']);
@@ -90,5 +91,15 @@ return AppHelper::getAppBaseUrl();
 
         ];
         return [$data];
+    }
+
+    public function actionTestUrl(){
+        return [
+            Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/user/registration/confirm",  "key" => '34234']),
+            Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/user/registration/confirm",  "key" => '34234']),
+            Yii::$app->urlManagerApi->createAbsoluteUrl(["/user/registration/confirm",  "key" => '34234']),
+
+
+        ];
     }
 }
