@@ -93,5 +93,9 @@ $avatar = (Yii::$app->user->isGuest)?Yii::$aliases['@web']."/img/user-avatar-pla
 
             </ul>
         </div>
+
+        <a href="#" class="sidebar-toggle" data-toggle="control-sidebar" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
     </nav>
 </header>
