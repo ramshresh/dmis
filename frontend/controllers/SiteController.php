@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\components\AppHelper;
 use common\components\MyBaseContoller;
 use common\modules\rapid_assessment\models\ReportItem;
 use frontend\models\ContactForm;
@@ -448,5 +449,14 @@ class SiteController extends MyBaseContoller
     }
     public function actionSocialMediaGalleryWidget(){
       //  return $this->renderAjax('social-media/gallery-widget');
+    }
+
+    public function  actionTestUrl(){
+
+        //echo AppHelper::getAppUrlToRoute('frontend',["/user/registration/confirm", "key" => 1234567898765432123456]);
+        echo Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/user/registration/confirm", "key" => 1234567898765432123456]);
+        echo '<hr>';
+        echo Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/user/registration/confirm", "key" => 1234567898765432123456]);
+
     }
 }
