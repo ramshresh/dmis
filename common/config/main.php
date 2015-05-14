@@ -1,9 +1,9 @@
 <?php
 use \yii\web\Request;
 
-$baseUrlFrontend = str_replace('/frontend/web', '', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
-$baseUrlBackend = str_replace('/frontend/web', 'admin', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
-$baseUrlApi = str_replace('/frontend/web', 'api', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
+$baseUrlFrontend = str_replace('/frontend/web', '/', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
+$baseUrlBackend = str_replace('/frontend/web', '/admin', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
+$baseUrlApi = str_replace('/frontend/web', '/api', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
 
 //$baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
 
@@ -67,13 +67,13 @@ return [
             'class'=>'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'baseUrl' => '/admin',
+            'baseUrl' => $baseUrlBackend,
         ],
         'urlManagerFrontEnd' => [
             'class'=>'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'baseUrl' => '/',
+            'baseUrl' => $baseUrlFrontend,
         ],
     ],
     'modules' => [
@@ -84,7 +84,7 @@ return [
         'user' => [
             'class' => 'common\modules\user\Module',
             'emailViewPath'=>'@common/modules/user/mail',
-            'emailConfirmation'=>false,
+            //'emailConfirmation'=>false,
         ],
         'reporting' => [
             'class' => 'common\modules\reporting\Module',
