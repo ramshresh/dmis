@@ -16,6 +16,6 @@ use yii\helpers\Url;
 <p><?= Yii::t("user", "Please confirm your email address by clicking the link below:") ?></p>
 <br>
 <p>Copy paste the following url into web browser to go to confirmation page </p>
-<em><?= AppHelper::getAppUrlToRoute('frontend',["/user/registration/confirm", "key" => $userKey->key]); ?></em>
+<em><?= Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/user/registration/confirm", "key" => $userKey->key]); ?></em>
 <br>
-<p><a href="<?= AppHelper::getAppUrlToRoute('frontend',["/user/registration/confirm", "key" => $userKey->key]); ?>">Click Here to Confirm</a>
+<p><a href="<?= Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/user/registration/confirm",  "key" => $userKey->key]); ?>">Click Here to Confirm</a>
