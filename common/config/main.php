@@ -1,11 +1,6 @@
 <?php
 use \yii\web\Request;
 
-$baseUrlFrontend = str_replace('/frontend/web', '/', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
-$baseUrlBackend = str_replace('/backend/web', '/admin', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
-$baseUrlApi = str_replace('/api/web', '/api', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
-
-//$baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
 
 return [
     'name'=>'DMIS',
@@ -63,24 +58,7 @@ return [
                 ],*/
             ]
         ],
-        'urlManagerBackEnd' =>[
-            'class'=>'yii\web\UrlManager',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'baseUrl' => $baseUrlBackend,
-        ],
-        'urlManagerFrontEnd' => [
-            'class'=>'yii\web\UrlManager',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'baseUrl' => $baseUrlFrontend,
-        ],
-        'urlManagerApi' => [
-            'class'=>'yii\web\UrlManager',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'baseUrl' => $baseUrlApi,
-        ],
+
     ],
     'modules' => [
         'vdc' => [

@@ -97,9 +97,6 @@ return AppHelper::getAppBaseUrl();
         return [
             Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/user/registration/confirm",  "key" => '34234']),
             Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/user/registration/confirm",  "key" => '34234']),
-            Yii::$app->urlManagerApi->createAbsoluteUrl(["/user/registration/confirm",  "key" => '34234']),
-
-
         ];
     }
 }

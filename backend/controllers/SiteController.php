@@ -114,8 +114,6 @@ class SiteController extends Controller
 
         //echo AppHelper::getAppUrlToRoute('frontend',["/user/registration/confirm", "key" => 1234567898765432123456]);
         echo Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/user/registration/confirm", "key" => 1234567898765432123456]);
-        echo '<hr>';
-        echo Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/user/registration/confirm", "key" => 1234567898765432123456]);
 
     }
 }
