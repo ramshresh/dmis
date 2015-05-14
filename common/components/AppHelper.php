@@ -29,7 +29,9 @@ class AppHelper extends Component {
         //$appAlias = 'admin';
         //$appAlias = '';
         //$appWebRoot = 'admin/'; // can be backend/web that has been rewrite by apache
-        $appWebRoot = '/'; // can be backend/web that has been rewrite by apache
+        //$appName = 'frontend';
+        //$appAlias = '';
+        $appWebRoot = 'admin/'; // can be backend/web that has been rewrite by apache
        // $appWebRoot = ''; // can be backend/web that has been rewrite by apache
 
         //$route =['user/registration/reset','key'=>'asadasasd9087t67rfgevjbhskjdnfk'];
@@ -41,7 +43,7 @@ class AppHelper extends Component {
         $backendAppAbsoluteBaseUrl =preg_replace("/[^\/]\w+\/$/","",$appAbsoluteBaseUrl).$appWebRoot;
         $routeAbsoluteUrl = Yii::$app->urlManager->createAbsoluteUrl($route);
         $routePathInfo = str_replace($appAbsoluteBaseUrl,'',$routeAbsoluteUrl);
-        $urlAbsolute = $backendAppAbsoluteBaseUrl.$routePathInfo;
+        $urlAbsolute = $backendAppAbsoluteBaseUrl.'/dmis'.$routePathInfo;
         return $urlAbsolute;
     }
 }

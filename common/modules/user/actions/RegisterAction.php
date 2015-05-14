@@ -54,7 +54,7 @@ class RegisterAction extends MyBaseAction{
                 }
 
                 echo yii\helpers\Json::encode(['status'=>'success','msg'=>'Thank you! Your account has been opened. Please check your email to verify this account!',"user"=>["id"=>$user->id,"username"=>$user->profile->full_name,"email"=>$user->email]]);
-                Yii::$app->end();
+
                 //echo Json::encode(array('status' => 1,'title'=>'SUCCESS', 'message' => 'Thank you for registration!'));
                 Yii::$app->end();
             }else{

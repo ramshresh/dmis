@@ -75,6 +75,12 @@ return [
             'showScriptName' => false,
             'baseUrl' => $baseUrlFrontend,
         ],
+        'urlManagerApi' => [
+            'class'=>'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'baseUrl' => $baseUrlApi,
+        ],
     ],
     'modules' => [
         'vdc' => [
