@@ -215,7 +215,7 @@ JuiAsset::register($this);
                                     <input type="text" class="form-control datepicker" data-format=" yyyy MM dd" placeholder="From">
 
                                     <div class="input-group-addon">
-                                        <a href="#"><i class="entypo-calendar" style="color:#04C9A6"></i></a>
+                                        <a href="#"><i class="fa fa-calendar" style="color:#04C9A6"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -223,7 +223,7 @@ JuiAsset::register($this);
                                 <div class="input-group">
                                     <input type="text" class="form-control datepicker" data-format=" yyyy MM dd" placeholder='To'>
                                     <div class="input-group-addon">
-                                        <a href="#"><i class="entypo-calendar" style="color:orange"></i></a>
+                                        <a href="#"><i class="fa fa-calendar" style="color:orange"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -248,13 +248,13 @@ JuiAsset::register($this);
 
                                 <ul class="nav nav-tabs left-aligned">
                                     <li class="active"><a href="#home-2" data-toggle="tab">
-                                            <span class="visible-xs"><i class="entypo-home"></i></span>
+                                            <span class="visible-xs"><i class="fa fa-home"></i></span>
                                             <span class="hidden-xs">Summary</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#profile-2" data-toggle="tab">
-                                            <span class="visible-xs"><i class="entypo-user"></i></span>
+                                            <span class="visible-xs"><i class="fa fa-user"></i></span>
                                             <span class="hidden-xs">Table</span>
                                         </a>
                                     </li>
@@ -341,7 +341,7 @@ JuiAsset::register($this);
         <div class="input-group">
             <input type="text" class="form-control search" placeholder="Enter Location Here">
 				<span class="input-group-btn search_btn">
-					<button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="entypo-search"></i></button>
+					<button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="fa fa-search"></i></button>
 				</span>
         </div>
     </div>
