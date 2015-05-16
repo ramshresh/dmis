@@ -1,7 +1,5 @@
 <?php
 use \yii\web\Request;
-
-
 return [
     'name'=>'DMIS',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
