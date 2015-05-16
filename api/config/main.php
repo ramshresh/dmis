@@ -155,7 +155,7 @@ return [
                         'GET get-drop-down-item-names' => 'get-drop-down-item-names',
                         'GET get-drop-down-item-children-names' => 'get-drop-down-item-children-names',
                         'GET attributes' => 'attributes',
-                        'GET <id:\d+>/galleries/<gallery_id:\w+>' => 'galleries',
+                        'GET <id:\d+>/galleries' => 'galleries',
                         'POST item-class' => 'item-class',
                         'POST <model:\w+>/create' => 'create',
 
