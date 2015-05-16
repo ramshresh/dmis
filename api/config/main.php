@@ -14,6 +14,7 @@ $params = array_merge(
 );
 // {{{ Removing api/web from url @see http://www.yiiframework.com/wiki/755/how-to-hide-frontend-web-in-url-addresses-on-apache/*/
 use \yii\web\Request;
+use yii\web\Response;
 
 $baseUrlFrontend = str_replace('/api/web', '/', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
 $baseUrlBackend = str_replace('/api/web', '/admin', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
@@ -52,16 +53,18 @@ return [
     'components' => [
         'response' => [
             'class' => 'yii\web\Response',
-            'on beforeSend' => function ($event) {
+            'format'=>Response::FORMAT_JSON,
+            /*'on beforeSend' => function ($event) {
                 $response = $event->sender;
-                if ($response->data !== null && Yii::$app->request->get('suppress_response_code')) {
+                if (!$response->isSuccessful) {
                     $response->data = [
-                        'success' => $response->isSuccessful,
-                        'data' => $response->data,
+                        'status' => 'error',
+                        'msg'=>'server error',
+                        'errors' => ['stack_trace'=>$response->data],
                     ];
                     $response->statusCode = 200;
                 }
-            },
+            },*/
         ],
 
         'request' => [
@@ -70,7 +73,6 @@ return [
             'enableCookieValidation' => false,
             'parsers' => [
                 'application/json' => 'yii\web\JsonParser',
-
             ]
         ],
         'user' => [
