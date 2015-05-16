@@ -433,8 +433,8 @@ SQL;
         $model = new $this->modelClass;
         $id=\Yii::$app->request->queryParams['id'];
         $model = $model::find()->where('id = :id',[':id'=>$id])->one();
-        $gallery = $model->getGalleryImages();
-        return $gallery->createCommand()->rawSql;
+        $gallery = $model->getGalleryImages()->one();
+        return $gallery;
     }
 
 }
