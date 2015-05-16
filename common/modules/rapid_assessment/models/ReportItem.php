@@ -427,6 +427,7 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
         // TODO: Implement getLinks() method.
         return [
             Link::REL_SELF => Url::to(['/rapid_assessment/report-items', 'id' => $this->id], true),
+            'gallery_images'=>Url::to(["/rapid_assessment/report-items/$this->id/galleries"], true),
         ];
     }
 }
