@@ -30,5 +30,5 @@ phpunit.phar
 /phpunit.xml
 
 # custom directories
-
+uploads/
 
