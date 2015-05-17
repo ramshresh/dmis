@@ -50,6 +50,9 @@ use yii\web\Linkable;
  * @property string $owner_contact
  * @property string $supplied_per_person
  * @property string $event_name
+ * @property string $event_name
+ * @property string $income_level
+ * @property string $income_source
  *
  * @property ReportItemChild[] $reportItemChildren
  * @property ReportItemChild[] $reportItemChildrenParent
@@ -124,6 +127,7 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             [['user_id','supplied_per_person'], 'integer'],
             [['description', 'tags', 'meta_hstore', 'meta_json', 'wkt', 'geom'], 'string'],
             [['event_name'],'string','max'=>255],
+            [['income_level','income_source'],'string','max'=>100],
             [['is_verified'], 'boolean'],
             [['timestamp_occurance', 'timestamp_created_at', 'timestamp_updated_at', 'timestamp_declared_at'], 'safe'],
             [['magnitude', 'latitude', 'longitude'], 'number'],
@@ -167,6 +171,8 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             'Owner_contact'=>'Owner Contact',
             'supplied_per_person'=>'Supplied Per Person',
             'event_name'=>'Event Name',
+            'income_level'=>'Income Level',
+            'income_source'=>'Income Source',
         ];
     }
 
@@ -174,7 +180,8 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
     {
         $reportItemScenarios =[
             //This scenario is to be used for Search Model by instance of <ReporItem> or any <class that inherits ReportItem>
-            'search' => ['event_name','type','item_name', 'class_name','owner_name','owner_contact'],
+
+            'search' => ['event_name','type','item_name', 'class_name','owner_name','owner_contact','income_level','income_source'],
             'hc_timestamp'=>['event_name','owner_name','owner_contact','supplied_per_person','id','type','item_name','class_basis','class_name','title','description','is_verified','status','timestamp_occurance','timestamp_created_at','timestamp_updated_at','latitude','longitude','address','user_id','timestamp_declared_at','magnitude','units']
         ];
         return ArrayHelper::merge(parent::scenarios(),$reportItemScenarios);
