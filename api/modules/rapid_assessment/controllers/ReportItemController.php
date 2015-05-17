@@ -437,7 +437,7 @@ SQL;
         return $gallery;
     }
 
-    public function actionImpacts(){
+    public function actionChildren(){
         $q = \Yii::$app->request->queryParams;
         if(!isset($q['ids'])){
             throw new Exception('parameter id is required');
@@ -451,7 +451,6 @@ SQL;
         foreach($ids as $id){
             $query->orFilterWhere(['=', 'id', $id]);
         }
-
         return $query->createCommand()->rawSql;
     }
 
