@@ -26,29 +26,34 @@ JuiAsset::register($this);
         color: red;
         font-size: 16px;
     }
-
     .ol-popup {
         display: none;
         position: absolute;
         background-color: white;
         padding: 15px;
-        border: 1px solid rgb(57,52,86);;
+        border: 1px solid rgb(57, 52, 86);
+    ;
         bottom: 12px;
         left: -50px;
+        height: auto;
+        width: 250px;
+
     }
-
-
+    .ol-popup-content {
+        width: 250px;
+        height: auto;
+        max-height: 300px;
+        max-width: 230px;
+        overflow-y:auto;
+    }
     .ol-popup:before {
-        border-top-color: rgb(57,52,86);
+        border-top-color: rgb(57, 52, 86);
         border-width: 11px;
         left: 48px;
         margin-left: -11px;
     }
-    .layer-switcher{
-        top:150px
-    }
 </style>
-<div id="map"></div>
+    <div id="map" style="height:100%;width:100%;"></div>
 <!---------------------- Main Content Search Starts -------------------------->
 <div id="navbar" class="col-lg-12 col-md-12 col-sm-12 row">
     <div class="col-md-4">
@@ -743,7 +748,6 @@ JuiAsset::register($this);
         map.on('click', function(evt) {
             displayFeatureInfo(evt.pixel);
         });
-
 
         <?php $this->endBlock(); ?>
     </script>
