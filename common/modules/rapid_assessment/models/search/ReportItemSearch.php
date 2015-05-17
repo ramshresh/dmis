@@ -86,7 +86,10 @@ class ReportItemSearch extends ReportItem
             ->andFilterWhere(['like', 'wkt', $this->wkt])
             ->andFilterWhere(['like', 'geom', $this->geom])
             ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'event', $this->event]);
+            ->andFilterWhere(['like', 'event', $this->event])
+            ->andFilterWhere(['like', 'income_source', $this->income_source])
+            ->andFilterWhere(['like', 'income_level', $this->income_level])
+            ->andFilterWhere(['like', 'event_name', $this->event_name]);
 
         return $dataProvider;
     }
