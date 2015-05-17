@@ -714,4 +714,4 @@ JuiAsset::register($this);
 
         <?php $this->endBlock(); ?>
     </script>
-<?php //$this->registerJs($this->blocks['scriptPosReady'], $this::POS_READY); ?>
+<?php $this->registerJs($this->blocks['scriptPosReady'], $this::POS_READY); ?>
