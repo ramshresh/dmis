@@ -39,7 +39,7 @@ if (Yii::$app->controller->action->id === 'login' ) {
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body class="skin-black-light">
+    <body class="skin-black-light sidebar-collapse">
     <?php $this->beginBody() ?>
 
     <div class="wrapper">
@@ -49,13 +49,12 @@ if (Yii::$app->controller->action->id === 'login' ) {
         ) ?>
 
         <div class="wrapper row-offcanvas row-offcanvas-left">
-            <?php
-                /*echo $this->render(
-                    'left.php',
-                    [
-                        'directoryAdminLteAsset' => $directoryAdminLteAsset,
-                    ]
-                     );*/
+            <?= $this->render(
+                'left.php',
+                [
+                    'directoryAdminLteAsset' => $directoryAdminLteAsset,
+                ]
+            )
             ?>
             <?= $this->render(
                 'content.php',
