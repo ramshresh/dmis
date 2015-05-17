@@ -14,9 +14,9 @@ $avatar = (Yii::$app->user->isGuest)?Yii::$aliases['@web']."/img/user-avatar-pla
 
     <nav class="navbar navbar-static-top" role="navigation">
 
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <!--<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
-        </a>
+        </a>-->
 
         <div class="navbar-custom-menu">
 
