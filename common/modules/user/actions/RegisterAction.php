@@ -41,22 +41,30 @@ class RegisterAction extends MyBaseAction{
             // validate for normal request
             if ($user->validate() && $profile->validate()) {
                 // perform registration
-                $role = Yii::$app->getModule("user")->model("Role");
-                $user->setRegisterAttributes($role::ROLE_USER, Yii::$app->request->userIP)->save(false);
-                $profile->setUser($user->id)->save(false);
-                $this->afterRegister($user);
-                // set flash
-                // don't use $this->refresh() because user may automatically be logged in and get 403 forbidden
-                $successText = Yii::t("user", "Successfully registered [ {displayName} ]", ["displayName" => $user->getDisplayName()]);
-                $guestText = "";
-                if (Yii::$app->user->isGuest) {
-                    $guestText = Yii::t("user", " - Please check your email to confirm your account");
+                $transaction= Yii::$app->db->beginTransaction();
+                try{
+
+                    $role = Yii::$app->getModule("user")->model("Role");
+                    $user->setRegisterAttributes($role::ROLE_USER, Yii::$app->request->userIP)->save(false);
+                    $profile->setUser($user->id)->save(false);
+                    $this->afterRegister($user);
+                    // set flash
+                    // don't use $this->refresh() because user may automatically be logged in and get 403 forbidden
+                    $successText = Yii::t("user", "Successfully registered [ {displayName} ]", ["displayName" => $user->getDisplayName()]);
+                    $guestText = "";
+                    if (Yii::$app->user->isGuest) {
+                        $guestText = Yii::t("user", " - Please check your email to confirm your account");
+                    }
+                    $transaction->commit();
+                    echo yii\helpers\Json::encode(['status'=>'success','msg'=>'Thank you! Your account has been opened. Please check your email to verify this account!',"user"=>["id"=>$user->id,"username"=>$user->profile->full_name,"email"=>$user->email]]);
+
+                    //echo Json::encode(array('status' => 1,'title'=>'SUCCESS', 'message' => 'Thank you for registration!'));
+                    Yii::$app->end();
+                }catch (yii\base\Exception $e){
+                    $transaction->rollBack();
+                    throw $e;
                 }
 
-                echo yii\helpers\Json::encode(['status'=>'success','msg'=>'Thank you! Your account has been opened. Please check your email to verify this account!',"user"=>["id"=>$user->id,"username"=>$user->profile->full_name,"email"=>$user->email]]);
-
-                //echo Json::encode(array('status' => 1,'title'=>'SUCCESS', 'message' => 'Thank you for registration!'));
-                Yii::$app->end();
             }else{
                 // ERROR : validation
                 //Well, it means model validation failed!
