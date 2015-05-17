@@ -619,7 +619,7 @@ JuiAsset::register($this);
                 success: function(data) {
                     var src;
                     if (data) {
-                        console.log(data);
+
                         if (data[0]) {
                             if (data[0].galleryImages[0]) {
                                 if (data[0].galleryImages[0].src) {
@@ -646,7 +646,12 @@ JuiAsset::register($this);
             });
             //console.log(img_src);
             //console.log(img(id));
-            return img_src;
+            if (img_src){
+                return img_src;
+            }else{
+                console.log('img_src not defined for: ');
+                console.log(data);
+            }
         }
         var highlight;
         var displayFeatureInfo = function(pixel) {
