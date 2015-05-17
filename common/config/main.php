@@ -49,10 +49,10 @@ return [
         ],
         'assetManager' => [
             //'linkAssets' => true, //disabled because not working in windows
-            'linkAssets' => true,
+            //'linkAssets' => true,
             // Overriding with Custom jqueryui
             'bundles' => [
-                'yii\jui\JuiAsset' => [
+                /*'yii\jui\JuiAsset' => [
                     'sourcePath' => '@common/asset-files/jqueryui/1/11/2/custom',
                     'css' => [
                         'jquery-ui.css',
@@ -60,7 +60,7 @@ return [
                     'js'=>[
                         'jquery-ui.js',
                     ],
-                ],
+                ],*/
                /* 'kartik\select2\Select2Asset'=>[
                     'sourcePath'=>'@common/asset-files/select2',
                     'css' => [
