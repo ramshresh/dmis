@@ -53,7 +53,7 @@ JuiAsset::register($this);
 <div id="navbar" class="col-lg-12 col-md-12 col-sm-12 row">
     <div class="col-md-4">
         <ul class="nav nav-tabs bordered"><!-- available classes "bordered", "right-aligned" -->
-            <li class="active">
+            <!--<li class="active">
                 <a href="#quicksearch" data-toggle="tab">
                     <button type="button" class="btn btn-info"><i style="font-size: 22px;color:royalblue" class="icon-search"></i></button>
                 </a>
@@ -73,10 +73,10 @@ JuiAsset::register($this);
                     <button type="button" class="btn btn-info"><i style="font-size: 22px;color:orange" class="icon-resource"></i></button>
 
                 </a>
-            </li>
+            </li>-->
         </ul>
 
-        <div class="tab-content col-md-9" style="border:1px solid #ebebeb;">
+        <!--<div class="tab-content col-md-9" style="border:1px solid #ebebeb;">
             <div class="tab-pane active" id="quicksearch">
                 <form role="form" class="form-horizontal form-groups-bordered">
                     <div class="form-group" style="margin-top:10px;margin-bottom:0 !important;">
@@ -331,25 +331,24 @@ JuiAsset::register($this);
 
                 <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
             </div>
-        </div>
+        </div>-->
 
 
     </div>
 
 
-    <div class="col-lg-5 col-md-12 col-sm-12">
+   <!-- <div class="col-lg-5 col-md-12 col-sm-12">
         <div class="input-group">
             <input type="text" class="form-control search" placeholder="Enter Location Here">
 				<span class="input-group-btn search_btn">
 					<button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="fa fa-search"></i></button>
 				</span>
         </div>
-    </div>
+    </div>-->
 
-    <div class="col-lg-3 col-md-3 col-sm-12 toolbar-menu">
+    <!--<div class="col-lg-3 col-md-3 col-sm-12 toolbar-menu">
         <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Graph" data-original-title="Graph"><i style="font-size: 22px;color:#E47124;" class="icon-earthquake"></i></button>
-
-    </div>
+    </div>-->
 
 </div>
 <!---------------------- Main Content Search Starts -------------------------->
