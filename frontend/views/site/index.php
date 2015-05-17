@@ -13,12 +13,12 @@ use common\assets\Ol3LayerSwitcherAsset;
 use common\assets\Ol3PopupAsset;
 use yii\jui\JuiAsset;
 
-//Ol3Asset::register($this);
-//Ol3LayerSwitcherAsset::register($this);
-//Ol3PopupAsset::register($this);
-//IconsReportingAsset::register($this);
-//rmrevin\yii\fontawesome\AssetBundle::register($this);
-//JuiAsset::register($this);
+Ol3Asset::register($this);
+Ol3LayerSwitcherAsset::register($this);
+Ol3PopupAsset::register($this);
+IconsReportingAsset::register($this);
+rmrevin\yii\fontawesome\AssetBundle::register($this);
+JuiAsset::register($this);
 ?>
 <style>
     .ol-popup-closer:after {
