@@ -14,9 +14,9 @@ class Ol3Asset extends AssetBundle
 {
     public $sourcePath = '@common/asset-files/openlayers/ol3';
     public $css = [
-        'ol.css',
+        'ol.min.css',
     ];
     public $js = [
-        'ol-debug.js',
+        'ol.min.js',
     ];
 }
