@@ -49,12 +49,13 @@ if (Yii::$app->controller->action->id === 'login' ) {
         ) ?>
 
         <div class="wrapper row-offcanvas row-offcanvas-left">
-            <?= $this->render(
-                'left.php',
-                [
-                    'directoryAdminLteAsset' => $directoryAdminLteAsset,
-                ]
-            )
+            <?php
+                /*echo $this->render(
+                    'left.php',
+                    [
+                        'directoryAdminLteAsset' => $directoryAdminLteAsset,
+                    ]
+                     );*/
             ?>
             <?= $this->render(
                 'content.php',
@@ -62,9 +63,6 @@ if (Yii::$app->controller->action->id === 'login' ) {
             ) ?>
         </div>
     </div>
-
-
-
 
     <?php $this->endBody() ?>
     </body>
