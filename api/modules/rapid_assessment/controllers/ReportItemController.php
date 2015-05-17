@@ -437,4 +437,22 @@ SQL;
         return $gallery;
     }
 
+    public function actionImpacts(){
+        $q = \Yii::$app->request->queryParams;
+        if(!isset($q['ids'])){
+            throw new Exception('parameter id is required');
+        }
+
+        $model = new $this->modelClass;
+        $query=$model::find();
+
+
+        $ids = Json::decode($q['ids']);
+        foreach($ids as $id){
+            $query->orFilterWhere(['=', 'id', $id]);
+        }
+
+        return $query->createCommand()->rawSql;
+    }
+
 }
