@@ -473,7 +473,7 @@ SQL;
                                 'needed'=>'sum(magnitude)',
                                 'supplied'=>'sum(supplied_per_person)'
                             ]);
-                            $queryChildren->groupBy(['item_name']);
+                            $queryChildren->groupBy(['item_name','type']);
                             break;
                         case 'impact':
                             $queryChildren->addSelect([
@@ -481,7 +481,7 @@ SQL;
                                 'type',
                                 'count'=>'sum(magnitude)',
                             ]);
-                            $queryChildren->groupBy(['item_name']);
+                            $queryChildren->groupBy(['item_name','type']);
                             break;
                     }
                     $queryChildren->orFilterWhere(['=', 'type', $cType]);
