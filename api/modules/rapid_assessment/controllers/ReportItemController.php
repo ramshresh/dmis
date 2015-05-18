@@ -524,6 +524,7 @@ SQL;
         if(!isset($q['ids'])){
             throw new Exception('parameter id is required');
         }
+
         $ids = Json::decode($q['ids']);
 
         $count=0;
