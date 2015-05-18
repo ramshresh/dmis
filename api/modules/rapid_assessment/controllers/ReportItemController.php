@@ -465,7 +465,23 @@ SQL;
             $queryChildren=$model->getChildren();
             if(is_array($children_types)){
                 foreach($children_types as $cType){
-                    $queryChildren->addSelect(['id','type','item_name','class_basis','class_name','description','magnitude']);
+                    switch($cType){
+                        case 'need':
+                            $queryChildren->addSelect([
+                                'item_name',
+                                'needed'=>'sum(magnitude)',
+                                'supplied'=>'sum(supplied_per_person)'
+                            ]);
+                            $queryChildren->groupBy(['item_name']);
+                            break;
+                        case 'impact':
+                            $queryChildren->addSelect([
+                                'item_name',
+                                'count'=>'sum(magnitude)',
+                            ]);
+                            $queryChildren->groupBy(['item_name']);
+                            break;
+                    }
                     $queryChildren->orFilterWhere(['=', 'type', $cType]);
                 }
             }
