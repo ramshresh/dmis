@@ -444,17 +444,31 @@ SQL;
         if(!isset($q['ids'])){
             throw new Exception('parameter id is required');
         }
+        if(!isset($q['children_types'])){
+            throw new Exception('parameter children_types is required');
+        }
+
+        $ids = Json::decode($q['ids']);
+        $children_types = Json::decode($q['children_types']);
+
         $model = new $this->modelClass;
         $query=$model::find();
 
-        $ids = Json::decode($q['ids']);
 
         foreach($ids as $id){
             $query->orFilterWhere(['=', 'id', $id]);
         }
         $models=$query->all();
 
-        return $models;
+        $allChildren=[];
+        foreach($models as $model){
+            $queryChildren=$model->getChildren();
+            if(!strtolower($children_types)=='all'){
+                $queryChildren->orFilterWhere(['=', 'type', $children_types]);
+            }
+            array_push($allChildren,$queryChildren->all());
+        }
+        return $allChildren;
     }
 
 }
