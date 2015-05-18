@@ -468,18 +468,18 @@ SQL;
                     switch($cType){
                         case 'need':
                             $queryChildren->addSelect([
-                                'id',
                                 'item_name',
                                 'needed'=>'sum(magnitude)',
                                 'supplied'=>'sum(supplied_per_person)'
                             ]);
+                            $queryChildren->groupBy(['item_name']);
                             break;
                         case 'impact':
                             $queryChildren->addSelect([
-                                'id',
                                 'item_name',
                                 'count'=>'sum(magnitude)',
                             ]);
+                            $queryChildren->groupBy(['item_name']);
                             break;
                     }
                     $queryChildren->orFilterWhere(['=', 'type', $cType]);
