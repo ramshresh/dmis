@@ -463,8 +463,10 @@ SQL;
         $allChildren=[];
         foreach($models as $model){
             $queryChildren=$model->getChildren();
-            if(!strtolower($children_types)=='all'){
-                $queryChildren->orFilterWhere(['=', 'type', $children_types]);
+            if(is_array($children_types)){
+                foreach($children_types as $cType){
+                    $queryChildren->orFilterWhere(['=', 'type', $cType]);
+                }
             }
             array_push($allChildren,$queryChildren->all());
         }
