@@ -639,7 +639,7 @@ SQL;
 
         $sql1 = <<<SQL
 
-SELECT 'item_name' AS attribute, in_nd.item_name AS attribute_value ,sum(in_nd.magnitude) as count FROM (SELECT
+SELECT 'item_name' AS attribute, in_nd.item_name AS attribute_value ,sum(in_nd.magnitude) as count,sum(in_nd.supplied_per_person) as supplied_per_person FROM (SELECT
 	ri.id AS report_item_id,
 	ri.event_name AS report_item_event_name,
 	ri.event AS report_item_event,
@@ -668,6 +668,7 @@ SELECT 'item_name' AS attribute, in_nd.item_name AS attribute_value ,sum(in_nd.m
 	nd.class_basis,
 	nd.class_name,
 	nd.magnitude,
+	nd.supplied_per_person,
 	nd.title,
 	nd.description,
 	nd.is_verified,
