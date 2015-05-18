@@ -43,7 +43,7 @@ $avatar = (Yii::$app->user->isGuest)?Yii::$aliases['@web']."/img/user-avatar-pla
                     '<li class="header">Menu</li>',
                     [
                         'label' => '<span class="fa fa-dashboard text-green"></span> Dashboard',
-                        'url' => ['/user'],
+                        'url' => ['/user/admin'],
                     ],
                     [
                         'label' => '<span class="fa fa-users text-aqua"></span> Users',
