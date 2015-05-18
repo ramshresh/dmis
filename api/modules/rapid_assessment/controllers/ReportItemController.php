@@ -465,7 +465,7 @@ SQL;
             $queryChildren=$model->getChildren();
             if(is_array($children_types)){
                 foreach($children_types as $cType){
-                    $queryChildren->orFilterWhere(['=', 'type', $cType])->indexBy('parent');
+                    $queryChildren->orFilterWhere(['=', 'type', $cType]);
                 }
             }
             array_push($allChildren,$queryChildren->all());
