@@ -545,7 +545,7 @@ SQL;
 
         $sql1 = <<<SQL
 
-SELECT in_im.item_name,sum(in_im.magnitude) as count FROM (SELECT
+SELECT 'item_name' AS attribute, in_im.item_name AS attribute_value ,sum(in_im.magnitude) as count FROM (SELECT
 	ri.id AS report_item_id,
 	ri.event_name AS report_item_event_name,
 	ri.event AS report_item_event,
