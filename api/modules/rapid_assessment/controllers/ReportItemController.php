@@ -438,20 +438,23 @@ SQL;
     }
 
     public function actionChildren(){
+        /* @var $query \yii\db\ActiveQuery */
+        /* @var $model \common\modules\rapid_assessment\models\ReportItem */
         $q = \Yii::$app->request->queryParams;
         if(!isset($q['ids'])){
             throw new Exception('parameter id is required');
         }
-
         $model = new $this->modelClass;
         $query=$model::find();
 
-
         $ids = Json::decode($q['ids']);
+
         foreach($ids as $id){
             $query->orFilterWhere(['=', 'id', $id]);
         }
-        return $query->createCommand()->rawSql;
+        $models=$query->all();
+
+        return $models;
     }
 
 }
