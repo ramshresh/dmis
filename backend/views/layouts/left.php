@@ -50,12 +50,12 @@ $avatar = (Yii::$app->user->isGuest)?Yii::$aliases['@web']."/img/user-avatar-pla
                         'url' => ['/user'],
                     ],
                     [
-                        'label' => '<span class="fa fa-sign-in text-blue"></span> Sing in', //for basic
+                        'label' => '<span class="fa fa-sign-in text-blue"></span> Sign in', //for basic
                         'url' => ['/site/login'],
                         'visible' =>Yii::$app->user->isGuest
                     ],
                     [
-                        'label' => '<span class="fa fa-sign-out text-red"></span> Sing out', //for basic
+                        'label' => '<span class="fa fa-sign-out text-red"></span> Sign out', //for basic
                         'url' => ['/site/logout'],
                         'visible' =>!Yii::$app->user->isGuest
                     ],
