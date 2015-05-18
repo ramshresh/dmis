@@ -12,6 +12,7 @@ namespace api\modules\rapid_assessment\controllers;
 use common\modules\rapid_assessment\models\ItemClass;
 use common\modules\rapid_assessment\models\ItemType;
 use common\modules\rapid_assessment\models\ReportItem;
+use common\modules\rapid_assessment\models\ReportItemChild;
 use common\modules\vdc\models\NepalVdc;
 use yii\base\Exception;
 use yii\data\ActiveDataProvider;
@@ -440,10 +441,13 @@ SQL;
     public function actionChildren(){
         /* @var $query \yii\db\ActiveQuery */
         /* @var $model \common\modules\rapid_assessment\models\ReportItem */
+
         $q = \Yii::$app->request->queryParams;
+
         if(!isset($q['ids'])){
             throw new Exception('parameter id is required');
         }
+
         if(!isset($q['children_types'])){
             throw new Exception('parameter children_types is required');
         }
@@ -451,9 +455,43 @@ SQL;
         $ids = Json::decode($q['ids']);
         $children_types = Json::decode($q['children_types']);
 
-        $model = new $this->modelClass;
-        $query=$model::find();
 
+        $parentModel = new $this->modelClass;
+        $parentQuery = new Query();
+        $parentQuery->addSelect(['id']);
+        $parentQuery->from([$parentModel::tableName()]);
+        foreach($ids as $id){
+            $parentQuery->orFilterWhere(['=', 'id', $id]);
+        }
+
+        $linkModel = new ReportItemChild();
+        $linkQuery = new Query();
+        $linkQuery->select('parent_id','child_id');
+        $linkQuery->from([$linkModel::tableName()]);
+
+
+        $childModel = new $this->modelClass;
+        $childQuery = new Query();
+        $childQuery->addSelect(['cid'=>'id']);
+        $childQuery->from([$childModel::tableName()]);
+        if(is_array($children_types)){
+            foreach($children_types as $cType){
+                $childQuery->orFilterWhere(['=', 'type', $cType]);
+            }
+        }
+
+        $parentQuery->leftJoin($linkModel::tableName(),['parent_id' => $id]);
+
+            //['link' => $linkQuery], ['link.parent_id'=>'id']);
+
+
+
+
+        return $parentQuery->all();
+
+        //////////////////////////////////
+        /*$model = new $this->modelClass;
+        $query=$model::find();
 
         foreach($ids as $id){
             $query->orFilterWhere(['=', 'id', $id]);
@@ -463,14 +501,110 @@ SQL;
         $allChildren=[];
         foreach($models as $model){
             $queryChildren=$model->getChildren();
+
+            $queryChildren->addSelect(['type','count'=>'sum(magnitude)']);
+            $queryChildren->groupBy('type');
+
             if(is_array($children_types)){
                 foreach($children_types as $cType){
                     $queryChildren->orFilterWhere(['=', 'type', $cType]);
                 }
             }
             array_push($allChildren,$queryChildren->all());
-        }
-        return $allChildren;
+        }*/
+        //return $allChildren;
     }
 
+    public function actionImpactSummary(){
+        /* @var $query \yii\db\ActiveQuery */
+        /* @var $model \common\modules\rapid_assessment\models\ReportItem */
+
+        $q = \Yii::$app->request->queryParams;
+
+        if(!isset($q['ids'])){
+            throw new Exception('parameter id is required');
+        }
+        $ids = Json::decode($q['ids']);
+
+        $count=0;
+        $inQuery='';
+        foreach($ids as $id){
+            $count +=1;
+            if($count <= 1){
+                $inQuery=' IN ('.(integer)$id;
+            }else{
+                $inQuery .=', '.(integer)$id;
+            }
+
+            if($count == sizeof($ids)){
+                $inQuery .=') ';
+            }
+        }
+
+
+        $sql1 = <<<SQL
+
+SELECT in_im.report_item_id,in_im.item_name,sum(in_im.magnitude) as count FROM (SELECT
+	ri.id AS report_item_id,
+	ri.event_name AS report_item_event_name,
+	ri.event AS report_item_event,
+	ri.type AS report_item_type,
+	ri.item_name as report_item_item_name,
+	ri.class_basis as  report_item_class_basis,
+	ri.class_name as  report_item_class_name,
+	ri.magnitude as report_item_count,
+	ri.title as report_item_title,
+	ri.description as report_item_description,
+	ri.is_verified as report_item_is_verified,
+	ri.status as report_item_status,
+	ri.tags as report_item_tags,
+	ri.latitude as report_item_latitude,
+	ri.longitude as report_item_longitude,
+	ri.address as report_item_address,
+	ri.owner_name as report_item_owner_name,
+	ri.owner_contact as report_item_owner_contact,
+	ri.income_source as owner_income_source,
+	ri.income_level as owner_income_level,
+	ri.user_id as report_item_user_id,
+
+	im.id,
+	im.type,
+	im.item_name,
+	im.class_basis,
+	im.class_name,
+	im.magnitude,
+	im.title,
+	im.description,
+	im.is_verified,
+	im.status,
+	im.tags,
+	im.longitude,
+	im.latitude,
+	im.user_id
+FROM
+	"rapid_assessment".report_item as ri
+	JOIN
+		"rapid_assessment".report_item_child as ri_ch
+	ON
+		ri_ch.parent_id = ri.id
+	JOIN
+		"rapid_assessment".report_item as im
+	ON
+		im.id = ri_ch.child_id
+		AND
+		im.type = 'impact'
+
+WHERE ri.id
+SQL;
+
+ $sql2 =<<<SQL
+    ) AS in_im
+GROUP BY in_im.report_item_id,in_im.item_name
+
+SQL;
+
+        $sql = $sql1.$inQuery.$sql2;
+        $result  = \Yii::$app->db->createCommand($sql)->queryAll();
+        return $result;
+    }
 }
