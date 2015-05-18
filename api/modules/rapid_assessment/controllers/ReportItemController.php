@@ -482,7 +482,7 @@ SQL;
                             $queryChildren->groupBy(['item_name']);
                             break;
                     }
-                    $queryChildren->orFilterWhere(['=', 'type', $cType]);
+                    //$queryChildren->orFilterWhere(['=', 'type', $cType]);
                 }
             }
             array_push($allChildren,$queryChildren->all());
