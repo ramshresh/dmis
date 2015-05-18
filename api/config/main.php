@@ -152,6 +152,7 @@ return [
                         'GET time-line/<type:\w+>' => 'time-line',
                         'GET children' => 'children',
                         'GET impact-summary' => 'impact-summary',
+                        'GET need-summary' => 'need-summary',
                         'GET with-query' => 'with-query',
                         'GET spatial-query' => 'spatial-query',
                         'GET get-drop-down-item-names' => 'get-drop-down-item-names',
