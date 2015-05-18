@@ -545,7 +545,7 @@ SQL;
 
         $sql1 = <<<SQL
 
-SELECT in_im.report_item_id,in_im.item_name,sum(in_im.magnitude) as count FROM (SELECT
+SELECT in_im.item_name,sum(in_im.magnitude) as count FROM (SELECT
 	ri.id AS report_item_id,
 	ri.event_name AS report_item_event_name,
 	ri.event AS report_item_event,
@@ -600,7 +600,7 @@ SQL;
 
  $sql2 =<<<SQL
     ) AS in_im
-GROUP BY in_im.report_item_id,in_im.item_name
+GROUP BY in_im.item_name
 
 SQL;
 
