@@ -94,19 +94,23 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
      */
     public static function instantiate($row)
     {
-        switch ($row['type']) {
-            case self::TYPE_EMERGENCY_SITUATION:
-                return new ReportItemEmergencySituation();
-            case self::TYPE_EVENT:
-                return new ReportItemEvent();
-            case self::TYPE_INCIDENT:
-                return new ReportItemIncident();
-            case self::TYPE_IMPACT:
-                return new ReportItemImpact();
-            case self::TYPE_NEED:
-                return new ReportItemNeed();
-            default:
-                return new self;
+        if(isset($row['type'])){
+            switch ($row['type']) {
+                case self::TYPE_EMERGENCY_SITUATION:
+                    return new ReportItemEmergencySituation();
+                case self::TYPE_EVENT:
+                    return new ReportItemEvent();
+                case self::TYPE_INCIDENT:
+                    return new ReportItemIncident();
+                case self::TYPE_IMPACT:
+                    return new ReportItemImpact();
+                case self::TYPE_NEED:
+                    return new ReportItemNeed();
+                default:
+                    return new self;
+            }
+        }else{
+            return new self;
         }
     }
     /**
