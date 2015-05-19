@@ -489,9 +489,8 @@ JuiAsset::register($this);
         //overlayGroup.getLayers().push(nepal_vdc);
 
         var view = new ol.View({
-
             center: ol.proj.transform([87.2345, 29.3535], 'EPSG:4326', 'EPSG:3857'),
-            zoom: 12
+            zoom: 8
         });
         var osm = new ol.layer.Tile({
             title: 'OSM',
