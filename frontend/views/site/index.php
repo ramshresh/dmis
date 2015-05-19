@@ -491,7 +491,7 @@ JuiAsset::register($this);
         var view = new ol.View({
 
             center: ol.proj.transform([87.2345, 29.3535], 'EPSG:4326', 'EPSG:3857'),
-            zoom: 2
+            zoom: 4
         });
         var osm = new ol.layer.Tile({
             title: 'OSM',
