@@ -36,14 +36,12 @@ JuiAsset::register($this);
         bottom: 12px;
         left: -50px;
         height: auto;
-        width: 250px;
+        width: 400px;
+        max-height: 300px;
+        max-width: 400px;
 
     }
     .ol-popup-content {
-        width: 250px;
-        height: auto;
-        max-height: 300px;
-        max-width: 230px;
         overflow-y:auto;
     }
     .ol-popup:before {
@@ -387,7 +385,8 @@ JuiAsset::register($this);
         var vectorSource = new ol.source.ServerVector({
             format: new ol.format.GeoJSON({}),
             loader: function(extent, resolution, projection) {
-                var url = 'http://118.91.160.230:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
+               // var url = 'http://118.91.160.230:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
+                var url = 'http://118.91.160.230:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item_incident&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
                 $.ajax({
                     url: url,
                     type: 'GET',
@@ -609,18 +608,22 @@ JuiAsset::register($this);
 
         var popup = new ol.Overlay.Popup();
         map.addOverlay(popup);
-        var image = function(id) {
+
+        var popupSetImage = function(id,imgContainer) {
             $.ajax({
                 url: 'http://118.91.160.230/girc/dmis/api/rapid_assessment/report-items',
+                //url: 'http://118.91.160.230/girc/dmis/api/rapid_assessment/report-items/'+id+'/galleries',
                 data: {
-                    expand: 'galleryImages',
+                    expand: 'galleryImages,children',
                     id: id
                 },
+                cache: true,
                 success: function(data) {
                     var src;
                     if (data) {
-
                         if (data[0]) {
+
+                            // gallery images
                             if (data[0].galleryImages[0]) {
                                 if (data[0].galleryImages[0].src) {
                                     src = data[0].galleryImages[0].src;
@@ -629,30 +632,115 @@ JuiAsset::register($this);
                                     console.log("src");
                                 }
                             }
+
+                            // needs
+                            if (data[0].children[0]) {
+                                children=data[0].children;
+
+                                console.log('children');
+                                console.log(data[0].children);
+                                console.log('children');
+                            }
                         }
+
+                        if (src) {
+                            img_src = '<img src="http://118.91.160.230' + src + '" alt="" style="height:auto;width:200px;">';
+
+                            // console.log(img_src);
+                        } else {
+                            img_src = '';
+                        }
+                        //  popup.show(evt.coordinate, popupContent);
+
+                        $(imgContainer).append(img_src);
+
                     } else {
                         console.log('no photo');
                     }
-
-                    if (src) {
-                        img_src = '<img src="http://118.91.160.230' + src + '" alt="" style="height:auto;width:200px;">';
-                        // console.log(img_src);
-                    } else {
-                        img_src = '';
-                    }
-                    //  popup.show(evt.coordinate, popupContent);
-
                 }
             });
             //console.log(img_src);
             //console.log(img(id));
-            if (img_src){
+            /*if (img_src){
                 return img_src;
             }else{
                 console.log('img_src not defined for: ');
                 console.log(data);
-            }
+            }*/
         }
+
+        /**
+         * @pamam ids array of report_item id eg. [213,876]
+         * @pamam impactsContainer string of selector eg. '#popup-ri-impacts'
+         */
+        var popupSetImpactDetails = function(ids,impactsContainer){
+            $.ajax({
+                url:'http://118.91.160.230/girc/dmis/api/rapid_assessment/report-items/impact-summary',
+                // url:'http://localhost/girc/dmis/api/rapid_assessment/report-items/impact-summary',
+                data:{
+                    ids:JSON.stringify(ids)
+                },
+                success:function(data){
+                    console.log('impact summary');
+                    console.log(data);
+                    console.log('impact summary');
+
+                    if(data.length>0){
+                        var popupImpactsContent = '<strong class="text-blue">Impacts</strong><table class="table table-bordered table-striped table-condensed">';
+                        popupImpactsContent += '<thead class="text-light-blue"><td class="text-light-blue">Item</td><td class="text-light-blue">Count</td></thead>';
+                        $.each(data, function(index, item) {
+                            popupImpactsContent += '<tr><td >' + item.attribute_value + '</td><td>' + item.count + '</td></tr>';
+                        });
+                        popupImpactsContent +='</table>';
+                        $(impactsContainer).append(popupImpactsContent);
+                    }
+
+                },
+                error:function(){
+                    console.log('impact summary');
+                    console.log('error');
+                    console.log('impact summary');
+                }
+            });
+        }
+
+        /**
+         * @pamam ids array of report_item id eg. [213,876]
+         * @pamam needsContainer string of selector eg. '#popup-ri-needs'
+         */
+        var popupSetNeedDetails = function(ids,needsContainer){
+            $.ajax({
+                url:'http://118.91.160.230/girc/dmis/api/rapid_assessment/report-items/need-summary',
+                // url:'http://localhost/girc/dmis/api/rapid_assessment/report-items/impact-summary',
+                data:{
+                    ids:JSON.stringify(ids)
+                },
+                success:function(data){
+                    console.log('need summary');
+                    console.log(data);
+                    console.log('need summary');
+
+
+
+                    if(data.length>0){
+                        var popupNeedsContent = '<strong class="text-blue">Needs</strong><table class="table table-bordered table-striped table-condensed">';
+                        popupNeedsContent += '<thead ><td class="text-light-blue">Item</td><td class="text-light-blue">Need<br><p class="text-muted">(in person)</p></td><td class="text-light-blue">Supplied<br><p class="text-muted">(in person)</p></td></thead>';
+                        $.each(data, function(index, item) {
+                            popupNeedsContent += '<tr><td>' + item.attribute_value + '</td><td>' + item.count + '</td><td>'+item.supplied_per_person+'</td></tr>';
+                        });
+                        popupNeedsContent +='</table>';
+                        $(needsContainer).append(popupNeedsContent);
+                    }
+
+                },
+                error:function(){
+                    console.log('need summary');
+                    console.log('error');
+                    console.log('need summary');
+                }
+            });
+        }
+
         var highlight;
         var displayFeatureInfo = function(pixel) {
 
@@ -669,80 +757,90 @@ JuiAsset::register($this);
                 coor_feature = feature.values_.geometry.flatCoordinates;
                 if (size == 1) {
                     console.log(feature);
-                    fid = feature.values_.features[0].id_;
-                    //id = fid.split('-')[1];
-                    id = fid.split('.')[1];
-                    // popup.show(coor_feature, '<h4>' + feature.values_.features[0].values_.item_name + '</h4><p>Human Casulty :</p> ' + feature.values_.features[0].values_.magnitude + image(id));
-                    popup.show(coor_feature, '<h4>' + feature.values_.features[0].values_.item_name + '<hr>' + image(id));
+
+                    var incident=feature.values_.features[0];
+
+                    id=(feature.values_.features[0].values_.id)?
+                        feature.values_.features[0].values_.id:
+                        feature.values_.features[0].id_.split('.')[1];
+
+                    var popup_content_incident = '<strong class="text-orange">Report Details</strong><hr><strong class="text-blue">Incident</strong><table class="table table-bordered table-striped table-condensed">';
+                    popup_content_incident += '<thead><td class="text-light-blue">Name</td><td class="text-light-blue">Type</td><td class="text-light-blue">Count</td></thead>';
+                    popup_content_incident += '<tr><td>' + incident.values_.item_name + '</td><td>'+incident.values_.class_name+'</td><td>'+incident.values_.magnitude+'</td></tr></table>';
+
+                    popup.show(coor_feature,'<div id="popup-ri-incident"></div><div id="popup-ri-img"></div><div id="popup-ri-impacts"></div><div id="popup-ri-needs"></div>' );
+
+                    $('#popup-ri-incident').append(popup_content_incident);
+                    popupSetImpactDetails([id],'#popup-ri-impacts');
+                    popupSetNeedDetails([id],'#popup-ri-needs');
+                    popupSetImage(id,'#popup-ri-img');
+
                     // popup.show(coor_feature, '<h4>' + feature.values_.features[0].values_.item_name);
                 } else {
-
-                    var text = '';
                     var items_array_incident = [];
-                    var items_array_need = [];
-                    var items_array_impact = [];
-                    var items_array_supplied = [];
-
-                    var mag_array_incident = [];
-                    var mag_array_need = [];
-                    var mag_array_impact = [];
-                    var mag_array_supplied = [];
-
-                    $.each(feature.values_.features, function(index, value) {
-                        if (value.values_.type == "incident") {
-                            items_array_incident.push(value.values_.class_name);
-                        } else if (value.values_.type == "impact") {
-                            items_array_impact.push(value.values_.item_name);
-                            mag_array_impact.push(value.values_.magnitude);
+                    var ids=[];
+                    $.each(feature.values_.features, function(index, item) {
+                        if (item.values_.type == "incident") {
+                            items_array_incident.push(item.values_.class_name);
                         } else {
-                            items_array_need.push(value.values_.item_name);
-                            mag_array_need.push(value.values_.magnitude);
+                            console.log('selected layer is not incident');
+                        }
+
+                        id=(item.values_.id)?
+                            item.values_.id:
+                            item.id_.split('.')[1];
+                        if(id){
+                            ids.push(id);
                         }
                     });
 
-
-
-                    var mapping_impact = {};
-                    var mapping_need = {};
+                    console.log(ids);
 
                     var incidents = unique_count(items_array_incident);
                     var incident_unique = incidents[0];
                     var incident_counts = incidents[1];
 
-                    var popup_content_incident = '<strong>Report Details</strong><hr><strong>Incident</strong><table class="table">';
+
+                    var popup_content_incidents = '<strong class="text-orange">Report Details</strong><hr><strong class="text-blue">Incidents</strong><table class="table table-striped table-bordered table-condensed">';
+                    popup_content_incidents += '<thead><td class="text-light-blue">Name</td><td class="text-light-blue">Type</td><td class="text-light-blue">Count</td></thead>';
                     for (i = 0; i < incidents.length + 1; i++) {
                         if( typeof incident_unique[i]==="undefined"){
 
                         }
                         else{
-                            popup_content_incident += '<tr><td>' + incident_counts[i] + '</td><td>house(s)</td><td>' + incident_unique[i] + '</td></tr>';
+                            popup_content_incidents += '<tr><td>' + 'house(s)' + '</td><td>'+incident_unique[i]+'</td><td>' + incident_counts[i]  + '</td></tr>';
                         }
                     }
 
-                    //impact
-                    for (var i = 0, count = items_array_impact.length; i < count; i++) {
-                        mapping_impact[items_array_impact[i]] = (mapping_impact[items_array_impact[i]] || 0) + mag_array_impact[i];
-                    }
-                    var popup_content_impact = '</table><hr><strong>Impact</strong><table class="table">';
+                    //@todo implement tabbedContent for popup
+                    tabbedContent =
+                        '<!-- Custom Tabs -->' +
+                        '<div class="nav-tabs-custom">' +
+                            '<ul class="nav nav-tabs">' +
+                                '<li class="pull-left"><p class="text-green">Reports</p></li>' +
+                                '<li class="pull-right"><a href="#popup-nav-ri-photo" data-toggle="tab">Photo</a></li>' +
+                                '<li class="pull-right"><a href="#popup-nav-ri-details" data-toggle="tab">Details</a></li>' +
+                                '<li class="active pull-right"><a href="#popup-nav-ri-incident" data-toggle="tab">Incident</a></li>' +
+                            '</ul>' +
+                            '<div class="tab-content">' +
+                                '<div class="tab-pane active" id="popup-nav-ri-incident">' +
+                                    '<blockquote>Incident</blockquote>' +
+                                '</div><!-- /.tab-pane -->' +
+                                '<div class="tab-pane" id="popup-nav-ri-details">' +
+                                    '<blockquote>Details</blockquote>' +
+                                '</div><!-- /.tab-pane -->' +
+                                '<div class="tab-pane" id="popup-nav-ri-photo">' +
+                                    '<blockquote>Photos</blockquote>' +
+                                '</div><!-- /.tab-pane -->' +
+                            '</div><!-- /.tab-content -->' +
+                        '</div><!-- nav-tabs-custom -->';
 
-                    for (var item in mapping_impact) {
-                        popup_content_impact += '<tr><td>' + item + '</td><td>:' + mapping_impact[item] + '</td></tr>';
-                        //count_items_people = item + ': ' + mapping[item];
-                    }
+                    popup.show(coor_feature,'<div id="popup-ri-incidents"></div><div id="popup-ri-impacts"></div><div id="popup-ri-needs"></div>' );
 
-                    //need
-                    for (var i = 0, count = items_array_need.length; i < count; i++) {
-                        mapping_need[items_array_need[i]] = (mapping_need[items_array_need[i]] || 0) + mag_array_need[i];
-                    }
-                    var popup_content_need = '</table><hr><strong>Need<strong><table class="table">';
 
-                    for (var item in mapping_need) {
-                        popup_content_need += '<tr><td>' + item + '</td><td>for ' + mapping_need[item] + ' people </td></tr>';
-                        //count_items_people = item + ': ' + mapping[item];
-                    }
-
-                    popup_content_need +='</table>';
-                    popup.show(coor_feature, popup_content_incident + popup_content_impact + popup_content_need);
+                    $('#popup-ri-incidents').append(popup_content_incidents);
+                    popupSetImpactDetails(ids,'#popup-ri-impacts');
+                    popupSetNeedDetails(ids,'#popup-ri-needs');
 
                 }
             } else {
