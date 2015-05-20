@@ -53,6 +53,7 @@ use yii\web\Linkable;
  * @property string $event_name
  * @property string $income_level
  * @property string $income_source
+ * @property string $no_of_occupants
  *
  * @property ReportItemChild[] $reportItemChildren
  * @property ReportItemChild[] $reportItemChildrenParent
@@ -134,7 +135,7 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             [['income_level','income_source'],'string','max'=>100],
             [['is_verified'], 'boolean'],
             [['timestamp_occurance', 'timestamp_created_at', 'timestamp_updated_at', 'timestamp_declared_at'], 'safe'],
-            [['magnitude', 'latitude', 'longitude'], 'number'],
+            [['magnitude', 'latitude', 'longitude','no_of_occupants'], 'number'],
             [['owner_name','owner_contact',], 'string', 'max' => 100],
             [['type','item_name', 'class_basis', 'class_name', 'title', 'status', 'declared_by', 'units', 'address'], 'string', 'max' => 255],
         ];
@@ -177,6 +178,7 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             'event_name'=>'Event Name',
             'income_level'=>'Income Level',
             'income_source'=>'Income Source',
+            'no_of_occupants'=>'Number of Occupants',
         ];
     }
 
@@ -186,7 +188,7 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             //This scenario is to be used for Search Model by instance of <ReporItem> or any <class that inherits ReportItem>
 
             'search' => ['event_name','type','item_name', 'class_name','owner_name','owner_contact','income_level','income_source'],
-            'hc_timestamp'=>['event_name','owner_name','owner_contact','supplied_per_person','id','type','item_name','class_basis','class_name','title','description','is_verified','status','timestamp_occurance','timestamp_created_at','timestamp_updated_at','latitude','longitude','address','user_id','timestamp_declared_at','magnitude','units']
+            'hc_timestamp'=>['event_name','owner_name','owner_contact','no_of_occupants','supplied_per_person','id','type','item_name','class_basis','class_name','title','description','is_verified','status','timestamp_occurance','timestamp_created_at','timestamp_updated_at','latitude','longitude','address','user_id','timestamp_declared_at','magnitude','units']
         ];
         return ArrayHelper::merge(parent::scenarios(),$reportItemScenarios);
     }
