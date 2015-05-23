@@ -54,6 +54,10 @@ use yii\web\Linkable;
  * @property string $income_level
  * @property string $income_source
  * @property string $no_of_occupants
+ * @property string $current_condition
+ * @property string $construction_type
+ * @property string $occupancy_type
+ * @property string $current_income_status
  *
  * @property ReportItemChild[] $reportItemChildren
  * @property ReportItemChild[] $reportItemChildrenParent
@@ -131,7 +135,7 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             [['type','item_name'], 'required'],
             [['user_id','supplied_per_person'], 'integer'],
             [['description', 'tags', 'meta_hstore', 'meta_json', 'wkt', 'geom'], 'string'],
-            [['event_name'],'string','max'=>255],
+            [['event_name','current_condition','construction_type','occupancy_type','current_income_status'],'string','max'=>255],
             [['income_level','income_source'],'string','max'=>100],
             [['is_verified'], 'boolean'],
             [['timestamp_occurance', 'timestamp_created_at', 'timestamp_updated_at', 'timestamp_declared_at'], 'safe'],
@@ -179,6 +183,10 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             'income_level'=>'Income Level',
             'income_source'=>'Income Source',
             'no_of_occupants'=>'Number of Occupants',
+            'current_condition'=>'Current Living Condition',
+            'construction_type'=>'Construction Type',
+            'occupancy_type'=>'Occupancy Type',
+            'current_income_status'=>'Current Income Status',
         ];
     }
 
@@ -188,7 +196,7 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             //This scenario is to be used for Search Model by instance of <ReporItem> or any <class that inherits ReportItem>
 
             'search' => ['event_name','type','item_name', 'class_name','owner_name','owner_contact','income_level','income_source'],
-            'hc_timestamp'=>['event_name','owner_name','owner_contact','no_of_occupants','supplied_per_person','id','type','item_name','class_basis','class_name','title','description','is_verified','status','timestamp_occurance','timestamp_created_at','timestamp_updated_at','latitude','longitude','address','user_id','timestamp_declared_at','magnitude','units']
+            'hc_timestamp'=>['current_condition','construction_type','occupancy_type','current_income_status','event_name','owner_name','owner_contact','no_of_occupants','supplied_per_person','id','type','item_name','class_basis','class_name','title','description','is_verified','status','timestamp_occurance','timestamp_created_at','timestamp_updated_at','latitude','longitude','address','user_id','timestamp_declared_at','magnitude','units']
         ];
         return ArrayHelper::merge(parent::scenarios(),$reportItemScenarios);
     }
