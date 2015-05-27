@@ -8,7 +8,7 @@ class m150511_110847_create_view_rapidassessment_need_report extends Migration
     public function safeUp()
     {
         $sql=<<<SQL
-CREATE VIEW "rapid_assessment".need AS SELECT  *  FROM (WITH need AS (
+CREATE VIEW "rapid_assessment".incident_need AS SELECT  *  FROM (WITH need AS (
 SELECT
 n.id as need_report_id,
 n.type   AS need_type,
@@ -49,7 +49,7 @@ SQL;
     public function safeDown()
     {
         $sql=<<<SQL
-DROP VIEW "rapid_assessment".need CASCADE
+DROP VIEW "rapid_assessment".incident_need CASCADE
 SQL;
 Yii::$app->db->createCommand($sql)->execute();
 
