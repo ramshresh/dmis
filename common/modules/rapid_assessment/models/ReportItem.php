@@ -151,7 +151,7 @@ class ReportItem extends \yii\db\ActiveRecord
             'meta_json' => Yii::t('app', 'Meta Json'),
             'declared_by' => Yii::t('app', 'Declared By'),
             'timestamp_declared_at' => Yii::t('app', 'Timestamp Declared At'),
-            'magnitude' => Yii::t('app', 'Magnitude'),
+            'magnitude' => Yii::t('app', 'Count'),
             'units' => Yii::t('app', 'Units'),
             'wkt' => Yii::t('app', 'Wkt'),
             'geom' => Yii::t('app', 'Geom'),
