@@ -2,7 +2,6 @@
 
 namespace common\modules\rapid_assessment\models;
 
-
 use common\modules\user\models\User;
 use Imagine\Image\Box;
 use Yii;
@@ -22,7 +21,7 @@ use yii\web\Linkable;
  * This is the model class for table "rapid_assessment.report_item".
  *
  * @property string $id
- * @property integer $type
+ * @property string $type
  * @property string $item_name
  * @property string $class_basis
  * @property string $class_name
@@ -32,7 +31,7 @@ use yii\web\Linkable;
  * @property string $status
  * @property string $timestamp_occurance
  * @property string $timestamp_created_at
- * @property string $timestamp_updatedat_at
+ * @property string $timestamp_updated_at
  * @property string $tags
  * @property string $meta_hstore
  * @property string $meta_json
@@ -48,37 +47,24 @@ use yii\web\Linkable;
  * @property string $user_id
  * @property string $owner_name
  * @property string $owner_contact
- * @property string $supplied_per_person
+ * @property integer $supplied_per_person
+ * @property string $event
  * @property string $event_name
- * @property string $event_name
- * @property string $income_level
+ * @property string $g
  * @property string $income_source
- * @property string $no_of_occupants
+ * @property string $income_level
+ * @property integer $no_of_occupants
  * @property string $current_condition
  * @property string $construction_type
  * @property string $occupancy_type
  * @property string $current_income_status
  *
- * @property ReportItemChild[] $reportItemChildren
- * @property ReportItemChild[] $reportItemChildrenParent
- * @property ReportItemRating[] $reportItemRatings
  * @property User $user
+ * @property ReportItemChild[] $reportItemChildren
  * @property ReportItemMultimedia[] $reportItemMultimedia
- * @property GalleryImages[] $galleryImages
- *
- * @property ReportItem[] $children
- * @property ReportParent $parent
+ * @property ReportItemRating[] $reportItemRatings
  */
-
-/**
- * Class ReportItem
- * @package common\modules\rapid_assessment\models
- * @todo 1: Rename the pivot table report_item_child to report_item_related.
- * Because, in later case declaring getters getReportItemChildren() and getReportItemParent() viaTable report_item_related becomes more intuitive
- * while, in former case declaring getReportItemChildren() viaTable report_item_child is only intuitive and the function getReportItemParents() sounds odd but yet can be implemented
- *
- */
-class ReportItem extends \yii\db\ActiveRecord implements Linkable
+class ReportItem extends \yii\db\ActiveRecord
 {
     const SRID=4326;
     const TYPE_EMERGENCY_SITUATION = ItemType::TYPE_EMERGENCY_SITUATION;
@@ -90,7 +76,14 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
     const SCENARIO_SEARCH = 'search';
     const SCENARION_HIGHCHARTS ='highcharts';
 
-    public $images;
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'rapid_assessment.report_item';
+    }
+
     /**
      * Single table inheritance
      * @github-reference https://github.com/samdark/yii2-cookbook/blob/master/book/ar-single-table-inheritance.md
@@ -118,13 +111,6 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             return new self;
         }
     }
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'rapid_assessment.report_item';
-    }
 
     /**
      * @inheritdoc
@@ -132,16 +118,14 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
     public function rules()
     {
         return [
-            [['type','item_name'], 'required'],
-            [['user_id','supplied_per_person'], 'integer'],
-            [['description', 'tags', 'meta_hstore', 'meta_json', 'wkt', 'geom'], 'string'],
-            [['event_name','current_condition','construction_type','occupancy_type','current_income_status'],'string','max'=>255],
-            [['income_level','income_source'],'string','max'=>100],
+            [['type', 'item_name'], 'required'],
+            [['description', 'tags', 'meta_hstore', 'meta_json', 'wkt', 'geom', 'g', 'current_condition', 'construction_type', 'occupancy_type', 'current_income_status'], 'string'],
             [['is_verified'], 'boolean'],
             [['timestamp_occurance', 'timestamp_created_at', 'timestamp_updated_at', 'timestamp_declared_at'], 'safe'],
-            [['magnitude', 'latitude', 'longitude','no_of_occupants'], 'number'],
-            [['owner_name','owner_contact',], 'string', 'max' => 100],
-            [['type','item_name', 'class_basis', 'class_name', 'title', 'status', 'declared_by', 'units', 'address'], 'string', 'max' => 255],
+            [['magnitude', 'latitude', 'longitude'], 'number'],
+            [['user_id', 'supplied_per_person', 'no_of_occupants'], 'integer'],
+            [['type', 'item_name', 'class_basis', 'class_name', 'title', 'status', 'declared_by', 'units', 'address', 'event_name'], 'string', 'max' => 255],
+            [['owner_name', 'owner_contact', 'event', 'income_source', 'income_level'], 'string', 'max' => 100]
         ];
     }
 
@@ -176,20 +160,21 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             'longitude' => Yii::t('app', 'Longitude'),
             'address' => Yii::t('app', 'Address'),
             'user_id' => Yii::t('app', 'User ID'),
-            'owner_name'=>'Owner Name',
-            'Owner_contact'=>'Owner Contact',
-            'supplied_per_person'=>'Supplied Per Person',
-            'event_name'=>'Event Name',
-            'income_level'=>'Income Level',
-            'income_source'=>'Income Source',
-            'no_of_occupants'=>'Number of Occupants',
-            'current_condition'=>'Current Living Condition',
-            'construction_type'=>'Construction Type',
-            'occupancy_type'=>'Occupancy Type',
-            'current_income_status'=>'Current Income Status',
+            'owner_name' => Yii::t('app', 'Owner Name'),
+            'owner_contact' => Yii::t('app', 'Owner Contact'),
+            'supplied_per_person' => Yii::t('app', 'Supplied Per Person'),
+            'event' => Yii::t('app', 'Event'),
+            'event_name' => Yii::t('app', 'Event Name'),
+            'g' => Yii::t('app', 'G'),
+            'income_source' => Yii::t('app', 'Income Source'),
+            'income_level' => Yii::t('app', 'Income Level'),
+            'no_of_occupants' => Yii::t('app', 'No Of Occupants'),
+            'current_condition' => Yii::t('app', 'Current Condition'),
+            'construction_type' => Yii::t('app', 'Construction Type'),
+            'occupancy_type' => Yii::t('app', 'Occupancy Type'),
+            'current_income_status' => Yii::t('app', 'Current Income Status'),
         ];
     }
-
     function scenarios()
     {
         $reportItemScenarios =[
@@ -199,6 +184,13 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             'hc_timestamp'=>['current_condition','construction_type','occupancy_type','current_income_status','event_name','owner_name','owner_contact','no_of_occupants','supplied_per_person','id','type','item_name','class_basis','class_name','title','description','is_verified','status','timestamp_occurance','timestamp_created_at','timestamp_updated_at','latitude','longitude','address','user_id','timestamp_declared_at','magnitude','units']
         ];
         return ArrayHelper::merge(parent::scenarios(),$reportItemScenarios);
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     /**
@@ -213,13 +205,13 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
      * @return \yii\db\ActiveQuery
      * @added-by : Ram Shrestha
      * @todo confirm its valid use case. Implemented for use as ->via('reportItemParents') in getter functions example ReportItemEvent::getEmergencySituation
-        // Class ReportItemEvent
-        public function getEmergencySituation() {
-            return $this->hasOne(ReportItemEmergencySituation::className(), ['id' => 'parent_id','type'=>'parent_type'])
-                //->onCondition(['type'=>ReportItem::TYPE_EMERGENCY_SITUATION])
-                //->viaTable(ReportItemChild::tableName(), ['child_id' => 'id','child_type'=>'type']);
-                ->via('reportItemParents');
-        }
+    // Class ReportItemEvent
+    public function getEmergencySituation() {
+    return $this->hasOne(ReportItemEmergencySituation::className(), ['id' => 'parent_id','type'=>'parent_type'])
+    //->onCondition(['type'=>ReportItem::TYPE_EMERGENCY_SITUATION])
+    //->viaTable(ReportItemChild::tableName(), ['child_id' => 'id','child_type'=>'type']);
+    ->via('reportItemParents');
+    }
      */
     public function getReportItemChildrenParent()
     {
@@ -229,27 +221,18 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getReportItemRatings()
-    {
-        return $this->hasMany(ReportItemRating::className(), ['report_item_id' => 'id'])->inverseOf('reportItem');
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getReportItemMultimedia()
     {
-        return $this->hasMany(ReportItemMultimedia::className(), ['report_item_id' => 'id'])->inverseOf('reportItem');
+        return $this->hasMany(ReportItemMultimedia::className(), ['report_item_id' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReportItemRatings()
+    {
+        return $this->hasMany(ReportItemRating::className(), ['report_item_id' => 'id']);
+    }
     /**
      * @return \yii\db\ActiveQuery
      * @stackoverflow http://stackoverflow.com/questions/26763298/how-do-i-work-with-many-to-many-relations-in-yii2
@@ -273,7 +256,6 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
     public function getGalleryImages(){
         return $this->hasMany(GalleryImageAr::className(), ['ownerId' => 'id']);
     }
-
     public function behaviors()
     {
         return [
@@ -326,18 +308,15 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
     public function afterFind()
     {
         parent::afterFind(); // TODO: Change the autogenerated stub
-        $this->timestamp_occurance = date('Ymdhis', strtotime($this->timestamp_occurance));
+        //$this->timestamp_occurance = date('Ymdhis', strtotime($this->timestamp_occurance));
 
-        $this->setAttribute('images',$this->getBehavior('galleryBehavior')->getImages());
+        //$this->setAttribute('images',$this->getBehavior('galleryBehavior')->getImages());
         /*
         foreach($this->getBehavior('galleryBehavior')->getImages() as $image) {
             echo Html::img($image->getUrl('medium'));
         }*/
 
     }
-
-
-
 
     public function extraFields()
     {
@@ -395,8 +374,6 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             return false;
         }
     }
-
-
     public function linkMultiple($relation,$models){
         foreach($models as $model){
             $this->link($relation,$model);
@@ -409,8 +386,7 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             ->where('type=:type',[':type'=>$parentType])
             ->all(), 'item_name', 'item_name');
     }
-
-    public function attributes()
+    /*public function attributes()
     {
         return ArrayHelper::merge(
             parent::attributes(),
@@ -418,7 +394,7 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
                 'images',
             ]
         ); // TODO: Change the autogenerated stub
-    }
+    }*/
 
     /**
      * Returns a list of links.
@@ -451,4 +427,5 @@ class ReportItem extends \yii\db\ActiveRecord implements Linkable
             'gallery_images'=>Url::to(["/rapid_assessment/report-items/$this->id/galleries"], true),
         ];
     }
+
 }
