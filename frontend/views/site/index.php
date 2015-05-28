@@ -56,7 +56,7 @@ JuiAsset::register($this);
             margin-left: -11px;
         }
     </style>
-    <div id="map" style="position: absolute; width: 100%"></div>
+    <div id="map" style="position: absolute; width: 100%; height:100%"></div>
     <!---------------------- Main Content Search Starts -------------------------->
 
     <div class="col-lg-5 col-md-12 col-sm-12" style="position: absolute; top:2em; left: 3.5em; ">
