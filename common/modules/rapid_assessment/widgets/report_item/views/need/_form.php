@@ -44,7 +44,8 @@ $dropDownItemName = $model::getDropDownItemName($model->type);
                     'pluginOptions' => [
                         'depends' => [Html::getInputId($model, 'item_name')],
                         'placeholder' => '--Select Need Category--',
-                        'url' => \yii\helpers\Url::to(['/api/rapid_assessment/report-items/item-class'])
+                        //'url' => \yii\helpers\Url::to(['/api/rapid_assessment/report-items/item-class'])
+                        'url' => Yii::$app->urlManagerApi->createUrl(['/api/rapid_assessment/report-items/item-class'])
                     ]
                 ]);
             ?>
