@@ -144,6 +144,7 @@ class SiteController extends MyBaseContoller
 
     public function actionIndex()
     {
+        $this->layout='map/main';
         return $this->render('index');
     }
 

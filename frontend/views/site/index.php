@@ -21,7 +21,11 @@ rmrevin\yii\fontawesome\AssetBundle::register($this);
 JuiAsset::register($this);
 ?>
     <style>
-
+        .ol-control button{
+            color:#000000 ;
+            font-size: 2em;
+            background-color: white;
+        }
         .ol-popup-closer:after {
             content: "[x]";
             color: red;
@@ -52,316 +56,25 @@ JuiAsset::register($this);
             margin-left: -11px;
         }
     </style>
-    <div id="map" style="height:100%;width:100%;"></div>
+    <div id="map" style="position: absolute; width: 100%"></div>
     <!---------------------- Main Content Search Starts -------------------------->
-    <div id="navbar" class="col-lg-12 col-md-12 col-sm-12 row">
-        <div class="col-md-4">
-            <ul class="nav nav-tabs bordered"><!-- available classes "bordered", "right-aligned" -->
-                <!--<li class="active">
-                    <a href="#quicksearch" data-toggle="tab">
-                        <button type="button" class="btn btn-info"><i style="font-size: 22px;color:royalblue" class="icon-search"></i></button>
-                    </a>
-                </li>
-                <li>
-                    <a href="#reporting" data-toggle="tab">
-                        <button type="button" class="btn btn-info"><i style="font-size: 22px;color:#DE007B" class="icon-reporting"></i></button>
-                    </a>
-                </li>
-                <li>
-                    <a href="#home" data-toggle="tab">
-                        <button type="button" class="btn btn-info"><i style="font-size: 22px;color:#04C9A6;" class="icon-line-chart"></i></button>
-                    </a>
-                </li>
-                <li>
-                    <a href="#settings" data-toggle="tab">
-                        <button type="button" class="btn btn-info"><i style="font-size: 22px;color:orange" class="icon-resource"></i></button>
 
-                    </a>
-                </li>-->
-            </ul>
-
-            <!--<div class="tab-content col-md-9" style="border:1px solid #ebebeb;">
-                <div class="tab-pane active" id="quicksearch">
-                    <form role="form" class="form-horizontal form-groups-bordered">
-                        <div class="form-group" style="margin-top:10px;margin-bottom:0 !important;">
-
-                            <div class="col-md-12">
-                                <select name="test" class="selectboxit">
-                                    <option value="1">Select Option</option>
-                                    <option value="2">Building Damage</option>
-                                    <option value="3">Public Building Damage</option>
-                                    <option value="4">Infastructure Damage</option>
-                                    <option value="5">Washington</option>
-
-                                </select>
-
-                            </div>
-                            <div class="col-md-12">
-                                <select name="test" class="selectboxit">
-                                    <option value="1">Select District</option>
-                                    <option value="2">Fully</option>
-                                    <option value="3">Moderate</option>
-                                    <option value="4">Not</option>
-
-                                </select>
-
-                            </div>
-                            <button type="button" class="btn btn-success" style="margin-left:30%;margin-top:10px;padding:6px 20px;">Quick Search</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="tab-pane" id="reporting">
-                    <h4>Reporting</h4>
-                    <form role="form" class="form-horizontal form-groups-bordered" style="margin-top:20px;">
-                        <div class="form-group" style="margin-bottom:0 !important;">
-                            <div class="col-md-12">
-                                <select name="test" class="selectboxit">
-                                    <option value="1">Select Incident</option>
-                                    <option value="2">Building Damage</option>
-                                    <option value="3">Public Building Damage</option>
-                                    <option value="4">Infastructure Damage</option>
-                                    <option value="5">Washington</option>
-
-                                </select>
-
-                            </div>
-                            <div class="col-md-12">
-                                <select name="test" class="selectboxit">
-                                    <option value="1">Damage Type</option>
-                                    <option value="2">Fully</option>
-                                    <option value="3">Moderate</option>
-                                    <option value="4">Not</option>
-
-                                </select>
-
-                            </div>
-                            <div class="panel-title" style="margin-left:10px;padding:10px 0;color:orange">
-                                Impacts
-                            </div>
-                            <label for="field-1" class="col-md-2 control-label">Dead</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="field-1" placeholder="No.">
-                            </div>
-                            <label for="field-1" class="col-md-2 control-label">Injured</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="field-1" placeholder="No.">
-                            </div>
-                            <label for="field-1" class="col-md-2 control-label">Missing</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="field-1" placeholder="No.">
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <div class="panel-title" style="margin-left:10px;padding:10px 0;color:#04C9A6">
-                                Needs
-                            </div>
-                            <label for="field-1" class="col-md-2 control-label">Tent</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="field-1" placeholder="No.">
-                            </div>
-                            <label for="field-1" class="col-md-2 control-label">Food</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="field-1" placeholder="No.">
-                            </div>
-                            <label for="field-1" class="col-md-2 control-label">Medicine</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="field-1" placeholder="No.">
-                            </div>
-                            <label for="field-1" class="col-md-2 control-label">Water</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="field-1" placeholder="No.">
-                            </div>
-                            <label for="field-1" class="col-md-2 control-label">Ambulance</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="field-1" placeholder="No.">
-                            </div>
-                            <label for="field-1" class="col-md-2 control-label">Fuel</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="field-1" placeholder="No.">
-                            </div>
-                            <button type="button" class="btn btn-success" style="margin-left:35%;margin-top:10px;padding:6px 20px;">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="tab-pane" id="home">
-
-                    <div class="scrollable" data-height="500">
-                        <form role="form" class="form-horizontal form-groups-bordered">
-
-                            <div class="form-group" style="margin-top:15px !important;">
-                                <div class="col-md-12">
-                                    <select name="test" class="selectboxit">
-                                        <optgroup label="United States">
-                                            <option value="1">Select</option>
-                                            <option value="2">Boston</option>
-                                            <option value="3">Ohaio</option>
-                                            <option value="4">New York</option>
-                                            <option value="5">Washington</option>
-                                        </optgroup>
-                                    </select>
-
-                                </div>
-
-                                <div class="col-md-12">
-                                    <select name="test" class="selectboxit">
-                                        <optgroup label="United States">
-                                            <option value="1">Select</option>
-                                            <option value="2">Boston</option>
-                                            <option value="3">Ohaio</option>
-                                            <option value="4">New York</option>
-                                            <option value="5">Washington</option>
-                                        </optgroup>
-                                    </select>
-
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control datepicker" data-format=" yyyy MM dd" placeholder="From">
-
-                                        <div class="input-group-addon">
-                                            <a href="#"><i class="fa fa-calendar" style="color:#04C9A6"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control datepicker" data-format=" yyyy MM dd" placeholder='To'>
-                                        <div class="input-group-addon">
-                                            <a href="#"><i class="fa fa-calendar" style="color:orange"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <select name="test" class="selectboxit">
-                                        <optgroup label="United States">
-                                            <option value="1">Select</option>
-                                            <option value="2">Boston</option>
-                                            <option value="3">Ohaio</option>
-                                            <option value="4">New York</option>
-                                            <option value="5">Washington</option>
-                                        </optgroup>
-                                    </select>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="form-group" style="margin:0;padding:0">
-                                <div class="row" style="margin:0 3px">
-
-                                    <ul class="nav nav-tabs left-aligned">
-                                        <li class="active"><a href="#home-2" data-toggle="tab">
-                                                <span class="visible-xs"><i class="fa fa-home"></i></span>
-                                                <span class="hidden-xs">Summary</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#profile-2" data-toggle="tab">
-                                                <span class="visible-xs"><i class="fa fa-user"></i></span>
-                                                <span class="hidden-xs">Table</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                    <div class="tab-content inside">
-                                        <div class="tab-pane active" id="home-2">
-
-                                            <div class="scrollable" data-height="220" style="padding:0 10px;">
-
-                                                <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
-
-                                                <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
-
-                                                <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
-
-                                                <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="tab-pane" id="profile-2">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Type</th>
-                                                    <th>Location</th>
-                                                    <th>Route</th>
-
-                                                </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                <tr>
-                                                    <td>Subash</td>
-                                                    <td>Nushi</td>
-                                                    <td>Kathmandu</td>
-                                                    <td>Test</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>Subash</td>
-                                                    <td>Nushi</td>
-                                                    <td>Kathmandu</td>
-                                                    <td>Test</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>Subash</td>
-                                                    <td>Nushi</td>
-                                                    <td>Kathmandu</td>
-                                                    <td>Test</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <br />
-
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-
-                </div>
-
-                <div class="tab-pane" id="settings">
-
-
-                    <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
-
-                    <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
-                </div>
-            </div>-->
-
-
+    <div class="col-lg-5 col-md-12 col-sm-12" style="position: absolute; top:2em; left: 3.5em; ">
+        <div class="input-group">
+            <input id='input-search' type="text" class="form-control search" placeholder="Enter Location Here">
+                         <span class="input-group-btn search_btn">
+                             <button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="fa fa-search"></i></button>
+                         </span>
         </div>
-
-
-         <div class="col-lg-5 col-md-12 col-sm-12">
-             <div class="input-group">
-                 <input id='input-search' type="text" class="form-control search" placeholder="Enter Location Here">
-                     <span class="input-group-btn search_btn">
-                         <button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="fa fa-search"></i></button>
-                     </span>
-             </div>
-         </div>
-
-        <!--<div class="col-lg-3 col-md-3 col-sm-12 toolbar-menu">
-            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Graph" data-original-title="Graph"><i style="font-size: 22px;color:#E47124;" class="icon-earthquake"></i></button>
-        </div>-->
-
     </div>
+
     <!---------------------- Main Content Search Starts -------------------------->
 
-    <div class="clearfix"></div>
+    <!--<div class="clearfix"></div>-->
     <!---------------------- Main Content toolbar Starts -------------------------->
-    <div id="toolbar" style="position:fixed;top:15%;">
-        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Geo-Location" data-original-title="Geo Location"><i style="color:#04C9A6;" class="icon-target"></i></button>
-    </div>
+    <!--<div id="toolbar" style="position:fixed;top:15%;">
+        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Geo-Location" data-original-title="Geo Location"><i  class="icon-target"></i></button>
+    </div>-->
     <!---------------------- Main Content toolbar ends -------------------------->
 
     <script>
@@ -856,6 +569,9 @@ JuiAsset::register($this);
 
 
         <?php $this->beginBlock('addres_search-posready');?>
+        var placeSearchOverlayList=[];
+        var oldPlaceSearchOverlay;
+        var newPlaceSearchOverlay;
         $("#input-search").autocomplete({
             delay: 500,
             minLength: 3,
@@ -899,9 +615,12 @@ JuiAsset::register($this);
                 map.getView().setCenter(position);
                 map.getView().setZoom(12);
 // Adding overlay marker
-                map.addOverlay(new ol.Overlay({
+
+                map.removeOverlay(oldPlaceSearchOverlay);
+
+                var newPlaceSearchOverlay=new ol.Overlay({
                     position:position,
-                    element:  $('<img src="http://116.90.239.21/girc/dmis/img/location.png" style="width:32px;height:auto;">')
+                    element:  $('<img src="/girc/dmis/img/location.png" style="width:32px;height:auto;">')
                         .css({marginTop: '-200%', marginLeft: '-50%', cursor: 'pointer'})
                         .popover({
                             'placement': 'top',
@@ -909,7 +628,11 @@ JuiAsset::register($this);
                             'content':'<strong>'+ui.item.label+'</strong>'
                         })
                         .on('click', function (e) { $(".location-popover").not(this).popover('hide').close; })
-                }));
+                });
+
+                oldPlaceSearchOverlay = newPlaceSearchOverlay;
+                placeSearchOverlayList.push(newPlaceSearchOverlay);
+                map.addOverlay(newPlaceSearchOverlay);
             }
         });
         $("#input-search").autocomplete( "instance" )._renderItem = function( ul, item ) {
