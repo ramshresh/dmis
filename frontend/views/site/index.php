@@ -254,7 +254,7 @@ JuiAsset::register($this);
             view: view
         });
 
-        var radius = 100;
+        /*var radius = 100;
         $(document).keydown(function(evt) {
             if (evt.which === 38) {
                 radius = Math.min(radius + 5, 150);
@@ -297,7 +297,7 @@ JuiAsset::register($this);
             var ctx = event.context;
             ctx.restore();
         });
-
+*/
 
         /***********function for counting unique values in an array**********/
         function unique_count(arr) {
