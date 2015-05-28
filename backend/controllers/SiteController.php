@@ -49,6 +49,9 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
+            'report-item-create' => [
+                'class' => 'common\modules\rapid_assessment\actions\ReportItemCreateAction',
+            ],
 
         ];
     }
