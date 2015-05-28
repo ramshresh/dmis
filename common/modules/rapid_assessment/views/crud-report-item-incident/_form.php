@@ -64,11 +64,25 @@ use yii\widgets\ActiveForm;
 
     <?php //$form->field($model, 'geom')->textInput() ?>
 
-    <?php //$form->field($model, 'latitude')->textInput() ?>
+    <?php echo $form->field($model, 'latitude')->textInput() ?>
 
-    <?php //$form->field($model, 'longitude')->textInput() ?>
+    <?php echo $form->field($model, 'longitude')->textInput() ?>
 
-    <?php //$form->field($model, 'address')->textInput(['maxlength' => 255]) ?>
+    <?php echo $form->field($model, 'address')->textInput(['maxlength' => 255]) ?>
+
+    <button id="triggerpointpicker-modalmap" type="button">Locate on map</button>
+    <?php
+    echo \common\modules\reporting\widgets\pointpicker\PointPickerWidget::widget(
+        [
+            'latitudeId' => yii\helpers\Html::getInputId($model,'latitude'),
+            'longitudeId' => yii\helpers\Html::getInputId($model,'longitude'),
+            //'wktId'=>yii\helpers\Html::getInputId($model,"[$key]wkt"),
+            'placenameId' => yii\helpers\Html::getInputId($model,'address'),
+            //'openlayersPackName' => 'openlayers', //'openlayerslPack' //,
+            'triggerId'=>'triggerpointpicker-modalmap',
+            //'externalMapDivId'=>'map',
+        ]);
+    ?>
 
     <?php //$form->field($model, 'user_id')->textInput() ?>
 
@@ -97,7 +111,19 @@ use yii\widgets\ActiveForm;
     <?php //$form->field($model, 'current_income_status')->textarea(['rows' => 6]) ?>
 
     <?php echo Html::label('Upload Photo') ?>
-    <?php echo FileInput::widget(['name'=>'photo','options'=>['accept'=>'image/*']])?>
+    <?php
+    if ($model->isNewRecord) {
+        echo FileInput::widget(['name'=>'photo','options'=>['accept'=>'image/*']]);
+    } else {
+        echo GalleryManager::widget(
+            [
+                'model' => $model,
+                'behaviorName' => 'galleryBehavior',
+                'apiRoute' => '/rapid_assessment/crud-report-item/galleryApi'
+            ]
+        );
+    }
+    ?>
     <?php
     /*echo TabularForm::widget([
         'form' => $form,
@@ -164,19 +190,7 @@ use yii\widgets\ActiveForm;
     ]);*/
     ?>
 
-    <?php
-    /*if ($model->isNewRecord) {
-        echo 'Can not upload images for new record';
-    } else {
-        echo GalleryManager::widget(
-            [
-                'model' => $model,
-                'behaviorName' => 'galleryBehavior',
-                'apiRoute' => '/rapid_assessment/crud-report-item/galleryApi'
-            ]
-        );
-    }*/
-    ?>
+
     <!--<button id="btn_add_new_needs" type="button">Add Need</button>
     --><?php
 /*            echo \common\modules\rapid_assessment\widgets\report_item\Create::widget([
