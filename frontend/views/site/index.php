@@ -208,23 +208,31 @@ JuiAsset::register($this);
             center: ol.proj.transform([85.4278, 28.5522], 'EPSG:4326', 'EPSG:3857'),
             zoom: 4
         });
-        var osm = new ol.layer.Tile({
-            title: 'OSM',
-            type: 'base',
-            source: new ol.source.OSM()
+        // Create layers instances
+        var layerOSM = new ol.layer.Tile({
+            source: new ol.source.OSM(),
+            name: 'OpenStreetMap'
+        });
+
+        var layerMQ = new ol.layer.Tile({
+            source: new ol.source.MapQuest({
+                layer: 'osm'
+            }),
+            name: 'MapQuest'
         });
 
         var key = 'Ak-dzM4wZjSqTlzveKz5u0d4IQ4bRzVI309GxmkgSVr1ewS6iPSrOvOKhA-CJlm3';
 
-        var imagery = new ol.layer.Tile({
+        var layerImagery = new ol.layer.Tile({
             source: new ol.source.BingMaps({
                 key: key,
                 imagerySet: 'Aerial'
             })
         });
 
-        baseGroup.getLayers().push(osm);
-        baseGroup.getLayers().push(imagery);
+        //baseGroup.getLayers().push(layerOSM);
+        baseGroup.getLayers().push(layerMQ);
+       // baseGroup.getLayers().push(layerImagery);
 
 
         /*******************ol3 map object*****************/
@@ -551,7 +559,6 @@ JuiAsset::register($this);
                         '</div><!-- nav-tabs-custom -->';
 
                     popup.show(coor_feature,'<div id="popup-ri-incidents"></div><div id="popup-ri-impacts"></div><div id="popup-ri-needs"></div>' );
-
 
                     $('#popup-ri-incidents').append(popup_content_incidents);
                     popupSetImpactDetails(ids,'#popup-ri-impacts');
