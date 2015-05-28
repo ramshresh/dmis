@@ -50,7 +50,6 @@ use yii\web\Linkable;
  * @property integer $supplied_per_person
  * @property string $event
  * @property string $event_name
- * @property string $g
  * @property string $income_source
  * @property string $income_level
  * @property integer $no_of_occupants
@@ -119,7 +118,7 @@ class ReportItem extends \yii\db\ActiveRecord
     {
         return [
             [['type', 'item_name'], 'required'],
-            [['description', 'tags', 'meta_hstore', 'meta_json', 'wkt', 'geom', 'g', 'current_condition', 'construction_type', 'occupancy_type', 'current_income_status'], 'string'],
+            [['description', 'tags', 'meta_hstore', 'meta_json', 'wkt', 'geom',  'current_condition', 'construction_type', 'occupancy_type', 'current_income_status'], 'string'],
             [['is_verified'], 'boolean'],
             [['timestamp_occurance', 'timestamp_created_at', 'timestamp_updated_at', 'timestamp_declared_at'], 'safe'],
             [['magnitude', 'latitude', 'longitude'], 'number'],
@@ -165,7 +164,7 @@ class ReportItem extends \yii\db\ActiveRecord
             'supplied_per_person' => Yii::t('app', 'Supplied Per Person'),
             'event' => Yii::t('app', 'Event'),
             'event_name' => Yii::t('app', 'Event Name'),
-            'g' => Yii::t('app', 'G'),
+
             'income_source' => Yii::t('app', 'Income Source'),
             'income_level' => Yii::t('app', 'Income Level'),
             'no_of_occupants' => Yii::t('app', 'No Of Occupants'),
