@@ -1,29 +1,24 @@
 <?php
 
-use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\modules\rapid_assessment\models\search\ReportItemSearch */
+/* @var $searchModel common\modules\rapid_assessment\models\search\ReportItemNeedSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Report Items');
+$this->title = Yii::t('app', 'Report Item Needs');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="report-item-index">
+<div class="report-item-need-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <!--<h1><?/*= Html::encode($this->title) */?></h1>-->
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Report Item'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Report Item Need'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php \yii\widgets\Pjax::begin([
-        'id'=>'pjax1',
-        'timeout' => false,
-        'enablePushState' => false,
-        'clientOptions' => ['method' => 'POST'],
-    ]); ?>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -31,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-           // 'event',
             'type',
             'item_name',
             'class_basis',
@@ -42,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'status',
             // 'timestamp_occurance',
             // 'timestamp_created_at',
-            // 'timestamp_updatedat_at',
+            // 'timestamp_updated_at',
             // 'tags',
             // 'meta_hstore',
             // 'meta_json',
@@ -56,11 +50,22 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'longitude',
             // 'address',
             // 'user_id',
+            // 'owner_name',
+            // 'owner_contact',
+            // 'supplied_per_person',
+            // 'event',
+            // 'event_name',
 
-            [
-                'class' => 'yii\grid\ActionColumn',
-            ],
+            // 'income_source',
+            // 'income_level',
+            // 'no_of_occupants',
+            // 'current_condition:ntext',
+            // 'construction_type:ntext',
+            // 'occupancy_type:ntext',
+            // 'current_income_status:ntext',
+
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-    <?php \yii\widgets\Pjax::end(); ?>
+
 </div>
