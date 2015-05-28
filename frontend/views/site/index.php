@@ -20,352 +20,353 @@ IconsReportingAsset::register($this);
 rmrevin\yii\fontawesome\AssetBundle::register($this);
 JuiAsset::register($this);
 ?>
-<style>
-    .ol-popup-closer:after {
-        content: "[x]";
-        color: red;
-        font-size: 16px;
-    }
-    .ol-popup {
-        display: none;
-        position: absolute;
-        background-color: white;
-        padding: 15px;
-        border: 1px solid rgb(57, 52, 86);
-    ;
-        bottom: 12px;
-        left: -50px;
-        height: auto;
-        width: 400px;
-        max-height: 300px;
-        max-width: 400px;
+    <style>
 
-    }
-    .ol-popup-content {
-        overflow-y:auto;
-    }
-    .ol-popup:before {
-        border-top-color: rgb(57, 52, 86);
-        border-width: 11px;
-        left: 48px;
-        margin-left: -11px;
-    }
-</style>
+        .ol-popup-closer:after {
+            content: "[x]";
+            color: red;
+            font-size: 16px;
+        }
+        .ol-popup {
+            display: none;
+            position: absolute;
+            background-color: white;
+            padding: 15px;
+            border: 1px solid rgb(57, 52, 86);
+        ;
+            bottom: 12px;
+            left: -50px;
+            height: auto;
+            width: 400px;
+            max-height: 300px;
+            max-width: 400px;
+
+        }
+        .ol-popup-content {
+            overflow-y:auto;
+        }
+        .ol-popup:before {
+            border-top-color: rgb(57, 52, 86);
+            border-width: 11px;
+            left: 48px;
+            margin-left: -11px;
+        }
+    </style>
     <div id="map" style="height:100%;width:100%;"></div>
-<!---------------------- Main Content Search Starts -------------------------->
-<div id="navbar" class="col-lg-12 col-md-12 col-sm-12 row">
-    <div class="col-md-4">
-        <ul class="nav nav-tabs bordered"><!-- available classes "bordered", "right-aligned" -->
-            <!--<li class="active">
-                <a href="#quicksearch" data-toggle="tab">
-                    <button type="button" class="btn btn-info"><i style="font-size: 22px;color:royalblue" class="icon-search"></i></button>
-                </a>
-            </li>
-            <li>
-                <a href="#reporting" data-toggle="tab">
-                    <button type="button" class="btn btn-info"><i style="font-size: 22px;color:#DE007B" class="icon-reporting"></i></button>
-                </a>
-            </li>
-            <li>
-                <a href="#home" data-toggle="tab">
-                    <button type="button" class="btn btn-info"><i style="font-size: 22px;color:#04C9A6;" class="icon-line-chart"></i></button>
-                </a>
-            </li>
-            <li>
-                <a href="#settings" data-toggle="tab">
-                    <button type="button" class="btn btn-info"><i style="font-size: 22px;color:orange" class="icon-resource"></i></button>
+    <!---------------------- Main Content Search Starts -------------------------->
+    <div id="navbar" class="col-lg-12 col-md-12 col-sm-12 row">
+        <div class="col-md-4">
+            <ul class="nav nav-tabs bordered"><!-- available classes "bordered", "right-aligned" -->
+                <!--<li class="active">
+                    <a href="#quicksearch" data-toggle="tab">
+                        <button type="button" class="btn btn-info"><i style="font-size: 22px;color:royalblue" class="icon-search"></i></button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#reporting" data-toggle="tab">
+                        <button type="button" class="btn btn-info"><i style="font-size: 22px;color:#DE007B" class="icon-reporting"></i></button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#home" data-toggle="tab">
+                        <button type="button" class="btn btn-info"><i style="font-size: 22px;color:#04C9A6;" class="icon-line-chart"></i></button>
+                    </a>
+                </li>
+                <li>
+                    <a href="#settings" data-toggle="tab">
+                        <button type="button" class="btn btn-info"><i style="font-size: 22px;color:orange" class="icon-resource"></i></button>
 
-                </a>
-            </li>-->
-        </ul>
+                    </a>
+                </li>-->
+            </ul>
 
-        <!--<div class="tab-content col-md-9" style="border:1px solid #ebebeb;">
-            <div class="tab-pane active" id="quicksearch">
-                <form role="form" class="form-horizontal form-groups-bordered">
-                    <div class="form-group" style="margin-top:10px;margin-bottom:0 !important;">
-
-                        <div class="col-md-12">
-                            <select name="test" class="selectboxit">
-                                <option value="1">Select Option</option>
-                                <option value="2">Building Damage</option>
-                                <option value="3">Public Building Damage</option>
-                                <option value="4">Infastructure Damage</option>
-                                <option value="5">Washington</option>
-
-                            </select>
-
-                        </div>
-                        <div class="col-md-12">
-                            <select name="test" class="selectboxit">
-                                <option value="1">Select District</option>
-                                <option value="2">Fully</option>
-                                <option value="3">Moderate</option>
-                                <option value="4">Not</option>
-
-                            </select>
-
-                        </div>
-                        <button type="button" class="btn btn-success" style="margin-left:30%;margin-top:10px;padding:6px 20px;">Quick Search</button>
-                    </div>
-                </form>
-            </div>
-            <div class="tab-pane" id="reporting">
-                <h4>Reporting</h4>
-                <form role="form" class="form-horizontal form-groups-bordered" style="margin-top:20px;">
-                    <div class="form-group" style="margin-bottom:0 !important;">
-                        <div class="col-md-12">
-                            <select name="test" class="selectboxit">
-                                <option value="1">Select Incident</option>
-                                <option value="2">Building Damage</option>
-                                <option value="3">Public Building Damage</option>
-                                <option value="4">Infastructure Damage</option>
-                                <option value="5">Washington</option>
-
-                            </select>
-
-                        </div>
-                        <div class="col-md-12">
-                            <select name="test" class="selectboxit">
-                                <option value="1">Damage Type</option>
-                                <option value="2">Fully</option>
-                                <option value="3">Moderate</option>
-                                <option value="4">Not</option>
-
-                            </select>
-
-                        </div>
-                        <div class="panel-title" style="margin-left:10px;padding:10px 0;color:orange">
-                            Impacts
-                        </div>
-                        <label for="field-1" class="col-md-2 control-label">Dead</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="field-1" placeholder="No.">
-                        </div>
-                        <label for="field-1" class="col-md-2 control-label">Injured</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="field-1" placeholder="No.">
-                        </div>
-                        <label for="field-1" class="col-md-2 control-label">Missing</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="field-1" placeholder="No.">
-                        </div>
-                        <div class="clearfix"></div>
-
-                        <div class="panel-title" style="margin-left:10px;padding:10px 0;color:#04C9A6">
-                            Needs
-                        </div>
-                        <label for="field-1" class="col-md-2 control-label">Tent</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="field-1" placeholder="No.">
-                        </div>
-                        <label for="field-1" class="col-md-2 control-label">Food</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="field-1" placeholder="No.">
-                        </div>
-                        <label for="field-1" class="col-md-2 control-label">Medicine</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="field-1" placeholder="No.">
-                        </div>
-                        <label for="field-1" class="col-md-2 control-label">Water</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="field-1" placeholder="No.">
-                        </div>
-                        <label for="field-1" class="col-md-2 control-label">Ambulance</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="field-1" placeholder="No.">
-                        </div>
-                        <label for="field-1" class="col-md-2 control-label">Fuel</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="field-1" placeholder="No.">
-                        </div>
-                        <button type="button" class="btn btn-success" style="margin-left:35%;margin-top:10px;padding:6px 20px;">Submit</button>
-                    </div>
-                </form>
-            </div>
-            <div class="tab-pane" id="home">
-
-                <div class="scrollable" data-height="500">
+            <!--<div class="tab-content col-md-9" style="border:1px solid #ebebeb;">
+                <div class="tab-pane active" id="quicksearch">
                     <form role="form" class="form-horizontal form-groups-bordered">
-
-                        <div class="form-group" style="margin-top:15px !important;">
-                            <div class="col-md-12">
-                                <select name="test" class="selectboxit">
-                                    <optgroup label="United States">
-                                        <option value="1">Select</option>
-                                        <option value="2">Boston</option>
-                                        <option value="3">Ohaio</option>
-                                        <option value="4">New York</option>
-                                        <option value="5">Washington</option>
-                                    </optgroup>
-                                </select>
-
-                            </div>
+                        <div class="form-group" style="margin-top:10px;margin-bottom:0 !important;">
 
                             <div class="col-md-12">
                                 <select name="test" class="selectboxit">
-                                    <optgroup label="United States">
-                                        <option value="1">Select</option>
-                                        <option value="2">Boston</option>
-                                        <option value="3">Ohaio</option>
-                                        <option value="4">New York</option>
-                                        <option value="5">Washington</option>
-                                    </optgroup>
+                                    <option value="1">Select Option</option>
+                                    <option value="2">Building Damage</option>
+                                    <option value="3">Public Building Damage</option>
+                                    <option value="4">Infastructure Damage</option>
+                                    <option value="5">Washington</option>
+
                                 </select>
 
                             </div>
                             <div class="col-md-12">
-                                <div class="input-group">
-                                    <input type="text" class="form-control datepicker" data-format=" yyyy MM dd" placeholder="From">
-
-                                    <div class="input-group-addon">
-                                        <a href="#"><i class="fa fa-calendar" style="color:#04C9A6"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="input-group">
-                                    <input type="text" class="form-control datepicker" data-format=" yyyy MM dd" placeholder='To'>
-                                    <div class="input-group-addon">
-                                        <a href="#"><i class="fa fa-calendar" style="color:orange"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
                                 <select name="test" class="selectboxit">
-                                    <optgroup label="United States">
-                                        <option value="1">Select</option>
-                                        <option value="2">Boston</option>
-                                        <option value="3">Ohaio</option>
-                                        <option value="4">New York</option>
-                                        <option value="5">Washington</option>
-                                    </optgroup>
+                                    <option value="1">Select District</option>
+                                    <option value="2">Fully</option>
+                                    <option value="3">Moderate</option>
+                                    <option value="4">Not</option>
+
                                 </select>
 
                             </div>
-
+                            <button type="button" class="btn btn-success" style="margin-left:30%;margin-top:10px;padding:6px 20px;">Quick Search</button>
                         </div>
-
-
-                        <div class="form-group" style="margin:0;padding:0">
-                            <div class="row" style="margin:0 3px">
-
-                                <ul class="nav nav-tabs left-aligned">
-                                    <li class="active"><a href="#home-2" data-toggle="tab">
-                                            <span class="visible-xs"><i class="fa fa-home"></i></span>
-                                            <span class="hidden-xs">Summary</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#profile-2" data-toggle="tab">
-                                            <span class="visible-xs"><i class="fa fa-user"></i></span>
-                                            <span class="hidden-xs">Table</span>
-                                        </a>
-                                    </li>
-                                </ul>
-
-                                <div class="tab-content inside">
-                                    <div class="tab-pane active" id="home-2">
-
-                                        <div class="scrollable" data-height="220" style="padding:0 10px;">
-
-                                            <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
-
-                                            <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
-
-                                            <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
-
-                                            <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="tab-pane" id="profile-2">
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Type</th>
-                                                <th>Location</th>
-                                                <th>Route</th>
-
-                                            </tr>
-                                            </thead>
-
-                                            <tbody>
-                                            <tr>
-                                                <td>Subash</td>
-                                                <td>Nushi</td>
-                                                <td>Kathmandu</td>
-                                                <td>Test</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Subash</td>
-                                                <td>Nushi</td>
-                                                <td>Kathmandu</td>
-                                                <td>Test</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Subash</td>
-                                                <td>Nushi</td>
-                                                <td>Kathmandu</td>
-                                                <td>Test</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <br />
-
-                            </div>
-                        </div>
-
                     </form>
                 </div>
+                <div class="tab-pane" id="reporting">
+                    <h4>Reporting</h4>
+                    <form role="form" class="form-horizontal form-groups-bordered" style="margin-top:20px;">
+                        <div class="form-group" style="margin-bottom:0 !important;">
+                            <div class="col-md-12">
+                                <select name="test" class="selectboxit">
+                                    <option value="1">Select Incident</option>
+                                    <option value="2">Building Damage</option>
+                                    <option value="3">Public Building Damage</option>
+                                    <option value="4">Infastructure Damage</option>
+                                    <option value="5">Washington</option>
 
-            </div>
+                                </select>
 
-            <div class="tab-pane" id="settings">
+                            </div>
+                            <div class="col-md-12">
+                                <select name="test" class="selectboxit">
+                                    <option value="1">Damage Type</option>
+                                    <option value="2">Fully</option>
+                                    <option value="3">Moderate</option>
+                                    <option value="4">Not</option>
+
+                                </select>
+
+                            </div>
+                            <div class="panel-title" style="margin-left:10px;padding:10px 0;color:orange">
+                                Impacts
+                            </div>
+                            <label for="field-1" class="col-md-2 control-label">Dead</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="field-1" placeholder="No.">
+                            </div>
+                            <label for="field-1" class="col-md-2 control-label">Injured</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="field-1" placeholder="No.">
+                            </div>
+                            <label for="field-1" class="col-md-2 control-label">Missing</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="field-1" placeholder="No.">
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="panel-title" style="margin-left:10px;padding:10px 0;color:#04C9A6">
+                                Needs
+                            </div>
+                            <label for="field-1" class="col-md-2 control-label">Tent</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="field-1" placeholder="No.">
+                            </div>
+                            <label for="field-1" class="col-md-2 control-label">Food</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="field-1" placeholder="No.">
+                            </div>
+                            <label for="field-1" class="col-md-2 control-label">Medicine</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="field-1" placeholder="No.">
+                            </div>
+                            <label for="field-1" class="col-md-2 control-label">Water</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="field-1" placeholder="No.">
+                            </div>
+                            <label for="field-1" class="col-md-2 control-label">Ambulance</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="field-1" placeholder="No.">
+                            </div>
+                            <label for="field-1" class="col-md-2 control-label">Fuel</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="field-1" placeholder="No.">
+                            </div>
+                            <button type="button" class="btn btn-success" style="margin-left:35%;margin-top:10px;padding:6px 20px;">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane" id="home">
+
+                    <div class="scrollable" data-height="500">
+                        <form role="form" class="form-horizontal form-groups-bordered">
+
+                            <div class="form-group" style="margin-top:15px !important;">
+                                <div class="col-md-12">
+                                    <select name="test" class="selectboxit">
+                                        <optgroup label="United States">
+                                            <option value="1">Select</option>
+                                            <option value="2">Boston</option>
+                                            <option value="3">Ohaio</option>
+                                            <option value="4">New York</option>
+                                            <option value="5">Washington</option>
+                                        </optgroup>
+                                    </select>
+
+                                </div>
+
+                                <div class="col-md-12">
+                                    <select name="test" class="selectboxit">
+                                        <optgroup label="United States">
+                                            <option value="1">Select</option>
+                                            <option value="2">Boston</option>
+                                            <option value="3">Ohaio</option>
+                                            <option value="4">New York</option>
+                                            <option value="5">Washington</option>
+                                        </optgroup>
+                                    </select>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control datepicker" data-format=" yyyy MM dd" placeholder="From">
+
+                                        <div class="input-group-addon">
+                                            <a href="#"><i class="fa fa-calendar" style="color:#04C9A6"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control datepicker" data-format=" yyyy MM dd" placeholder='To'>
+                                        <div class="input-group-addon">
+                                            <a href="#"><i class="fa fa-calendar" style="color:orange"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <select name="test" class="selectboxit">
+                                        <optgroup label="United States">
+                                            <option value="1">Select</option>
+                                            <option value="2">Boston</option>
+                                            <option value="3">Ohaio</option>
+                                            <option value="4">New York</option>
+                                            <option value="5">Washington</option>
+                                        </optgroup>
+                                    </select>
+
+                                </div>
+
+                            </div>
 
 
-                <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
+                            <div class="form-group" style="margin:0;padding:0">
+                                <div class="row" style="margin:0 3px">
 
-                <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
-            </div>
+                                    <ul class="nav nav-tabs left-aligned">
+                                        <li class="active"><a href="#home-2" data-toggle="tab">
+                                                <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                                <span class="hidden-xs">Summary</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#profile-2" data-toggle="tab">
+                                                <span class="visible-xs"><i class="fa fa-user"></i></span>
+                                                <span class="hidden-xs">Table</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content inside">
+                                        <div class="tab-pane active" id="home-2">
+
+                                            <div class="scrollable" data-height="220" style="padding:0 10px;">
+
+                                                <p>Carriage quitting securing be appetite it declared. High eyes kept so busy feel call in. Would day nor ask walls known. But preserved advantage are but and certainty earnestly enjoyment. Passage weather as up am exposed. And natural related man subject. Eagerness get situation his was delighted. </p>
+
+                                                <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
+
+                                                <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
+
+                                                <p>Luckily friends do ashamed to do suppose. Tried meant mr smile so. Exquisite behaviour as to middleton perfectly. Chicken no wishing waiting am. Say concerns dwelling graceful six humoured. Whether mr up savings talking an. Active mutual nor father mother exeter change six did all. </p>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane" id="profile-2">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Type</th>
+                                                    <th>Location</th>
+                                                    <th>Route</th>
+
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                <tr>
+                                                    <td>Subash</td>
+                                                    <td>Nushi</td>
+                                                    <td>Kathmandu</td>
+                                                    <td>Test</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Subash</td>
+                                                    <td>Nushi</td>
+                                                    <td>Kathmandu</td>
+                                                    <td>Test</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Subash</td>
+                                                    <td>Nushi</td>
+                                                    <td>Kathmandu</td>
+                                                    <td>Test</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <br />
+
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane" id="settings">
+
+
+                    <p>Fulfilled direction use continual set him propriety continued. Saw met applauded favourite deficient engrossed concealed and her. Concluded boy perpetual old supposing. Farther related bed and passage comfort civilly. Dashwoods see frankness objection abilities the. As hastened oh produced prospect formerly up am. Placing forming nay looking old married few has. Margaret disposed add screened rendered six say his striking confined. </p>
+
+                    <p>When be draw drew ye. Defective in do recommend suffering. House it seven in spoil tiled court. Sister others marked fat missed did out use. Alteration possession dispatched collecting instrument travelling he or on. Snug give made at spot or late that mr. </p>
+                </div>
+            </div>-->
+
+
+        </div>
+
+
+         <div class="col-lg-5 col-md-12 col-sm-12">
+             <div class="input-group">
+                 <input id='input-search' type="text" class="form-control search" placeholder="Enter Location Here">
+                     <span class="input-group-btn search_btn">
+                         <button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="fa fa-search"></i></button>
+                     </span>
+             </div>
+         </div>
+
+        <!--<div class="col-lg-3 col-md-3 col-sm-12 toolbar-menu">
+            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Graph" data-original-title="Graph"><i style="font-size: 22px;color:#E47124;" class="icon-earthquake"></i></button>
         </div>-->
 
-
     </div>
+    <!---------------------- Main Content Search Starts -------------------------->
 
-
-   <!-- <div class="col-lg-5 col-md-12 col-sm-12">
-        <div class="input-group">
-            <input type="text" class="form-control search" placeholder="Enter Location Here">
-				<span class="input-group-btn search_btn">
-					<button class="btn btn-primary" type="button" style="padding:9px 12px"><i class="fa fa-search"></i></button>
-				</span>
-        </div>
-    </div>-->
-
-    <!--<div class="col-lg-3 col-md-3 col-sm-12 toolbar-menu">
-        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Graph" data-original-title="Graph"><i style="font-size: 22px;color:#E47124;" class="icon-earthquake"></i></button>
-    </div>-->
-
-</div>
-<!---------------------- Main Content Search Starts -------------------------->
-
-<div class="clearfix"></div>
-<!---------------------- Main Content toolbar Starts -------------------------->
-<div id="toolbar" style="position:fixed;top:15%;">
-    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Geo-Location" data-original-title="Geo Location"><i style="color:#04C9A6;" class="icon-target"></i></button>
-</div>
-<!---------------------- Main Content toolbar ends -------------------------->
+    <div class="clearfix"></div>
+    <!---------------------- Main Content toolbar Starts -------------------------->
+    <div id="toolbar" style="position:fixed;top:15%;">
+        <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Geo-Location" data-original-title="Geo Location"><i style="color:#04C9A6;" class="icon-target"></i></button>
+    </div>
+    <!---------------------- Main Content toolbar ends -------------------------->
 
     <script>
 
-        <?php $this->beginBlock('scriptPosReady')?>
+        <?php $this->beginBlock('map-posready')?>
         var http = location.protocol;
         var hostName = window.location.hostname;
         var host = http.concat("//").concat(hostName);
@@ -385,7 +386,7 @@ JuiAsset::register($this);
         var vectorSource = new ol.source.ServerVector({
             format: new ol.format.GeoJSON({}),
             loader: function(extent, resolution, projection) {
-               // var url = 'http://118.91.160.230:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
+                // var url = 'http://118.91.160.230:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
                 var url = 'http://118.91.160.230:8080/geoserver/dmis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=dmis:report_item_incident&srsname=EPSG:3857&outputformat=text/javascript&format_options=callback:loadFeatures&bbox=' + extent.join(',');
                 $.ajax({
                     url: url,
@@ -489,8 +490,7 @@ JuiAsset::register($this);
         //overlayGroup.getLayers().push(nepal_vdc);
 
         var view = new ol.View({
-
-            center: ol.proj.transform([87.2345, 29.3535], 'EPSG:4326', 'EPSG:3857'),
+            center: ol.proj.transform([85.4278, 28.5522], 'EPSG:4326', 'EPSG:3857'),
             zoom: 4
         });
         var osm = new ol.layer.Tile({
@@ -609,6 +609,7 @@ JuiAsset::register($this);
         var popup = new ol.Overlay.Popup();
         map.addOverlay(popup);
 
+        //map.getView().setZoom(6);
         var popupSetImage = function(id,imgContainer) {
             $.ajax({
                 url: 'http://118.91.160.230/girc/dmis/api/rapid_assessment/report-items',
@@ -662,11 +663,11 @@ JuiAsset::register($this);
             //console.log(img_src);
             //console.log(img(id));
             /*if (img_src){
-                return img_src;
-            }else{
-                console.log('img_src not defined for: ');
-                console.log(data);
-            }*/
+             return img_src;
+             }else{
+             console.log('img_src not defined for: ');
+             console.log(data);
+             }*/
         }
 
         /**
@@ -720,8 +721,6 @@ JuiAsset::register($this);
                     console.log(data);
                     console.log('need summary');
 
-
-
                     if(data.length>0){
                         var popupNeedsContent = '<strong class="text-blue">Needs</strong><table class="table table-bordered table-striped table-condensed">';
                         popupNeedsContent += '<thead ><td class="text-light-blue">Item</td><td class="text-light-blue">Need<br><p class="text-muted">(in person)</p></td><td class="text-light-blue">Supplied<br><p class="text-muted">(in person)</p></td></thead>';
@@ -764,9 +763,10 @@ JuiAsset::register($this);
                         feature.values_.features[0].values_.id:
                         feature.values_.features[0].id_.split('.')[1];
 
-                    var popup_content_incident = '<strong class="text-orange">Report Details</strong><hr><strong class="text-blue">Incident</strong><table class="table table-bordered table-striped table-condensed">';
-                    popup_content_incident += '<thead><td class="text-light-blue">Name</td><td class="text-light-blue">Type</td><td class="text-light-blue">Count</td></thead>';
-                    popup_content_incident += '<tr><td>' + incident.values_.item_name + '</td><td>'+incident.values_.class_name+'</td><td>'+incident.values_.magnitude+'</td></tr></table>';
+                    var popup_content_incident =
+                        '<strong class="text-orange">Report Details</strong><hr><strong class="text-blue">Incident</strong><table class="table table-bordered table-striped table-condensed">';
+                        popup_content_incident += '<thead><td class="text-light-blue">Name</td><td class="text-light-blue">Damage Type</td><td class="text-light-blue">Construction Type</td><td class="text-light-blue">Occupancy Type</td></thead>';
+                        popup_content_incident += '<tr><td>' + incident.values_.item_name + '</td><td>'+incident.values_.class_name+'</td><td>'+incident.values_.construction_type+'</td><td>'+incident.values_.occupancy_type+'</td></tr></table>';
 
                     popup.show(coor_feature,'<div id="popup-ri-incident"></div><div id="popup-ri-img"></div><div id="popup-ri-impacts"></div><div id="popup-ri-needs"></div>' );
 
@@ -816,23 +816,23 @@ JuiAsset::register($this);
                     tabbedContent =
                         '<!-- Custom Tabs -->' +
                         '<div class="nav-tabs-custom">' +
-                            '<ul class="nav nav-tabs">' +
-                                '<li class="pull-left"><p class="text-green">Reports</p></li>' +
-                                '<li class="pull-right"><a href="#popup-nav-ri-photo" data-toggle="tab">Photo</a></li>' +
-                                '<li class="pull-right"><a href="#popup-nav-ri-details" data-toggle="tab">Details</a></li>' +
-                                '<li class="active pull-right"><a href="#popup-nav-ri-incident" data-toggle="tab">Incident</a></li>' +
-                            '</ul>' +
-                            '<div class="tab-content">' +
-                                '<div class="tab-pane active" id="popup-nav-ri-incident">' +
-                                    '<blockquote>Incident</blockquote>' +
-                                '</div><!-- /.tab-pane -->' +
-                                '<div class="tab-pane" id="popup-nav-ri-details">' +
-                                    '<blockquote>Details</blockquote>' +
-                                '</div><!-- /.tab-pane -->' +
-                                '<div class="tab-pane" id="popup-nav-ri-photo">' +
-                                    '<blockquote>Photos</blockquote>' +
-                                '</div><!-- /.tab-pane -->' +
-                            '</div><!-- /.tab-content -->' +
+                        '<ul class="nav nav-tabs">' +
+                        '<li class="pull-left"><p class="text-green">Reports</p></li>' +
+                        '<li class="pull-right"><a href="#popup-nav-ri-photo" data-toggle="tab">Photo</a></li>' +
+                        '<li class="pull-right"><a href="#popup-nav-ri-details" data-toggle="tab">Details</a></li>' +
+                        '<li class="active pull-right"><a href="#popup-nav-ri-incident" data-toggle="tab">Incident</a></li>' +
+                        '</ul>' +
+                        '<div class="tab-content">' +
+                        '<div class="tab-pane active" id="popup-nav-ri-incident">' +
+                        '<blockquote>Incident</blockquote>' +
+                        '</div><!-- /.tab-pane -->' +
+                        '<div class="tab-pane" id="popup-nav-ri-details">' +
+                        '<blockquote>Details</blockquote>' +
+                        '</div><!-- /.tab-pane -->' +
+                        '<div class="tab-pane" id="popup-nav-ri-photo">' +
+                        '<blockquote>Photos</blockquote>' +
+                        '</div><!-- /.tab-pane -->' +
+                        '</div><!-- /.tab-content -->' +
                         '</div><!-- nav-tabs-custom -->';
 
                     popup.show(coor_feature,'<div id="popup-ri-incidents"></div><div id="popup-ri-impacts"></div><div id="popup-ri-needs"></div>' );
@@ -853,5 +853,86 @@ JuiAsset::register($this);
         });
 
         <?php $this->endBlock(); ?>
+
+
+        <?php $this->beginBlock('addres_search-posready');?>
+        $("#input-search").autocomplete({
+            delay: 500,
+            minLength: 3,
+            source: function(request, response) {
+                $.getJSON("http://open.mapquestapi.com/nominatim/v1/search.php?format=json", {
+// do not copy the api key; get your own at developer.rottentomatoes.com
+
+                    q: request.term
+
+                }, function(data) {
+// data is an array of objects and must be transformed for autocomplete to use
+                    var array = data.error ? [] : $.map(data, function(m) {
+                        return {
+                            label: m.display_name,
+                            lat : parseFloat(m.lat),
+                            lon : parseFloat(m.lon),
+                            url: m.icon
+                        };
+                    });
+                    response(array);
+                });
+            },
+            search:function(event, ui){
+                var self=this;
+                $('#input-search').addClass('loadinggif');
+            },
+            response:function( event, ui ){
+                var self= this;
+                $('#input-search').removeClass('loadinggif');
+            },
+            focus: function(event, ui) {
+// prevent autocomplete from updating the textbox
+                event.preventDefault();
+            },
+            select: function(event, ui) {
+// prevent autocomplete from updating the textbox
+                event.preventDefault();
+                var position =ol.proj.transform(
+                    [ui.item.lon,ui.item.lat], 'EPSG:4326', 'EPSG:3857'
+                );
+                map.getView().setCenter(position);
+                map.getView().setZoom(12);
+// Adding overlay marker
+                map.addOverlay(new ol.Overlay({
+                    position:position,
+                    element:  $('<img src="http://116.90.239.21/girc/dmis/img/location.png" style="width:32px;height:auto;">')
+                        .css({marginTop: '-200%', marginLeft: '-50%', cursor: 'pointer'})
+                        .popover({
+                            'placement': 'top',
+                            'html': true,
+                            'content':'<strong>'+ui.item.label+'</strong>'
+                        })
+                        .on('click', function (e) { $(".location-popover").not(this).popover('hide').close; })
+                }));
+            }
+        });
+        $("#input-search").autocomplete( "instance" )._renderItem = function( ul, item ) {
+            return $( "<li>" )
+                .append( "<a>" + item.label + "</a></br>" )
+                .append( "<a>(" + item.lat +' '+item.lon + ")</a>" )
+                .appendTo( ul );
+        };
+        $("#input-search").autocomplete( "instance" )._renderMenu= function( ul, items ) {
+            var that = this;
+            $.each( items, function( index, item ) {
+                that._renderItemData( ul, item );
+            });
+            $( ul ).find( "li:odd" ).addClass( "odd" );
+            $( ul ).find( "li:even" ).addClass( "even" );
+        };
+        $("#input-search").autocomplete( "instance" )._resizeMenu= function() {
+            var ul = this.menu.element;
+            ul.outerWidth(this.element.outerWidth());
+        };
+        <?php $this->endBlock();?>
+
     </script>
-<?php $this->registerJs($this->blocks['scriptPosReady'], $this::POS_READY); ?>
+<?php $this->registerJs($this->blocks['map-posready'], $this::POS_READY); ?>
+<?php $this->registerJs($this->blocks['addres_search-posready'], $this::POS_READY); ?>
+
