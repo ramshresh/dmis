@@ -5,12 +5,12 @@ namespace common\modules\rapid_assessment\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\modules\rapid_assessment\models\ReportItem;
+use common\modules\rapid_assessment\models\ReportItemIncident;
 
 /**
- * ReportItemSearch represents the model behind the search form about `common\modules\rapid_assessment\models\ReportItem`.
+ * ReportItemIncidentSearch represents the model behind the search form about `common\modules\rapid_assessment\models\ReportItemIncident`.
  */
-class ReportItemSearch extends ReportItem
+class ReportItemIncidentSearch extends ReportItemIncident
 {
     /**
      * @inheritdoc
@@ -43,7 +43,7 @@ class ReportItemSearch extends ReportItem
      */
     public function search($params)
     {
-        $query = ReportItem::find();
+        $query = ReportItemIncident::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
