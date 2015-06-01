@@ -2,7 +2,12 @@
 
 namespace common\modules\building_assessment\models;
 
+use ramshresh\yii2\galleryManager\GalleryBehavior;
 use Yii;
+use yii\base\Exception;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "building_assessment.building_household".
@@ -44,6 +49,68 @@ use Yii;
  */
 class BuildingHousehold extends \yii\db\ActiveRecord
 {
+    const SRID = 4326;
+    public $attributeOptions = [
+        'occupancy_type' => [
+            'Club' => 'Club',
+            'Commercial' => 'Commercial',
+            'Education' => 'Education',
+            'Government Office' => 'Government Office',
+            'Hotel/Resturant' => 'Hotel/Resturant',
+            'Industry' => 'Industry',
+            'Medical' => 'Medical',
+            'Office Institute' => 'Office Institute',
+            'Police Station' => 'Police Station',
+            'Residental' => 'Residental'
+        ],
+        'current_condition' => [
+            'At Pal/Tent' => 'At Pal/Tent',
+            'At New Rent' => 'At New Rent',
+            'Another owned Property' => 'Another owned Property',
+            'At Farm Shelter' => 'At Farm Shelter',
+            'Sharing floor/room with people/relative' => 'Sharing floor/room with people/relative',
+        ],
+        'income_source' => [
+            'remittance' => 'Remittance',
+            'agriculture' => 'Agriculture',
+            'business' => 'Business',
+            'civil service' => 'Civil Service',
+            'daily wage' => 'Daily Wages',
+            'private job' => 'Private Job'
+        ],
+        'income_level' => [
+
+        ],
+        'construction_type' => [
+            'Adobe' => 'Adobe',
+            'Bamboo and Mud' => 'Bamboo and Mud',
+            'Brick and Cement' => 'Brick and Cement',
+            'Brick and Mud' => 'Brick and Mud',
+            'Pillar-Beam Cement' => 'Pillar-Beam Cement',
+            'Stone and Mud' => 'Stone and Mud',
+            'Stone and Cement' => 'Stone and Cement',
+            'Wood Frame' => 'Wood Frame'
+        ],
+        'current_income_status' => [
+            'running' => 'Running',
+            'partially running' => 'Partially Running',
+            'ended' => 'Ended'
+        ],
+        'damage_type' => [
+            'collapsed' => 'Collapsed',
+            'severe damage' => 'Severe Damage',
+            'moderate damage' => 'Moderate Damage',
+
+        ],
+        'event_name' => [
+            'earthquake' => 'Earthquake',
+            'fire' => 'Fire',
+            'landslide' => 'Landslide',
+            'flood' => 'Flood',
+        ]
+
+    ];
+
     /**
      * @inheritdoc
      */
@@ -116,4 +183,109 @@ class BuildingHousehold extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+    public function getAttributeOptions($attribute)
+    {
+        return $this->attributeOptions[$attribute];
+    }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            //{{{ saving wkt to geometry
+            /**
+             *
+             * @reference http://postgis.net/docs/ST_GeomFromText.html
+             * @todo: Investigate:: Why is parametrized expression not working for linestring but working for point
+             * $this->geom=new Expression("(SELECT ST_PointFromText(:wkt, :srid))", array(':wkt' => $this->wkt, ':srid' => $this::SRID));
+             * For above expression,
+             * $this->wkt='POINT(-71.160281 42.258729)';//->working
+             * $this->wkt='LINESTRING(-71.160281 42.258729,-71.160837 42.259113,-71.161144 42.25932)';//->not working
+             * So used unparametrized expression,
+             * $this->geom=new Expression("(SELECT ST_GeomFromText('".$this->wkt."',".$this->srid."))");
+             */
+
+            if($this->isNewRecord && $this->user_id==null && Yii::$app->getUser()->getId() ){
+                $this->user_id=Yii::$app->getUser()->getId();
+            }
+            if($this->latitude && $this->longitude && !$this->wkt){
+                $this->wkt = "POINT($this->longitude $this->latitude)";
+            }
+
+            if($this->wkt){
+                $this->geom=new Expression("(SELECT ST_GeomFromText('".$this->wkt."',".$this::SRID."))");
+            }
+            if($this->tags){
+                if(is_array($this->tags)){
+                    $this->tags = Json::encode($this->tags);
+                }
+                $this->tags=new Expression("(select '".$this->tags."'::JSON)");
+            }
+
+            //if($this->wkt){
+            //    $this->geom=new Expression("(SELECT ST_GeomFromText('".$this->wkt."',".$this::SRID."))");
+            //}
+
+            /* Hardcoded for POINT lat lon pointpicker */
+            //$this->geom=new Expression("(SELECT ST_PointFromText(:point, :srid))", array(':point' => 'POINT(' . $this->longitude . ' ' . $this->latitude . ')', ':srid' => $this::SRID));
+
+            //}}} ./saving wkt to geometry
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getGalleryImages(){
+        return $this->hasMany(GalleryImageAr::className(), ['ownerId' => 'id']);
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'ramshresh\behaviors\ar\RelatedBehavior',
+            ],
+            [
+                'class' => 'ramshresh\behaviors\ar\RelationBehavior',
+
+            ],
+            [// Auto populates Timestamp for created and update events
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'timestamp_created_at',
+                'updatedAtAttribute' => 'timestamp_updated_at',
+                'value' => new Expression('NOW()'),
+            ],
+            'galleryBehavior' => [
+                'class' => GalleryBehavior::className(),
+                'type' => 'building_household',
+                'extension' => 'jpg',
+                'directory' => Yii::getAlias('@uploads') . '/images/building_assessment/gallery',
+                'tempDirectory' => Yii::getAlias('@uploads') . '/images/temp',
+                'route'=>'/uploads/images/building_assessment/gallery',
+                'tempUrl' => Url::to(['/uploads/images/temp']),
+                'versions' => [
+                    'small' => function ($img) {
+                        /** @var ImageInterface $img */
+                        return $img
+                            ->copy()
+                            ->thumbnail(new Box(200, 200));
+                    },
+                    'medium' => function ($img) {
+                        /** @var ImageInterface $img */
+                        $dstSize = $img->getSize();
+                        $maxWidth = 800;
+                        if ($dstSize->getWidth() > $maxWidth) {
+                            $dstSize = $dstSize->widen($maxWidth);
+                        }
+                        return $img
+                            ->copy()
+                            ->resize($dstSize);
+                    },
+                ]
+            ]
+        ];
+    }
+
 }
