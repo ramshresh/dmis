@@ -438,6 +438,19 @@ SQL;
         return $gallery;
     }
 
+    public function actionGalleryImages(){
+        $q = \Yii::$app->request->queryParams;
+        if(!isset($q['ids'])){
+            throw new Exception('parameter json encoded ids array must be given eg. ids = [827,828] where each ids are the id of report_item');
+        }
+        $ids = Json::decode($q['ids']);
+        if(!is_array($ids)){
+            throw new Exception('ids must be json encoded array');
+        }
+
+        return $ids;
+    }
+
     public function actionChildren(){
         /* @var $query \yii\db\ActiveQuery */
         /* @var $model \common\modules\rapid_assessment\models\ReportItem */

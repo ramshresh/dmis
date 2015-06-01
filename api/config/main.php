@@ -47,6 +47,9 @@ return [
         ],
         'vdc'=>[
             'class'=>'api\modules\vdc\Module',
+        ],
+        'building_assessment'=>[
+            'class'=>'api\modules\building_assessment\Module',
         ]
 
     ],
@@ -150,6 +153,7 @@ return [
                     'extraPatterns' => [
                         'GET unique/<property:\w+>' => 'unique',
                         'GET time-line/<type:\w+>' => 'time-line',
+                        'GET gallery-images' => 'gallery-images',
                         'GET children' => 'children',
                         'GET impact-summary' => 'impact-summary',
                         'GET need-summary' => 'need-summary',
@@ -267,7 +271,21 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'tracking/location',
                 ],
+                //////////////////////
+                [
+
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => [
+                        'building_assessment/building-household',
+                    ],
+                    'pluralize'=>true,
+                    'extraPatterns' => [
+                    ]
+                ],
+                /////////////////////
             ],
+
+
         ],
 
 
