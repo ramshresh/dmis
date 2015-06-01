@@ -2,11 +2,13 @@
 
 namespace common\modules\building_assessment\models;
 
+use Imagine\Image\Box;
 use ramshresh\yii2\galleryManager\GalleryBehavior;
 use Yii;
 use yii\base\Exception;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\Json;
 use yii\helpers\Url;
 
 /**
@@ -125,12 +127,13 @@ class BuildingHousehold extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['occupancy_type', 'income_source', 'construction_type', 'geom', 'wkt', 'tags'], 'string'],
+            [['occupancy_type','income_source','construction_type','current_condition'],'safe'],
+            [[ 'geom', 'wkt', 'tags'], 'string'],
             [['user_id', 'no_of_occupants', 'c_code', 'z_code', 'd_code', 'v_code', 'ward_no', 'impact_death', 'impact_injured', 'impact_missing', 'impact_displaced', 'impact_orphaned'], 'integer'],
             [['timestamp_created_at', 'timestamp_updated_at', 'timestamp_occurance'], 'safe'],
             [['longitude', 'latitude'], 'number'],
             [['owner_name', 'owner_contact', 'address'], 'string', 'max' => 128],
-            [['current_condition', 'income_level', 'event_name'], 'string', 'max' => 64],
+            [['income_level', 'event_name'], 'string', 'max' => 64],
             [['current_income_status', 'damage_type'], 'string', 'max' => 32]
         ];
     }
@@ -191,7 +194,17 @@ class BuildingHousehold extends \yii\db\ActiveRecord
 
     public function beforeSave($insert)
     {
+
         if (parent::beforeSave($insert)) {
+            if(is_array($this->occupancy_type))
+                $this->occupancy_type=implode(',',$this->occupancy_type);
+            if(is_array($this->current_condition))
+                $this->current_condition=implode(',',$this->current_condition);
+            if(is_array($this->income_source))
+                $this->income_source=implode(',',$this->income_source);
+            if(is_array($this->construction_type))
+                $this->construction_type=implode(',',$this->construction_type);
+
             //{{{ saving wkt to geometry
             /**
              *
