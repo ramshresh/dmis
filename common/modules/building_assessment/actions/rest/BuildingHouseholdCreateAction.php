@@ -19,6 +19,7 @@ class BuildingHouseholdCreateAction extends MyBaseAction
 {
     public $findModel; //callable function($id,$action){}
     public $modelLoaded;
+    public $scenario;
 
     public function init()
     {
