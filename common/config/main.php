@@ -1,7 +1,7 @@
 <?php
 use \yii\web\Request;
 return [
-    'name'=>'DMIS',
+    'name'=>'Disaster Management Information System',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'mailer' => [
@@ -112,6 +112,9 @@ return [
         ],
         'file_management' => [
             'class' => 'common\modules\file_management\Module',
+        ],
+        'building_assessment' => [
+            'class' => 'common\modules\building_assessment\Module',
         ],
     ],
 ];
