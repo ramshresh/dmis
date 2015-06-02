@@ -172,7 +172,6 @@ class DemoGeoController extends MyBaseContoller
                 }
 
             }
-            else {echo '</br>no :'.$path.DIRECTORY_SEPARATOR.$ownerId;}
         }
 
         Yii::$app->end();
