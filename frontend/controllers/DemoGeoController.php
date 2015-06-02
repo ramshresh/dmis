@@ -198,7 +198,9 @@ class DemoGeoController extends MyBaseContoller
                     $oldFolderNames[]=$file;
                     $oldFolderPath = $path.DIRECTORY_SEPARATOR.$file;
 
+                    echo '<br'.Json::encode([$file=>isset($oldNew[$file])]);
                     if(isset($oldNew[$file])){
+
                         $newFolderPath = $path.DIRECTORY_SEPARATOR.$oldNew[$file];
                         $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$oldNew[$file];
 
