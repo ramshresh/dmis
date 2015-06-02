@@ -129,7 +129,7 @@ class DemoGeoController extends MyBaseContoller
                 }
             }
 
-            $oldNew[(string)$row->column[0]]=(string)$row->column[1];
+            $oldNew[(string)$row->column[1]]=(string)$row->column[0];
 
 
 
