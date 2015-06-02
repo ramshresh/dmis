@@ -99,8 +99,8 @@ class DemoGeoController extends MyBaseContoller
     }
 
     public function actionMove(){
-
-        return $this->render('index');
+        echo 'asd';
+        //return $this->render('index');
     }
 }
 
