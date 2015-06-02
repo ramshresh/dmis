@@ -130,8 +130,8 @@ class DemoGeoController extends MyBaseContoller
             $oldNew[(string)$row->column[0]]=(string)$row->column[3];
             $oldOwnerID[(string)$row->column[0]]=(string)$row->column[2];
         }
-        print_r($oldNew[0]);
-        print_r($oldOwnerID[0]);
+        print_r($oldNew[458]);
+        print_r($oldOwnerID[458]);
         Yii::$app->end();
         if(!is_dir($tempPath)){
             mkdir($tempPath);
