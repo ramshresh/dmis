@@ -105,26 +105,10 @@ class DemoGeoController extends MyBaseContoller
         $basePath = '/var/www/html/girc/dmis/uploads/images/building_assessment';
         $path = $basePath.DIRECTORY_SEPARATOR.'gallery';
         $tempPath = $basePath.DIRECTORY_SEPARATOR.'temp';
-        $pathXmlFile =$basePath.DIRECTORY_SEPARATOR.'new_old_id.xml';
+        $pathXmlFile =$basePath.DIRECTORY_SEPARATOR.'gallery_images.xml';
 
         $xml = simplexml_load_file($pathXmlFile);
 
-        if ($handle = opendir($path)) {
-            $blacklist = array('.', '..', 'somedir', 'somefile.php');
-            while (false !== ($file = readdir($handle))) {
-                if (!in_array($file, $blacklist)) {
-                    $oldFolderNames[]=$file;
-                    $oldFolderPath = $path.DIRECTORY_SEPARATOR.$file;
-
-                        $newFolderPath = str_replace('temp_','',$oldFolderPath);
-                    echo $oldFolderPath;
-                       // rename($oldFolderPath,$newFolderPath);
-
-                }
-            }
-            closedir($handle);
-        }
-Yii::$app->end();
         $oldIds = [];
         $newIds = [];
         $oldNew = [];
@@ -140,12 +124,12 @@ Yii::$app->end();
                     default:
                         break;
                 }
-
             }
             $oldNew[(string)$row->column[1]]=(string)$row->column[0];
         }
 
-
+        print_r($oldNew);
+        Yii::$app->end();
         if(!is_dir($tempPath)){
             mkdir($tempPath);
         }
