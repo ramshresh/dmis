@@ -208,8 +208,8 @@ class DemoGeoController extends MyBaseContoller
                         $newFolderPaths[]=$newFolderPath;
                         $newTempFolderPaths[]=$newTempFolderPath;
 
-
-                        rename($oldFolderPath,$newTempFolderPath);
+                        echo '<br>'.Json::encode(['rename'=>[$oldFolderPath,$newFolderPath]]);
+                        //rename($oldFolderPath,$newTempFolderPath);
                     }
                 }
             }
