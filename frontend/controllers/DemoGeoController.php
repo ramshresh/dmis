@@ -101,6 +101,8 @@ class DemoGeoController extends MyBaseContoller
 
     public function actionMove(){
 
+
+
         $prefix = 'temp_';
         $basePath = '/var/www/html/girc/dmis/uploads/images/building_assessment';
         $path = $basePath.DIRECTORY_SEPARATOR.'gallery';
@@ -128,6 +130,9 @@ class DemoGeoController extends MyBaseContoller
             }
 
             $oldNew[(string)$row->column[0]]=(string)$row->column[1];
+
+            echo Json::encode($oldNew);
+            Yii::$app->end();
 
             //$oldNew[(string)$row->column[3]]=(string)$row->column[0];
            // $oldOwnerID[(string)$row->column[3]]=(string)$row->column[2];
