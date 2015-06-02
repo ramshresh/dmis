@@ -162,7 +162,7 @@ class DemoGeoController extends MyBaseContoller
                                 echo $file.'exists<br>';
 
                                 $newFolderPath = $galleryDir.DIRECTORY_SEPARATOR.$oldNew[$file];
-                                $newFolderPath = $tempPath.DIRECTORY_SEPARATOR.$file;
+                                //$newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$oldNew[$file];
 
                                 $oldFolderPaths[]=$oldFolderPath;
                                 $newFolderPaths[]=$newFolderPath;
