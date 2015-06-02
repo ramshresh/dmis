@@ -214,7 +214,7 @@ class DemoGeoController extends MyBaseContoller
             closedir($handle);
         }
 
-        echo Json::encode(['old'=>$oldFolderPaths,'new'=>$newTempFolderPaths]);
+        echo Json::encode(['old_new'=>$oldNew,'old'=>$oldFolderPaths,'new'=>$newTempFolderPaths]);
         Yii::$app->end();
 
 
