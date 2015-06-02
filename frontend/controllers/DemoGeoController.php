@@ -100,7 +100,8 @@ class DemoGeoController extends MyBaseContoller
     }
 
     public function actionMove(){
-
+echo 's';
+        Yii::$app->end();
         $prefix = 'temp_';
         $basePath = '/var/www/html/girc/dmis/uploads/images/building_assessment';
         $path = $basePath.DIRECTORY_SEPARATOR.'gallery';
