@@ -130,9 +130,7 @@ class DemoGeoController extends MyBaseContoller
             $oldNew[(string)$row->column[0]]=(string)$row->column[3];
             $oldOwnerID[(string)$row->column[0]]=(string)$row->column[2];
         }
-        print_r($oldNew['462']);
-        print_r($oldOwnerID['462']);
-        Yii::$app->end();
+
         if(!is_dir($tempPath)){
             mkdir($tempPath);
         }
@@ -141,6 +139,17 @@ class DemoGeoController extends MyBaseContoller
         $oldFolderPaths=[];
         $newFolderPaths=[];
         $newTempFolderPaths=[];
+
+        foreach($oldNew as $old=>$new){
+            $ownerId = $oldOwnerID[$old];
+
+            if(is_dir($path.DIRECTORY_SEPARATOR.$ownerId.DIRECTORY_SEPARATOR.$old)){
+                echo '</br>yes';
+            }
+            else {echo '</br>no';}
+        }
+
+
         if ($handle = opendir($path)) {
             $blacklist = array('.', '..', 'somedir', 'somefile.php');
             while (false !== ($file = readdir($handle))) {
