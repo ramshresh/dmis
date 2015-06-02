@@ -127,7 +127,7 @@ class DemoGeoController extends MyBaseContoller
                 }
             }
 
-            $oldNew[(string)$row->column[3]]=(string)$row->column[1];
+            $oldNew[(string)$row->column[3]]=(string)$row->column[0];
             $oldOwnerID[(string)$row->column[3]]=(string)$row->column[2];
         }
 
