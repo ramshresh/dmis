@@ -159,7 +159,7 @@ class DemoGeoController extends MyBaseContoller
             }
             closedir($handle);
         }
-        echo rename('/var/www/html/girc/dmis/uploads/images/building_assessment/gallery/temp_111','/var/www/html/girc/dmis/uploads/images/building_assessment/gallery/temp_10');
+        echo rename($oldFolderPath,$newTempFolderPath);
         echo 'done';
 
 
