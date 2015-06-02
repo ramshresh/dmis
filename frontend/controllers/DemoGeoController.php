@@ -192,6 +192,7 @@ class DemoGeoController extends MyBaseContoller
 */
 
         if ($handle = opendir($path)) {
+            echo '<br>'.$path;
             $blacklist = array('.', '..', 'somedir', 'somefile.php');
             while (false !== ($file = readdir($handle))) {
                 if (!in_array($file, $blacklist)) {
