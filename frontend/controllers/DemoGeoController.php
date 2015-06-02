@@ -146,7 +146,7 @@ class DemoGeoController extends MyBaseContoller
             if(is_dir($path.DIRECTORY_SEPARATOR.$ownerId.DIRECTORY_SEPARATOR.$old)){
                 echo '</br>yes';
             }
-            else {echo '</br>no';}
+            else {echo '</br>no :'.$path.DIRECTORY_SEPARATOR.$ownerId.DIRECTORY_SEPARATOR.$old;}
         }
 
 
