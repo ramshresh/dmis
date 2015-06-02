@@ -105,8 +105,9 @@ class DemoGeoController extends MyBaseContoller
         $basePath = '/var/www/html/girc/dmis/uploads/images/building_assessment';
         $path = $basePath.DIRECTORY_SEPARATOR.'gallery';
         $tempPath = $basePath.DIRECTORY_SEPARATOR.'temp';
-        $pathXmlFile =$basePath.DIRECTORY_SEPARATOR.'gallery_images.xml';
+        $pathXmlFile =$basePath.DIRECTORY_SEPARATOR.'new_old_id.xml';
 
+        $xml = simplexml_load_file($pathXmlFile);
         $xml = simplexml_load_file($pathXmlFile);
 
         $oldIds = [];
@@ -127,10 +128,10 @@ class DemoGeoController extends MyBaseContoller
                 }
             }
 
-            $oldNew[(string)$row->column[0]]=(string)$row->column[1];
+            $oldNew[(string)$row->column[1]]=(string)$row->column[0];
 
             //$oldNew[(string)$row->column[3]]=(string)$row->column[0];
-            $oldOwnerID[(string)$row->column[3]]=(string)$row->column[2];
+           // $oldOwnerID[(string)$row->column[3]]=(string)$row->column[2];
         }
 
         if(!is_dir($tempPath)){
