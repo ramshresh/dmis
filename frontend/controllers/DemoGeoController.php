@@ -107,10 +107,8 @@ class DemoGeoController extends MyBaseContoller
         $tempPath = $basePath.DIRECTORY_SEPARATOR.'temp';
         $pathXmlFile =$basePath.DIRECTORY_SEPARATOR.'new_old_id.xml';
 
-        $pathXmlImage =$basePath.DIRECTORY_SEPARATOR.'gallery_images.xml';
-
         $xml = simplexml_load_file($pathXmlFile);
-        $xmlImage = simplexml_load_file($pathXmlImage);
+
 
         $oldIds = [];
         $newIds = [];
@@ -132,26 +130,6 @@ class DemoGeoController extends MyBaseContoller
             $oldNew[(string)$row->column[1]]=(string)$row->column[0];
         }
 
-        $oldImageIds = [];
-        $newImageIds = [];
-        $oldImageNew = [];
-        foreach($xmlImage->records->row as $row){
-            foreach($row->column as  $column){
-                switch($column['name']){
-                    case 'id':
-                        $newImageIds[]=(string)$column;
-                        break;
-                    case 'old_id':
-                        $oldImageIds[]=(string)$column;
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-            $oldImageNew[(string)$row->column[1]]=(string)$row->column[0];
-        }
-
 
         if(!is_dir($tempPath)){
             mkdir($tempPath);
@@ -161,11 +139,6 @@ class DemoGeoController extends MyBaseContoller
         $oldFolderPaths=[];
         $newFolderPaths=[];
         $newTempFolderPaths=[];
-
-        $oldImageFolderNames=[];
-        $oldImageFolderPaths=[];
-        $newImageFolderPaths=[];
-        $newImageTempFolderPaths=[];
         if ($handle = opendir($path)) {
             $blacklist = array('.', '..', 'somedir', 'somefile.php');
             while (false !== ($file = readdir($handle))) {
@@ -175,51 +148,17 @@ class DemoGeoController extends MyBaseContoller
 
                     if(isset($oldNew[$file])){
                         $newFolderPath = $path.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file];
-                        $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file];
+                        $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$oldNew[$file];
 
                         $oldFolderPaths[]=$oldFolderPath;
                         $newFolderPaths[]=$newFolderPath;
                         $newTempFolderPaths[]=$newTempFolderPath;
-                        //rename($oldFolderPath,$newTempFolderPath);
-
-                        /////////////////////
-                        echo $newTempFolderPath;
-
-                        if ($handleImage = opendir($newTempFolderPath)) {
-                            $blacklistImage = array('.', '..', 'somedir', 'somefile.php');
-                            while (false !== ($fileImage = readdir($handleImage))) {
-                                if (!in_array($fileImage, $blacklistImage)) {
-                                    $oldImageFolderNames[]=$fileImage;
-                                    $oldImageFolderPath = $newTempFolderPath.DIRECTORY_SEPARATOR.$fileImage;
-
-                                    if(isset($oldImageNew[$fileImage])){
-                                        $newImageFolderPath = $newTempFolderPath.DIRECTORY_SEPARATOR.$prefix.$oldImageNew[$newTempFolderPath];
-                                        $newImageTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file].DIRECTORY_SEPARATOR.$prefix.DIRECTORY_SEPARATOR.$oldImageNew[$newTempFolderPath];
-
-                                        $oldImageFolderPaths[]=$oldImageFolderPath;
-                                        $newImageFolderPaths[]=$newImageFolderPath;
-                                        $newImageTempFolderPaths[]=$newImageTempFolderPath;
-                                        //rename($oldFolderPath,$newTempFolderPath);
-                                    }
-
-
-                                }
-                            }
-                            closedir($handle);
-                        }
-                        /////////////////////
-
+                        rename($oldFolderPath,$newTempFolderPath);
                     }
-
-
                 }
             }
             closedir($handle);
         }
-
-        print_r($newImageTempFolderPaths);
-
-
 
     }
 }
