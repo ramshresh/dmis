@@ -125,10 +125,12 @@ class DemoGeoController extends MyBaseContoller
                         break;
                 }
             }
+
+            print_r($row->column);
             $oldNew[(string)$row->column[1]]=(string)$row->column[0];
         }
 
-        print_r($oldNew);
+
         Yii::$app->end();
         if(!is_dir($tempPath)){
             mkdir($tempPath);
