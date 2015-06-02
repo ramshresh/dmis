@@ -109,7 +109,22 @@ class DemoGeoController extends MyBaseContoller
 
         $xml = simplexml_load_file($pathXmlFile);
 
+        if ($handle = opendir($path)) {
+            $blacklist = array('.', '..', 'somedir', 'somefile.php');
+            while (false !== ($file = readdir($handle))) {
+                if (!in_array($file, $blacklist)) {
+                    $oldFolderNames[]=$file;
+                    $oldFolderPath = $path.DIRECTORY_SEPARATOR.$file;
 
+
+                        $newFolderPath = str_replace('temp_','',$oldFolderPath);
+                        rename($oldFolderPath,$newFolderPath);
+
+                }
+            }
+            closedir($handle);
+        }
+Yii::$app->end();
         $oldIds = [];
         $newIds = [];
         $oldNew = [];
