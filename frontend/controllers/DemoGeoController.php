@@ -142,32 +142,38 @@ class DemoGeoController extends MyBaseContoller
 
         foreach($oldNew as $old=>$new){
             $ownerId = $oldOwnerID[$old];
-            $galleryPath =$path.DIRECTORY_SEPARATOR.$ownerId;
-                if ($handle = opendir($galleryPath)) {
+
+            if(is_dir($path.DIRECTORY_SEPARATOR.$ownerId)){
+                $galleryDir=$path.DIRECTORY_SEPARATOR.$ownerId;
+
+                if ($handle = opendir($galleryDir)) {
                     $blacklist = array('.', '..', 'somedir', 'somefile.php');
                     while (false !== ($file = readdir($handle))) {
                         if (!in_array($file, $blacklist)) {
                             $oldFolderNames[]=$file;
-                            $oldFolderPath = $path.DIRECTORY_SEPARATOR.$file;
+                            $oldFolderPath = $galleryDir.DIRECTORY_SEPARATOR.$file;
 
                             if(isset($oldNew[$file])){
-                                $newFolderPath = $path.DIRECTORY_SEPARATOR.$oldNew[$file];
-                                $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$oldNew[$file];
+                                $newFolderPath = $galleryDir.DIRECTORY_SEPARATOR.$oldNew[$file];
+                                //$newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$oldNew[$file];
 
                                 $oldFolderPaths[]=$oldFolderPath;
                                 $newFolderPaths[]=$newFolderPath;
-                                $newTempFolderPaths[]=$newTempFolderPath;
+                                //$newTempFolderPaths[]=$newTempFolderPath;
                                 //rename($oldFolderPath,$newTempFolderPath);
                             }
                         }
                     }
                     closedir($handle);
                 }
+
+                print_r($oldFolderPaths);
+                Yii::$app->end();
+
+            }
+            else {echo '</br>no :'.$path.DIRECTORY_SEPARATOR.$ownerId;}
         }
 
-        print_r($oldFolderPaths[0]);
-Yii::$app->end();
-        //print_r($newTempFolderPaths[0]);
 
         if ($handle = opendir($path)) {
             $blacklist = array('.', '..', 'somedir', 'somefile.php');
