@@ -137,8 +137,7 @@ class DemoGeoController extends MyBaseContoller
            // $oldOwnerID[(string)$row->column[3]]=(string)$row->column[2];
         }
 
-        echo Json::encode($oldNew);
-        Yii::$app->end();
+
 
         if(!is_dir($tempPath)){
             mkdir($tempPath);
@@ -206,12 +205,17 @@ class DemoGeoController extends MyBaseContoller
                         $oldFolderPaths[]=$oldFolderPath;
                         $newFolderPaths[]=$newFolderPath;
                         $newTempFolderPaths[]=$newTempFolderPath;
-                        rename($oldFolderPath,$newTempFolderPath);
+
+
+                       // rename($oldFolderPath,$newTempFolderPath);
                     }
                 }
             }
             closedir($handle);
         }
+
+        echo Json::encode(['old'=>$oldFolderPaths,'new'=>$newTempFolderPaths]);
+        Yii::$app->end();
 
 
     }
