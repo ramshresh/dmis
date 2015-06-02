@@ -183,6 +183,7 @@ class DemoGeoController extends MyBaseContoller
                         //rename($oldFolderPath,$newTempFolderPath);
 
                         /////////////////////
+                        echo $newTempFolderPath;
 
                         if ($handleImage = opendir($newTempFolderPath)) {
                             $blacklistImage = array('.', '..', 'somedir', 'somefile.php');
