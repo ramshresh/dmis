@@ -108,7 +108,6 @@ class DemoGeoController extends MyBaseContoller
         $pathXmlFile =$basePath.DIRECTORY_SEPARATOR.'new_old_id.xml';
 
         $xml = simplexml_load_file($pathXmlFile);
-        $xml = simplexml_load_file($pathXmlFile);
 
         $oldIds = [];
         $newIds = [];
@@ -128,7 +127,7 @@ class DemoGeoController extends MyBaseContoller
                 }
             }
 
-            $oldNew[(string)$row->column[1]]=(string)$row->column[0];
+            $oldNew[(string)$row->column[0]]=(string)$row->column[1];
 
             //$oldNew[(string)$row->column[3]]=(string)$row->column[0];
            // $oldOwnerID[(string)$row->column[3]]=(string)$row->column[2];
