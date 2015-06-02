@@ -151,11 +151,13 @@ class DemoGeoController extends MyBaseContoller
                     $blacklist = array('.', '..', 'somedir', 'somefile.php');
                     while (false !== ($file = readdir($handle))) {
 
-                        echo $file.'<br>';
+
 
                         if (!in_array($file, $blacklist)) {
                             $oldFolderNames[]=$file;
                             $oldFolderPath = $galleryDir.DIRECTORY_SEPARATOR.$file;
+
+                            echo $file.'<br>';
 
                             if(isset($oldNew[$file])){
                                 $newFolderPath = $galleryDir.DIRECTORY_SEPARATOR.$oldNew[$file];
