@@ -112,6 +112,7 @@ class DemoGeoController extends MyBaseContoller
         $oldIds = [];
         $newIds = [];
         $oldNew = [];
+        $oldOwnerID=[];
         foreach($xml->records->row as $row){
             foreach($row->column as  $column){
                 switch($column['name']){
@@ -126,11 +127,11 @@ class DemoGeoController extends MyBaseContoller
                 }
             }
 
-            print_r([(string)$row->column[0],(string)$row->column[1],(string)$row->column[2],(string)$row->column[3]]);
-            $oldNew[(string)$row->column[1]]=(string)$row->column[0];
+            $oldNew[(string)$row->column[0]]=(string)$row->column[3];
+            $oldOwnerID[(string)$row->column[0]]=(string)$row->column[2];
         }
-
-
+        print_r($oldNew[0]);
+        print_r($oldOwnerID[0]);
         Yii::$app->end();
         if(!is_dir($tempPath)){
             mkdir($tempPath);
