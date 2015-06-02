@@ -102,7 +102,7 @@ class DemoGeoController extends MyBaseContoller
 
         $prefix = 'temp_';
         $basePath = 'var/www/html/girc/dmis/uploads/images/building_assessment';
-        $path = $basePath.DIRECTORY_SEPARATOR.gallery;
+        $path = $basePath.DIRECTORY_SEPARATOR.'gallery';
         $tempPath = $basePath.DIRECTORY_SEPARATOR.'temp';
         $pathXmlFile =$basePath.DIRECTORY_SEPARATOR.'new_old_id.xml';
 
