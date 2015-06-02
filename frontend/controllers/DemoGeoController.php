@@ -171,11 +171,11 @@ class DemoGeoController extends MyBaseContoller
                     echo $galleryDir;
                 }
 
-                Yii::$app->end();
-
             }
             else {echo '</br>no :'.$path.DIRECTORY_SEPARATOR.$ownerId;}
         }
+
+        Yii::$app->end();
 
 
         if ($handle = opendir($path)) {
