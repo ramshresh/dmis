@@ -143,8 +143,10 @@ class DemoGeoController extends MyBaseContoller
                     $oldFolderNames[]=$file;
                     $oldFolderPath = $path.DIRECTORY_SEPARATOR.$file;
 
-                    $newFolderPath = $path.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file];
-                    $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file];
+                    if($oldNew[$file]){
+                        $newFolderPath = $path.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file];
+                        $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file];
+                    }
 
                     $oldFolderPaths[]=$oldFolderPath;
                     $newFolderPaths[]=$newFolderPath;
