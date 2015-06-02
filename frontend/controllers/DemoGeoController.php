@@ -116,9 +116,9 @@ class DemoGeoController extends MyBaseContoller
                     $oldFolderNames[]=$file;
                     $oldFolderPath = $path.DIRECTORY_SEPARATOR.$file;
 
-
                         $newFolderPath = str_replace('temp_','',$oldFolderPath);
-                        rename($oldFolderPath,$newFolderPath);
+                    echo $newFolderPath;
+                       // rename($oldFolderPath,$newFolderPath);
 
                 }
             }
