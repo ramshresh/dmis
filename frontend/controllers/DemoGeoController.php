@@ -216,7 +216,7 @@ class DemoGeoController extends MyBaseContoller
             closedir($handle);
         }
 
-        print_r($oldImageFolderNames);
+        print_r($newImageTempFolderPaths);
 
 
 
