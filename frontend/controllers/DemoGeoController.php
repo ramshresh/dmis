@@ -150,8 +150,8 @@ class DemoGeoController extends MyBaseContoller
 
                     $blacklist = array('.', '..', 'somedir', 'somefile.php');
                     while (false !== ($file = readdir($handle))) {
-                        echo $file;
-                       /* if (!in_array($file, $blacklist)) {
+
+                        if (!in_array($file, $blacklist)) {
                             $oldFolderNames[]=$file;
                             $oldFolderPath = $galleryDir.DIRECTORY_SEPARATOR.$file;
 
@@ -164,7 +164,7 @@ class DemoGeoController extends MyBaseContoller
                                 //$newTempFolderPaths[]=$newTempFolderPath;
                                 //rename($oldFolderPath,$newTempFolderPath);
                             }
-                        }*/
+                        }
                     }
                     closedir($handle);
                 }else{
@@ -173,6 +173,7 @@ class DemoGeoController extends MyBaseContoller
 
             }
         }
+        print_r($oldFolderPaths);
 
         Yii::$app->end();
 
