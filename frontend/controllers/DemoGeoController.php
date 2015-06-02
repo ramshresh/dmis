@@ -99,8 +99,68 @@ class DemoGeoController extends MyBaseContoller
     }
 
     public function actionMove(){
-        echo 'asd';
-        //return $this->render('index');
+
+        $prefix = 'temp_';
+        $basePath = 'var/www/html/girc/dmis/uploads/images/building_assessment';
+        $path = $basePath.DIRECTORY_SEPARATOR.gallery;
+        $tempPath = $basePath.DIRECTORY_SEPARATOR.'temp';
+        $pathXmlFile =$basePath.DIRECTORY_SEPARATOR.'new_old_id.xml';
+
+        $xml = simplexml_load_file($pathXmlFile);
+
+        $oldIds = [];
+        $newIds = [];
+        $oldNew = [];
+        foreach($xml->records->row as $row){
+            foreach($row->column as  $column){
+                switch($column['name']){
+                    case 'id':
+                        $newIds[]=(string)$column;
+                        break;
+                    case 'old_id':
+                        $oldIds[]=(string)$column;
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            $oldNew[(string)$row->column[1]]=(string)$row->column[0];
+        }
+
+
+        if(!is_dir($tempPath)){
+            mkdir($tempPath);
+        }
+        $oldFolderNames=[];
+        $oldFolderPaths=[];
+        $newFolderPaths=[];
+        $newTempFolderPaths=[];
+        if ($handle = opendir($path)) {
+            $blacklist = array('.', '..', 'somedir', 'somefile.php');
+            while (false !== ($file = readdir($handle))) {
+                if (!in_array($file, $blacklist)) {
+                    $oldFolderNames[]=$file;
+                    $oldFolderPath = $path.DIRECTORY_SEPARATOR.$file;
+
+                    $newFolderPath = $path.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file];
+                    $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file];
+
+                    $oldFolderPaths[]=$oldFolderPath;
+                    $newFolderPaths[]=$newFolderPath;
+                    $newTempFolderPaths[]=$newTempFolderPath;
+
+                    echo $newFolderPath;
+
+
+                }
+            }
+            closedir($handle);
+        }
+        echo rename('/var/www/html/girc/dmis/uploads/images/building_assessment/gallery/temp_111','/var/www/html/girc/dmis/uploads/images/building_assessment/gallery/temp_10');
+        echo 'done';
+
+
     }
 }
 
