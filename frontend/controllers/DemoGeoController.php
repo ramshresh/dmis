@@ -165,7 +165,7 @@ class DemoGeoController extends MyBaseContoller
         $oldImageFolderNames=[];
         $oldImageFolderPaths=[];
         $newImageFolderPaths=[];
-        $newTempFolderPaths=[];
+        $newImageTempFolderPaths=[];
         if ($handle = opendir($path)) {
             $blacklist = array('.', '..', 'somedir', 'somefile.php');
             while (false !== ($file = readdir($handle))) {
