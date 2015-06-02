@@ -151,6 +151,8 @@ class DemoGeoController extends MyBaseContoller
                     $blacklist = array('.', '..', 'somedir', 'somefile.php');
                     while (false !== ($file = readdir($handle))) {
 
+                        echo $file;
+
                         if (!in_array($file, $blacklist)) {
                             $oldFolderNames[]=$file;
                             $oldFolderPath = $galleryDir.DIRECTORY_SEPARATOR.$file;
