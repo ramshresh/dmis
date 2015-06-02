@@ -140,7 +140,7 @@ class DemoGeoController extends MyBaseContoller
         $newFolderPaths=[];
         $newTempFolderPaths=[];
 
-        foreach($oldNew as $old=>$new){
+        /*foreach($oldNew as $old=>$new){
             $ownerId = $oldOwnerID[$old];
 
             if(is_dir($path.DIRECTORY_SEPARATOR.$ownerId)){
@@ -181,7 +181,7 @@ class DemoGeoController extends MyBaseContoller
         print_r($oldFolderPaths);
 
         Yii::$app->end();
-
+*/
 
         if ($handle = opendir($path)) {
             $blacklist = array('.', '..', 'somedir', 'somefile.php');
@@ -192,7 +192,7 @@ class DemoGeoController extends MyBaseContoller
 
                     if(isset($oldNew[$file])){
                         $newFolderPath = $path.DIRECTORY_SEPARATOR.$oldNew[$file];
-                        $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$oldNew[$file];
+                        $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file];
 
                         $oldFolderPaths[]=$oldFolderPath;
                         $newFolderPaths[]=$newFolderPath;
