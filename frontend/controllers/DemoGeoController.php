@@ -132,6 +132,7 @@ class DemoGeoController extends MyBaseContoller
         if(!is_dir($tempPath)){
             mkdir($tempPath);
         }
+
         $oldFolderNames=[];
         $oldFolderPaths=[];
         $newFolderPaths=[];
@@ -152,16 +153,11 @@ class DemoGeoController extends MyBaseContoller
                     $newFolderPaths[]=$newFolderPath;
                     $newTempFolderPaths[]=$newTempFolderPath;
 
-                    echo $newFolderPath;
-
-
+                    rename($oldFolderPath,$newTempFolderPath);
                 }
             }
             closedir($handle);
         }
-        echo rename($oldFolderPath,$newTempFolderPath);
-        echo 'done';
-
 
     }
 }
