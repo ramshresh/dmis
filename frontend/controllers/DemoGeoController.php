@@ -126,7 +126,7 @@ class DemoGeoController extends MyBaseContoller
                 }
             }
 
-            print_r($row->column);
+            print_r([$row->column[0],$row->column[1],$row->column[2],$row->column[3]]);
             $oldNew[(string)$row->column[1]]=(string)$row->column[0];
         }
 
