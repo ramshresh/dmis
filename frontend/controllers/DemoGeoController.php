@@ -147,6 +147,7 @@ class DemoGeoController extends MyBaseContoller
                 $galleryDir=$path.DIRECTORY_SEPARATOR.$ownerId;
 
                 if ($handle = opendir($galleryDir)) {
+                    echo 'ok';
                     $blacklist = array('.', '..', 'somedir', 'somefile.php');
                     while (false !== ($file = readdir($handle))) {
                         if (!in_array($file, $blacklist)) {
@@ -165,6 +166,8 @@ class DemoGeoController extends MyBaseContoller
                         }
                     }
                     closedir($handle);
+                }else{
+                    echo $galleryDir;
                 }
 
                 print_r($oldFolderPaths);
