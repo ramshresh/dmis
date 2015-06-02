@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use common\components\MyBaseContoller;
 use common\modules\rapid_assessment\models\ItemType;
 use common\components\AppHelper;
+use ramshresh\yii2\galleryManager\GalleryImageAr;
 use Yii;
 use yii\helpers\Json;
 use yii\helpers\Url;
@@ -106,7 +107,10 @@ class DemoGeoController extends MyBaseContoller
         $tempPath = $basePath.DIRECTORY_SEPARATOR.'temp';
         $pathXmlFile =$basePath.DIRECTORY_SEPARATOR.'new_old_id.xml';
 
+        $pathXmlImage =$basePath.DIRECTORY_SEPARATOR.'gallery_images.xml';
+
         $xml = simplexml_load_file($pathXmlFile);
+        $xmlImage = simplexml_load_file($pathXmlImage);
 
         $oldIds = [];
         $newIds = [];
@@ -128,6 +132,26 @@ class DemoGeoController extends MyBaseContoller
             $oldNew[(string)$row->column[1]]=(string)$row->column[0];
         }
 
+        $oldImageIds = [];
+        $newImageIds = [];
+        $oldImageNew = [];
+        foreach($xmlImage->records->row as $row){
+            foreach($row->column as  $column){
+                switch($column['name']){
+                    case 'id':
+                        $newImageIds[]=(string)$column;
+                        break;
+                    case 'old_id':
+                        $oldImageIds[]=(string)$column;
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            $oldImageNew[(string)$row->column[1]]=(string)$row->column[0];
+        }
+
 
         if(!is_dir($tempPath)){
             mkdir($tempPath);
@@ -136,6 +160,11 @@ class DemoGeoController extends MyBaseContoller
         $oldFolderNames=[];
         $oldFolderPaths=[];
         $newFolderPaths=[];
+        $newTempFolderPaths=[];
+
+        $oldImageFolderNames=[];
+        $oldImageFolderPaths=[];
+        $newImageFolderPaths=[];
         $newTempFolderPaths=[];
         if ($handle = opendir($path)) {
             $blacklist = array('.', '..', 'somedir', 'somefile.php');
@@ -151,16 +180,45 @@ class DemoGeoController extends MyBaseContoller
                         $oldFolderPaths[]=$oldFolderPath;
                         $newFolderPaths[]=$newFolderPath;
                         $newTempFolderPaths[]=$newTempFolderPath;
-                        rename($oldFolderPath,$newTempFolderPath);
+                        //rename($oldFolderPath,$newTempFolderPath);
+
+                        /////////////////////
+
+                        if ($handleImage = opendir($newTempFolderPath)) {
+                            $blacklistImage = array('.', '..', 'somedir', 'somefile.php');
+                            while (false !== ($fileImage = readdir($handleImage))) {
+                                if (!in_array($fileImage, $blacklistImage)) {
+                                    $oldImageFolderNames[]=$fileImage;
+                                    $oldImageFolderPath = $newTempFolderPath.DIRECTORY_SEPARATOR.$fileImage;
+
+                                    if(isset($oldImageNew[$fileImage])){
+                                        $newImageFolderPath = $newTempFolderPath.DIRECTORY_SEPARATOR.$prefix.$oldImageNew[$newTempFolderPath];
+                                        $newImageTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file].DIRECTORY_SEPARATOR.$prefix.DIRECTORY_SEPARATOR.$oldImageNew[$newTempFolderPath];
+
+                                        $oldImageFolderPaths[]=$oldImageFolderPath;
+                                        $newImageFolderPaths[]=$newImageFolderPath;
+                                        $newImageTempFolderPaths[]=$newImageTempFolderPath;
+                                        //rename($oldFolderPath,$newTempFolderPath);
+                                    }
+
+
+                                }
+                            }
+                            closedir($handle);
+                        }
+                        /////////////////////
+
                     }
-
-
 
 
                 }
             }
             closedir($handle);
         }
+
+        print_r($oldImageFolderNames);
+
+
 
     }
 }
