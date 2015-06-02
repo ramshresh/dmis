@@ -127,6 +127,8 @@ class DemoGeoController extends MyBaseContoller
                 }
             }
 
+            $oldNew[(string)$row->column[0]]=(string)$row->column[1];
+
             $oldNew[(string)$row->column[3]]=(string)$row->column[0];
             $oldOwnerID[(string)$row->column[3]]=(string)$row->column[2];
         }
@@ -190,10 +192,9 @@ class DemoGeoController extends MyBaseContoller
                     $oldFolderNames[]=$file;
                     $oldFolderPath = $path.DIRECTORY_SEPARATOR.$file;
 
-                    echo $file;
                     if(isset($oldNew[$file])){
                         $newFolderPath = $path.DIRECTORY_SEPARATOR.$oldNew[$file];
-                        $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$prefix.$oldNew[$file];
+                        $newTempFolderPath = $tempPath.DIRECTORY_SEPARATOR.$oldNew[$file];
 
                         $oldFolderPaths[]=$oldFolderPath;
                         $newFolderPaths[]=$newFolderPath;
@@ -204,7 +205,6 @@ class DemoGeoController extends MyBaseContoller
             }
             closedir($handle);
         }
-        print_r($newTempFolderPaths);
 
 
     }
