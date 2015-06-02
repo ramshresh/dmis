@@ -143,10 +143,10 @@ class DemoGeoController extends MyBaseContoller
         foreach($oldNew as $old=>$new){
             $ownerId = $oldOwnerID[$old];
 
-            if(is_dir($path.DIRECTORY_SEPARATOR.$ownerId.DIRECTORY_SEPARATOR.$old)){
+            if(is_dir($path.DIRECTORY_SEPARATOR.$ownerId)){
                 echo '</br>yes';
             }
-            else {echo '</br>no :'.$path.DIRECTORY_SEPARATOR.$ownerId.DIRECTORY_SEPARATOR.$old;}
+            else {echo '</br>no :'.$path.DIRECTORY_SEPARATOR.$ownerId;}
         }
 
 
