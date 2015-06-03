@@ -108,12 +108,15 @@ class DemoGeoController extends MyBaseContoller
         $path = $basePath.DIRECTORY_SEPARATOR.'gallery';
         $tempPath = $basePath.DIRECTORY_SEPARATOR.'temp';
         $pathXmlFile =$basePath.DIRECTORY_SEPARATOR.'new_old_id.xml';
+        $pathXmlFile2 =$basePath.DIRECTORY_SEPARATOR.'gallery_images.xml';
 
         $xml = simplexml_load_file($pathXmlFile);
+        $xml2 = simplexml_load_file($pathXmlFile2);
 
         $oldIds = [];
         $newIds = [];
         $oldNew = [];
+        $oldNew2 = [];
         $oldOwnerID=[];
         foreach($xml->records->row as $row){
             foreach($row->column as  $column){
@@ -137,6 +140,11 @@ class DemoGeoController extends MyBaseContoller
            // $oldOwnerID[(string)$row->column[3]]=(string)$row->column[2];
         }
 
+        foreach($xml2->records->row as $row){
+            $oldNew2[(string)$row->column[3]]=(string)$row->column[0];
+            $oldOwnerID[(string)$row->column[3]]=(string)$row->column[2];
+        }
+
 
 
         if(!is_dir($tempPath)){
@@ -148,6 +156,7 @@ class DemoGeoController extends MyBaseContoller
         $newFolderPaths=[];
         $newTempFolderPaths=[];
 
+        $data=[];
         /*foreach($oldNew as $old=>$new){
             $ownerId = $oldOwnerID[$old];
 
@@ -208,7 +217,20 @@ class DemoGeoController extends MyBaseContoller
                         $newFolderPaths[]=$newFolderPath;
                         $newTempFolderPaths[]=$newTempFolderPath;
 
-                        echo '<br>'.Json::encode(['rename'=>[$oldFolderPath,$newFolderPath]]);
+
+                        if ($handle2 = opendir($oldFolderPath)) {
+                            while (false !== ($file2 = readdir($handle2))) {
+                                if (!in_array($file2, $blacklist)) {
+                                    $oldFolderPath2 = $path.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.$file2;
+                                    if(isset($oldNew2[$file2]) && is_dir($oldFolderPath2)){
+                                        if($file2!=$oldNew2[$file2]){
+                                            $newFolderPath2 = $path.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.$oldNew[$file2];
+                                            echo Json::encode(['old_new2'=>[$oldFolderPath2,$newFolderPath2]]);
+                                        }else{echo '<br>error';}
+                                    }
+                                }
+                            }
+                        }
                         //rename($oldFolderPath,$newTempFolderPath);
                     }
                 }
