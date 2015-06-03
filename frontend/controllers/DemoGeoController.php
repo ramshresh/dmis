@@ -250,7 +250,7 @@ class DemoGeoController extends MyBaseContoller
             closedir($handle);
         }
 
-       /* if ($handle4 = opendir($path)) {
+        if ($handle4 = opendir($path)) {
             $blacklist = array('.', '..', 'somedir', 'somefile.php');
             while (false !== ($file4 = readdir($handle4))) {
                 if (!in_array($file4, $blacklist)) {
@@ -260,7 +260,7 @@ class DemoGeoController extends MyBaseContoller
                 }
             }
             closedir($handle4);
-        }*/
+        }
 
         echo 'Done!';
 
