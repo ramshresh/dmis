@@ -240,7 +240,7 @@ class DemoGeoController extends MyBaseContoller
 
                         if($file!=$oldNew[$file]){
 
-                            rename($oldFolderPath,$newTempFolderPath);
+                            //rename($oldFolderPath,$newTempFolderPath);
 
                         }else{echo '<br>error';}
                     }
