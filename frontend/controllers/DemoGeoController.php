@@ -224,7 +224,7 @@ class DemoGeoController extends MyBaseContoller
                                     $oldFolderPath2 = $path.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.$file2;
                                     if(isset($oldNew2[$file2]) && is_dir($oldFolderPath2)){
                                         if($file2!=$oldNew2[$file2]){
-                                            $newFolderPath2 = $path.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.$oldNew[$file2];
+                                            $newFolderPath2 = $path.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.$oldNew2[$file2];
                                             echo Json::encode(['old_new2'=>[$oldFolderPath2,$newFolderPath2]]);
                                         }else{echo '<br>error';}
                                     }
