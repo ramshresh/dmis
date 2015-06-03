@@ -207,7 +207,7 @@ class DemoGeoController extends MyBaseContoller
                 if (!in_array($file, $blacklist)) {
                     $oldFolderNames[]=$file;
                     $oldFolderPath = $path.DIRECTORY_SEPARATOR.$file;
-                    echo '<br>'.$file;
+
                     if(isset($oldNew[$file]) && is_dir($oldFolderPath)){
 
                         $newFolderPath = $path.DIRECTORY_SEPARATOR.$oldNew[$file];
@@ -225,12 +225,16 @@ class DemoGeoController extends MyBaseContoller
                                     if(isset($oldNew2[$file2]) && is_dir($oldFolderPath2)){
                                         if($file2!=$oldNew2[$file2]){
                                             $newFolderPath2 = $path.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.$oldNew2[$file2];
-                                            echo Json::encode(['old_new2'=>[$oldFolderPath2,$newFolderPath2]]);
+                                            echo 'ok';
                                         }else{echo '<br>error';}
                                     }
                                 }
                             }
                         }
+
+                        if($file!=$oldNew[$file]){
+                                echo 'ok';
+                        }else{echo '<br>error';}
                         //rename($oldFolderPath,$newTempFolderPath);
                     }
                 }
@@ -238,7 +242,7 @@ class DemoGeoController extends MyBaseContoller
             closedir($handle);
         }
 
-        echo Json::encode(['old_new'=>$oldNew,'old'=>$oldFolderPaths,'new'=>$newTempFolderPaths]);
+
         Yii::$app->end();
 
 
