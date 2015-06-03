@@ -201,7 +201,6 @@ class DemoGeoController extends MyBaseContoller
 */
 
         if ($handle = opendir($path)) {
-            echo '<br>'.$path;
             $blacklist = array('.', '..', 'somedir', 'somefile.php');
             while (false !== ($file = readdir($handle))) {
                 if (!in_array($file, $blacklist)) {
@@ -232,7 +231,9 @@ class DemoGeoController extends MyBaseContoller
                                     }
                                 }
                             }
+                            closedir($handle2);
                         }
+
 
                         if($file!=$oldNew[$file]){
                             rename($oldFolderPath,$newTempFolderPath);
@@ -241,6 +242,18 @@ class DemoGeoController extends MyBaseContoller
                 }
             }
             closedir($handle);
+        }
+
+        if ($handle4 = opendir($path)) {
+            $blacklist = array('.', '..', 'somedir', 'somefile.php');
+            while (false !== ($file4 = readdir($handle4))) {
+                if (!in_array($file4, $blacklist)) {
+                    if(is_dir($path.DIRECTORY_SEPARATOR.$file4)){
+                        rename($path.DIRECTORY_SEPARATOR.$file4,str_replace($prefix,'',$path.DIRECTORY_SEPARATOR.$file4));
+                    }
+                }
+            }
+            closedir($handle4);
         }
 
         echo 'Done!';
