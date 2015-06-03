@@ -225,11 +225,11 @@ class DemoGeoController extends MyBaseContoller
                                         if($file2!=$oldNew2[$file2]){
                                             $newTempFolderPath2=$path.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.$prefix.$oldNew2[$file2];
                                             $newFolderPath2 = $path.DIRECTORY_SEPARATOR.$file.DIRECTORY_SEPARATOR.$oldNew2[$file2];
-                                            chmod($oldFolderPath,7777);
+
                                             rename($oldFolderPath2,$newTempFolderPath2);
-                                            chmod($newTempFolderPath2,7777);
+
                                             rename($newTempFolderPath2,$newFolderPath2);
-                                            chmod($newFolderPath2,7777);
+
                                         }else{echo '<br>error';}
                                     }
                                 }
@@ -239,9 +239,9 @@ class DemoGeoController extends MyBaseContoller
 
 
                         if($file!=$oldNew[$file]){
-                            chmod($oldFolderPath,7777);
+
                             rename($oldFolderPath,$newTempFolderPath);
-                            chmod($newTempFolderPath,7777);
+
                         }else{echo '<br>error';}
                     }
                 }
