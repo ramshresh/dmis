@@ -36,6 +36,7 @@ SQL;
         $sql = <<<SQL
 CREATE TABLE "heritage_assessment".heritage(
   id BIGSERIAL,
+  inventory_id TEXT,
   kitta_no TEXT,
   damage_type TEXT,
   present_physical_conditions TEXT,
