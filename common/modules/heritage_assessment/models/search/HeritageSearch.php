@@ -19,7 +19,7 @@ class HeritageSearch extends Heritage
     {
         return [
             [['id', 'd_code', 'v_code', 'ward_no', 'user_id'], 'integer'],
-            [['kitta_no', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved', 'description', 'recorded_by', 'surveyor_opinion', 'old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at', 'geom', 'wkt'], 'safe'],
+            [['kitta_no','inventory_id', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved', 'description', 'recorded_by', 'surveyor_opinion', 'old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at', 'geom', 'wkt'], 'safe'],
             [['latitude', 'longitude'], 'number'],
         ];
     }
@@ -71,6 +71,7 @@ class HeritageSearch extends Heritage
         ]);
 
         $query->andFilterWhere(['like', 'kitta_no', $this->kitta_no])
+            ->andFilterWhere(['like', 'inventory_id', $this->inventory_id])
             ->andFilterWhere(['like', 'damage_type', $this->damage_type])
             ->andFilterWhere(['like', 'present_physical_conditions', $this->present_physical_conditions])
             ->andFilterWhere(['like', 'historical_socio_cultural_significance', $this->historical_socio_cultural_significance])

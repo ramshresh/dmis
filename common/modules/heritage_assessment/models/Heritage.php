@@ -15,6 +15,7 @@ use yii\helpers\Url;
  *
  * @property string $id
  * @property string $kitta_no
+ * @property string $inventory_id
  * @property string $damage_type
  * @property string $present_physical_conditions
  * @property string $historical_socio_cultural_significance
@@ -53,7 +54,7 @@ class Heritage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kitta_no', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved', 'description', 'recorded_by', 'surveyor_opinion', 'geom', 'wkt'], 'string'],
+            [['kitta_no', 'inventory_id', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved', 'description', 'recorded_by', 'surveyor_opinion', 'geom', 'wkt'], 'string'],
             [['old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at'], 'safe'],
             [['latitude', 'longitude'], 'number'],
             [['d_code', 'v_code', 'ward_no', 'user_id'], 'integer']
@@ -68,6 +69,7 @@ class Heritage extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'kitta_no' => Yii::t('app', 'Kitta No'),
+            'inventory_id' => Yii::t('app', 'Inventory Id'),
             'damage_type' => Yii::t('app', 'Damage Type'),
             'present_physical_conditions' => Yii::t('app', 'Present Physical Conditions'),
             'historical_socio_cultural_significance' => Yii::t('app', 'Historical Socio Cultural Significance'),
