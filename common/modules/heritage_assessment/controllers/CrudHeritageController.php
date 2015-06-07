@@ -3,6 +3,7 @@
 namespace common\modules\heritage_assessment\controllers;
 
 use common\components\utils\php\ArrayHelper;
+use ramshresh\yii2\galleryManager\GalleryImageAr;
 use ramshresh\yii2\galleryManager\GalleryManagerAction;
 use Yii;
 use common\modules\heritage_assessment\models\Heritage;
@@ -64,35 +65,32 @@ class CrudHeritageController extends Controller
     public function actionCreate()
     {
         $model = new Heritage();
-
+        $galleryImage = new GalleryImageAr();
         if ($model->load(Yii::$app->request->post())){
             $transaction = Yii::$app->db->beginTransaction();
             if( $model->save()){
-                var_dump(UploadedFile::getInstancesByName('photo'));
-                Yii::$app->end();
-
-
 
                 if(UploadedFile::getInstancesByName('photo')){
-                    var_dump(UploadedFile::getInstancesByName('photo'));
-                    Yii::$app->end();
+                    $photos = (UploadedFile::getInstancesByName('photo'));
+                    foreach($photos as $photo){
+                        $model->getBehavior('galleryBehavior')->addImage($photo->tempName,[]);
+                    }
                 }
 
-                if (UploadedFile::getInstanceByName('photo')) {
-
-                    $photoData = (Yii::$app->request->post('photo_data')) ? Yii::$app->request->post('photo_data') : null;
+                /*if (UploadedFile::getInstanceByName('photo')) {
+                    //$photoData = (Yii::$app->request->post('photo_data')) ? Yii::$app->request->post('photo_data') : null;
                     $model->getBehavior('galleryBehavior')->addUploadedImage('photo', $photoData);
-                }
+                }*/
                 $transaction->commit();
                 return $this->redirect(['view', 'id' => $model->id]);
             }else{
                 Yii::$app->session->setFlash('error', 'Error Saving Model');
                 $transaction->rollBack();
             }
-
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'galleryImage' => $galleryImage,
             ]);
         }
     }
