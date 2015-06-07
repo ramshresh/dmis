@@ -21,6 +21,8 @@ use yii\widgets\ActiveForm;
 
     <?php echo $form->field($model, 'kitta_no')->textInput() ?>
 
+    <?php echo $form->field($model, 'inventory_id')->textInput() ?>
+
     <?php echo $form->field($model, 'damage_type')->textInput() ?>
 
     <?php echo $form->field($model, 'present_physical_conditions')->textInput() ?>
