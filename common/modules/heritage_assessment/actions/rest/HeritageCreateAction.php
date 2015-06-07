@@ -44,7 +44,14 @@ class HeritageCreateAction extends MyBaseAction
                 // Try for multiple uploaded photos it is the array of photo
                 if (Yii::$app->request->post('photos')) {
 
-                    $photos = Json::decode(Yii::$app->request->post('photos'));//Yii::$app->request->post('photo');
+
+                    try {
+                        $photos = Json::decode(Yii::$app->request->post('photos'));//Yii::$app->request->post('photo');
+                    }catch (Exception $e){
+                        echo Json::encode(['status'=>'error','photos'=>Yii::$app->request->post('photos'),'exception'=>$e]);
+                        Yii::$app->end();
+                    }
+
                     foreach($photos as $photo){
                         if (isset($photo['id']))
                             $model->getBehavior('galleryBehavior')->addTempUploadedImage($photo['id']);
