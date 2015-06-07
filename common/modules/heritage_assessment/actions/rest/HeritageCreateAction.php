@@ -33,11 +33,30 @@ class HeritageCreateAction extends MyBaseAction
         try {
             $model = new Heritage();
             if ($model->load(Yii::$app->getRequest()->post()) && $model->save()) {
+
+                // Try for single uploaded photo
                 if (Yii::$app->request->post('photo')) {
                     $photo = Json::decode(Yii::$app->request->post('photo'));//Yii::$app->request->post('photo');
                     if (isset($photo['id']))
                         $model->getBehavior('galleryBehavior')->addTempUploadedImage($photo['id']);
                 }
+
+                // Try for multiple uploaded photos it is the array of photo
+                if (Yii::$app->request->post('photos')) {
+
+                    $photos = Json::decode(Yii::$app->request->post('photos'));//Yii::$app->request->post('photo');
+                    foreach($photos as $photo){
+                        if (isset($photo['id']))
+                            $model->getBehavior('galleryBehavior')->addTempUploadedImage($photo['id']);
+                    }
+
+                    echo $photos;
+                    Yii::$app->end();
+                }else{
+                    echo 'photo not recieved';
+                    Yii::$app->end();
+                }
+
                 $transaction->commit();
                 $this->sendSuccessResponseOnAjaxFormSubmit('saved', $model->attributes);
             }else {
