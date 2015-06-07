@@ -10,7 +10,7 @@ namespace common\components;
 
 use \Yii;
 
-use yii\db\ActiveRecord;
+
 use yii\rest\Action;
 use yii\web\ServerErrorHttpException;
 
@@ -27,6 +27,7 @@ class MyBaseAction extends Action implements MyYiiActiveFormJsAjaxFormInterface{
      */
     public function getErrorResponseOnAjaxFormSubmit($models)
     {
+        /* @var $model  \yii\db\ActiveRecord */
         $errors = [];
         /* @var $model Model */
         foreach ($models as $model) {
