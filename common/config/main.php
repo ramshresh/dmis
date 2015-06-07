@@ -80,10 +80,12 @@ return [
 
     ],
     'modules' => [
+        'heritage_assessment' => [
+            'class' => 'common\modules\heritage_assessment\Module',
+        ],
         'vdc' => [
             'class' => 'common\modules\vdc\Module',
         ],
-
         'user' => [
             'class' => 'common\modules\user\Module',
             'emailViewPath'=>'@common/modules/user/mail',

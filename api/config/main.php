@@ -50,6 +50,9 @@ return [
         ],
         'building_assessment'=>[
             'class'=>'api\modules\building_assessment\Module',
+        ],
+        'heritage_assessment'=>[
+            'class'=>'api\modules\heritage_assessment\Module',
         ]
 
     ],
@@ -277,6 +280,16 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => [
                         'building_assessment/building-household',
+                    ],
+                    'pluralize'=>true,
+                    'extraPatterns' => [
+                    ]
+                ],
+                [
+
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => [
+                        'heritage_assessment/heritage',
                     ],
                     'pluralize'=>true,
                     'extraPatterns' => [
