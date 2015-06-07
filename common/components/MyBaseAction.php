@@ -27,7 +27,7 @@ class MyBaseAction extends Action implements MyYiiActiveFormJsAjaxFormInterface{
      */
     public function getErrorResponseOnAjaxFormSubmit($models)
     {
-        /* @var $model  \yii\db\ActiveRecord */
+        /* @var \yii\db\ActiveRecord $model */
         $errors = [];
         /* @var $model Model */
         foreach ($models as $model) {
