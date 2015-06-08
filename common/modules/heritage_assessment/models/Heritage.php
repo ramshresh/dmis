@@ -2,6 +2,7 @@
 
 namespace common\modules\heritage_assessment\models;
 
+use common\modules\user\models\User;
 use Imagine\Image\Box;
 use ramshresh\yii2\galleryManager\GalleryBehavior;
 use ramshresh\yii2\galleryManager\GalleryImageAr;
@@ -40,6 +41,8 @@ use yii\helpers\Url;
  * @property integer $ward_no
  * @property string $user_id
  * @property file $photo
+ *
+ * @property User $user
  */
 class Heritage extends \yii\db\ActiveRecord
 {
@@ -104,6 +107,14 @@ class Heritage extends \yii\db\ActiveRecord
 
     public function getGalleryImages(){
         return $this->hasMany(GalleryImageAr::className(), ['ownerId' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {//@todo Constrains in database is not set
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     public function behaviors()
