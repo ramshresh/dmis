@@ -55,9 +55,6 @@ class HeritageCreateAction extends MyBaseAction
                         if (isset($photo['id']))
                             $model->getBehavior('galleryBehavior')->addTempUploadedImage($photo['id']);
                     }
-                }else{
-                    echo 'photo not recieved';
-                    Yii::$app->end();
                 }
 
                 $transaction->commit();
