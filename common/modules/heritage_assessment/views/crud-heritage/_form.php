@@ -7,6 +7,7 @@ use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\modules\heritage_assessment\models\Heritage */
+/* @var $galleryImage ramshresh\yii2\galleryManager\GalleryImageAr */
 /* @var $form yii\widgets\ActiveForm */
 
 ?>
@@ -31,13 +32,15 @@ use yii\widgets\ActiveForm;
 
     <?php echo $form->field($model, 'important_features')->textInput() ?>
 
-    <?php echo $form->field($model, 'items_to_be_preserved')->textInput() ?>
+    <?php echo $form->field($model, 'items_to_be_preserved_before')->textInput() ?>
+    <?php echo $form->field($model, 'items_to_be_preserved_after')->textInput() ?>
 
     <?php echo $form->field($model, 'description')->textarea(['rows' => 3]) ?>
 
     <?php echo $form->field($model, 'recorded_by')->textInput() ?>
 
-    <?php echo $form->field($model, 'surveyor_opinion')->textInput() ?>
+    <?php echo $form->field($model, 'surveyor_opinion_before')->textInput() ?>
+    <?php echo $form->field($model, 'surveyor_opinion_after')->textInput() ?>
 
     <?php //echo $form->field($model, 'old_date')->textInput() ?>
 
@@ -86,6 +89,7 @@ use yii\widgets\ActiveForm;
         echo FileInput::widget([
             'name'=>'photo[]',
             'options'=>[
+                'enctype'=>'multipart/form-data',
             'accept'=>'image/*',
             'multiple'=>true
         ]]);

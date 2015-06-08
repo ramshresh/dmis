@@ -19,7 +19,7 @@ class HeritageSearch extends Heritage
     {
         return [
             [['id', 'd_code', 'v_code', 'ward_no', 'user_id'], 'integer'],
-            [['kitta_no', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved', 'description', 'recorded_by', 'surveyor_opinion', 'old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at', 'geom', 'wkt'], 'safe'],
+            [['kitta_no', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved_before','items_to_be_preserved_after', 'description', 'recorded_by', 'surveyor_opinion_before','surveyor_opinion_after', 'old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at', 'geom', 'wkt'], 'safe'],
             [['latitude', 'longitude'], 'number'],
         ];
     }
@@ -75,10 +75,12 @@ class HeritageSearch extends Heritage
             ->andFilterWhere(['like', 'present_physical_conditions', $this->present_physical_conditions])
             ->andFilterWhere(['like', 'historical_socio_cultural_significance', $this->historical_socio_cultural_significance])
             ->andFilterWhere(['like', 'important_features', $this->important_features])
-            ->andFilterWhere(['like', 'items_to_be_preserved', $this->items_to_be_preserved])
+            ->andFilterWhere(['like', 'items_to_be_preserved_before', $this->items_to_be_preserved_before])
+            ->andFilterWhere(['like', 'items_to_be_preserved_after', $this->items_to_be_preserved_after])
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'recorded_by', $this->recorded_by])
-            ->andFilterWhere(['like', 'surveyor_opinion', $this->surveyor_opinion])
+            ->andFilterWhere(['like', 'surveyor_opinion_before', $this->surveyor_opinion_before])
+            ->andFilterWhere(['like', 'surveyor_opinion_after', $this->surveyor_opinion_after])
             ->andFilterWhere(['like', 'geom', $this->geom])
             ->andFilterWhere(['like', 'wkt', $this->wkt]);
 

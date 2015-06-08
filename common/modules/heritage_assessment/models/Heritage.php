@@ -20,10 +20,12 @@ use yii\helpers\Url;
  * @property string $present_physical_conditions
  * @property string $historical_socio_cultural_significance
  * @property string $important_features
- * @property string $items_to_be_preserved
+ * @property string $items_to_be_preserved_before
+ * @property string $items_to_be_preserved_after
  * @property string $description
  * @property string $recorded_by
- * @property string $surveyor_opinion
+ * @property string $surveyor_opinion_before
+ * @property string $surveyor_opinion_after
  * @property string $old_date
  * @property string $new_date
  * @property string $timestamp_created_at
@@ -36,10 +38,12 @@ use yii\helpers\Url;
  * @property integer $v_code
  * @property integer $ward_no
  * @property string $user_id
+ * @property file $photo
  */
 class Heritage extends \yii\db\ActiveRecord
 {
     CONST SRID=4326;
+    public $photo;
     /**
      * @inheritdoc
      */
@@ -54,9 +58,10 @@ class Heritage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kitta_no', 'inventory_id', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved', 'description', 'recorded_by', 'surveyor_opinion', 'geom', 'wkt'], 'string'],
+            [['kitta_no', 'inventory_id', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved_before','items_to_be_preserved_after', 'description', 'recorded_by', 'surveyor_opinion_before','surveyor_opinion_after', 'geom', 'wkt'], 'string'],
             [['old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at'], 'safe'],
             [['latitude', 'longitude'], 'number'],
+            [['photo'], 'file'],
             [['d_code', 'v_code', 'ward_no', 'user_id'], 'integer']
         ];
     }
@@ -74,10 +79,12 @@ class Heritage extends \yii\db\ActiveRecord
             'present_physical_conditions' => Yii::t('app', 'Present Physical Conditions'),
             'historical_socio_cultural_significance' => Yii::t('app', 'Historical Socio Cultural Significance'),
             'important_features' => Yii::t('app', 'Important Features'),
-            'items_to_be_preserved' => Yii::t('app', 'Items To Be Preserved'),
+            'items_to_be_preserved_before' => Yii::t('app', 'Items To Be Preserved Before'),
+            'items_to_be_preserved_after' => Yii::t('app', 'Items To Be Preserved After'),
             'description' => Yii::t('app', 'Description'),
             'recorded_by' => Yii::t('app', 'Recorded By'),
-            'surveyor_opinion' => Yii::t('app', 'Surveyor Opinion'),
+            'surveyor_opinion_before' => Yii::t('app', 'Surveyor Opinion Before'),
+            'surveyor_opinion_after' => Yii::t('app', 'Surveyor Opinion After'),
             'old_date' => Yii::t('app', 'Old Date'),
             'new_date' => Yii::t('app', 'New Date'),
             'timestamp_created_at' => Yii::t('app', 'Timestamp Created At'),
@@ -90,6 +97,7 @@ class Heritage extends \yii\db\ActiveRecord
             'v_code' => Yii::t('app', 'V Code'),
             'ward_no' => Yii::t('app', 'Ward No'),
             'user_id' => Yii::t('app', 'User ID'),
+            'photo' => Yii::t('app', 'Photo'),
         ];
     }
 
@@ -154,8 +162,10 @@ class Heritage extends \yii\db\ActiveRecord
                 $this->historical_socio_cultural_significance=implode(',',$this->historical_socio_cultural_significance);
             if(is_array($this->important_features))
                 $this->important_features=implode(',',$this->important_features);
-            if(is_array($this->items_to_be_preserved))
-                $this->items_to_be_preserved=implode(',',$this->items_to_be_preserved);
+            if(is_array($this->items_to_be_preserved_before))
+                $this->items_to_be_preserved_before=implode(',',$this->items_to_be_preserved_before);
+            if(is_array($this->items_to_be_preserved_after))
+                $this->items_to_be_preserved_after=implode(',',$this->items_to_be_preserved_after);
 
             //{{{ saving wkt to geometry
             /**
