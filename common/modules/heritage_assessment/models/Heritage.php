@@ -8,6 +8,7 @@ use ramshresh\yii2\galleryManager\GalleryImageAr;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 /**
