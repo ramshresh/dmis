@@ -21,7 +21,7 @@ return [
                 'encryption' => 'tls',
             ],
             'messageConfig' => [
-                'from' => ['gircgeomatics@gmail.com' => 'Admin'], // this is needed for sending emails
+                'from' => ['gircgeomatics@gmail.com' => 'Geospatiallab KU'], // this is needed for sending emails
                 'charset' => 'UTF-8',
             ]
         ],
