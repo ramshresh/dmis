@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\modules\heritage_assessment\models\Heritage;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -118,5 +119,13 @@ class SiteController extends Controller
         //echo AppHelper::getAppUrlToRoute('frontend',["/user/registration/confirm", "key" => 1234567898765432123456]);
         echo Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/user/registration/confirm", "key" => 1234567898765432123456]);
 
+    }
+
+    public function actionDelete(){
+        $models=Heritage::find()->all();
+        foreach($models as $model){
+            $model->delete();
+        }
+        echo 'done';
     }
 }
