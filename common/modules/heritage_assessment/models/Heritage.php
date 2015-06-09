@@ -106,7 +106,10 @@ class Heritage extends \yii\db\ActiveRecord
     }
 
     public function getGalleryImages(){
-        return $this->hasMany(GalleryImageAr::className(), ['ownerId' => 'id']);
+        /* @var $galleryBehavior \ramshresh\yii2\galleryManager\GalleryBehavior */
+        $galleryBehavior=$this->getBehavior('galleryBehavior');
+        return $galleryBehavior->getImages();
+        //return $this->hasMany(GalleryImageAr::className(), ['ownerId' => 'id']);
     }
 
     /**
