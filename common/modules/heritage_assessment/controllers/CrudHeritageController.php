@@ -74,8 +74,6 @@ class CrudHeritageController extends Controller
                 if(UploadedFile::getInstancesByName('photo')){
                     $photos = (UploadedFile::getInstancesByName('photo'));
                     foreach($photos as $photo){
-                        echo Json::encode($photos);
-                        Yii::$app->end();
                         $model->getBehavior('galleryBehavior')->addImage($photo->tempName,[]);
                     }
                 }
