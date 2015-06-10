@@ -142,23 +142,12 @@ class Heritage extends \yii\db\ActiveRecord
                 'route'=>'/uploads/images/heritage_assessment/gallery',
                 'tempUrl' => Url::to(['/uploads/images/temp']),
                 'versions' => [
-                    'small' => function ($img) {
+                    'thumb' => function ($img) {
                         /** @var ImageInterface $img */
                         return $img
                             ->copy()
-                            ->thumbnail(new Box(200, 200));
-                    },
-                    'medium' => function ($img) {
-                        /** @var ImageInterface $img */
-                        $dstSize = $img->getSize();
-                        $maxWidth = 800;
-                        if ($dstSize->getWidth() > $maxWidth) {
-                            $dstSize = $dstSize->widen($maxWidth);
-                        }
-                        return $img
-                            ->copy()
-                            ->resize($dstSize);
-                    },
+                            ->thumbnail(new Box(50, 50));
+                    }
                 ]
             ],
 
@@ -171,23 +160,12 @@ class Heritage extends \yii\db\ActiveRecord
                 'route'=>'/uploads/images/heritage_assessment/gallery_before',
                 'tempUrl' => Url::to(['/uploads/images/temp']),
                 'versions' => [
-                    'small' => function ($img) {
+                    'thumb' => function ($img) {
                         /** @var ImageInterface $img */
                         return $img
                             ->copy()
-                            ->thumbnail(new Box(200, 200));
-                    },
-                    'medium' => function ($img) {
-                        /** @var ImageInterface $img */
-                        $dstSize = $img->getSize();
-                        $maxWidth = 800;
-                        if ($dstSize->getWidth() > $maxWidth) {
-                            $dstSize = $dstSize->widen($maxWidth);
-                        }
-                        return $img
-                            ->copy()
-                            ->resize($dstSize);
-                    },
+                            ->thumbnail(new Box(50, 50));
+                    }
                 ]
             ],
 
