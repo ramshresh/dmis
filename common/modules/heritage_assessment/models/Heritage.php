@@ -160,6 +160,64 @@ class Heritage extends \yii\db\ActiveRecord
                             ->resize($dstSize);
                     },
                 ]
+            ],
+
+            'heritageBeforeGalleryBehavior' => [
+                'class' => GalleryBehavior::className(),
+                'type' => 'heritage_before',
+                'extension' => 'jpg',
+                'directory' => Yii::getAlias('@uploads') . '/images/heritage_assessment/gallery_before',
+                'tempDirectory' => Yii::getAlias('@uploads') . '/images/temp',
+                'route'=>'/uploads/images/heritage_assessment/gallery_before',
+                'tempUrl' => Url::to(['/uploads/images/temp']),
+                'versions' => [
+                    'small' => function ($img) {
+                        /** @var ImageInterface $img */
+                        return $img
+                            ->copy()
+                            ->thumbnail(new Box(200, 200));
+                    },
+                    'medium' => function ($img) {
+                        /** @var ImageInterface $img */
+                        $dstSize = $img->getSize();
+                        $maxWidth = 800;
+                        if ($dstSize->getWidth() > $maxWidth) {
+                            $dstSize = $dstSize->widen($maxWidth);
+                        }
+                        return $img
+                            ->copy()
+                            ->resize($dstSize);
+                    },
+                ]
+            ],
+
+            'heritageAfterGalleryBehavior' => [
+                'class' => GalleryBehavior::className(),
+                'type' => 'heritage_after',
+                'extension' => 'jpg',
+                'directory' => Yii::getAlias('@uploads') . '/images/heritage_assessment/gallery_after',
+                'tempDirectory' => Yii::getAlias('@uploads') . '/images/temp',
+                'route'=>'/uploads/images/heritage_assessment/gallery_after',
+                'tempUrl' => Url::to(['/uploads/images/temp']),
+                'versions' => [
+                    'small' => function ($img) {
+                        /** @var ImageInterface $img */
+                        return $img
+                            ->copy()
+                            ->thumbnail(new Box(200, 200));
+                    },
+                    'medium' => function ($img) {
+                        /** @var ImageInterface $img */
+                        $dstSize = $img->getSize();
+                        $maxWidth = 800;
+                        if ($dstSize->getWidth() > $maxWidth) {
+                            $dstSize = $dstSize->widen($maxWidth);
+                        }
+                        return $img
+                            ->copy()
+                            ->resize($dstSize);
+                    },
+                ]
             ]
         ];
     }

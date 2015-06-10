@@ -29,6 +29,10 @@ class HeritageCreateAction extends MyBaseAction
 
     public function run()
     {
+        //@todo heritage after and before photo
+        // to be specified heritageAfterGalleryBehavior,heritageBeforeGalleryBehavior in api request
+        // may be with separate table and separate model
+        // DEFAULT is heritageAfterGalleryBehavior because android user collects after photo only
         $transaction = Yii::$app->db->beginTransaction();
         try {
             $model = new Heritage();
@@ -38,7 +42,7 @@ class HeritageCreateAction extends MyBaseAction
                 if (Yii::$app->request->post('photo')) {
                     $photo = Json::decode(Yii::$app->request->post('photo'));//Yii::$app->request->post('photo');
                     if (isset($photo['id']))
-                        $model->getBehavior('galleryBehavior')->addTempUploadedImage($photo['id']);
+                        $model->getBehavior('heritageAfterGalleryBehavior')->addTempUploadedImage($photo['id']);
                 }
 
                 // Try for multiple uploaded photos it is the array of photo
@@ -53,7 +57,7 @@ class HeritageCreateAction extends MyBaseAction
                     foreach($photos as $photo){
                         $photo = Json::decode($photo);
                         if (isset($photo['id']))
-                            $model->getBehavior('galleryBehavior')->addTempUploadedImage($photo['id']);
+                            $model->getBehavior('heritageAfterGalleryBehavior')->addTempUploadedImage($photo['id']);
                     }
                 }
 

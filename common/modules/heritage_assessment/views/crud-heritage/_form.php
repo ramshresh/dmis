@@ -94,10 +94,29 @@ use yii\widgets\ActiveForm;
             'multiple'=>true
         ]]);
     } else {
+        echo '<h5>Default Photo Gallery</h5>';
         echo GalleryManager::widget(
             [
                 'model' => $model,
                 'behaviorName' => 'galleryBehavior',
+                'apiRoute' => '/heritage_assessment/crud-heritage/galleryApi'
+            ]
+        );
+        echo '<br>';
+        echo '<h5>Before Earthquake Photo</h5>';
+        echo GalleryManager::widget(
+            [
+                'model' => $model,
+                'behaviorName' => 'heritageBeforeGalleryBehavior',
+                'apiRoute' => '/heritage_assessment/crud-heritage/galleryApi'
+            ]
+        );
+        echo '<br>';
+        echo '<h5>After Earthquake Photo</h5>';
+        echo GalleryManager::widget(
+            [
+                'model' => $model,
+                'behaviorName' => 'heritageAfterGalleryBehavior',
                 'apiRoute' => '/heritage_assessment/crud-heritage/galleryApi'
             ]
         );
