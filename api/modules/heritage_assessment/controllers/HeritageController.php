@@ -150,4 +150,28 @@ class HeritageController extends ActiveController
             ]
         );
     }
+
+    public function actionUnique()
+    {
+        /**
+         * @var $model \common\modules\rapid_assessment\models\ReportItem
+         */
+        $model = new $this->modelClass;
+        $property = $_GET['property'];
+        $propertyAlias = (isset($_GET['property_alias'])) ? $_GET['property_alias'] : 'value';
+        $count = (isset($_GET['count'])) ? $_GET['count'] : true;
+        $countAlias = (isset($_GET['count_alias'])) ? $_GET['count_alias'] : 'count';
+        /*SELECT COUNT(*), "status" FROM  "tracking"."status" GROUP BY "status" ORDER BY "status" DESC*/
+        $query = new Query();
+        if ($count) {
+            $query->addSelect([$countAlias => 'COUNT(*)']);
+        }
+        $query->addSelect([$propertyAlias => $property]);
+        $query->from([$model::tableName()]);
+        $query->groupBy($propertyAlias);
+        $query->orderBy([$countAlias => SORT_ASC]);
+
+        return $query->all();
+    }
+
 }
