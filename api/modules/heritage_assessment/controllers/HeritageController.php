@@ -10,6 +10,7 @@ namespace api\modules\heritage_assessment\controllers;
 
 
 use common\modules\vdc\models\NepalVdc;
+use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveQuery;
 use yii\db\Query;
@@ -175,4 +176,42 @@ class HeritageController extends ActiveController
         return $query->all();
     }
 
+    public function actionUniqueUsers(){
+        /**
+         * @var $model \common\modules\rapid_assessment\models\ReportItem
+         */
+        $model = new $this->modelClass;
+        $relation = $model->getRelation('user');
+        $relationLink = $relation->link;
+        $linksFrom = array_keys($relationLink);
+
+
+        $linkFrom=null;
+        $linkTo=null;
+
+
+            if(sizeof($linksFrom)>1){
+                throw new Exception('Cound not determine unique attribute because user is related by multiple foreign key');
+            }else{
+                $linkFrom = $linksFrom[0];
+                $linkTo = $relationLink[$linkFrom];
+            }
+
+        $propertyAlias = (isset($_GET['property_alias'])) ? $_GET['property_alias'] : 'value';
+        $count = (isset($_GET['count'])) ? $_GET['count'] : true;
+        $countAlias = (isset($_GET['count_alias'])) ? $_GET['count_alias'] : 'count';
+        /*SELECT COUNT(*), "status" FROM  "tracking"."status" GROUP BY "status" ORDER BY "status" DESC*/
+        $query = new Query();
+        if ($count) {
+            $query->addSelect([$countAlias => 'COUNT(*)']);
+        }
+        $query->addSelect([$propertyAlias => $linkTo]);
+        $query->from([$model::tableName()]);
+        $query->groupBy($propertyAlias);
+        $query->orderBy([$countAlias => SORT_ASC]);
+
+        return $query->all();
+
+
+    }
 }
