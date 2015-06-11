@@ -210,8 +210,7 @@ class HeritageController extends ActiveController
         $query->groupBy($propertyAlias);
         $query->orderBy([$countAlias => SORT_ASC]);
 
-        return $query->all();
 
-
+        return ArrayHelper::map($query->all(),$propertyAlias,$count);
     }
 }
