@@ -38,6 +38,24 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tweet_lat')->textInput() ?>
 
+    <div class="row">
+        <button id="btn-pointpicker-<?=$form->id?>" type="button" class="btn btn-xs btn-danger" style="width: 100%">
+            <span class="glyphicon glyphicon-globe"></span>&nbsp;Locate on map
+        </button>
+    </div>
+    <?php
+    echo \common\widgets\pointpicker_ol2\PointPickerWidget::widget(
+        [
+            'latitudeId' => Html::getInputId($model,'tweet_lat'),
+            'longitudeId' => Html::getInputId($model,'tweet_long'),
+            'placenameId' => Html::getInputId($model,'tweet_location'),
+            //'openlayersPackName' => 'openlayers', //'openlayerslPack' //,
+            'triggerId'=>"btn-pointpicker-".$form->id,
+            //'externalMapDivId'=>'map',
+            //'wktId'=>'wkt'
+        ]);
+    ?>
+
     <?= $form->field($model, 'user_long')->textInput() ?>
 
     <?= $form->field($model, 'user_lat')->textInput() ?>
