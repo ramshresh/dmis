@@ -182,6 +182,7 @@ class HeritageController extends ActiveController
          */
         $model = new $this->modelClass;
         $relation = $model->getRelation('user');
+        $relationModelClass=$relation->modelClass;
         $relationLink = $relation->link;
         $linksFrom = array_keys($relationLink);
 
@@ -197,6 +198,7 @@ class HeritageController extends ActiveController
                 $linkTo = $relationLink[$linkFrom];
             }
 
+        $property=$linkTo;
         $propertyAlias = (isset($_GET['property_alias'])) ? $_GET['property_alias'] : 'value';
         $count = (isset($_GET['count'])) ? $_GET['count'] : true;
         $countAlias = (isset($_GET['count_alias'])) ? $_GET['count_alias'] : 'count';
@@ -205,12 +207,19 @@ class HeritageController extends ActiveController
         if ($count) {
             $query->addSelect([$countAlias => 'COUNT(*)']);
         }
-        $query->addSelect([$propertyAlias => $linkTo]);
+        $query->addSelect([$propertyAlias => $property]);
         $query->from([$model::tableName()]);
         $query->groupBy($propertyAlias);
         $query->orderBy([$countAlias => SORT_ASC]);
 
+        $userCountMap=ArrayHelper::map($query->all(),$propertyAlias,$countAlias);
 
-        return ArrayHelper::map($query->all(),$propertyAlias,$countAlias);
+        $keysMap=array_keys($userCountMap);
+
+
+        $query1= new ActiveQuery($relationModelClass);
+        $query1->andFilterWhere(['in',$linkFrom,array_map(create_function('$value', 'return (int)$value;'),$keysMap)]); //@see: http://usrportage.de/archives/808-Convert-an-array-of-strings-into-an-array-of-integers.html
+        $userUsernameMap = ArrayHelper::map($query1->all(),$linkFrom,'email');
+        return [$userCountMap,$userUsernameMap];
     }
 }
