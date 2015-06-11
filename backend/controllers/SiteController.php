@@ -121,11 +121,12 @@ class SiteController extends Controller
 
     }
 
-    public function actionDelete(){
+    /*public function actionDelete(){
+
         $models=Heritage::find()->all();
         foreach($models as $model){
             $model->delete();
         }
         echo 'done';
-    }
+    }*/
 }
