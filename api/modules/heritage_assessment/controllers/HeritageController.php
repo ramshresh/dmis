@@ -219,6 +219,6 @@ class HeritageController extends ActiveController
         $query1= new ActiveQuery($relationModelClass);
         $query1->andFilterWhere(['in',$linkFrom,array_map(create_function('$value', 'return (int)$value;'),$keysMap)]); //@see: http://usrportage.de/archives/808-Convert-an-array-of-strings-into-an-array-of-integers.html
         $userEmailMap = ArrayHelper::map($query1->all(),$linkFrom,'email');
-        return ['order'=>'SORT_ASC','id'=>$keysMap,'count'=>$userCountMap,'email'=>$userEmailMap];
+        return ['order'=>'SORT_ASC','keys'=>$keysMap,'count'=>$userCountMap,'email'=>$userEmailMap];
     }
 }
