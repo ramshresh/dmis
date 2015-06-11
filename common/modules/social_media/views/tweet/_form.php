@@ -12,34 +12,34 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'tweets')->textarea(['rows' => 6]) ?>
+    <?php echo  $form->field($model, 'tweets')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'geom')->textInput() ?>
+    <?php //echo  $form->field($model, 'geom')->textInput() ?>
 
-    <?= $form->field($model, 'status_json')->textarea(['rows' => 6]) ?>
+    <?php echo  $form->field($model, 'status_json')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?php //echo  $form->field($model, 'date')->textInput() ?>
 
-    <?= $form->field($model, 'hashtags')->textInput() ?>
+    <?php echo  $form->field($model, 'hashtags')->textInput() ?>
 
-    <?= $form->field($model, 'tweet_location')->textInput() ?>
+    <?php echo  $form->field($model, 'tweet_location')->textInput() ?>
 
-    <?= $form->field($model, 'screen_name')->textInput() ?>
+    <?php echo  $form->field($model, 'screen_name')->textInput() ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?php //echo  $form->field($model, 'user_id')->textInput() ?>
 
-    <?= $form->field($model, 'date_utc')->textInput() ?>
+    <?php //echo  $form->field($model, 'date_utc')->textInput() ?>
 
-    <?= $form->field($model, 'verified')->checkbox() ?>
+    <?php //echo  $form->field($model, 'verified')->checkbox() ?>
 
-    <?= $form->field($model, 'user_address')->textInput() ?>
+    <?php //echo  $form->field($model, 'user_address')->textInput() ?>
 
-    <?= $form->field($model, 'tweet_long')->textInput() ?>
+    <?php echo  $form->field($model, 'tweet_long')->textInput() ?>
 
-    <?= $form->field($model, 'tweet_lat')->textInput() ?>
+    <?php echo  $form->field($model, 'tweet_lat')->textInput() ?>
 
     <div class="row">
-        <button id="btn-pointpicker-<?=$form->id?>" type="button" class="btn btn-xs btn-danger" style="width: 100%">
+        <button id="btn-pointpicker-<?php echo $form->id?>" type="button" class="btn btn-xs btn-danger" style="width: 100%">
             <span class="glyphicon glyphicon-globe"></span>&nbsp;Locate on map
         </button>
     </div>
@@ -56,16 +56,16 @@ use yii\widgets\ActiveForm;
         ]);
     ?>
 
-    <?= $form->field($model, 'user_long')->textInput() ?>
+    <?php echo  $form->field($model, 'user_long')->textInput() ?>
 
-    <?= $form->field($model, 'user_lat')->textInput() ?>
+    <?php echo  $form->field($model, 'user_lat')->textInput() ?>
 
-    <?= $form->field($model, 'user_geom')->textInput() ?>
+    <?php echo  $form->field($model, 'user_geom')->textInput() ?>
 
-    <?= $form->field($model, 'media_url')->textInput() ?>
+    <?php echo  $form->field($model, 'media_url')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php echo  Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
