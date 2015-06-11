@@ -211,6 +211,6 @@ class HeritageController extends ActiveController
         $query->orderBy([$countAlias => SORT_ASC]);
 
 
-        return ArrayHelper::map($query->all(),(string)$propertyAlias,$count);
+        return ArrayHelper::map($query->all(),'value','count');
     }
 }
