@@ -10,6 +10,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\helpers\Json;
 use yii\helpers\Url;
+use yii\web\User;
 
 /**
  * This is the model class for table "building_assessment.building_household".
