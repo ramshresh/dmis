@@ -97,6 +97,12 @@ class BuildingHouseholdController extends ActiveController
                                 }
                             }
 
+                            // checkbox list
+                            if (isset($queryParams['occupancy_type'])) {
+                                $query->andFilterWhere(['in', 'occupancy_type', $queryParams['occupancy_type']]);
+                            }
+
+
                             // filter based on date
                             if (isset($queryParams['datefilter_from'])) {
                                 $query->andWhere("timestamp_occurance >= '" . $queryParams['datefilter_from'] . "' ");
@@ -149,4 +155,30 @@ class BuildingHouseholdController extends ActiveController
             ]
         );
     }
+
+
+    public function actionUnique()
+    {
+        /**
+         * @var $model \common\modules\rapid_assessment\models\ReportItem
+         */
+        $model = new $this->modelClass;
+        $property = $_GET['property'];
+        $propertyAlias = (isset($_GET['property_alias'])) ? $_GET['property_alias'] : 'value';
+        $count = (isset($_GET['count'])) ? $_GET['count'] : true;
+        $countAlias = (isset($_GET['count_alias'])) ? $_GET['count_alias'] : 'count';
+        /*SELECT COUNT(*), "status" FROM  "tracking"."status" GROUP BY "status" ORDER BY "status" DESC*/
+        $query = new Query();
+        if ($count) {
+            $query->addSelect([$countAlias => 'COUNT(*)']);
+        }
+        $query->addSelect([$propertyAlias => $property]);
+        $query->from([$model::tableName()]);
+        $query->groupBy($propertyAlias);
+        $query->orderBy([$countAlias => SORT_ASC]);
+
+        return $query->all();
+    }
+
+
 }

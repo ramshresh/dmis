@@ -283,6 +283,7 @@ return [
                     ],
                     'pluralize'=>true,
                     'extraPatterns' => [
+                        'GET unique/<property:\w+>' => 'unique',
                     ]
                 ],
                 [
