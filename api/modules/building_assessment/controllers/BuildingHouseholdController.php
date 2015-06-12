@@ -12,6 +12,7 @@ namespace api\modules\building_assessment\controllers;
 use common\modules\vdc\models\NepalVdc;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveQuery;
+use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii\rest\ActiveController;
 
