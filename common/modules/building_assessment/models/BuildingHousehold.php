@@ -2,6 +2,7 @@
 
 namespace common\modules\building_assessment\models;
 
+use common\modules\user\models\User;
 use Imagine\Image\Box;
 use ramshresh\yii2\galleryManager\GalleryBehavior;
 use Yii;
@@ -10,7 +11,6 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\helpers\Json;
 use yii\helpers\Url;
-use yii\web\User;
 
 /**
  * This is the model class for table "building_assessment.building_household".
