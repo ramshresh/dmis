@@ -181,5 +181,49 @@ class BuildingHouseholdController extends ActiveController
         return $query->all();
     }
 
+    public function actionUniqueUsers(){
+        /**
+         * @var $model \common\modules\rapid_assessment\models\ReportItem
+         */
+        $model = new $this->modelClass;
+        $relation = $model->getRelation('user');
+        $relationModelClass=$relation->modelClass;
+        $relationLink = $relation->link;
+        $linksFrom = array_keys($relationLink);
 
+
+        $linkFrom=null;
+        $linkTo=null;
+
+
+        if(sizeof($linksFrom)>1){
+            throw new Exception('Cound not determine unique attribute because user is related by multiple foreign key');
+        }else{
+            $linkFrom = $linksFrom[0];
+            $linkTo = $relationLink[$linkFrom];
+        }
+
+        $property=$linkTo;
+        $propertyAlias = (isset($_GET['property_alias'])) ? $_GET['property_alias'] : 'value';
+        $count = (isset($_GET['count'])) ? $_GET['count'] : true;
+        $countAlias = (isset($_GET['count_alias'])) ? $_GET['count_alias'] : 'count';
+        /*SELECT COUNT(*), "status" FROM  "tracking"."status" GROUP BY "status" ORDER BY "status" DESC*/
+        $query = new Query();
+        if ($count) {
+            $query->addSelect([$countAlias => 'COUNT(*)']);
+        }
+        $query->addSelect([$propertyAlias => $property]);
+        $query->from([$model::tableName()]);
+        $query->groupBy($propertyAlias);
+        $query->orderBy([$countAlias => SORT_DESC]);
+
+        $userCountMap=ArrayHelper::map($query->all(),$propertyAlias,$countAlias);
+
+        $keysMap=array_keys($userCountMap);
+
+        $query1= new ActiveQuery($relationModelClass);
+        $query1->andFilterWhere(['in',$linkFrom,array_map(create_function('$value', 'return (int)$value;'),$keysMap)]); //@see: http://usrportage.de/archives/808-Convert-an-array-of-strings-into-an-array-of-integers.html
+        $userEmailMap = ArrayHelper::map($query1->all(),$linkFrom,'email');
+        return ['order'=>'SORT_DESC','keys'=>$keysMap,'count'=>$userCountMap,'email'=>$userEmailMap];
+    }
 }
