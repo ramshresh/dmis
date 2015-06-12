@@ -170,6 +170,7 @@ class HeritageController extends ActiveController
         }
         $query->addSelect([$propertyAlias => $property]);
         $query->from([$model::tableName()]);
+        $query->andFilterWhere(['=',$property,null]);
         $query->groupBy($propertyAlias);
         $query->orderBy([$countAlias => SORT_ASC]);
 
