@@ -20,7 +20,7 @@ $this->createSchemaBoundary();
         $sql = <<<SQL
 CREATE SCHEMA "boundary";
 SQL;
-        Yii::$app->db->createCommand($sql);
+        Yii::$app->db->createCommand($sql)->execute();
     }
 
     public function dropSchemaBoundary(){
