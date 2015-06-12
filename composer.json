@@ -39,7 +39,9 @@
     "yiisoft/yii2-authclient": "~2.0",
     "kartik-v/yii2-editable": "*",
     "ramshresh/yii2-assets-adminlte": "dev-master",
-    "sintret/yii2-chat-adminlte": "dev-master"
+    "sintret/yii2-chat-adminlte": "dev-master",
+    "kartik-v/yii2-export": "*",
+    "kartik-v/yii2-mpdf": "dev-master"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",
