@@ -176,7 +176,7 @@ class BuildingHouseholdController extends ActiveController
         $query->addSelect([$propertyAlias => $property]);
         $query->from([$model::tableName()]);
         $query->groupBy($propertyAlias);
-        $query->andFilterWhere(['<>',$property,null]);
+        $query->andWhere(['not', [$property => null]]);
 
         $query->orderBy([$countAlias => SORT_ASC]);
 
