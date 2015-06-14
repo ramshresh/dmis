@@ -4,6 +4,20 @@ return [
     'name'=>'Disaster Management Information System',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+        'stream' => [
+  //          define("OAUTH_TOKEN", "2903312516-aqImwAzJ7h9X9tUHNgzIGv6AvEBow8eJWxi2iYl");
+//define("OAUTH_SECRET", "SVPnZXns7638XSjeLaAibwg27tRC3ldIEdD3Qh0tPbBNq");
+
+//'class' => 'richweber\twitter\streaming\lib\Stream',
+            'class' => 'common\components\MyStream',
+            //'username' => 'kugeospatiallab@gmail.com',
+            'username' => '2903312516-aqImwAzJ7h9X9tUHNgzIGv6AvEBow8eJWxi2iYl',
+            'password' => 'SVPnZXns7638XSjeLaAibwg27tRC3ldIEdD3Qh0tPbBNq',
+            'consumerKey' => 'wOZVLoFlFIJyRXL8kSO3JqYqe',
+            'consumerSecret' => '5mZTEQzgSnPrhWjqNLQNfADV9dMnhEQtp9kqB4hjd9kK3QAhpT',
+            'method' => 'user',
+            'format' => 'json',
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             //'viewPath' => '@common/mail',
