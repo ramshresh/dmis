@@ -30,3 +30,6 @@ SQL;
         Yii::$app->db->createCommand($sql)->execute();
     }
 }
+
+
+//shp2pgsql -I -s <SRID> <PATH/TO/SHAPEFILE> <SCHEMA>.<DBTABLE> | psql -U postgres -d <DBNAME>
