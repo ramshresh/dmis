@@ -1,5 +1,6 @@
 <?php
 
+use common\modules\user\models\Profile;
 use kartik\export\ExportMenu;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -11,6 +12,8 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('app', 'Heritages');
 $this->params['breadcrumbs'][] = $this->title;
+
+$userProfile = new Profile();
 ?>
 <div class="heritage-index">
 
@@ -28,25 +31,25 @@ $this->params['breadcrumbs'][] = $this->title;
         'damage_type:ntext',
         'present_physical_conditions:ntext',
         'historical_socio_cultural_significance:ntext',
-         'important_features:ntext',
-         'items_to_be_preserved_before:ntext',
+        'important_features:ntext',
+        'items_to_be_preserved_before:ntext',
         'items_to_be_preserved_after:ntext',
-         'description:ntext',
-         'recorded_by:ntext',
-         'surveyor_opinion_before:ntext',
+        'description:ntext',
+        'recorded_by:ntext',
+        'surveyor_opinion_before:ntext',
         'surveyor_opinion_after:ntext',
-         'old_date',
-         'new_date',
-         'timestamp_created_at',
-         'timestamp_updated_at',
-         'latitude',
-         'longitude',
-         'geom',
-         'wkt:ntext',
-         'd_code',
-         'v_code',
-         'ward_no',
-        'user_id',
+        'old_date',
+        'new_date',
+        'timestamp_created_at',
+        'timestamp_updated_at',
+        'latitude',
+        'longitude',
+        'geom',
+        'wkt:ntext',
+        'd_code',
+        'v_code',
+        'ward_no',
+        //'user_id',
     ];
     ?>
     <?php
@@ -74,11 +77,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'historical_socio_cultural_significance:ntext',
             // 'important_features:ntext',
             // 'items_to_be_preserved_before:ntext',
-             'items_to_be_preserved_after:ntext',
+            'items_to_be_preserved_after:ntext',
             // 'description:ntext',
             // 'recorded_by:ntext',
             // 'surveyor_opinion_before:ntext',
-             'surveyor_opinion_after:ntext',
+            'surveyor_opinion_after:ntext',
             // 'old_date',
             // 'new_date',
             // 'timestamp_created_at',
@@ -90,7 +93,16 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'd_code',
             // 'v_code',
             // 'ward_no',
-             'user_id',
+            //'user_id',
+            //[
+            //    'attribute' => 'userEmail',
+            //    'value' => 'user.email'
+            //],
+            [
+                'attribute' => 'userProfileFullName',
+                'value' => 'userProfile.full_name',
+                'filter' => Profile::dropdown('full_name','full_name'),
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

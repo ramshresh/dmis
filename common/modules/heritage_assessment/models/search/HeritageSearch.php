@@ -2,6 +2,8 @@
 
 namespace common\modules\heritage_assessment\models\search;
 
+use common\modules\user\models\Profile;
+use common\modules\user\models\User;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -12,6 +14,9 @@ use common\modules\heritage_assessment\models\Heritage;
  */
 class HeritageSearch extends Heritage
 {
+    public $userEmail;
+    public $userProfileFullName;
+
     /**
      * @inheritdoc
      */
@@ -21,6 +26,7 @@ class HeritageSearch extends Heritage
             [['id', 'd_code', 'v_code', 'ward_no', 'user_id'], 'integer'],
             [['kitta_no', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved_before','items_to_be_preserved_after', 'description', 'recorded_by', 'surveyor_opinion_before','surveyor_opinion_after', 'old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at', 'geom', 'wkt'], 'safe'],
             [['latitude', 'longitude'], 'number'],
+            [['userEmail','userProfileFullName'], 'safe'],
         ];
     }
 
@@ -44,9 +50,39 @@ class HeritageSearch extends Heritage
     {
         $query = Heritage::find();
 
+        // Important: lets join the query with our previously mentioned relations
+        // I do not make any other configuration like aliases or whatever, feel free
+        // to investigate that your self
+        $query->joinWith(['user']);
+        $query->joinWith(['userProfile']);
+
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+
+        // Important: here is how we set up the sorting
+        // The key is the attribute name on our "HeritageSearch" instance
+        $dataProvider->sort->attributes['userEmail'] = [
+            // The tables are the ones our relation are configured to
+            // in my case they are prefixed with "tbl_"
+            'asc' => [User::getTableSchema()->getColumn('email')->name => SORT_ASC],
+            'desc' => [User::getTableSchema()->getColumn('email')->name => SORT_DESC],
+        ];
+        $dataProvider->sort->attributes['userProfileFullName'] = [
+            // The tables are the ones our relation are configured to
+            // in my case they are prefixed with "tbl_"
+            'asc' => [Profile::getTableSchema()->getColumn('full_name')->name => SORT_ASC],
+            'desc' => [Profile::getTableSchema()->getColumn('full_name')->name => SORT_DESC],
+        ];
+
+
+
+        // No search? Then return data Provider
+        if (!($this->load($params) && $this->validate())) {
+            return $dataProvider;
+        }
 
         $this->load($params);
 
@@ -55,6 +91,7 @@ class HeritageSearch extends Heritage
             // $query->where('0=1');
             return $dataProvider;
         }
+
 
         $query->andFilterWhere([
             'id' => $this->id,
@@ -83,6 +120,11 @@ class HeritageSearch extends Heritage
             ->andFilterWhere(['like', 'surveyor_opinion_after', $this->surveyor_opinion_after])
             ->andFilterWhere(['like', 'geom', $this->geom])
             ->andFilterWhere(['like', 'wkt', $this->wkt]);
+
+        // Here we search the attributes of our relations using our previously configured
+        // ones in "HeritageSearch"
+        $query->andFilterWhere(['like', User::getTableSchema()->getColumn('email')->name, $this->userEmail]);
+        $query->andFilterWhere(['like', Profile::getTableSchema()->getColumn('full_name')->name, $this->userProfileFullName]);
 
         return $dataProvider;
     }

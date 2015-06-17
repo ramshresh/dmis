@@ -73,7 +73,7 @@ class CrudHeritageController extends Controller
                 if(UploadedFile::getInstancesByName('photo')){
                     $photos = (UploadedFile::getInstancesByName('photo'));
                     foreach($photos as $photo){
-                        $model->getBehavior('galleryBehavior')->addImage($photo->tempName,[]);
+                        $model->getBehavior('heritageAfterGalleryBehavior')->addImage($photo->tempName,[]);
                     }
                 }
 
