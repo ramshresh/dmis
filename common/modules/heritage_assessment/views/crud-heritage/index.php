@@ -50,6 +50,10 @@ $userProfile = new Profile();
         'v_code',
         'ward_no',
         //'user_id',
+        [
+            'attribute' => 'userProfileFullName',
+            'value' => 'userProfile.full_name',
+        ]
     ];
     ?>
     <?php
