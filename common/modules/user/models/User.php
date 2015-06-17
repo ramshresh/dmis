@@ -72,7 +72,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @var array Permission cache array
      */
     protected $_access = [];
-    
+
     /**
      * @inheritdoc
      */
@@ -125,7 +125,15 @@ class User extends ActiveRecord implements IdentityInterface
         return $rules;
     }
 
-    /**
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['api_public'] = ['id','email','username','login_ip','login_time'];//Scenario Values Only Accepted
+        return $scenarios;
+    }
+
+
+/**
      * Validate current password (account page)
      */
     public function validateCurrentPassword()

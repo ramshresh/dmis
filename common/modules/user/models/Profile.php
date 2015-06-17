@@ -2,6 +2,7 @@
 
 namespace common\modules\user\models;
 
+use common\components\utils\php\ArrayHelper;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -89,5 +90,15 @@ class Profile extends ActiveRecord
     {
         $this->user_id = $userId;
         return $this;
+    }
+
+    /**
+     * Get list of Heritages for creating dropdowns
+     *
+     * @return array
+     */
+    public static function dropdown($fromAattribute,$toAttribute)
+    {
+        return ArrayHelper::map(self::find()->all(), $fromAattribute, $toAttribute);
     }
 }
