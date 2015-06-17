@@ -146,7 +146,8 @@ class Heritage extends \yii\db\ActiveRecord
      * @return \yii\db\ActiveQuery
      */
     public function getUser()
-    {//@todo Constrains in database is not set
+    {
+        //@todo Constrains in database is not set
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
@@ -216,8 +217,13 @@ class Heritage extends \yii\db\ActiveRecord
                 $this->important_features=implode(',',$this->important_features);
             if(is_array($this->items_to_be_preserved_before))
                 $this->items_to_be_preserved_before=implode(',',$this->items_to_be_preserved_before);
+
+            $this->items_to_be_preserved_after=Yii::$app->getRequest()->post()['Heritage']['items_to_be_preseved_after'];
             if(is_array($this->items_to_be_preserved_after))
                 $this->items_to_be_preserved_after=implode(',',$this->items_to_be_preserved_after);
+
+
+
 
             //{{{ saving wkt to geometry
             /**

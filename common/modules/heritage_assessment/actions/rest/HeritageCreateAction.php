@@ -38,7 +38,6 @@ class HeritageCreateAction extends MyBaseAction
             $model = new Heritage();
             if ($model->load(Yii::$app->getRequest()->post()) && $model->save()) {
 
-                $model->items_to_be_preserved_after=Yii::$app->getRequest()->post()['Heritage']['items_to_be_preseved_after'];
 
                 // Try for single uploaded photo
                 if (Yii::$app->request->post('photo')) {
