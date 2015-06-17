@@ -101,7 +101,7 @@ $userProfile = new Profile();
             [
                 'attribute' => 'userProfileFullName',
                 'value' => 'userProfile.full_name',
-                'filter' => Profile::dropdown('full_name','full_name'),
+                //'filter' => Profile::dropdown('full_name','full_name'),
             ],
 
             ['class' => 'yii\grid\ActionColumn'],
