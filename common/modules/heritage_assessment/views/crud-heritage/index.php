@@ -1,5 +1,7 @@
 <?php
 
+use kartik\export\ExportMenu;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -19,6 +21,46 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Create Heritage'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <?php
+    $gridColumns=[
+        ['class' => 'yii\grid\SerialColumn'],
+        'kitta_no:ntext',
+        'damage_type:ntext',
+        'present_physical_conditions:ntext',
+        'historical_socio_cultural_significance:ntext',
+         'important_features:ntext',
+         'items_to_be_preserved_before:ntext',
+        'items_to_be_preserved_after:ntext',
+         'description:ntext',
+         'recorded_by:ntext',
+         'surveyor_opinion_before:ntext',
+        'surveyor_opinion_after:ntext',
+         'old_date',
+         'new_date',
+         'timestamp_created_at',
+         'timestamp_updated_at',
+         'latitude',
+         'longitude',
+         'geom',
+         'wkt:ntext',
+         'd_code',
+         'v_code',
+         'ward_no',
+        'user_id',
+    ];
+    ?>
+    <?php
+
+    // Renders a export dropdown menu
+    echo ExportMenu::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => $gridColumns,
+        'emptyText'=>'Empty Result',
+        'target'=>ExportMenu::TARGET_SELF,
+    ]);
+    ?>
+
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -28,15 +70,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'kitta_no:ntext',
             'damage_type:ntext',
-            'present_physical_conditions:ntext',
-            'historical_socio_cultural_significance:ntext',
+            //'present_physical_conditions:ntext',
+            //'historical_socio_cultural_significance:ntext',
             // 'important_features:ntext',
             // 'items_to_be_preserved_before:ntext',
-            // 'items_to_be_preserved_after:ntext',
+             'items_to_be_preserved_after:ntext',
             // 'description:ntext',
             // 'recorded_by:ntext',
             // 'surveyor_opinion_before:ntext',
-            // 'surveyor_opinion_after:ntext',
+             'surveyor_opinion_after:ntext',
             // 'old_date',
             // 'new_date',
             // 'timestamp_created_at',
@@ -48,7 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'd_code',
             // 'v_code',
             // 'ward_no',
-            // 'user_id',
+             'user_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
