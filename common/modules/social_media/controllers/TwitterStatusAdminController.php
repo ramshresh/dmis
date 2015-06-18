@@ -6,6 +6,7 @@ use common\modules\social_media\components\TwitterRestApi;
 use Yii;
 use common\modules\social_media\models\TwitterStatus;
 use common\modules\social_media\models\search\TwitterStatusSearch;
+use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -62,7 +63,7 @@ class TwitterStatusAdminController extends Controller
     public function actionCreate()
     {
         $model = new TwitterStatus();
-
+        $transaction= Yii::$app->db->beginTransaction();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $settings = [
                 'oauth_access_token' => '3330290638-L1SSDmN3YHflhi96BkewAk9ur3cEdJS9DdAYhU8',
@@ -79,8 +80,12 @@ class TwitterStatusAdminController extends Controller
             );
 
             $twitterApi = new TwitterRestApi();
-            echo $twitterApi->updateStatus($postFields,$settings);
-Yii::$app->end();
+            $response=$twitterApi->updateStatus($postFields,$settings);
+            if(isset(Json::decode($response)['errors'])){
+                //error
+                $transaction->rollBack();
+            }
+            $transaction->commit();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
