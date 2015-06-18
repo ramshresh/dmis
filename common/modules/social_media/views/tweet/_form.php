@@ -16,11 +16,11 @@ use yii\widgets\ActiveForm;
 
     <?php //echo  $form->field($model, 'geom')->textInput() ?>
 
-    <?php echo  $form->field($model, 'status_json')->textarea(['rows' => 6]) ?>
+    <?php //echo  $form->field($model, 'status_json')->textarea(['rows' => 6]) ?>
 
     <?php //echo  $form->field($model, 'date')->textInput() ?>
 
-    <?php echo  $form->field($model, 'hashtags')->textInput() ?>
+    <?php //echo  $form->field($model, 'hashtags')->textInput() ?>
 
     <?php echo  $form->field($model, 'tweet_location')->textInput() ?>
 
@@ -56,13 +56,13 @@ use yii\widgets\ActiveForm;
         ]);
     ?>
 
-    <?php echo  $form->field($model, 'user_long')->textInput() ?>
+    <?php //echo  $form->field($model, 'user_long')->textInput() ?>
 
-    <?php echo  $form->field($model, 'user_lat')->textInput() ?>
+    <?php //echo  $form->field($model, 'user_lat')->textInput() ?>
 
-    <?php echo  $form->field($model, 'user_geom')->textInput() ?>
+    <?php //echo  $form->field($model, 'user_geom')->textInput() ?>
 
-    <?php echo  $form->field($model, 'media_url')->textInput() ?>
+    <?php //echo  $form->field($model, 'media_url')->textInput() ?>
 
     <div class="form-group">
         <?php echo  Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
