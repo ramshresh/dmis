@@ -5,17 +5,22 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'stream' => [
-  //          define("OAUTH_TOKEN", "2903312516-aqImwAzJ7h9X9tUHNgzIGv6AvEBow8eJWxi2iYl");
-//define("OAUTH_SECRET", "SVPnZXns7638XSjeLaAibwg27tRC3ldIEdD3Qh0tPbBNq");
-
-//'class' => 'richweber\twitter\streaming\lib\Stream',
-            'class' => 'common\components\MyStream',
-            //'username' => 'kugeospatiallab@gmail.com',
+            'class' => 'common\components\MyStream',// extends 'richweber\twitter\streaming\lib\Stream',
+            //'account' => ['kugeospatiallabtest1@gmail.com','kuge0sp@ti@ll@btest1']
+            'username' => '3330290638-L1SSDmN3YHflhi96BkewAk9ur3cEdJS9DdAYhU8',
+            'password' => 'AEOUj68dNW6HXtNrDwIJqufMEVtE5sCtqY9jwU8CEHyYG',
+            'consumerKey' => 'xVHfufwITb5LhpOkbX1Dh9Kgr',
+            'consumerSecret' => 'vrSfdcVz7bo78qEnVGdwmUdGiJQ8sA4vanJr1LDMW7HjWqf59B',
+            'method' => 'user',
+            'format' => 'json',
+        ],
+        'filterTrackConsumer' => [
+            'class' => 'common\components\FilterTrackConsumer',
             'username' => '2903312516-aqImwAzJ7h9X9tUHNgzIGv6AvEBow8eJWxi2iYl',
             'password' => 'SVPnZXns7638XSjeLaAibwg27tRC3ldIEdD3Qh0tPbBNq',
             'consumerKey' => 'wOZVLoFlFIJyRXL8kSO3JqYqe',
             'consumerSecret' => '5mZTEQzgSnPrhWjqNLQNfADV9dMnhEQtp9kqB4hjd9kK3QAhpT',
-            'method' => 'user',
+            'method' => 'filter',
             'format' => 'json',
         ],
         'mailer' => [
