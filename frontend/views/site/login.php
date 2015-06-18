@@ -53,13 +53,12 @@ $fieldOptions2 = [
         <?php ActiveForm::end(); ?>
 
         <!-- social-auth-links -->
-        <!--<div class="social-auth-links text-center">
+        <div class="social-auth-links text-center">
             <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in
-                using Facebook</a>
-            <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign
-                in using Google+</a>
-        </div>-->
+            <?= yii\authclient\widgets\AuthChoice::widget([
+                'baseAuthUrl' => ['/user/auth/login'] // "login" instead of "connect"
+            ]) ?>
+        </div>
         <!-- /.social-auth-links -->
 
         <?= Html::a('I forgot my password',Url::to(['/user/registration/forgot']))?>
@@ -68,9 +67,6 @@ $fieldOptions2 = [
         <hr>
         <section>*for demo login with admin / admin</section>
 
-        <?= yii\authclient\widgets\AuthChoice::widget([
-            'baseAuthUrl' => ['/user/auth/connect']
-        ]) ?>
     </div>
     <!-- /.login-box-body -->
 </div><!-- /.login-box -->
