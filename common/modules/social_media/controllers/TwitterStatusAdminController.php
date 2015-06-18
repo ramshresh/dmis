@@ -65,10 +65,11 @@ class TwitterStatusAdminController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $settings = [
-                'oauth_access_token' => "714037699-NEhlB359yt4ghdMLYIvrQLJn7f0jhGDMq5zd63XF",
-                'oauth_access_token_secret' => "nfwIUZ1HGp2dt9wUMnBb8py2X90OSs3rEFx641Dwcc1mA",
-                'consumer_key' => "fq9NcxFeu5qE6yjQJAV6pukf5",
-                'consumer_secret' => "oPAovWEA8aHBgqhan7MZMST439RccyEIPvaJVfFnJsJP9KkT4i"
+                'oauth_access_token' => '3330290638-L1SSDmN3YHflhi96BkewAk9ur3cEdJS9DdAYhU8',
+                'oauth_access_token_secret' => 'AEOUj68dNW6HXtNrDwIJqufMEVtE5sCtqY9jwU8CEHyYG',
+                'consumer_key' => 'xVHfufwITb5LhpOkbX1Dh9Kgr',
+                'consumer_secret' => 'vrSfdcVz7bo78qEnVGdwmUdGiJQ8sA4vanJr1LDMW7HjWqf59B',
+
             ];
             $postFields = array(
                 'status'=>$model->status,
