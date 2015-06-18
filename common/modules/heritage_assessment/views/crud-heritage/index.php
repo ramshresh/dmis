@@ -88,7 +88,7 @@ $userProfile = new Profile();
             'surveyor_opinion_after:ntext',
             // 'old_date',
             // 'new_date',
-            // 'timestamp_created_at',
+            'timestamp_created_at',
             // 'timestamp_updated_at',
             // 'latitude',
             // 'longitude',
@@ -104,8 +104,7 @@ $userProfile = new Profile();
             //],
             [
                 'attribute' => 'userProfileFullName',
-                'value' => 'userProfile.full_name',
-                //'filter' => Profile::dropdown('full_name','full_name'),
+                'value' => 'userProfile.full_name'
             ],
 
             ['class' => 'yii\grid\ActionColumn'],
