@@ -2,6 +2,7 @@
 
 namespace common\modules\social_media\controllers;
 
+use common\modules\social_media\components\TwitterRestApi;
 use Yii;
 use common\modules\social_media\models\TwitterStatus;
 use common\modules\social_media\models\search\TwitterStatusSearch;
@@ -69,12 +70,16 @@ class TwitterStatusAdminController extends Controller
                 'consumer_key' => "fq9NcxFeu5qE6yjQJAV6pukf5",
                 'consumer_secret' => "oPAovWEA8aHBgqhan7MZMST439RccyEIPvaJVfFnJsJP9KkT4i"
             ];
-            $postfields = array(
+            $postFields = array(
                 'status'=>$model->status,
                 'in_reply_to_status_id'=>$model->in_reply_to_status_id,
                 'lat'=>$model->lat,
                 'long'=>$model->long,
             );
+
+            $twitterApi = new TwitterRestApi();
+            $twitterApi->updateStatus($postFields,$settings);
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
