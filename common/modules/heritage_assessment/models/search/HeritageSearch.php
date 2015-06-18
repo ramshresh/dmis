@@ -24,7 +24,7 @@ class HeritageSearch extends Heritage
     {
         return [
             [['id', 'd_code', 'v_code', 'ward_no', 'user_id'], 'integer'],
-            [['kitta_no', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved_before','items_to_be_preserved_after', 'description', 'recorded_by', 'surveyor_opinion_before','surveyor_opinion_after', 'old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at', 'geom', 'wkt'], 'safe'],
+            [['inventory_id','kitta_no', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved_before','items_to_be_preserved_after', 'description', 'recorded_by', 'surveyor_opinion_before','surveyor_opinion_after', 'old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at', 'geom', 'wkt'], 'safe'],
             [['latitude', 'longitude'], 'number'],
             [['userEmail','userProfileFullName'], 'safe'],
         ];
@@ -107,7 +107,8 @@ class HeritageSearch extends Heritage
             'user_id' => $this->user_id,
         ]);
 
-        $query->andFilterWhere(['like', 'kitta_no', $this->kitta_no])
+        $query->andFilterWhere(['like', 'inventory_id', $this->inventory_id])
+            ->andFilterWhere(['like', 'kitta_no', $this->kitta_no])
             ->andFilterWhere(['like', 'damage_type', $this->damage_type])
             ->andFilterWhere(['like', 'present_physical_conditions', $this->present_physical_conditions])
             ->andFilterWhere(['like', 'historical_socio_cultural_significance', $this->historical_socio_cultural_significance])
