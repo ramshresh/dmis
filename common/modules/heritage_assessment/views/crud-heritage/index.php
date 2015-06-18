@@ -27,6 +27,7 @@ $userProfile = new Profile();
     <?php
     $gridColumns=[
         ['class' => 'yii\grid\SerialColumn'],
+        'inventory_id',
         'kitta_no:ntext',
         'damage_type:ntext',
         'present_physical_conditions:ntext',
@@ -73,8 +74,7 @@ $userProfile = new Profile();
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            'inventory_id',
             'kitta_no:ntext',
             'damage_type:ntext',
             //'present_physical_conditions:ntext',
