@@ -44,23 +44,7 @@ return [
                 'charset' => 'UTF-8',
             ]
         ],
-        'authClientCollection' => [
-            'class' => 'yii\authclient\Collection',
-            'clients' => [
-                'facebook' => [
-                    'class' => 'yii\authclient\clients\Facebook',
-                    'clientId' => '362267747300970',
-                    'clientSecret' => 'dbb3570914415338188ccc1179b33903',
-                    'scope' => 'email',
-                ],
-                'google' => [
-                    'class' => 'yii\authclient\clients\GoogleOAuth',
-                    'clientId' => '777006683516-b0ponfaromu0r578i3jv5bvptl4kpfm3.apps.googleusercontent.com',
-                    'clientSecret' => 'D1ktw7aa40ft6tjfVVYa28A2',
-                ],
 
-            ],
-        ],
         'routing' => [
             'class' => 'common\modules\routing\Module',
         ],
