@@ -4,54 +4,8 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f6db73c18a7abed9ba662f572746e652",
+    "hash": "1830f1a2bc60b0e011395df7cbed28be",
     "packages": [
-        {
-            "name": "bower-asset/admin-lte",
-            "version": "v2.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/almasaeed2010/AdminLTE.git",
-                "reference": "c25a8710f419a1be142f9b46037be00388a7272c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/c25a8710f419a1be142f9b46037be00388a7272c",
-                "reference": "c25a8710f419a1be142f9b46037be00388a7272c",
-                "shasum": ""
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": [
-                    "index2.html",
-                    "dist/css/AdminLTE.css",
-                    "dist/js/app.js",
-                    "build/less/AdminLTE.less"
-                ],
-                "bower-asset-ignore": [
-                    "/.*",
-                    "node_modules",
-                    "bower_components",
-                    "composer.json",
-                    "documentaion"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "Admin dashboard and control panel template",
-            "keywords": [
-                "admin",
-                "backend",
-                "bootstrap",
-                "css",
-                "html",
-                "js",
-                "responsive",
-                "template",
-                "theme"
-            ]
-        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.4",
@@ -175,16 +129,16 @@
         },
         {
             "name": "bower-asset/jquery.inputmask",
-            "version": "3.1.62",
+            "version": "3.1.63",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobinHerbots/jquery.inputmask.git",
-                "reference": "da1a274cefa18a52a0519ac7ffe8e8d31e950eae"
+                "reference": "c40c7287eadc31e341ebbf0c02352eb55b9cbc48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/da1a274cefa18a52a0519ac7ffe8e8d31e950eae",
-                "reference": "da1a274cefa18a52a0519ac7ffe8e8d31e950eae",
+                "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/c40c7287eadc31e341ebbf0c02352eb55b9cbc48",
+                "reference": "c40c7287eadc31e341ebbf0c02352eb55b9cbc48",
                 "shasum": ""
             },
             "require": {
@@ -427,60 +381,6 @@
                 "yii"
             ],
             "time": "2013-12-10 17:49:58"
-        },
-        {
-            "name": "dmstr/yii2-adminlte-asset",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dmstr/yii2-adminlte-asset.git",
-                "reference": "9f3c5b8b771bac729f5c88a375ad5a0fab84f30c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dmstr/yii2-adminlte-asset/zipball/9f3c5b8b771bac729f5c88a375ad5a0fab84f30c",
-                "reference": "9f3c5b8b771bac729f5c88a375ad5a0fab84f30c",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/admin-lte": "~2.0",
-                "cebe/yii2-gravatar": "1.*",
-                "rmrevin/yii2-fontawesome": "2.9.*",
-                "yiisoft/yii2": "2.*",
-                "yiisoft/yii2-bootstrap": "2.*"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "dmstr\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Munk",
-                    "email": "tobias@diemeisterei.de"
-                },
-                {
-                    "name": "Evgeniy Tkachenko",
-                    "email": "et.coder@gmail.com"
-                }
-            ],
-            "description": "Backend theme for Yii2 Framework",
-            "keywords": [
-                "AdminLTE",
-                "extension",
-                "yii2"
-            ],
-            "time": "2015-05-01 01:07:21"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -802,17 +702,60 @@
             "time": "2015-04-21 15:47:42"
         },
         {
+            "name": "kartik-v/mpdf",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/mpdf.git",
+                "reference": "6ab0ae3a82673e514f168c8e6da02289e6d95f2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/mpdf/zipball/6ab0ae3a82673e514f168c8e6da02289e6d95f2c",
+                "reference": "6ab0ae3a82673e514f168c8e6da02289e6d95f2c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=4.3.10"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "mpdf.php",
+                    "classes"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-1.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Ian N Back"
+                }
+            ],
+            "description": "A PHP class to generate PDF files from HTML with Unicode/UTF-8 and CJK support. This is a fork of the official mPDF library.",
+            "homepage": "http://www.mpdf1.com/mpdf/index.php",
+            "keywords": [
+                "pdf",
+                "php",
+                "utf-8"
+            ],
+            "time": "2015-05-05 07:34:49"
+        },
+        {
             "name": "kartik-v/yii2-builder",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-builder.git",
-                "reference": "0145817429f80d66f4f8f069df5392426a823dc6"
+                "reference": "648314607dac6895002c939a39383fcb96193fc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-builder/zipball/0145817429f80d66f4f8f069df5392426a823dc6",
-                "reference": "0145817429f80d66f4f8f069df5392426a823dc6",
+                "url": "https://api.github.com/repos/kartik-v/yii2-builder/zipball/648314607dac6895002c939a39383fcb96193fc2",
+                "reference": "648314607dac6895002c939a39383fcb96193fc2",
                 "shasum": ""
             },
             "require": {
@@ -846,20 +789,20 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-05-02 07:55:55"
+            "time": "2015-05-05 07:56:58"
         },
         {
             "name": "kartik-v/yii2-date-range",
-            "version": "v1.6.1",
+            "version": "v1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-date-range.git",
-                "reference": "5fb92535697c637190d1d72055f65211e864d365"
+                "reference": "3d11ca5e85149420a91555733b12019377d00f87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-date-range/zipball/5fb92535697c637190d1d72055f65211e864d365",
-                "reference": "5fb92535697c637190d1d72055f65211e864d365",
+                "url": "https://api.github.com/repos/kartik-v/yii2-date-range/zipball/3d11ca5e85149420a91555733b12019377d00f87",
+                "reference": "3d11ca5e85149420a91555733b12019377d00f87",
                 "shasum": ""
             },
             "require": {
@@ -895,7 +838,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-02-16 16:52:35"
+            "time": "2015-04-21 15:10:00"
         },
         {
             "name": "kartik-v/yii2-dropdown-x",
@@ -993,6 +936,60 @@
             "time": "2015-03-29 14:10:03"
         },
         {
+            "name": "kartik-v/yii2-export",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-export.git",
+                "reference": "6c8e3aa6e555f630063d3b8c1cf37198260c5351"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-export/zipball/6c8e3aa6e555f630063d3b8c1cf37198260c5351",
+                "reference": "6c8e3aa6e555f630063d3b8c1cf37198260c5351",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-grid": "*",
+                "phpoffice/phpexcel": "1.8.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kartik\\export\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "A library to export server/db data in various formats (e.g. excel, html, pdf, csv etc.)",
+            "homepage": "https://github.com/kartik-v/yii2-export",
+            "keywords": [
+                "OpenXML",
+                "csv",
+                "export",
+                "extension",
+                "html",
+                "json",
+                "pdf",
+                "spreadsheet",
+                "text",
+                "widget",
+                "xls",
+                "xlsx",
+                "yii2"
+            ],
+            "time": "2015-02-14 09:03:31"
+        },
+        {
             "name": "kartik-v/yii2-grid",
             "version": "v3.0.1",
             "source": {
@@ -1037,17 +1034,63 @@
             "time": "2015-03-25 08:14:18"
         },
         {
-            "name": "kartik-v/yii2-krajee-base",
-            "version": "v1.7.4",
+            "name": "kartik-v/yii2-helpers",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/kartik-v/yii2-krajee-base.git",
-                "reference": "01e9fa8c19970070d0aba5b16a7bfd8c241bc7f9"
+                "url": "https://github.com/kartik-v/yii2-helpers.git",
+                "reference": "379b5f20d511fe13b1c579a33adffe6dd2b6f560"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/01e9fa8c19970070d0aba5b16a7bfd8c241bc7f9",
-                "reference": "01e9fa8c19970070d0aba5b16a7bfd8c241bc7f9",
+                "url": "https://api.github.com/repos/kartik-v/yii2-helpers/zipball/379b5f20d511fe13b1c579a33adffe6dd2b6f560",
+                "reference": "379b5f20d511fe13b1c579a33adffe6dd2b6f560",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kartik\\helpers\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "A collection of useful helper functions for Yii Framework 2.0",
+            "homepage": "https://github.com/kartik-v/yii2-helpers",
+            "keywords": [
+                "bootstrap",
+                "extension",
+                "helper",
+                "utilities",
+                "yii",
+                "yii2"
+            ],
+            "time": "2015-01-27 18:55:13"
+        },
+        {
+            "name": "kartik-v/yii2-krajee-base",
+            "version": "v1.7.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-krajee-base.git",
+                "reference": "2b1d3cafd3864d3ecf3e16db69256dd967fe911d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/2b1d3cafd3864d3ecf3e16db69256dd967fe911d",
+                "reference": "2b1d3cafd3864d3ecf3e16db69256dd967fe911d",
                 "shasum": ""
             },
             "require": {
@@ -1080,7 +1123,54 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-02-13 03:36:35"
+            "time": "2015-05-03 08:11:52"
+        },
+        {
+            "name": "kartik-v/yii2-mpdf",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-mpdf.git",
+                "reference": "f65fe859e01374545276d40428d6ff75e4985050"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-mpdf/zipball/f65fe859e01374545276d40428d6ff75e4985050",
+                "reference": "f65fe859e01374545276d40428d6ff75e4985050",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/mpdf": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kartik\\mpdf\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "A Yii2 wrapper component for the mPDF library which generates PDF files from UTF-8 encoded HTML.",
+            "homepage": "https://github.com/kartik-v/yii2-mpdf",
+            "keywords": [
+                "component",
+                "extension",
+                "html",
+                "mpdf",
+                "pdf",
+                "utf8",
+                "yii2"
+            ],
+            "time": "2015-04-21 15:19:01"
         },
         {
             "name": "kartik-v/yii2-popover-x",
@@ -1474,16 +1564,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-fileinput",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-fileinput.git",
-                "reference": "be89168cc8c8d2648411b9f400312f1a19851e40"
+                "reference": "c78637387dd5306002ae5613d9f9cab8a5df975d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/be89168cc8c8d2648411b9f400312f1a19851e40",
-                "reference": "be89168cc8c8d2648411b9f400312f1a19851e40",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/c78637387dd5306002ae5613d9f9cab8a5df975d",
+                "reference": "c78637387dd5306002ae5613d9f9cab8a5df975d",
                 "shasum": ""
             },
             "require": {
@@ -1520,20 +1610,20 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2015-03-31 07:25:24"
+            "time": "2015-05-03 14:11:04"
         },
         {
             "name": "kartik-v/yii2-widget-growl",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-growl.git",
-                "reference": "aa319f266fd8e88d4a1f61bdc5c4bf92d0ecc0d2"
+                "reference": "c79abaa47e9103e93345cd1eca7bc75e17e9a92e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-growl/zipball/aa319f266fd8e88d4a1f61bdc5c4bf92d0ecc0d2",
-                "reference": "aa319f266fd8e88d4a1f61bdc5c4bf92d0ecc0d2",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-growl/zipball/c79abaa47e9103e93345cd1eca7bc75e17e9a92e",
+                "reference": "c79abaa47e9103e93345cd1eca7bc75e17e9a92e",
                 "shasum": ""
             },
             "require": {
@@ -1569,7 +1659,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2014-11-10 15:16:14"
+            "time": "2015-05-03 08:23:04"
         },
         {
             "name": "kartik-v/yii2-widget-rangeinput",
@@ -1673,16 +1763,16 @@
         },
         {
             "name": "kartik-v/yii2-widget-select2",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "c65d0f7b85e5a03ac661ae1f9ab9eaf5be6e0d89"
+                "reference": "92b2d629811d229a73a60a4b3653a637b0137343"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/c65d0f7b85e5a03ac661ae1f9ab9eaf5be6e0d89",
-                "reference": "c65d0f7b85e5a03ac661ae1f9ab9eaf5be6e0d89",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/92b2d629811d229a73a60a4b3653a637b0137343",
+                "reference": "92b2d629811d229a73a60a4b3653a637b0137343",
                 "shasum": ""
             },
             "require": {
@@ -1717,7 +1807,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2014-11-08 18:34:38"
+            "time": "2015-05-03 13:33:45"
         },
         {
             "name": "kartik-v/yii2-widget-sidenav",
@@ -2167,6 +2257,63 @@
             "time": "2015-04-29 19:14:33"
         },
         {
+            "name": "phpoffice/phpexcel",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPExcel.git",
+                "reference": "e69a5e4d0ffa7fb6f171859e0a04346e580df30b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/e69a5e4d0ffa7fb6f171859e0a04346e580df30b",
+                "reference": "e69a5e4d0ffa7fb6f171859e0a04346e580df30b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExcel": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                }
+            ],
+            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "http://phpexcel.codeplex.com",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2014-03-02 15:22:49"
+        },
+        {
             "name": "ramshresh/yii2-ar-behaviors",
             "version": "dev-master",
             "source": {
@@ -2203,12 +2350,54 @@
             "time": "2015-05-02 19:43:23"
         },
         {
+            "name": "ramshresh/yii2-assets-adminlte",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramshresh/yii2-assets-adminlte.git",
+                "reference": "830f20e7d15dc63bd42b031d2dd29fff6d823bcf"
+            },
+            "require": {
+                "cebe/yii2-gravatar": "1.*",
+                "rmrevin/yii2-fontawesome": "2.9.*",
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ramshresh\\assets\\adminlte\\": ""
+                }
+            },
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ram Shrestha",
+                    "email": "sendmail4ram@gmail.com"
+                }
+            ],
+            "description": "Adminlte",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2015-05-11 15:37:42"
+        },
+        {
             "name": "ramshresh/yii2-gallery-manager",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramshresh/yii2-gallery-manager.git",
-                "reference": "461fc75698ab4dd0276b043dcb1f9578732f9484"
+                "reference": "9b2df17fa547204e8fe849d29a9e1c7bc322cd98"
             },
             "require": {
                 "yiisoft/yii2": "*",
@@ -2235,7 +2424,7 @@
                 "extension",
                 "yii2"
             ],
-            "time": "2015-05-02 20:10:27"
+            "time": "2015-05-28 08:46:41"
         },
         {
             "name": "ramshresh/yii2-geo",
@@ -2269,6 +2458,53 @@
                 "yii2"
             ],
             "time": "2015-02-05 06:52:32"
+        },
+        {
+            "name": "richweber/yii2-phirehose",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RichWeber/yii2-phirehose.git",
+                "reference": "b1daabb2f5d416aee070c8cb8bd162a52d6aeca8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RichWeber/yii2-phirehose/zipball/b1daabb2f5d416aee070c8cb8bd162a52d6aeca8",
+                "reference": "b1daabb2f5d416aee070c8cb8bd162a52d6aeca8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "richweber\\twitter\\streaming\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "RichWeber",
+                    "email": "rbagatyi@gmail.com",
+                    "homepage": "http://fennb.com/"
+                }
+            ],
+            "description": "Yii2 extension to the Twitter Streaming API",
+            "homepage": "https://github.com/RichWeber/yii2-phirehose",
+            "keywords": [
+                "api",
+                "phirehose",
+                "php",
+                "streaming",
+                "twitter",
+                "yii2"
+            ],
+            "time": "2015-02-10 06:57:49"
         },
         {
             "name": "rmrevin/yii2-fontawesome",
@@ -2315,6 +2551,52 @@
                 "yii"
             ],
             "time": "2015-04-28 20:15:13"
+        },
+        {
+            "name": "sintret/yii2-chat-adminlte",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sintret/yii2-chat-adminlte.git",
+                "reference": "1b51c8bc88d78164bf8ec72da776f45471406976"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sintret/yii2-chat-adminlte/zipball/1b51c8bc88d78164bf8ec72da776f45471406976",
+                "reference": "1b51c8bc88d78164bf8ec72da776f45471406976",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/yii2-helpers": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "sintret\\chat\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Fitria",
+                    "homepage": "http://sintret.com"
+                }
+            ],
+            "description": "Yii2 extension for Chat plugin with admin lte",
+            "homepage": "https://github.com/sintret/yii2-chat-adminlte",
+            "keywords": [
+                "AdminLTE",
+                "ajax",
+                "chat",
+                "jquery",
+                "plugin",
+                "yii2"
+            ],
+            "time": "2015-03-08 15:16:20"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2370,16 +2652,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "85b773a384f3894d558905cb13522bb338c99dba"
+                "reference": "726867caee3f23aa7a6975c801e64b6021e14f86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/85b773a384f3894d558905cb13522bb338c99dba",
-                "reference": "85b773a384f3894d558905cb13522bb338c99dba",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/726867caee3f23aa7a6975c801e64b6021e14f86",
+                "reference": "726867caee3f23aa7a6975c801e64b6021e14f86",
                 "shasum": ""
             },
             "require": {
@@ -2387,7 +2669,7 @@
                 "bower-asset/jquery.inputmask": "3.1.*",
                 "bower-asset/punycode": "1.3.*",
                 "bower-asset/yii2-pjax": ">=2.0.1",
-                "cebe/markdown": "~1.0.0",
+                "cebe/markdown": "~1.0.0 | ~1.1.0",
                 "ext-mbstring": "*",
                 "ezyang/htmlpurifier": "4.6.*",
                 "lib-pcre": "*",
@@ -2454,7 +2736,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-03-01 06:22:44"
+            "time": "2015-05-10 20:09:47"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -2743,6 +3025,52 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "bower-asset/admin-lte",
+            "version": "v2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/almasaeed2010/AdminLTE.git",
+                "reference": "c25a8710f419a1be142f9b46037be00388a7272c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/c25a8710f419a1be142f9b46037be00388a7272c",
+                "reference": "c25a8710f419a1be142f9b46037be00388a7272c",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "index2.html",
+                    "dist/css/AdminLTE.css",
+                    "dist/js/app.js",
+                    "build/less/AdminLTE.less"
+                ],
+                "bower-asset-ignore": [
+                    "/.*",
+                    "node_modules",
+                    "bower_components",
+                    "composer.json",
+                    "documentaion"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Admin dashboard and control panel template",
+            "keywords": [
+                "admin",
+                "backend",
+                "bootstrap",
+                "css",
+                "html",
+                "js",
+                "responsive",
+                "template",
+                "theme"
+            ]
+        },
         {
             "name": "bower-asset/typeahead.js",
             "version": "v0.10.5",
@@ -3049,9 +3377,12 @@
         "ramshresh/yii2-geo": 20,
         "c006/yii2-migration-utility": 20,
         "miloschuman/yii2-highcharts-widget": 20,
-        "dmstr/yii2-adminlte-asset": 10,
         "ramshresh/yii2-ar-behaviors": 20,
-        "ramshresh/yii2-gallery-manager": 20
+        "ramshresh/yii2-gallery-manager": 20,
+        "ramshresh/yii2-assets-adminlte": 20,
+        "sintret/yii2-chat-adminlte": 20,
+        "kartik-v/yii2-mpdf": 20,
+        "richweber/yii2-phirehose": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

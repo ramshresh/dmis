@@ -29,5 +29,14 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-# custom directories
-/uploads
+
+uploads
+vendor
+backend/runtime
+api/runtime
+common/uploads
+console/runtime
+frontend/runtime
+lab
+ol3factory
+console/m150522_234737_add_view_rapidassessmentreportitem_impacts.php
