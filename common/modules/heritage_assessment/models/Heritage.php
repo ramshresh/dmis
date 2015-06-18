@@ -281,6 +281,7 @@ class Heritage extends \yii\db\ActiveRecord
             parent::extraFields(),
             [
                 'user',
+                'userProfile',
                 'galleryImages',
                 'heritageBeforeGalleryImages',
                 'heritageAfterGalleryImages',
