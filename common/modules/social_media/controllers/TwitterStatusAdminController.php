@@ -78,8 +78,8 @@ class TwitterStatusAdminController extends Controller
             );
 
             $twitterApi = new TwitterRestApi();
-            $twitterApi->updateStatus($postFields,$settings);
-
+            echo $twitterApi->updateStatus($postFields,$settings);
+Yii::$app->end();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
