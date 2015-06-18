@@ -67,6 +67,10 @@ $fieldOptions2 = [
         <?= Html::a('Register',Url::to(['/user/registration/register']))?>
         <hr>
         <section>*for demo login with admin / admin</section>
+
+        <?= yii\authclient\widgets\AuthChoice::widget([
+            'baseAuthUrl' => ['/user/auth/connect']
+        ]) ?>
     </div>
     <!-- /.login-box-body -->
 </div><!-- /.login-box -->
