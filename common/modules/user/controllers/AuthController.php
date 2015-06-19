@@ -3,6 +3,7 @@
 namespace common\modules\user\controllers;
 
 use Yii;
+use yii\helpers\Json;
 use yii\web\Controller;
 
 /**
@@ -41,6 +42,7 @@ class AuthController extends Controller
         // uncomment this to see which attributes you get back
         //echo "<pre>";print_r($client->getUserAttributes());echo "</pre>";exit;
 
+       // echo '<hr><h5><strong>User is Logged in ?? ::</strong></h5>'.json_encode(Yii::$app->user->isGuest); exit;
         // check if user is not logged in. if so, do nothing
         if (Yii::$app->user->isGuest) {
             return;
@@ -68,12 +70,14 @@ class AuthController extends Controller
             return;
         }
 
+
+
         // attempt to log in as an existing user
         if ($this->attemptLogin($client)) {
             return;
         }
 
-         // register a new user
+        // register a new user
         $userAuth = $this->initUserAuth($client);
         $this->registerAndLoginUser($client, $userAuth);
     }
@@ -115,6 +119,7 @@ class AuthController extends Controller
      */
     protected function attemptLogin($client)
     {
+
         /** @var \common\modules\user\models\User     $user */
         /** @var \common\modules\user\models\UserAuth $userAuth */
         $user         = Yii::$app->getModule("user")->model("User");
@@ -126,17 +131,26 @@ class AuthController extends Controller
             "provider" => $client->name,
             "provider_id" => (string)$attributes["id"],
         ]);
+
         if ($userAuth) {
             $user = $user::findOne($userAuth->user_id);
             Yii::$app->user->login($user, Yii::$app->getModule("user")->loginDuration);
             return true;
         }
 
-        // attempt to find user by email
-        if (!empty($attributes["email"])) {
+        // Attempt to find user by email
+        switch(strtolower($client->name)){
+            case 'google':
+                $clientEmail = $this->getClientEmailGoogle($client);
+                break;
+            default:
+                $clientEmail = $this->getClientEmailDefault($client);
+                break;
+        }
 
+        if($clientEmail){
             // check if any user has `new_email` set and clear it
-            $email = trim($attributes["email"]);
+            $email = trim($clientEmail);
             $this->clearNewEmail($email);
 
             // find user and create user provider for match
@@ -329,5 +343,29 @@ class AuthController extends Controller
         $profile->full_name = "{$attributes["first_name"]} {$attributes["last_name"]}";
 
         return [$user, $profile];
+    }
+
+    public function getClientEmailDefault($client){
+        // attempt to find userAuth in database by id and name
+        $attributes = $client->getUserAttributes();
+        $clientEmail = null;
+        if (!empty($attributes["email"])) {
+            $clientEmail = $attributes["email"];
+        }
+        return $clientEmail;
+    }
+
+    public function getClientEmailGoogle($client){
+        // attempt to find userAuth in database by id and name
+        $attributes = $client->getUserAttributes();
+        $clientEmail = null;
+        if (!empty($attributes["emails"])) {
+            foreach($attributes["emails"] as $email){
+                if($email['type']=='account'){
+                    $clientEmail =  $email['value'];
+                }
+            }
+        }
+        return $clientEmail;
     }
 }
