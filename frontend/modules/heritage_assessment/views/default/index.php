@@ -1,4 +1,5 @@
 <?php
+
 /* @var $this \yii\web\View */
 use common\assets\d3\D3Asset;
 use common\assets\jquery_print\JqueryPrintAsset;
@@ -229,7 +230,7 @@ MustacheAsset::register($this);
             </div>
             <!-- /.box-header -->
             <div id="mapSummaryBody" class="box-body">
-                Summary
+                <i style="background:#000"></i>
             </div>
             <!-- /.box-body -->
         </div>
@@ -508,8 +509,9 @@ MustacheAsset::register($this);
                 .attr('id', 'legend')
                 .attr('style', 'background-color:#FFF;border:groove;border-width:thin;color:#000');
 
-
-        var heading = legenddiv.append('li')
+        //'<i style="background:' + getColor(from + 1) + '"></i> '
+        var heading = legenddiv
+                .append('li')
                 .classed('legendheading', true)
                 .text(metadata.fields[categoryField].name)
                 .attr('style', 'width:100%;')
