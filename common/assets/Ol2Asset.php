@@ -21,6 +21,7 @@ class Ol2Asset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
+        'yii\jui\JuiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
 }
