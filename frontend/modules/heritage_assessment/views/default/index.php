@@ -10,6 +10,7 @@ use common\assets\MustacheAsset;
 use miloschuman\highcharts\HighchartsAsset;
 use yii\web\JqueryAsset;
 
+
 $this->title = 'Heritage';
 JqueryAsset::register($this);
 
