@@ -53,6 +53,9 @@ return [
         'rapid_assessment' => [
             'class' => 'frontend\modules\rapid_assessment\Module',
         ],
+        'heritage_assessment' => [
+            'class' => 'frontend\modules\heritage_assessment\Module',
+        ],
     ],
     'params' => $params,
 ];
