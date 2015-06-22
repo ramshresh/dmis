@@ -25,11 +25,11 @@ MustacheAsset::register($this);
 
     #map {
         position: relative;
-        height: 36em;
+        height: 32em;
     }
 
     #afterPhotos{
-        height: 36em;
+        height: 32em;
         overflow:hidden;
         overflow-y: auto;
         overflow-x: auto;
@@ -38,8 +38,8 @@ MustacheAsset::register($this);
 
     #legend {
         position: absolute;
-        top: 3px;
-        right: 10px;
+        bottom: 5px;
+        right: 5px;
         margin: 10px;
         padding: 5px;
         border-radius: 5px;
@@ -869,7 +869,7 @@ console.log(templateData);
 
 <script id="template" type="x-tmpl-mustache">
 
-                <div id="afterPhotos" class="grid js-masonry" data-masonry-options='{ "itemSelector": ".grid-item", "columWidth": 200 }'>
+                <div id="afterPhotos" class="box-body grid js-masonry" data-masonry-options='{ "itemSelector": ".grid-item", "columWidth": 200 }'>
                   {{#items}}
                       <img class="grid-item" src="{{src}}" alt="{{alt}}">
                   {{/items}}
