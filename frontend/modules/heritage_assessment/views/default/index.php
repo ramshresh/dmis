@@ -7,9 +7,10 @@ use common\assets\leaflet\LeafletAsset;
 use common\assets\leaflet_easyPrint\LeafletEasyPrintAsset;
 use common\assets\leaflet_markerCluster\LeafletMarkerClusterAsset;
 use common\assets\MustacheAsset;
+use kartik\export\ExportMenu;
+use kartik\grid\GridView;
 use miloschuman\highcharts\HighchartsAsset;
 use yii\web\JqueryAsset;
-
 
 $this->title = 'Heritage';
 JqueryAsset::register($this);
@@ -24,7 +25,6 @@ MustacheAsset::register($this);
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js"></script>
 <style>
-
     #map {
         position: relative;
         height: 32em;
@@ -231,7 +231,97 @@ MustacheAsset::register($this);
             </div>
             <!-- /.box-header -->
             <div id="mapSummaryBody" class="box-body">
-                <i style="background:#000"></i>
+                <?php
+                $gridColumns=[
+                    ['class' => 'yii\grid\SerialColumn'],
+                    'inventory_id',
+                    'kitta_no:ntext',
+                    'damage_type:ntext',
+                    'present_physical_conditions:ntext',
+                    'historical_socio_cultural_significance:ntext',
+                    'important_features:ntext',
+                    'items_to_be_preserved_before:ntext',
+                    'items_to_be_preserved_after:ntext',
+                    'description:ntext',
+                    'recorded_by:ntext',
+                    'surveyor_opinion_before:ntext',
+                    'surveyor_opinion_after:ntext',
+                    'old_date',
+                    'new_date',
+                    'timestamp_created_at',
+                    'timestamp_updated_at',
+                    'latitude',
+                    'longitude',
+                    'geom',
+                    'wkt:ntext',
+                    'd_code',
+                    'v_code',
+                    'ward_no',
+                    //'user_id',
+                    [
+                        'attribute' => 'userProfileFullName',
+                        'value' => 'userProfile.full_name',
+                    ]
+                ];
+                ?>
+                <?php
+
+                // Renders a export dropdown menu
+                echo ExportMenu::widget([
+                    'dataProvider' => $dataProvider,
+                    'columns' => $gridColumns,
+                    'emptyText'=>'Empty Result',
+                    'target'=>ExportMenu::TARGET_SELF,
+                ]);
+                ?>
+
+
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
+                        'inventory_id:ntext',
+                        'kitta_no:ntext',
+                        'damage_type:ntext',
+                        //'present_physical_conditions:ntext',
+                        //'historical_socio_cultural_significance:ntext',
+                        // 'important_features:ntext',
+                        // 'items_to_be_preserved_before:ntext',
+                        'items_to_be_preserved_after:ntext',
+                        // 'description:ntext',
+                        // 'recorded_by:ntext',
+                        // 'surveyor_opinion_before:ntext',
+                        'surveyor_opinion_after:ntext',
+                        // 'old_date',
+                        // 'new_date',
+                        'timestamp_created_at',
+                        // 'timestamp_updated_at',
+                        // 'latitude',
+                        // 'longitude',
+                        // 'geom',
+                        // 'wkt:ntext',
+                        // 'd_code',
+                        // 'v_code',
+                        // 'ward_no',
+                        //'user_id',
+                        //[
+                        //    'attribute' => 'userEmail',
+                        //    'value' => 'user.email'
+                        //],
+                        [
+                            'attribute' => 'userProfileFullName',
+                            'value' => 'userProfile.full_name'
+                        ],
+
+                        [
+                            'class' => 'yii\grid\ActionColumn',
+                            'template' => '{view} {edit}',
+
+                        ],
+                    ],
+                ]); ?>
+
             </div>
             <!-- /.box-body -->
         </div>
@@ -257,6 +347,9 @@ MustacheAsset::register($this);
                 },
                 "inventory_id": {
                     "name": "Inventory Id"
+                },
+                "items_to_be_preserved_after": {
+                    "name": "Items to be preserved"
                 }
             }
         },
@@ -301,7 +394,7 @@ MustacheAsset::register($this);
             }
         },
         iconField = 'damage_type', //This is the fieldame for marker icon
-        popupFields = ['damage_type', 'inventory_id'], //Popup will display these fields
+        popupFields = ['damage_type', 'inventory_id','items_to_be_preserved_after'], //Popup will display these fields
         tileServer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         tileAttribution = 'Map data: <a href="http://openstreetmap.org">OSM</a>',
         rmax = 30, //Maximum radius for cluster pies
@@ -374,11 +467,11 @@ MustacheAsset::register($this);
     }
 
     function defineFeaturePopup(feature, layer) {
+        console.log(feature);
         var props = feature.properties,
             fields = metadata.fields,
             popupContent = '',
             fid = feature.id.split('.')[1];
-
 
         popupFields.map(function (key) {
             if (props[key]) {
@@ -395,7 +488,6 @@ MustacheAsset::register($this);
             popupSetImages(fid);
         });
         layer.bindPopup(popupContent, {offset: L.point(1, -2)});
-
     }
 
     function defineClusterIcon(cluster) {
@@ -864,7 +956,6 @@ console.log(templateData);
     //$('#mapPhotosBody').html(rendered);
     $('#mapDetailBody').html(rendered);
 }
-
 
     <?php $this->endBlock();?>
     <?php $this->registerJs($this->blocks['map-posReady'],$this::POS_READY);?>
