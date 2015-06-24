@@ -1,7 +1,6 @@
 <?php
-use \yii\web\Request;
 return [
-    'name'=>'Disaster Management Information System',
+    'name' => 'Disaster Management Information System',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'stream' => [
@@ -66,24 +65,24 @@ return [
                     'css' => [
                         'jquery-ui.css',
                     ],
-                    'js'=>[
+                    'js' => [
                         'jquery-ui.js',
                     ],
                 ],
-               /* 'kartik\select2\Select2Asset'=>[
-                    'sourcePath'=>'@common/asset-files/select2',
-                    'css' => [
-                        'select2.min.css',
-                    ],
-                    'js' => [
-                        'select2.min.js',
-                    ],
-                    'depends' => [
-                        'yii\web\YiiAsset',
-                        'yii\bootstrap\BootstrapAsset',
-                        'yii\web\JqueryAsset',
-                    ],
-                ],*/
+                /* 'kartik\select2\Select2Asset'=>[
+                     'sourcePath'=>'@common/asset-files/select2',
+                     'css' => [
+                         'select2.min.css',
+                     ],
+                     'js' => [
+                         'select2.min.js',
+                     ],
+                     'depends' => [
+                         'yii\web\YiiAsset',
+                         'yii\bootstrap\BootstrapAsset',
+                         'yii\web\JqueryAsset',
+                     ],
+                 ],*/
             ]
         ],
 
@@ -97,7 +96,7 @@ return [
         ],
         'user' => [
             'class' => 'common\modules\user\Module',
-            'emailViewPath'=>'@common/modules/user/mail',
+            'emailViewPath' => '@common/modules/user/mail',
             //'emailConfirmation'=>false,
         ],
         'reporting' => [
@@ -127,5 +126,10 @@ return [
         'building_assessment' => [
             'class' => 'common\modules\building_assessment\Module',
         ],
+
+        'tbi' => [
+            'class' => 'common\modules\tbi\Module',
+        ],
+
     ],
 ];

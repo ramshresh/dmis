@@ -1,10 +1,14 @@
 <?php
+
 /* @var $this \yii\web\View */
 use common\assets\d3\D3Asset;
 use common\assets\jquery_print\JqueryPrintAsset;
 use common\assets\leaflet\LeafletAsset;
 use common\assets\leaflet_easyPrint\LeafletEasyPrintAsset;
 use common\assets\leaflet_markerCluster\LeafletMarkerClusterAsset;
+use common\assets\MustacheAsset;
+use kartik\export\ExportMenu;
+use kartik\grid\GridView;
 use miloschuman\highcharts\HighchartsAsset;
 use yii\web\JqueryAsset;
 
@@ -17,24 +21,27 @@ JqueryPrintAsset::register($this);
 LeafletEasyPrintAsset::register($this);
 D3Asset::register($this);
 HighchartsAsset::register($this)->withScripts(['modules/exporting', 'modules/drilldown']);
+MustacheAsset::register($this);
 ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js"></script>
 <style>
     #map {
         position: relative;
         height: 32em;
-        width: 100%;
     }
 
-    #images_container {
-        position: relative;
-        height: 16em;
-        width: 100%;
+    #afterPhotos{
+        height: 32em;
+        overflow:hidden;
+        overflow-y: auto;
+        overflow-x: auto;
     }
+
 
     #legend {
         position: absolute;
-        top: 3px;
-        right: 10px;
+        bottom: 5px;
+        right: 5px;
         margin: 10px;
         padding: 5px;
         border-radius: 5px;
@@ -165,75 +172,172 @@ HighchartsAsset::register($this)->withScripts(['modules/exporting', 'modules/dri
 
 
 </style>
-
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-md-8">
         <div class="row">
-            <div class="box box-solid">
-                <div class="box-body">
-                                <div class="chart" id="chartContainerPie_Heritage">
-                                    <canvas id="areaChart" height="270" width="510"
-                                            style="width: 510px; height: 270px;"></canvas>
-                                </div>
-                        <!-- /.tab-content -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="box box-solid">
-            <div class="box-body">
-                <div id="map"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div id="images_container" class="row">
-            <div class="box box-solid">
-                <div class="box-body">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item">
-                                <img src="http://placehold.it/900x500/39CCCC/ffffff&amp;text=I+Love+Bootstrap"
-                                     alt="First slide">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Map</h3>
 
-                                <div class="carousel-caption">
-                                    First Slide
-                                </div>
-                            </div>
-                            <div class="item active">
-                                <img src="http://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap"
-                                     alt="Second slide">
-
-                                <div class="carousel-caption">
-                                    Second Slide
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap"
-                                     alt="Third slide">
-
-                                <div class="carousel-caption">
-                                    Third Slide
-                                </div>
-                            </div>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
                         </div>
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="fa fa-angle-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="fa fa-angle-right"></span>
-                        </a>
+                        <!-- /.box-tools -->
                     </div>
+                    <!-- /.box-header -->
+                    <div id="mapBody" class="box-body">
+                        <div id="map"></div>
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
+                <!-- /.box -->
             </div>
         </div>
+    </div>
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Details</h3>
+
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div id="mapDetailBody" class="box-body">
+                        Map
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">Summary</h3>
+
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div id="mapSummaryBody" class="box-body">
+                <?php
+                $gridColumns=[
+                    ['class' => 'yii\grid\SerialColumn'],
+                    'id',
+                    'user_id',
+                    'surveyor:ntext',
+                    'surveyed_by:ntext',
+                    'survey_date',
+                    // 'owner_name:ntext',
+                    // 'owner_contact:ntext',
+                    // 'owner_comment:ntext',
+                    // 'building_name:ntext',
+                    // 'year_of_construction',
+                    // 'no_of_storey',
+                    // 'current_use:ntext',
+                    // 'special_features:ntext',
+                    // 'type:ntext',
+                    // 'type_other:ntext',
+                    // 'style:ntext',
+                    // 'style_other:ntext',
+                    // 'physical_condition:ntext',
+                    // 'physical_condition_comment:ntext',
+                    // 'street:ntext',
+                    // 'settlement:ntext',
+                    // 'ward_no',
+                    // 'v_code',
+                    // 'd_code',
+                    // 'z_code',
+                    // 'latitude',
+                    // 'longitude',
+                    // 'surveyed_at',
+                    // 'timestamp_created_at',
+                    // 'timestamp_updated_at',
+                    // 'geom',
+                    // 'wkt:ntext',
+                    [
+                        'attribute' => 'userProfileFullName',
+                        'value' => 'userProfile.full_name',
+                    ]
+                ];
+                ?>
+                <?php
+
+                // Renders a export dropdown menu
+                echo ExportMenu::widget([
+                    'dataProvider' => $dataProvider,
+                    'columns' => $gridColumns,
+                    'emptyText'=>'Empty Result',
+                    'target'=>ExportMenu::TARGET_SELF,
+                ]);
+                ?>
+
+
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
+                        'id',
+                        'user_id',
+                        'surveyor:ntext',
+                        'surveyed_by:ntext',
+                        'survey_date',
+                        // 'owner_name:ntext',
+                        // 'owner_contact:ntext',
+                        // 'owner_comment:ntext',
+                        // 'building_name:ntext',
+                        // 'year_of_construction',
+                        // 'no_of_storey',
+                        // 'current_use:ntext',
+                        // 'special_features:ntext',
+                        // 'type:ntext',
+                        // 'type_other:ntext',
+                        // 'style:ntext',
+                        // 'style_other:ntext',
+                        // 'physical_condition:ntext',
+                        // 'physical_condition_comment:ntext',
+                        // 'street:ntext',
+                        // 'settlement:ntext',
+                        // 'ward_no',
+                        // 'v_code',
+                        // 'd_code',
+                        // 'z_code',
+                        // 'latitude',
+                        // 'longitude',
+                        // 'surveyed_at',
+                        // 'timestamp_created_at',
+                        // 'timestamp_updated_at',
+                        // 'geom',
+                        // 'wkt:ntext',
+                        [
+                            'attribute' => 'userProfileFullName',
+                            'value' => 'userProfile.full_name'
+                        ],
+
+                        [
+                            'class' => 'yii\grid\ActionColumn',
+                            'template' => '{view} {edit}',
+
+                        ],
+                    ],
+                ]); ?>
+
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
     </div>
 </div>
 <script>
@@ -255,6 +359,9 @@ HighchartsAsset::register($this)->withScripts(['modules/exporting', 'modules/dri
                 },
                 "inventory_id": {
                     "name": "Inventory Id"
+                },
+                "items_to_be_preserved_after": {
+                    "name": "Items to be preserved"
                 }
             }
         },
@@ -299,12 +406,12 @@ HighchartsAsset::register($this)->withScripts(['modules/exporting', 'modules/dri
             }
         },
         iconField = 'damage_type', //This is the fieldame for marker icon
-        popupFields = ['damage_type', 'inventory_id'], //Popup will display these fields
+        popupFields = ['damage_type', 'inventory_id','items_to_be_preserved_after'], //Popup will display these fields
         tileServer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         tileAttribution = 'Map data: <a href="http://openstreetmap.org">OSM</a>',
         rmax = 30, //Maximum radius for cluster pies
         markerclusters = L.markerClusterGroup({
-            maxClusterRadius: 2 * rmax,
+            maxClusterRadius: 2*rmax,
             iconCreateFunction: defineClusterIcon //this is where the magic happens
         });
 
@@ -348,6 +455,7 @@ HighchartsAsset::register($this)->withScripts(['modules/exporting', 'modules/dri
             markerclusters.addLayer(markers);
             map.fitBounds(markers.getBounds());
             map.attributionControl.addAttribution(metadata.attribution);
+
             renderLegend();
             renderCssStyle();
         },
@@ -371,11 +479,11 @@ HighchartsAsset::register($this)->withScripts(['modules/exporting', 'modules/dri
     }
 
     function defineFeaturePopup(feature, layer) {
+        console.log(feature);
         var props = feature.properties,
             fields = metadata.fields,
             popupContent = '',
             fid = feature.id.split('.')[1];
-
 
         popupFields.map(function (key) {
             if (props[key]) {
@@ -388,6 +496,9 @@ HighchartsAsset::register($this)->withScripts(['modules/exporting', 'modules/dri
             }
         });
         popupContent = '<div class="map-popup">' + popupContent + '</div>';
+        layer.on('click', function (e) {
+            popupSetImages(fid);
+        });
         layer.bindPopup(popupContent, {offset: L.point(1, -2)});
     }
 
@@ -503,8 +614,9 @@ HighchartsAsset::register($this)->withScripts(['modules/exporting', 'modules/dri
                 .attr('id', 'legend')
                 .attr('style', 'background-color:#FFF;border:groove;border-width:thin;color:#000');
 
-
-        var heading = legenddiv.append('li')
+        //'<i style="background:' + getColor(from + 1) + '"></i> '
+        var heading = legenddiv
+                .append('li')
                 .classed('legendheading', true)
                 .text(metadata.fields[categoryField].name)
                 .attr('style', 'width:100%;')
@@ -754,49 +866,119 @@ HighchartsAsset::register($this)->withScripts(['modules/exporting', 'modules/dri
                 if (heritages) {
                     $.each(heritages, function (index_heritage, heritage) {
                         if (heritage.galleryImages) {
+                            var photoData = [];
                             $.each(heritage.galleryImages, function (index_gallery, galleryImage) {
-                                console.log(galleryImage.route + '/' + galleryImage.ownerId + '/' + galleryImage.id + '/' + 'small' + '.' + galleryImage.extension);
+                                var src = galleryImage.route + '/' + galleryImage.ownerId + '/' + galleryImage.id + '/' + 'preview' + '.' + galleryImage.extension;
+                                var alt = "loading..";
+                                var caption = "caption";
+                                photoData.push(
+                                {"src":src,"alt":alt,"caption":caption}
+                                );
+                                console.log(src);
                             });
+                        makePhotoCarousel(photoData,'http://118.91.160.230/girc/dmis');
                         }
                     });
-                }
-                var src;
-                if (heritages) {
-
-
-
-                    /*
-                     if (data[0]) {
-                     if(data[0].galleryImages){
-                     // gallery images
-                     if (data[0].galleryImages[0]) {
-                     if (data[0].galleryImages[0].src) {
-                     src = data[0].galleryImages[0].src;
-                     }
-                     }
-                     }
-                     }
-
-                     if (src) {
-                     img_src = '<img class="popup-image-external" src="http://118.91.160.230' + src + '" alt="" style="height:auto;width:200px;">';
-                     // console.log(img_src);
-                     } else {
-                     img_src = '';
-                     }
-                     //  popup.show(evt.coordinate, popupContent);
-
-                     $(imgContainer).empty();
-                     $(imgContainer).append(img_src);
-                     */
-                } else {
-
-                    // console.log('no photo');
                 }
             }
         });
     }
+/**
+ * Photo
+ */
+ function makePhotoCarousel(photoData, webRoot) {
+    var webRoot = (webRoot) ? webRoot : 'http://118.91.160.230/girc/dmis';
+    var indicators =[];
+    var items = [];
 
+    $.each(photoData, function (index, photo) {
+        var indicator =[];
+        var item = [];
+        indicator["data-target"]= "#carousel-example-generic";
+        indicator["data-slide-to"]=index;
+        item["src"]=webRoot+'/'+photo.src;
+        item["alt"]=photo.alt;
+        item["caption"]=photo.caption;
+
+        if (index == 0) {
+                indicator["class"]="active";
+                item["class"]="item active";
+            } else {
+            indicator["class"]="";
+            item["class"]="item";
+        }
+
+        indicators.push(indicator);
+        items.push(item);
+
+    });
+
+    var templateData={"indicators":indicators,"items":items};
+    /**
+     *
+     * @type {*|jQuery}
+     * Mustache
+     */
+
+    /*var templateData = {
+        "indicators":[
+            {
+                "data-target": "#carousel-example-generic",
+                "data-slide-to":"0",
+                "class":""
+            },
+            {
+                "data-target": "#carousel-example-generic",
+                "data-slide-to":"1",
+                "class":""
+            },
+            {
+                "data-target": "#carousel-example-generic",
+                "data-slide-to":"2",
+                "class":"active"
+            }
+        ],
+        "items":[
+            {
+                "class":"item active",
+                "src":"http://placehold.it/900x500/39CCCC/ffffff&text=I+Love+Bootstrap",
+                "alt":"",
+                "caption":"First "
+            },
+            {
+                "class":"item",
+                "src":"http://placehold.it/900x500/3c8dbc/ffffff&text=I+Love+Bootstrap",
+                "alt":"",
+                "caption":"Second"
+            },
+            {
+                "class":"item",
+                "src":"http://placehold.it/900x500/f39c12/ffffff&text=I+Love+Bootstrap",
+                "alt":"",
+                "caption":"Third"
+            }
+        ]
+    };*/
+console.log(templateData);
+    var template = $('#template').html();
+    Mustache.parse(template);   // optional, speeds up future uses
+    var rendered = Mustache.render(template,
+        templateData
+    );
+    //$('#mapPhotosBody').html(rendered);
+    $('#mapDetailBody').html(rendered);
+}
 
     <?php $this->endBlock();?>
     <?php $this->registerJs($this->blocks['map-posReady'],$this::POS_READY);?>
+</script>
+
+<script id="template" type="x-tmpl-mustache">
+
+                <div id="afterPhotos" class="box-body grid js-masonry" data-masonry-options='{ "itemSelector": ".grid-item", "columWidth": 200 }'>
+                  {{#items}}
+                      <img class="grid-item" src="{{src}}" alt="{{alt}}">
+                  {{/items}}
+                 </div>
+
 </script>

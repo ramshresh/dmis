@@ -1,18 +1,16 @@
 <?php
 
-namespace frontend\modules\heritage_assessment\controllers;
+namespace frontend\modules\tbi\controllers;
 
-use common\components\utils\php\ArrayHelper;
-use common\modules\heritage_assessment\models\search\HeritageSearch;
-use kartik\helpers\Html;
-use yii\helpers\Json;
+use common\modules\tbi\models\search\BuildingSearch;
 use yii\web\Controller;
 
 class DefaultController extends Controller
 {
-    public function actionIndex(){
+    public function actionIndex()
+    {
         $this->layout='map/main';
-        $searchModel = new HeritageSearch();
+        $searchModel = new BuildingSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -21,4 +19,3 @@ class DefaultController extends Controller
         ]);
     }
 }
-

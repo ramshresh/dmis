@@ -56,6 +56,9 @@ return [
         'heritage_assessment' => [
             'class' => 'frontend\modules\heritage_assessment\Module',
         ],
+        'tbi' => [
+            'class' => 'frontend\modules\tbi\Module',
+        ],
     ],
     'params' => $params,
 ];

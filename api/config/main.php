@@ -53,6 +53,9 @@ return [
         ],
         'heritage_assessment'=>[
             'class'=>'api\modules\heritage_assessment\Module',
+        ],
+        'tbi'=>[
+            'class'=>'api\modules\tbi\Module',
         ]
 
     ],
@@ -297,6 +300,19 @@ return [
                     'extraPatterns' => [
                             'GET unique/<property:\w+>' => 'unique',
                             'GET unique-users' => 'unique-users',
+                    ]
+                ],
+
+                [
+
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => [
+                        'tbi/building',
+                    ],
+                    'pluralize'=>true,
+                    'extraPatterns' => [
+                        'GET unique/<property:\w+>' => 'unique',
+                        'GET unique-users' => 'unique-users',
                     ]
                 ],
                 /////////////////////
