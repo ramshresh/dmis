@@ -33,7 +33,7 @@ class BuildingController extends ActiveController
             parent::actions(),
             [
                 'create'=>[
-                    'class'=>'common\modules\heritage_assessment\actions\rest\HeritageCreateAction',
+                    'class'=>'common\modules\tbi\actions\rest\BuildingCreateAction',
                     'modelClass'=>$this->modelClass,
                 ],
                 'index' => [
