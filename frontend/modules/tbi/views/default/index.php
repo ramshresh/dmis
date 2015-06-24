@@ -368,6 +368,7 @@ MustacheAsset::register($this);
                         "jahru":"Jahru",
                         "dyo chhe":"Dyo Chhe",
                         "pokhari":"Pokhari",
+                        "phalcha":"Phalcha",
                         "sattal":"Sattal",
                         "hiti":"Hiti",
                         "inar or kuwa":"Ianr or Kuwa",
@@ -399,18 +400,18 @@ MustacheAsset::register($this);
                 },
                 "style_other": {
                     "name": "Other Style"
-                }
+                },
                 "physical_condition": {
                     "name": "Physical Condition",
                     "lookup": {
-                        "no visible damage":"no visible damage",
-                        "minor damage":"minor damage",
-                        "partial damage":"partial damage",
-                        "major damage":"major damage",
-                        "completely collapsed":"completely collapsed"
+                        "no visible damage":"No visible damage",
+                        "minor damage":"Minor damage",
+                        "partially collapsed":"Partially collapsed",
+                        "major damage":"Major damage",
+                        "completely collapsed":"Completely collapsed"
                     }
                 },
-                "physical_condition_commet": {
+                "physical_condition_comment": {
                     "name": "Comment"
                 },
                 "street": {
@@ -421,29 +422,29 @@ MustacheAsset::register($this);
                 },
                 "surveyor": {
                     "name": "Surveyor"
-                }
+                },
                 "surveyed_by": {
                     "name": "Surveyed By"
                 },
                 "survey_date":{
                     "name":"Survey Date"
-                }
+                },
                 "surveyed_at": {
                     "name": "Survey At"
                 }
             }
         },
         geojsonPath = 'traffic_accidents.json',
-        categoryField = 'damage_type', //This is the fieldname for marker category (used in the pie and legend)
+        categoryField = 'physical_condition', //This is the fieldname for marker category (used in the pie and legend)
         categories = {
             "physical_condition": {
-                "values": ["no visible damage","minor damage","partial damage","major damage","completely collapsed"],
+                "values": ["no visible damage","minor damage","partially collapsed","major damage","completely collapsed"],
                 "cssStyles": [
                     {"fill": "#40d47e", "stroke": "#ffffff", "background": "#40d47e", "border-color": "#ffffff"},
                     {"fill": "#f1c40f", "stroke": "#ffffff", "background": "#f1c40f", "border-color": "#ffffff"},
                     {"fill": "#d35400", "stroke": "#ffffff", "background": "#d35400", "border-color": "#ffffff"},
-                    {"fill": "#e74c3c", "stroke": "#ffffff", "background": "#e74c3c", "border-color": "#ffffff"}
-                    {"fill": "#ff000", "stroke": "#ffffff", "background": "#ff000", "border-color": "#ffffff"}
+                    {"fill": "#e74c3c", "stroke": "#ffffff", "background": "#e74c3c", "border-color": "#ffffff"},
+                    {"fill": "#ff000", "stroke": "#ee4c3c", "background": "#ee4c3c", "border-color": "#ffffff"}
                 ]
             }
         },
@@ -480,7 +481,27 @@ MustacheAsset::register($this);
             }
         },
         iconField = 'physical_condition', //This is the fieldame for marker icon
-        popupFields = ['building_name'], //Popup will display these fields
+        popupFields = [
+            'building_name',
+            'physical_condition',
+            'physical_condition_comment',
+            'surveyor',
+            'surveyed_by',
+            'survey_date',
+            'owner_contact',
+            'owner_comment',
+            'year_of_construction',
+            'no_of_storey',
+            'current_use',
+            'special_features',
+            'type',
+            'type_other',
+            'style',
+            'style_other',
+            'street',
+            'settlement',
+            'surveyed_at'
+        ], //Popup will display these fields
         tileServer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         tileAttribution = 'Map data: <a href="http://openstreetmap.org">OSM</a>',
         rmax = 30, //Maximum radius for cluster pies
@@ -553,18 +574,23 @@ MustacheAsset::register($this);
     }
 
     function defineFeaturePopup(feature, layer) {
-        console.log(feature);
+     //   console.log(feature);
         var props = feature.properties,
             fields = metadata.fields,
             popupContent = '',
             fid = feature.id.split('.')[1];
-
         popupFields.map(function (key) {
             if (props[key]) {
-                var val = props[key],
-                    label = fields[key].name;
-                if (fields[key].lookup) {
-                    val = fields[key].lookup[val];
+                var val,field,label,lookup;
+
+                if(props[key] && fields[key]){
+                    val = props[key];
+                    field  = fields[key];
+                    label  =  field.name;
+                    if(field.lookup){
+                        lookup = field.lookup;
+                        val = lookup[val];
+                    }
                 }
                 popupContent += '<span class="attribute text-muted"><span class="text-aqua">' + label + ':</span> ' + val + '</span>';
             }
@@ -832,11 +858,12 @@ MustacheAsset::register($this);
      */
     var heritageHighChartsSeries_pie;
     var seriesData;
-    var legendField='physical_condition';
+    var legendField=categoryField;
+
     var heritageLegend = {
         physical_condition: {
-            values: ["no visible damage","minor damage","partial damage","major damage","completely collapsed"],
-            color: ["#40d47e", "#f1c40f", "#d35400", "#e74c3c","#ff0000"]
+            values: ["no visible damage","minor damage","partially collapsed","major damage","completely collapsed"],
+            color: ["#40d47e", "#f1c40f", "#d35400", "#e74c3c","#ee4c3c"]
         }
     };
     function getLegendColor(legendData, attribute, value) {
@@ -863,20 +890,17 @@ MustacheAsset::register($this);
                 var hcItem = [item.value, item.count];
                 hcItems.push(hcItem);
 
-
-                //var legIdx = heritageLegend['damage_type'].values.indexOf(item.value);
-                //var hcColor = heritageLegend['damage_type'].color[legIdx];
                 var hcColor = getLegendColor(heritageLegend, legendField, item.value);
                 hcColors.push(hcColor);
 
-                console.log('highchart data.item');
-                console.log(item);
-                console.log('highchart data.item');
+               // console.log('highchart data.item');
+               // console.log(item);
+               // console.log('highchart data.item');
             });
             heritageHighChartsSeries_pie = hcItems;
-            console.log('hcItems');
-            console.log(hcItems);
-            console.log('hcItems');
+           // console.log('hcItems');
+           // console.log(hcItems);
+           // console.log('hcItems');
 
             seriesData = hcItems;
 
@@ -949,7 +973,7 @@ MustacheAsset::register($this);
                                 photoData.push(
                                 {"src":src,"alt":alt,"caption":caption}
                                 );
-                                console.log(src);
+                             //   console.log(src);
                             });
                         makePhotoCarousel(photoData,'http://smtp.icimod.org/girc/dmis');
                         }
@@ -1034,7 +1058,7 @@ MustacheAsset::register($this);
             }
         ]
     };*/
-console.log(templateData);
+//console.log(templateData);
     var template = $('#template').html();
     Mustache.parse(template);   // optional, speeds up future uses
     var rendered = Mustache.render(template,
