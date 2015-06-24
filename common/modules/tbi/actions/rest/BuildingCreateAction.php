@@ -27,8 +27,8 @@ class BuildingCreateAction extends MyBaseAction
 
     public function run()
     {
-        //@todo heritage after and before photo
-        // to be specified heritageAfterGalleryBehavior,heritageBeforeGalleryBehavior in api request
+        //@todo building sketch and before photo
+        // to be specified buildingSketchGalleryBehavior,buildingPhotoGalleryBehavior in api request
         // may be with separate table and separate model
         // DEFAULT is buildingPhotoGalleryBehavior
         $transaction = Yii::$app->db->beginTransaction();
@@ -55,7 +55,7 @@ class BuildingCreateAction extends MyBaseAction
                     foreach($photos as $photo){
                         $photo = Json::decode($photo);
                         if (isset($photo['id']))
-                            $model->getBehavior('heritageAfterGalleryBehavior')->addTempUploadedImage($photo['id']);
+                            $model->getBehavior('buildingPhotoGalleryBehavior')->addTempUploadedImage($photo['id']);
                     }
                 }
 
