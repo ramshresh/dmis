@@ -12,7 +12,7 @@ use kartik\grid\GridView;
 use miloschuman\highcharts\HighchartsAsset;
 use yii\web\JqueryAsset;
 
-$this->title = 'Heritage';
+$this->title = 'Traditional Building Inventory';
 JqueryAsset::register($this);
 
 LeafletAsset::register($this);
@@ -36,6 +36,12 @@ MustacheAsset::register($this);
         overflow-y: auto;
         overflow-x: auto;
     }
+    #mapSummaryBody{
+        overflow:hidden;
+        /*overflow-y: auto;*/
+        overflow-x: auto;
+    }
+
 
 
     #legend {
@@ -222,8 +228,7 @@ MustacheAsset::register($this);
     <div class="col-md-12">
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">Summary</h3>
-
+                <h3 class="box-title">Data Table - Traditional Buildings</h3>
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
                 </div>
@@ -239,37 +244,38 @@ MustacheAsset::register($this);
                     'surveyor:ntext',
                     'surveyed_by:ntext',
                     'survey_date',
-                    // 'owner_name:ntext',
-                    // 'owner_contact:ntext',
-                    // 'owner_comment:ntext',
-                    // 'building_name:ntext',
-                    // 'year_of_construction',
-                    // 'no_of_storey',
-                    // 'current_use:ntext',
-                    // 'special_features:ntext',
-                    // 'type:ntext',
-                    // 'type_other:ntext',
-                    // 'style:ntext',
-                    // 'style_other:ntext',
-                    // 'physical_condition:ntext',
-                    // 'physical_condition_comment:ntext',
-                    // 'street:ntext',
-                    // 'settlement:ntext',
-                    // 'ward_no',
-                    // 'v_code',
-                    // 'd_code',
-                    // 'z_code',
-                    // 'latitude',
-                    // 'longitude',
-                    // 'surveyed_at',
-                    // 'timestamp_created_at',
-                    // 'timestamp_updated_at',
+                    'surveyed_at',
+                    'owner_name:ntext',
+                    'owner_contact:ntext',
+                    'owner_comment:ntext',
+                    'building_name:ntext',
+                    'year_of_construction',
+                    'no_of_storey',
+                    'current_use:ntext',
+                    'special_features:ntext',
+                    'type:ntext',
+                    'type_other:ntext',
+                    'style:ntext',
+                    'style_other:ntext',
+                    'physical_condition:ntext',
+                    'physical_condition_comment:ntext',
+                    'street:ntext',
+                    'settlement:ntext',
+                    'ward_no',
+                    'v_code',
+                    'd_code',
+                    'z_code',
+                    'latitude',
+                    'longitude',
+                    'timestamp_created_at',
+                    'timestamp_updated_at',
                     // 'geom',
                     // 'wkt:ntext',
                     [
                         'attribute' => 'userProfileFullName',
-                        'value' => 'userProfile.full_name',
-                    ]
+                        'value' => 'userProfile.full_name'
+                    ],
+
                 ];
                 ?>
                 <?php
@@ -294,31 +300,31 @@ MustacheAsset::register($this);
                         'surveyor:ntext',
                         'surveyed_by:ntext',
                         'survey_date',
-                        // 'owner_name:ntext',
-                        // 'owner_contact:ntext',
-                        // 'owner_comment:ntext',
-                        // 'building_name:ntext',
-                        // 'year_of_construction',
-                        // 'no_of_storey',
-                        // 'current_use:ntext',
-                        // 'special_features:ntext',
-                        // 'type:ntext',
-                        // 'type_other:ntext',
-                        // 'style:ntext',
-                        // 'style_other:ntext',
-                        // 'physical_condition:ntext',
-                        // 'physical_condition_comment:ntext',
-                        // 'street:ntext',
-                        // 'settlement:ntext',
-                        // 'ward_no',
-                        // 'v_code',
-                        // 'd_code',
+                        'surveyed_at',
+                        'owner_name:ntext',
+                         'owner_contact:ntext',
+                         'owner_comment:ntext',
+                         'building_name:ntext',
+                         'year_of_construction',
+                         'no_of_storey',
+                         'current_use:ntext',
+                         'special_features:ntext',
+                         'type:ntext',
+                         'type_other:ntext',
+                         'style:ntext',
+                         'style_other:ntext',
+                         'physical_condition:ntext',
+                         'physical_condition_comment:ntext',
+                         'street:ntext',
+                         'settlement:ntext',
+                         'ward_no',
+                         'v_code',
+                         'd_code',
                         // 'z_code',
-                        // 'latitude',
-                        // 'longitude',
-                        // 'surveyed_at',
-                        // 'timestamp_created_at',
-                        // 'timestamp_updated_at',
+                         'latitude',
+                         'longitude',
+                         'timestamp_created_at',
+                         'timestamp_updated_at',
                         // 'geom',
                         // 'wkt:ntext',
                         [
