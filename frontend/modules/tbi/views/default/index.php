@@ -25,6 +25,10 @@ MustacheAsset::register($this);
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js"></script>
 <style>
+/*    Gridview */
+.kv-checkbox-list{
+    display:inline;
+}
     #map {
         position: relative;
         height: 32em;
@@ -38,7 +42,7 @@ MustacheAsset::register($this);
     }
     #mapSummaryBody{
         overflow:hidden;
-        /*overflow-y: auto;*/
+        overflow-y: auto;*/
         overflow-x: auto;
     }
 
@@ -350,7 +354,7 @@ MustacheAsset::register($this);
     "use strict"
     var geojson,
         metadata = {
-            "attribution": "Heritage Survey of Kathmandu Valley(2015), KMC & geospatiallab@ku",
+            "attribution": "Traditional Building Inventory Survey, Nepal Earthquake 2015 ",
             "description": "The survey was conducted by Kathmandu Municipality from June xx to June xx  2015 after Nepal Earthquake 2015",
             "fields": {
                 "building_name": {
