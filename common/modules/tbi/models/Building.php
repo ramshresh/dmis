@@ -2,6 +2,7 @@
 
 namespace common\modules\tbi\models;
 
+use common\components\utils\php\ArrayHelper;
 use common\modules\user\models\Profile;
 use common\modules\user\models\User;
 use Imagine\Image\Box;
