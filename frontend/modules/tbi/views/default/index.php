@@ -384,7 +384,7 @@ MustacheAsset::register($this);
                     }
                 },
                 "type_other": {
-                    "name": "Other Type"
+                    "name": "Building Type(Other)"
                 },
                 "special_features": {
                     "name": "Special Features"
@@ -405,7 +405,7 @@ MustacheAsset::register($this);
                     }
                 },
                 "style_other": {
-                    "name": "Other Style"
+                    "name": "Architecture Style(Other)"
                 },
                 "physical_condition": {
                     "name": "Physical Condition",
@@ -436,7 +436,16 @@ MustacheAsset::register($this);
                     "name":"Survey Date"
                 },
                 "surveyed_at": {
-                    "name": "Survey At"
+                    "name": "Surveyed At"
+                },
+                "owner_name": {
+                    "name": "Current Use"
+                },
+                "owner_contact": {
+                    "name": "Owner Contact"
+                },
+                "owner_comment": {
+                    "name": "Owner Comment"
                 }
             }
         },
@@ -492,6 +501,7 @@ MustacheAsset::register($this);
             'physical_condition',
             'physical_condition_comment',
             'surveyor',
+            'surveyed_at',
             'surveyed_by',
             'survey_date',
             'owner_contact',
@@ -505,8 +515,7 @@ MustacheAsset::register($this);
             'style',
             'style_other',
             'street',
-            'settlement',
-            'surveyed_at'
+            'settlement'
         ], //Popup will display these fields
         tileServer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         tileAttribution = 'Map data: <a href="http://openstreetmap.org">OSM</a>',
@@ -588,15 +597,27 @@ MustacheAsset::register($this);
         popupFields.map(function (key) {
             if (props[key]) {
                 var val,field,label,lookup;
-
                 if(props[key] && fields[key]){
                     val = props[key];
-                    field  = fields[key];
-                    label  =  field.name;
-                    if(field.lookup){
-                        lookup = field.lookup;
-                        val = lookup[val];
+                    if(fields[key] && props[key]){
+                        field  = fields[key];
+                        label  =  field.name;
+                        if(field.lookup){
+                            lookup = field.lookup;
+                            val = lookup[val];
+                        }else{
+                            console.log('no lookup for key:'+key+' fields ->'+JSON.stringify(fields));
+                        }
+                    }else{
+                        console.log('fields or props not defined for key ->'+key+' fields -> '+ JSON.stringify(fields)+' props -> '+JSON.stringify(props));
                     }
+
+                }
+
+                if(!label || !val){
+                    console.log('error label or val not defined');
+                    console.log('lookup -> '+ JSON.stringify(lookup));
+                    console.log('val -> '+ val);
                 }
                 popupContent += '<span class="attribute text-muted"><span class="text-aqua">' + label + ':</span> ' + val + '</span>';
             }
