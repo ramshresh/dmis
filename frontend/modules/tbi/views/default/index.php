@@ -26,9 +26,7 @@ MustacheAsset::register($this);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js"></script>
 <style>
 /*    Gridview */
-.kv-checkbox-list{
-    display:inline;
-}
+
     #map {
         position: relative;
         height: 32em;
