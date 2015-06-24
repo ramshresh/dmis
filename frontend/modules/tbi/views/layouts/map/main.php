@@ -74,12 +74,13 @@ if (Yii::$app->controller->action->id === 'login') {
             </section>
         </div>
         <!--   Main Footer     -->
-        <?= $this->render(
+        <?php
+        /*echo $this->render(
             'footer.php',
             [
                 'directoryAdminLteAsset' => $directoryAdminLteAsset,
             ]
-        )
+        );*/
         ?>
     </div>
     <?php $this->endBody() ?>
