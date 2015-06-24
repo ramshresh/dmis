@@ -206,7 +206,7 @@ MustacheAsset::register($this);
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Details</h3>
+                        <h3 class="box-title">Photos</h3>
 
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
@@ -215,7 +215,6 @@ MustacheAsset::register($this);
                     </div>
                     <!-- /.box-header -->
                     <div id="mapDetailBody" class="box-body">
-                        Map
                     </div>
                     <!-- /.box-body -->
                 </div>
