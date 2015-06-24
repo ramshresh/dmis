@@ -348,39 +348,108 @@ MustacheAsset::register($this);
             "attribution": "Heritage Survey of Kathmandu Valley(2015), KMC & geospatiallab@ku",
             "description": "The survey was conducted by Kathmandu Municipality from June xx to June xx  2015 after Nepal Earthquake 2015",
             "fields": {
-                "damage_type": {
-                    "name": "Damage Type",
+                "building_name": {
+                    "name": "Name"
+                },
+                "year_of_construction": {
+                    "name": "Constructed In"
+                },
+                "no_of_storey": {
+                    "name": "No. of Storey"
+                },
+                "current_use": {
+                    "name": "Current Use"
+                },
+                "type": {
+                    "name": "Building Type",
                     "lookup": {
-                        "no damage": "No Damage",
-                        "minor crack": "Minor Crack",
-                        "partial damage": "Partial Damage",
-                        "full damage": "Full Damage"
+                        "other":"Other",
+                        "pati":"Pati",
+                        "jahru":"Jahru",
+                        "dyo chhe":"Dyo Chhe",
+                        "pokhari":"Pokhari",
+                        "sattal":"Sattal",
+                        "hiti":"Hiti",
+                        "inar or kuwa":"Ianr or Kuwa",
+                        "temple":"Temple",
+                        "freestanding shrines":"Freestanding Shrines",
+                        "residental dwelling":"Residental Dwelling"
                     }
                 },
-                "inventory_id": {
-                    "name": "Inventory Id"
+                "type_other": {
+                    "name": "Other Type"
                 },
-                "items_to_be_preserved_after": {
-                    "name": "Items to be preserved"
+                "special_features": {
+                    "name": "Special Features"
+                },
+                "style": {
+                    "name": "Architecture Style",
+                    "lookup": {
+                        "other": "other",
+                        "vernacular": "vernacular",
+                        "gurung": "gurung",
+                        "tharu": "tharu",
+                        "tamang": "tamang",
+                        "chetteri": "chetteri",
+                        "brahmin": "brahmin",
+                        "newar": "newar",
+                        "rana": "rana",
+                        "modern": "modern"
+                    }
+                },
+                "style_other": {
+                    "name": "Other Style"
+                }
+                "physical_condition": {
+                    "name": "Physical Condition",
+                    "lookup": {
+                        "no visible damage":"no visible damage",
+                        "minor damage":"minor damage",
+                        "partial damage":"partial damage",
+                        "major damage":"major damage",
+                        "completely collapsed":"completely collapsed"
+                    }
+                },
+                "physical_condition_commet": {
+                    "name": "Comment"
+                },
+                "street": {
+                    "name": "Street"
+                },
+                "settlement": {
+                    "name": "Settlement"
+                },
+                "surveyor": {
+                    "name": "Surveyor"
+                }
+                "surveyed_by": {
+                    "name": "Surveyed By"
+                },
+                "survey_date":{
+                    "name":"Survey Date"
+                }
+                "surveyed_at": {
+                    "name": "Survey At"
                 }
             }
         },
         geojsonPath = 'traffic_accidents.json',
         categoryField = 'damage_type', //This is the fieldname for marker category (used in the pie and legend)
         categories = {
-            "damage_type": {
-                "values": ["no damage", "minor crack", "partial damage", "full damage"],
+            "physical_condition": {
+                "values": ["no visible damage","minor damage","partial damage","major damage","completely collapsed"],
                 "cssStyles": [
                     {"fill": "#40d47e", "stroke": "#ffffff", "background": "#40d47e", "border-color": "#ffffff"},
                     {"fill": "#f1c40f", "stroke": "#ffffff", "background": "#f1c40f", "border-color": "#ffffff"},
                     {"fill": "#d35400", "stroke": "#ffffff", "background": "#d35400", "border-color": "#ffffff"},
                     {"fill": "#e74c3c", "stroke": "#ffffff", "background": "#e74c3c", "border-color": "#ffffff"}
+                    {"fill": "#ff000", "stroke": "#ffffff", "background": "#ff000", "border-color": "#ffffff"}
                 ]
             }
         },
         icons = {
-            "damage_type": {
-                "values": ["no damage", "minor crack", "partial damage", "full damage"],
+            "physical_condition": {
+                "values": ["no visible damage","minor damage","partial damage","major damage","completely collapsed"],
                 "cssStyles": [
                     {
                         "background-image": "url('http://www.iconsdb.com/icons/download/black/running-16.png')",
@@ -402,11 +471,16 @@ MustacheAsset::register($this);
                         "background-repeat": "no-repeat",
                         "background-position": "0px -2px"
                     },
+                    {
+                        "background-image": "url('http://www.iconsdb.com/icons/download/black/car-16.png')",
+                        "background-repeat": "no-repeat",
+                        "background-position": "0px -2px"
+                    }
                 ]
             }
         },
-        iconField = 'damage_type', //This is the fieldame for marker icon
-        popupFields = ['damage_type', 'inventory_id','items_to_be_preserved_after'], //Popup will display these fields
+        iconField = 'physical_condition', //This is the fieldame for marker icon
+        popupFields = ['building_name'], //Popup will display these fields
         tileServer = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         tileAttribution = 'Map data: <a href="http://openstreetmap.org">OSM</a>',
         rmax = 30, //Maximum radius for cluster pies
@@ -430,12 +504,12 @@ MustacheAsset::register($this);
 
 
     //        Heritage Layer
-    var owsrootUrl = 'http://118.91.160.230:8080/geoserver/dmis/ows';
+    var owsrootUrl = 'http://smtp.icimod.org:8080/geoserver/dmis/ows';
     var defaultParameters = {
         service: 'WFS',
         version: '2.0',
         request: 'GetFeature',
-        typeName: 'dmis:heritage',
+        typeName: 'dmis:building',
         outputFormat: 'text/javascript',
         format_options: 'callback:getJson',
         SrsName: 'EPSG:4326'
@@ -758,10 +832,11 @@ MustacheAsset::register($this);
      */
     var heritageHighChartsSeries_pie;
     var seriesData;
+    var legendField='physical_condition';
     var heritageLegend = {
-        damage_type: {
-            values: ["no damage", "minor crack", "partial damage", "full damage"],
-            color: ["#40d47e", "#f1c40f", "#d35400", "#e74c3c"]
+        physical_condition: {
+            values: ["no visible damage","minor damage","partial damage","major damage","completely collapsed"],
+            color: ["#40d47e", "#f1c40f", "#d35400", "#e74c3c","#ff0000"]
         }
     };
     function getLegendColor(legendData, attribute, value) {
@@ -780,7 +855,7 @@ MustacheAsset::register($this);
             }
         });
     };
-    getHighChartSeries('pie', 'http://118.91.160.230/girc/dmis/api/heritage_assessment/heritages/unique/' + 'damage_type', {}, heritageLegend)
+    getHighChartSeries('pie', 'http://smtp.icimod.org/girc/dmis/api/tbi/buildings/unique/' + legendField, {}, heritageLegend)
         .done(function (data) {
             var hcItems = [];
             var hcColors = [];
@@ -791,7 +866,7 @@ MustacheAsset::register($this);
 
                 //var legIdx = heritageLegend['damage_type'].values.indexOf(item.value);
                 //var hcColor = heritageLegend['damage_type'].color[legIdx];
-                var hcColor = getLegendColor(heritageLegend, 'damage_type', item.value);
+                var hcColor = getLegendColor(heritageLegend, legendField, item.value);
                 hcColors.push(hcColor);
 
                 console.log('highchart data.item');
@@ -814,7 +889,7 @@ MustacheAsset::register($this);
                     plotShadow: false
                 },
                 title: {
-                    text: 'Heritage Damage Type'
+                    text: 'Building Physical Condition'
                 },
                 tooltip: {
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -831,7 +906,7 @@ MustacheAsset::register($this);
                 },
                 series: [{
                     type: 'pie',
-                    name: 'Damage Type',
+                    name: 'Physical Condition',
                     data: seriesData
                     /*data: [
                      ['Firefox',   45.0],
@@ -855,7 +930,7 @@ MustacheAsset::register($this);
      */
     function popupSetImages(id, imgContainer) {
         $.ajax({
-            url: 'http://118.91.160.230/girc/dmis/api/heritage_assessment/heritages',
+            url: 'http://smtp.icimod.org/girc/dmis/api/tbi/buildings',
             //url: 'http://118.91.160.230/girc/dmis/api/rapid_assessment/report-items/'+id+'/galleries',
             data: {
                 expand: 'galleryImages',
@@ -876,7 +951,7 @@ MustacheAsset::register($this);
                                 );
                                 console.log(src);
                             });
-                        makePhotoCarousel(photoData,'http://118.91.160.230/girc/dmis');
+                        makePhotoCarousel(photoData,'http://smtp.icimod.org/girc/dmis');
                         }
                     });
                 }
@@ -887,7 +962,7 @@ MustacheAsset::register($this);
  * Photo
  */
  function makePhotoCarousel(photoData, webRoot) {
-    var webRoot = (webRoot) ? webRoot : 'http://118.91.160.230/girc/dmis';
+    var webRoot = (webRoot) ? webRoot : 'http://smtp.icimod.org/girc/dmis';
     var indicators =[];
     var items = [];
 
