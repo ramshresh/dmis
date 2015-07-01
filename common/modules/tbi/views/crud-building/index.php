@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('app', 'Create Building'), ['create'], ['class' => 'btn btn-success']) ?>
+        <a href="<?= Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/tbi"]);?>"><button class="btn pull-right btn-info">Map</button></a>
     </p>
 
     <?= GridView::widget([
