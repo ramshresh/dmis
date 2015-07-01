@@ -38,15 +38,15 @@ use yii\widgets\ActiveForm;
 
     <?php echo $form->field($model, 'special_features')->textInput() ?>
 
-    <?php echo $form->field($model, 'type')->textInput() ?>
+    <?php echo $form->field($model, 'type')->dropDownList($model->getAttributeOptions('type'),[]) ?>
 
     <?php echo $form->field($model, 'type_other')->textInput() ?>
 
-    <?php echo $form->field($model, 'style')->textInput() ?>
+    <?php echo $form->field($model, 'style')->dropDownList($model->getAttributeOptions('style'),[]) ?>
 
     <?php echo $form->field($model, 'style_other')->textInput() ?>
 
-    <?php echo $form->field($model, 'physical_condition')->textInput() ?>
+    <?php echo $form->field($model, 'physical_condition')->dropDownList($model->getAttributeOptions('physical_condition'),[]) ?>
 
     <?php echo $form->field($model, 'physical_condition_comment')->textarea(['rows' => 3]) ?>
 
