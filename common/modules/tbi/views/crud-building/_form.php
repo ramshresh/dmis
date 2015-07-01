@@ -16,61 +16,61 @@ use yii\widgets\ActiveForm;
 
     <?php //echo $form->field($model, 'user_id')->textInput() ?>
 
-    <?php echo $form->field($model, 'surveyor')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'surveyor')->textInput() ?>
 
-    <?php echo $form->field($model, 'surveyed_by')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'surveyed_by')->textInput() ?>
 
-    <?php //echo $form->field($model, 'survey_date')->textInput() ?>
+    <?php echo $form->field($model, 'survey_date')->textInput() ?>
 
-    <?php //echo $form->field($model, 'owner_name')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'owner_name')->textInput() ?>
 
-    <?php //echo $form->field($model, 'owner_contact')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'owner_contact')->textInput() ?>
 
-    <?php //echo $form->field($model, 'owner_comment')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'owner_comment')->textInput() ?>
 
-    <?php //echo $form->field($model, 'building_name')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'building_name')->textInput() ?>
 
-    <?php //echo $form->field($model, 'year_of_construction')->textInput() ?>
+    <?php echo $form->field($model, 'year_of_construction')->textInput() ?>
 
-    <?php //echo $form->field($model, 'no_of_storey')->textInput() ?>
+    <?php echo $form->field($model, 'no_of_storey')->textInput() ?>
 
-    <?php //echo $form->field($model, 'current_use')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'current_use')->textInput() ?>
 
-    <?php //echo $form->field($model, 'special_features')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'special_features')->textInput() ?>
 
-    <?php //echo $form->field($model, 'type')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'type')->textInput() ?>
 
-    <?php //echo $form->field($model, 'type_other')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'type_other')->textInput() ?>
 
-    <?php //echo $form->field($model, 'style')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'style')->textInput() ?>
 
-    <?php //echo $form->field($model, 'style_other')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'style_other')->textInput() ?>
 
-    <?php //echo $form->field($model, 'physical_condition')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'physical_condition')->textInput() ?>
 
-    <?php //echo $form->field($model, 'physical_condition_comment')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'physical_condition_comment')->textarea(['rows' => 3]) ?>
 
-    <?php //echo $form->field($model, 'street')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'street')->textInput() ?>
 
-    <?php //echo $form->field($model, 'settlement')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'settlement')->textInput() ?>
 
-    <?php //echo $form->field($model, 'ward_no')->textInput() ?>
+    <?php echo $form->field($model, 'ward_no')->textInput() ?>
 
-    <?php //echo $form->field($model, 'v_code')->textInput() ?>
+    <?php echo $form->field($model, 'v_code')->textInput() ?>
 
-    <?php //echo $form->field($model, 'd_code')->textInput() ?>
+    <?php echo $form->field($model, 'd_code')->textInput() ?>
 
     <?php //echo $form->field($model, 'z_code')->textInput() ?>
 
-    <?php //echo $form->field($model, 'latitude')->textInput() ?>
+    <?php echo $form->field($model, 'latitude')->textInput() ?>
 
-    <?php //echo $form->field($model, 'longitude')->textInput() ?>
+    <?php echo $form->field($model, 'longitude')->textInput() ?>
 
-    <?php //echo $form->field($model, 'surveyed_at')->textInput() ?>
+    <?php echo $form->field($model, 'surveyed_at')->textInput() ?>
 
-    <?php //echo $form->field($model, 'timestamp_created_at')->textInput() ?>
+    <?php echo $form->field($model, 'timestamp_created_at')->textInput() ?>
 
-    <?php //echo $form->field($model, 'timestamp_updated_at')->textInput() ?>
+    <?php echo $form->field($model, 'timestamp_updated_at')->textInput() ?>
 
     <?php //echo $form->field($model, 'geom')->textInput() ?>
 
