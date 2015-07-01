@@ -18,6 +18,37 @@ $this->title = 'Disaster Information Management System';
 
         <div class="row">
             <div class="col-sm-4">
+                <h3>Detail Assessment Survey <h5>After Nepal Earthquake 2015</h5></h3>
+                <ul>
+                    <li>
+                        Traditional Building Inventory Survey
+                        <div class="pull-right">
+                            <a href="<?= Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/tbi"]);?>">
+                                <button class="btn btn-infKathmo">Map</button>
+                            </a>
+                            <a href="<?= Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/tbi/crud-building"]);?>">
+                                <button class="btn btn-info">Admin Page</button>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        Heritage Survey
+                        <div class="pull-right">
+                            <a href="<?= Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/heritage_assessment"]);?>">
+                                <button class="btn btn-infKathmo">Map</button>
+                            </a>
+                            <a href="<?= Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/heritage_assessment/crud-heritage"]);?>">
+                                <button class="btn btn-info">Admin Page</button>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-4">
                 <h3>User <h5>Administration</h5></h3>
 
                 <p>You can perform tasks on Website Users such as: Send email, Activate/Deactivate users, Change user type  </p>
