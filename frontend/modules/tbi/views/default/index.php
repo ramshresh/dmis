@@ -9,8 +9,10 @@ use common\assets\leaflet_markerCluster\LeafletMarkerClusterAsset;
 use common\assets\MustacheAsset;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
+use kartik\helpers\Html;
 use miloschuman\highcharts\HighchartsAsset;
 use yii\web\JqueryAsset;
+use yii\widgets\Pjax;
 
 $this->title = 'Traditional Building Inventory';
 JqueryAsset::register($this);
@@ -26,7 +28,12 @@ MustacheAsset::register($this);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js"></script>
 <style>
 /*    Gridview */
-
+    #mapDetailBody{
+        height: 32em;
+        overflow:hidden;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
     #map {
         position: relative;
         height: 32em;
@@ -40,7 +47,7 @@ MustacheAsset::register($this);
     }
     #mapSummaryBody{
         overflow:hidden;
-        overflow-y: auto;*/
+        overflow-y: auto;
         overflow-x: auto;
     }
 
@@ -186,9 +193,10 @@ MustacheAsset::register($this);
             <div class="col-md-12">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Map</h3>
+                        <h3 class="box-title">Map </h3>
 
                         <div class="box-tools pull-right">
+                            <a href="<?= Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/tbi/crud-building"]);?>"><button class="btn btn-box-tool">Admin Page</button></a>
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
                         </div>
                         <!-- /.box-tools -->
@@ -279,6 +287,8 @@ MustacheAsset::register($this);
 
                 ];
                 ?>
+                <?php Pjax::begin();?>
+
                 <?php
 
                 // Renders a export dropdown menu
@@ -290,13 +300,12 @@ MustacheAsset::register($this);
                 ]);
                 ?>
 
-
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                        'id',
+                       // 'id',
                         'user_id',
                         'surveyor:ntext',
                         'surveyed_by:ntext',
@@ -337,16 +346,53 @@ MustacheAsset::register($this);
                             'class' => 'yii\grid\ActionColumn',
                             'template' => '{view} {edit}',
 
+                            'buttons' => [
+                                'view' => function ($url, $model, $key) {
+                                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>','#', [
+                                        'id' => 'activity-view-link',
+                                        'title' => Yii::t('yii', 'View'),
+                                        'data-toggle' => 'modal',
+                                        'data-target' => '.activity-view-link',
+                                        'data-id' => $key,
+                                        'data-pjax' => '0',
+
+                                    ]);
+                                },
+                            ],
                         ],
+
+
                     ],
                 ]); ?>
-
+                <?php Pjax::end();?>
+<?php
+                $this->registerJs("$('.activity-view-link').click(function() {var elementId = $(this).closest('tr').data('key'); alert($(this));});");
+                ?>
             </div>
             <!-- /.box-body -->
         </div>
         <!-- /.box -->
     </div>
 </div>
+
+<div  class="modal activity-view-link">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Modal Default</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
 <script>
     <?php $this->beginBlock('map-posReady'); ?>
     "use strict"
