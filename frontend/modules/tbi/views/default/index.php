@@ -196,7 +196,7 @@ MustacheAsset::register($this);
                         <h3 class="box-title">Map </h3>
 
                         <div class="box-tools pull-right">
-                            <a href="<?= Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/tbi/crud-building"]);?>"><button class="btn btn-box-tool">Admin Page</button></a>
+                            <a href="<?= Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/tbi/crud-building"]);?>"><button class="btn btn-info">Admin Page</button></a>
                             <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
                         </div>
                         <!-- /.box-tools -->
