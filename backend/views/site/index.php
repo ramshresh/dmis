@@ -26,7 +26,7 @@ $this->title = 'Disaster Information Management System';
                             <a href="<?= Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/tbi"]);?>">
                                 <button class="btn btn-infKathmo">Map</button>
                             </a>
-                            <a href="<?= Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/tbi/crud-building"]);?>">
+                            <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(["/tbi/crud-building"]);?>">
                                 <button class="btn btn-info">Admin Page</button>
                             </a>
                         </div>
@@ -37,7 +37,7 @@ $this->title = 'Disaster Information Management System';
                             <a href="<?= Yii::$app->urlManagerFrontEnd->createAbsoluteUrl(["/heritage_assessment"]);?>">
                                 <button class="btn btn-infKathmo">Map</button>
                             </a>
-                            <a href="<?= Yii::$app->urlManagerBackEnd->createAbsoluteUrl(["/heritage_assessment/crud-heritage"]);?>">
+                            <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(["/heritage_assessment/crud-heritage"]);?>">
                                 <button class="btn btn-info">Admin Page</button>
                             </a>
                         </div>
