@@ -222,4 +222,18 @@ class HeritageController extends ActiveController
         $userEmailMap = ArrayHelper::map($query1->all(),$linkFrom,'email');
         return ['order'=>'SORT_DESC','keys'=>$keysMap,'count'=>$userCountMap,'email'=>$userEmailMap];
     }
+
+    public function actionGalleryImages(){
+        /**
+         * @var $model \common\modules\heritage_assessment\models\Heritage
+         */
+        $model = new $this->modelClass;
+        $heritages = $model::find()->all();
+        $galleryImages=[];
+        foreach($heritages as $heritage){
+            if(!empty($heritage->galleryImages))
+                $galleryImages[] = $heritage->galleryImages;
+        }
+        return $galleryImages;
+    }
 }

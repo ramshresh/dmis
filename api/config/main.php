@@ -300,6 +300,7 @@ return [
                     'extraPatterns' => [
                             'GET unique/<property:\w+>' => 'unique',
                             'GET unique-users' => 'unique-users',
+                            'GET gallery-images' => 'gallery-images',
                     ]
                 ],
 
