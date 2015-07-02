@@ -231,8 +231,12 @@ class HeritageController extends ActiveController
         $heritages = $model::find()->all();
         $galleryImages=[];
         foreach($heritages as $heritage){
-            if(!empty($heritage->galleryImages))
-                $galleryImages[] = $heritage->galleryImages;
+            if(!empty($heritage->galleryImages)){
+                foreach($heritage->galleryImages as $images){
+                    $galleryImages[] = $images;
+                }
+            }
+
         }
         return $galleryImages;
     }
