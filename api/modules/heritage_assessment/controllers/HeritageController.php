@@ -12,6 +12,7 @@ namespace api\modules\heritage_assessment\controllers;
 use common\modules\vdc\models\NepalVdc;
 use yii\base\Exception;
 use yii\data\ActiveDataProvider;
+use yii\data\ArrayDataProvider;
 use yii\db\ActiveQuery;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
@@ -236,8 +237,19 @@ class HeritageController extends ActiveController
                     $galleryImages[] = $images;
                 }
             }
-
         }
-        return $galleryImages;
+
+        $provider = new ArrayDataProvider([
+            'allModels' => $galleryImages,
+            'sort' => [
+                'attributes' => ['id'],
+            ],
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+
+        return $provider;
+
     }
 }
