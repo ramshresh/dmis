@@ -9,6 +9,7 @@
 namespace api\modules\heritage_assessment\controllers;
 
 
+use common\modules\heritage_assessment\models\search\HeritageSearch;
 use common\modules\vdc\models\NepalVdc;
 use yii\base\Exception;
 use yii\data\ActiveDataProvider;
@@ -251,5 +252,12 @@ class HeritageController extends ActiveController
 
         return $provider;
 
+    }
+
+    public function actionSearch(){
+        $searchModel = new HeritageSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+        return $dataProvider;
     }
 }
