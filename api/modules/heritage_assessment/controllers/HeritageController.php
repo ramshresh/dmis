@@ -230,7 +230,27 @@ class HeritageController extends ActiveController
          * @var $model \common\modules\heritage_assessment\models\Heritage
          */
         $model = new $this->modelClass;
-        $heritages = $model::find()->all();
+        $query = $model::find();
+
+        $queryParams = \Yii::$app->request->queryParams;
+
+        if (isset($queryParams['dwithin'])) {
+            //$pointWkt="'POINT(81.5 29.5)'";
+            //$polygonWkt="'POLYGON((-81 -27,-81 27,181 27,81 -27,-81 -27))'";
+           // echo $polygonWkt;
+
+            $polygonWkt = "'".$queryParams['dwithin']."'";
+           // echo $polygonWkt;exit;
+            $srid = 4326;
+            $query->andWhere("(SELECT ST_Within(geom,(select ST_GeomFromText($polygonWkt,$srid))))");
+
+        }
+
+
+        $heritages = $query->all();
+
+
+
         $galleryImages=[];
         foreach($heritages as $heritage){
             if(!empty($heritage->galleryImages)){
