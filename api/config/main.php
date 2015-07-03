@@ -301,6 +301,7 @@ return [
                             'GET unique/<property:\w+>' => 'unique',
                             'GET unique-users' => 'unique-users',
                             'GET gallery-images' => 'gallery-images',
+                            'GET search' => 'search',
                     ]
                 ],
 
