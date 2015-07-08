@@ -60,9 +60,10 @@ class SiteController extends \yii\rest\Controller
         }
         return $document->output();*/
 
-        \Yii::$app->response->format = 'geo_json';
+       \Yii::$app->response->format = 'geo_json';
         $searchModel = new HeritageSearch();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        $dataProvider->pagination=false;
         return $dataProvider;
         //  return Heritage::find()->all();
 
