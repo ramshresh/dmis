@@ -62,7 +62,7 @@ return [
     'components' => [
         'response' => [
             'class' => 'yii\web\Response',
-            'format'=>Response::FORMAT_JSON,
+            //'format'=>Response::FORMAT_JSON,
             /*'on beforeSend' => function ($event) {
                 $response = $event->sender;
                 if (!$response->isSuccessful) {
@@ -74,6 +74,10 @@ return [
                     $response->statusCode = 200;
                 }
             },*/
+            'formatters' => [
+                'php' => 'common\components\response\formatter\PhpArrayFormatter',
+                'geo_json' => 'common\components\response\formatter\GeoJsonFormatter',
+            ],
         ],
 
         'request' => [
@@ -118,9 +122,10 @@ return [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule', 'controller' => ['site'],
-                    'pluralize'=>false,
                     'extraPatterns' => [
                         'GET test-url' => 'test-url',
+                        'GET test' => 'test',
+                        'GET test-geo-json' => 'test-geo-json',
                     ]
                 ],
                 [
