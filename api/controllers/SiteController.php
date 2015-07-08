@@ -9,6 +9,11 @@
 namespace api\controllers;
 
 use common\components\AppHelper;
+use common\components\response\formatter\geojson\GeoJson;
+use common\components\response\formatter\geojson\models\Point;
+use common\components\response\formatter\kml\Kml;
+use common\modules\heritage_assessment\models\Heritage;
+use common\modules\heritage_assessment\models\search\HeritageSearch;
 use common\modules\reporting\models\ItemChild;
 use common\modules\reporting\models\ItemSubType;
 use common\modules\reporting\models\ItemType;
@@ -19,6 +24,7 @@ use yii\db\Query;
 use Yii;
 use yii\helpers\Json;
 use yii\web\Request;
+use yii\web\Response;
 
 class SiteController extends \yii\rest\Controller
 {
@@ -36,40 +42,30 @@ class SiteController extends \yii\rest\Controller
     }
     public function actionTest()
     {
-        /**
-         * @var $urlManagerFrontEnd \yii\web\UrlManager
-         * @var $urlManagerBackEnd \yii\web\UrlManager
-         */
-        $urlManagerFrontEnd=Yii::$app->urlManagerFrontEnd;
-        $urlManagerBackendEnd=Yii::$app->urlManagerBackEnd;
+        return ['no-test'];
+    }
 
+    public function actionTestGeoJson(){
 
-        //return preg_replace("/[^\/]\w+\/$/","","http://www.google.com/page/223/");
+        /*$document = new GeoJson(); //change to "new Geojson" to generate this file
+        //$document->id = 'district';
 
+        $models=Heritage::find()->all();
 
-return AppHelper::getAppBaseUrl();
+        foreach($models as $model){
+            $point= new Point();
+            $point->value=[$model->longitude, $model->latitude];
+            $point->extendedData = $model->getAttributes();
+            $document->add($point);
+        }
+        return $document->output();*/
 
-        /*$appAbsoluteBaseUrl = str_replace(Yii::$app->request->getPathInfo(),'',Yii::$app->request->getAbsoluteUrl());
-        $frontendAppAbsoluteBaseUrl =preg_replace("/[^\/]\w+\/$/","",$appAbsoluteBaseUrl);
-        $backendAppAbsoluteBaseUrl =preg_replace("/[^\/]\w+\/$/","",$appAbsoluteBaseUrl).'/admin';
-        $apiAppAbsoluteBaseUrl =preg_replace("/[^\/]\w+\/$/","",$appAbsoluteBaseUrl).'/api';
+        \Yii::$app->response->format = 'geo_json';
+        $searchModel = new HeritageSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $dataProvider;
+        //  return Heritage::find()->all();
 
-        return [Yii::$app->request->getPathInfo(),Yii::$app->request->absoluteUrl,$appAbsoluteBaseUrl, $frontendAppAbsoluteBaseUrl];*/
-
-
-      /*  function clean($url) {
-            $link = substr(strrchr($url, '/'), 1);
-            return substr($url, 0, - strlen($link));
-        }*/
-      /*  preg_match("/[^\/]\w+\/$/", "http://www.google.com/page/223/", $matches);
-       return preg_replace("/[^\/]\w+\/$/","","http://www.google.com/page/223/");
-        $last_word = $matches[0]; // 223
-        return $matches;*/
-
-        return Json::encode([
-            Yii::$app->urlManager->baseUrl,
-
-        ]);
     }
     public function actionItems()
     {
