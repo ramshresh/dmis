@@ -59,6 +59,22 @@ class Heritage extends \yii\db\ActiveRecord
     CONST GALLERY_BEHAVIOR_TYPE_HERITAGE_BEFORE = 'heritage_before';
     CONST GALLERY_BEHAVIOR_TYPE_HERITAGE_AFTER = 'heritage_after';
     public $photo;
+
+    public $attributeOptions = [
+        "damage_type" => [
+            "no damage"=> "No Damage",
+                            "minor crack"=> "Minor Crack",
+                            "partial damage"=> "Partial Damage",
+                            "full damage"=> "Full Damage"
+        ],
+    ];
+
+    public  function getAttributeOptions($attributeName){
+        if(isset($this->attributeOptions[$attributeName]))
+            return $this->attributeOptions[$attributeName];
+
+    }
+
     /**
      * @inheritdoc
      */
@@ -130,7 +146,7 @@ class Heritage extends \yii\db\ActiveRecord
 
     public function getHeritageBeforeGalleryImages(){
         return $this->hasMany(
-            GalleryImageAr::className(),
+            GalleryImageBefore::className(),
             [
                 'ownerId' => 'id'
             ]
@@ -183,6 +199,8 @@ class Heritage extends \yii\db\ActiveRecord
             'heritageBeforeGalleryBehavior' => [
                 'class' => GalleryBehavior::className(),
                 'type' => 'heritage_before',
+                'modelClass'=>GalleryImageAr::className(),//'common\modules\heritage_assessment\models\GalleryImageBefore',
+                'tableName'=>GalleryImageAr::getTableSchema()->fullName,
                 'extension' => 'jpg',
                 'directory' => Yii::getAlias('@uploads') . '/images/heritage_assessment/gallery_before',
                 'tempDirectory' => Yii::getAlias('@uploads') . '/images/temp',
@@ -200,6 +218,8 @@ class Heritage extends \yii\db\ActiveRecord
 
             'heritageAfterGalleryBehavior' => [
                 'class' => GalleryBehavior::className(),
+                'modelClass'=>GalleryImageAr::className(),//'common\modules\heritage_assessment\models\GalleryImageBefore',
+                'tableName'=>GalleryImageAr::getTableSchema()->fullName,
                 'type' => 'heritage_after',
                 'extension' => 'jpg',
                 'directory' => Yii::getAlias('@uploads') . '/images/heritage_assessment/gallery_after',
