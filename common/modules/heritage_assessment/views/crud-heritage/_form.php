@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?php echo $form->field($model, 'inventory_id')->textInput() ?>
 
-    <?php echo $form->field($model, 'damage_type')->textInput() ?>
+    <?php echo $form->field($model, 'damage_type')->dropDownList($model->getAttributeOptions('damage_type'),[]) ?>
 
     <?php echo $form->field($model, 'present_physical_conditions')->textInput() ?>
 
