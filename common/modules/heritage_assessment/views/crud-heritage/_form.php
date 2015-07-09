@@ -15,8 +15,8 @@ use yii\widgets\ActiveForm;
 <div class="heritage-form">
 
     <?php $form = ActiveForm::begin([
-        'options'=>[
-            'enctype'=>'multipart/form-data'
+        'options' => [
+            'enctype' => 'multipart/form-data'
         ]
     ]); ?>
 
@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?php echo $form->field($model, 'inventory_id')->textInput() ?>
 
-    <?php echo $form->field($model, 'damage_type')->dropDownList($model->getAttributeOptions('damage_type'),[]) ?>
+    <?php echo $form->field($model, 'damage_type')->dropDownList($model->getAttributeOptions('damage_type'), []) ?>
 
     <?php echo $form->field($model, 'present_physical_conditions')->textInput() ?>
 
@@ -33,6 +33,7 @@ use yii\widgets\ActiveForm;
     <?php echo $form->field($model, 'important_features')->textInput() ?>
 
     <?php echo $form->field($model, 'items_to_be_preserved_before')->textInput() ?>
+
     <?php echo $form->field($model, 'items_to_be_preserved_after')->textInput() ?>
 
     <?php echo $form->field($model, 'description')->textarea(['rows' => 3]) ?>
@@ -40,6 +41,7 @@ use yii\widgets\ActiveForm;
     <?php echo $form->field($model, 'recorded_by')->textInput() ?>
 
     <?php echo $form->field($model, 'surveyor_opinion_before')->textInput() ?>
+
     <?php echo $form->field($model, 'surveyor_opinion_after')->textInput() ?>
 
     <?php //echo $form->field($model, 'old_date')->textInput() ?>
@@ -55,18 +57,18 @@ use yii\widgets\ActiveForm;
     <?php echo $form->field($model, 'longitude')->textInput() ?>
 
     <div class="row">
-        <button id="btn-pointpicker-<?=$form->id?>" type="button" class="btn btn-xs btn-danger" style="width: 100%">
+        <button id="btn-pointpicker-<?= $form->id ?>" type="button" class="btn btn-xs btn-danger" style="width: 100%">
             <span class="glyphicon glyphicon-globe"></span>&nbsp;Locate on map
         </button>
     </div>
     <?php
     echo \common\widgets\pointpicker_ol2\PointPickerWidget::widget(
         [
-            'latitudeId' => Html::getInputId($model,'latitude'),
-            'longitudeId' => Html::getInputId($model,'longitude'),
-           // 'placenameId' => Html::getInputId($model,'address'),
+            'latitudeId' => Html::getInputId($model, 'latitude'),
+            'longitudeId' => Html::getInputId($model, 'longitude'),
+            // 'placenameId' => Html::getInputId($model,'address'),
             //'openlayersPackName' => 'openlayers', //'openlayerslPack' //,
-            'triggerId'=>"btn-pointpicker-".$form->id,
+            'triggerId' => "btn-pointpicker-" . $form->id,
             //'externalMapDivId'=>'map',
             //'wktId'=>'wkt'
         ]);
@@ -87,12 +89,12 @@ use yii\widgets\ActiveForm;
     <?php
     if ($model->isNewRecord) {
         echo FileInput::widget([
-            'name'=>'photo[]',
-            'options'=>[
-                'enctype'=>'multipart/form-data',
-            'accept'=>'image/*',
-            'multiple'=>true
-        ]]);
+            'name' => 'photo[]',
+            'options' => [
+                'enctype' => 'multipart/form-data',
+                'accept' => 'image/*',
+                'multiple' => true
+            ]]);
     } else {
         echo '<h5>Before Earthquake Photo</h5>';
         echo GalleryManager::widget(
