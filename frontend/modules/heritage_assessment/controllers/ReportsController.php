@@ -12,6 +12,7 @@ use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
+use Yii;
 
 class ReportsController extends Controller
 {
