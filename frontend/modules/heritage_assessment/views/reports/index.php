@@ -25,6 +25,17 @@ MustacheAsset::register($this);
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js"></script>
 <style>
+    .grid-view{
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+</style>
+<style>
+    .kv-checkbox-list{
+        width:auto; height: 200px; overflow: auto;
+    }
+</style>
+<style>
     #map {
         position: relative;
         height: 32em;
@@ -228,6 +239,14 @@ MustacheAsset::register($this);
                     ['class' => 'yii\grid\SerialColumn'],
                     'inventory_id',
                     'kitta_no:ntext',
+                    // Added via migration
+                    'owner_name',
+                    'contact_no',
+                    'present_use',
+                    'construction_date_age',
+                    'renovation_history',
+                    'architectural_style',
+                    //
                     'damage_type:ntext',
                     'present_physical_conditions:ntext',
                     'historical_socio_cultural_significance:ntext',
@@ -274,6 +293,14 @@ MustacheAsset::register($this);
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
                         'inventory_id:ntext',
+                        //
+                        'owner_name',
+                        'contact_no',
+                        'present_use',
+                        'construction_date_age',
+                        'renovation_history',
+                        'architectural_style',
+                        //
                         'kitta_no:ntext',
                         'damage_type:ntext',
                         //'present_physical_conditions:ntext',
@@ -289,8 +316,8 @@ MustacheAsset::register($this);
                         // 'new_date',
                         'timestamp_created_at',
                         // 'timestamp_updated_at',
-                        // 'latitude',
-                        // 'longitude',
+                        'latitude',
+                        'longitude',
                         // 'geom',
                         // 'wkt:ntext',
                         // 'd_code',
@@ -306,11 +333,7 @@ MustacheAsset::register($this);
                             'value' => 'userProfile.full_name'
                         ],
 
-                        [
-                            'class' => 'yii\grid\ActionColumn',
-                            'template' => '{view} {edit}',
-
-                        ],
+                        ['class' => 'yii\grid\ActionColumn'],
                     ],
                 ]); ?>
 
