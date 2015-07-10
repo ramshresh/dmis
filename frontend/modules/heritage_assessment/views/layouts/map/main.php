@@ -43,6 +43,18 @@ if (Yii::$app->controller->action->id === 'login') {
             .content{
                 background-color: beige;
             }
+
+
+             .grid-view{
+                 overflow-x: auto;
+                 overflow-y: auto;
+             }
+
+            .kv-checkbox-list{
+                width:auto; height: 200px; overflow: auto;
+            }
+
+       
         </style>
         <?php $this->head() ?>
     </head>
