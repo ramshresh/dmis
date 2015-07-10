@@ -237,6 +237,7 @@ MustacheAsset::register($this);
                 <?php
                 $gridColumns=[
                     ['class' => 'yii\grid\SerialColumn'],
+                    'id',
                     'inventory_id',
                     'kitta_no:ntext',
                     // Added via migration
