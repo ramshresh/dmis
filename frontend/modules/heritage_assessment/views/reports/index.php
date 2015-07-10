@@ -276,10 +276,11 @@ MustacheAsset::register($this);
                 ];
                 ?>
                 <?php
-
+                $exportDataProvider = $dataProvider;
+                $exportDataProvider->pagignation=false;
                 // Renders a export dropdown menu
                 echo ExportMenu::widget([
-                    'dataProvider' => $dataProvider,
+                    'dataProvider' => $exportDataProvider,
                     'columns' => $gridColumns,
                     'emptyText'=>'Empty Result',
                     'target'=>ExportMenu::TARGET_SELF,
