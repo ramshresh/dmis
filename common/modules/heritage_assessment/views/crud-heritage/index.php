@@ -65,18 +65,32 @@ $userProfile = new Profile();
         ]
     ];
     ?>
-    <?php
+<style>
+    .kv-checkbox-list{
+        width:auto; height: 200px; overflow: auto;
+    }
+</style>
 
-    // Renders a export dropdown menu
-    echo ExportMenu::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => $gridColumns,
-        'emptyText'=>'Empty Result',
-        'target'=>ExportMenu::TARGET_SELF,
-    ]);
-    ?>
+        <strong>Export Data</strong>
+        <?php
+        // Renders a export dropdown menu
+        echo ExportMenu::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => $gridColumns,
+            'emptyText'=>'Empty Result',
+            'target'=>ExportMenu::TARGET_SELF,
+
+        ]);
+        ?>
 
 
+
+    <style>
+        .grid-view{
+            overflow-x: auto;
+            overflow-y: auto;
+        }
+    </style>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
