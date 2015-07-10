@@ -29,6 +29,14 @@ $userProfile = new Profile();
         ['class' => 'yii\grid\SerialColumn'],
         'inventory_id',
         'kitta_no:ntext',
+        // Added via migration
+        'owner_name',
+        'contact_no',
+        'present_use',
+        'construction_date_age',
+        'renovation_history',
+        'architectural_style',
+        //
         'damage_type:ntext',
         'present_physical_conditions:ntext',
         'historical_socio_cultural_significance:ntext',
@@ -75,6 +83,14 @@ $userProfile = new Profile();
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'inventory_id:ntext',
+            //
+            'owner_name',
+            'contact_no',
+            'present_use',
+            'construction_date_age',
+            'renovation_history',
+            'architectural_style',
+            //
             'kitta_no:ntext',
             'damage_type:ntext',
             //'present_physical_conditions:ntext',

@@ -43,6 +43,14 @@ use yii\helpers\Url;
  * @property string $user_id
  * @property file $photo
  *
+ * add via migration
+ * @property string owner_name
+ * @property string contact_no
+ * @property string present_use
+ * @property string construction_date_age
+ * @property string renovation_history
+ * @property string architectural_style
+ *
  * @property \common\modules\user\models\User $user
  * @property \common\modules\user\models\Profile $userProfile
  *
@@ -90,6 +98,8 @@ class Heritage extends \yii\db\ActiveRecord
     {
         return [
             [['kitta_no', 'inventory_id', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved_before','items_to_be_preserved_after', 'description', 'recorded_by', 'surveyor_opinion_before','surveyor_opinion_after', 'geom', 'wkt'], 'string'],
+            [['owner_name','contact_no','construction_date_age','architectural_style'], 'string'],
+            [['present_use','renovation_history'], 'string'],
             [['old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at'], 'safe'],
             [['latitude', 'longitude'], 'number'],
             [['photo'], 'file'],
@@ -129,6 +139,14 @@ class Heritage extends \yii\db\ActiveRecord
             'ward_no' => Yii::t('app', 'Ward No'),
             'user_id' => Yii::t('app', 'User ID'),
             'photo' => Yii::t('app', 'Photo'),
+            //Added via migration
+            'owner_name' => Yii::t('app', 'Owner Name'),
+            'contact_no' => Yii::t('app', 'Contact No'),
+            'present_use' => Yii::t('app', 'Present Use'),
+            'construction_date_age' => Yii::t('app', 'Construction Date'),
+            'renovation_history' => Yii::t('app', 'Renovation History'),
+            'architectural_style' => Yii::t('app', 'Architectural Style'),
+
         ];
     }
 
@@ -251,7 +269,14 @@ class Heritage extends \yii\db\ActiveRecord
             if(is_array($this->items_to_be_preserved_before))
                 $this->items_to_be_preserved_before=implode(',',$this->items_to_be_preserved_before);
 
-            $this->items_to_be_preserved_after=Yii::$app->getRequest()->post()['Heritage']['items_to_be_preseved_after'];
+            /* Because of spelling mistake in android app ( preseved instead of preserved in ) */
+            //{{{
+            $postData=Yii::$app->getRequest()->post()['Heritage'];
+            if(isset($postData['items_to_be_preseved_after'])){
+                $this->items_to_be_preserved_after=Yii::$app->getRequest()->post()['Heritage']['items_to_be_preseved_after'];
+            }
+            //}}}
+
             if(is_array($this->items_to_be_preserved_after))
                 $this->items_to_be_preserved_after=implode(',',$this->items_to_be_preserved_after);
 

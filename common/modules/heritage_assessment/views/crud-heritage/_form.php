@@ -24,6 +24,18 @@ use yii\widgets\ActiveForm;
 
     <?php echo $form->field($model, 'inventory_id')->textInput() ?>
 
+    <?php echo $form->field($model, 'owner_name')->textInput() ?>
+
+    <?php echo $form->field($model, 'contact_no')->textInput() ?>
+
+    <?php echo $form->field($model, 'architectural_style')->textInput() ?>
+
+    <?php echo $form->field($model, 'construction_date_age')->textInput() ?>
+
+    <?php echo $form->field($model, 'renovation_history')->textarea(['rows' => 3]) ?>
+
+    <?php echo $form->field($model, 'present_use')->textarea(['rows' => 3]) ?>
+
     <?php echo $form->field($model, 'damage_type')->dropDownList($model->getAttributeOptions('damage_type'), []) ?>
 
     <?php echo $form->field($model, 'present_physical_conditions')->textInput() ?>

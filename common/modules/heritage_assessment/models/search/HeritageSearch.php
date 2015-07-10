@@ -25,6 +25,8 @@ class HeritageSearch extends Heritage
         return [
             [['id', 'd_code', 'v_code', 'ward_no', 'user_id'], 'integer'],
             [['inventory_id','kitta_no', 'damage_type', 'present_physical_conditions', 'historical_socio_cultural_significance', 'important_features', 'items_to_be_preserved_before','items_to_be_preserved_after', 'description', 'recorded_by', 'surveyor_opinion_before','surveyor_opinion_after', 'old_date', 'new_date', 'timestamp_created_at', 'timestamp_updated_at', 'geom', 'wkt'], 'safe'],
+            [['owner_name','contact_no','present_use','construction_date_age','renovation_history','architectural_style'], 'string'],
+            [['present_use','renovation_history'], 'string'],
             [['latitude', 'longitude'], 'number'],
             [['userEmail','userProfileFullName'], 'safe'],
         ];
@@ -120,7 +122,13 @@ class HeritageSearch extends Heritage
             ->andFilterWhere(['like', 'surveyor_opinion_before', $this->surveyor_opinion_before])
             ->andFilterWhere(['like', 'surveyor_opinion_after', $this->surveyor_opinion_after])
             ->andFilterWhere(['like', 'geom', $this->geom])
-            ->andFilterWhere(['like', 'wkt', $this->wkt]);
+            ->andFilterWhere(['like', 'wkt', $this->wkt])
+            ->andFilterWhere(['like', 'owner_name', $this->owner_name])
+            ->andFilterWhere(['like', 'contact_no', $this->contact_no])
+            ->andFilterWhere(['like', 'architectural_style', $this->architectural_style])
+            ->andFilterWhere(['like', 'present_use', $this->present_use])
+            ->andFilterWhere(['like', 'construction_date_age', $this->construction_date_age])
+            ->andFilterWhere(['like', 'renovation_history', $this->renovation_history]);
 
         // Here we search the attributes of our relations using our previously configured
         // ones in "HeritageSearch"
