@@ -276,8 +276,12 @@ MustacheAsset::register($this);
                 ];
                 ?>
                 <?php
+
+                /**
+                 * @var $exportDataProvider \yii\data\ActiveDataProvider
+                 */
                 $exportDataProvider = $dataProvider;
-                $exportDataProvider->pagignation=false;
+                $exportDataProvider->pagination = false;
                 // Renders a export dropdown menu
                 echo ExportMenu::widget([
                     'dataProvider' => $exportDataProvider,
