@@ -21,8 +21,8 @@ class BuildingSearch extends Building
     public function rules()
     {
         return [
-            [['id', 'user_id', 'year_of_construction', 'no_of_storey', 'ward_no', 'v_code', 'd_code', 'z_code'], 'integer'],
-            [['surveyor', 'surveyed_by', 'survey_date', 'owner_name', 'owner_contact', 'owner_comment', 'building_name', 'current_use', 'special_features', 'type', 'type_other', 'style', 'style_other', 'physical_condition', 'physical_condition_comment', 'street', 'settlement', 'surveyed_at', 'timestamp_created_at', 'timestamp_updated_at', 'geom', 'wkt'], 'safe'],
+            [['id', 'user_id', 'no_of_storey', 'ward_no', 'v_code', 'd_code', 'z_code'], 'integer'],
+            [['surveyor','year_of_construction',  'surveyed_by', 'survey_date', 'owner_name', 'owner_contact', 'owner_comment', 'building_name', 'current_use', 'special_features', 'type', 'type_other', 'style', 'style_other', 'physical_condition', 'physical_condition_comment', 'street', 'settlement', 'surveyed_at', 'timestamp_created_at', 'timestamp_updated_at', 'geom', 'wkt'], 'safe'],
             [['latitude', 'longitude'], 'number'],
             [['userProfileFullName'], 'safe'],
         ];
@@ -83,7 +83,6 @@ class BuildingSearch extends Building
             'id' => $this->id,
             'user_id' => $this->user_id,
             'survey_date' => $this->survey_date,
-            'year_of_construction' => $this->year_of_construction,
             'no_of_storey' => $this->no_of_storey,
             'ward_no' => $this->ward_no,
             'v_code' => $this->v_code,
@@ -97,6 +96,7 @@ class BuildingSearch extends Building
         ]);
 
         $query->andFilterWhere(['like', 'surveyor', $this->surveyor])
+            ->andFilterWhere(['like', 'year_of_construction', $this->year_of_construction])
             ->andFilterWhere(['like', 'surveyed_by', $this->surveyed_by])
             ->andFilterWhere(['like', 'owner_name', $this->owner_name])
             ->andFilterWhere(['like', 'owner_contact', $this->owner_contact])

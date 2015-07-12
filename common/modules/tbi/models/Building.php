@@ -24,7 +24,7 @@ use yii\helpers\Url;
  * @property string $owner_contact
  * @property string $owner_comment
  * @property string $building_name
- * @property integer $year_of_construction
+ * @property string $year_of_construction
  * @property integer $no_of_storey
  * @property string $current_use
  * @property string $special_features
@@ -116,8 +116,8 @@ class Building extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'year_of_construction', 'no_of_storey', 'ward_no', 'v_code', 'd_code', 'z_code'], 'integer'],
-            [['surveyor', 'surveyed_by', 'owner_name', 'owner_contact', 'owner_comment', 'building_name', 'current_use', 'special_features', 'type', 'type_other', 'style', 'style_other', 'physical_condition', 'physical_condition_comment', 'street', 'settlement', 'geom', 'wkt'], 'string'],
+            [['user_id', 'no_of_storey', 'ward_no', 'v_code', 'd_code', 'z_code'], 'integer'],
+            [['surveyor','year_of_construction', 'surveyed_by', 'owner_name', 'owner_contact', 'owner_comment', 'building_name', 'current_use', 'special_features', 'type', 'type_other', 'style', 'style_other', 'physical_condition', 'physical_condition_comment', 'street', 'settlement', 'geom', 'wkt'], 'string'],
             [['survey_date', 'surveyed_at', 'timestamp_created_at', 'timestamp_updated_at'], 'safe'],
             [['latitude', 'longitude'], 'number']
         ];
