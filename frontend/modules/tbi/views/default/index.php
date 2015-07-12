@@ -416,6 +416,22 @@ MustacheAsset::register($this);
                 "type": {
                     "name": "Building Type",
                     "lookup": {
+                        "11":"Other",
+                        "7":"Jahru",
+                        "3":"Dyo Chhe",
+                        "6":"Pokhari",
+                        "5":"Phalcha",
+                        "8":"Sattal",
+                        "4":"Hiti",
+                        "9":"Ianr or Kuwa",
+                        "2":"Temple",
+                        "10":"Freestanding Shrines",
+                        "1":"Residental Dwelling"
+                    }
+                },
+                /*"type": {
+                    "name": "Building Type",
+                    "lookup": {
                         "other":"Other",
                         "pati":"Pati",
                         "jahru":"Jahru",
@@ -429,7 +445,7 @@ MustacheAsset::register($this);
                         "freestanding shrines":"Freestanding Shrines",
                         "residental dwelling":"Residental Dwelling"
                     }
-                },
+                },*/
                 "type_other": {
                     "name": "Building Type(Other)"
                 },
@@ -437,6 +453,21 @@ MustacheAsset::register($this);
                     "name": "Special Features"
                 },
                 "style": {
+                    "name": "Architecture Style",
+                    "lookup": {
+                        "10": "other",
+                        "2": "vernacular",
+                        "3": "gurung",
+                        "4": "tharu",
+                        "5": "tamang",
+                        "6": "chetteri",
+                        "7": "brahmin",
+                        "1": "newar",
+                        "9": "rana",
+                        "8": "modern"
+                    }
+                },
+                /*"style": {
                     "name": "Architecture Style",
                     "lookup": {
                         "other": "other",
@@ -450,11 +481,21 @@ MustacheAsset::register($this);
                         "rana": "rana",
                         "modern": "modern"
                     }
-                },
+                },*/
                 "style_other": {
                     "name": "Architecture Style(Other)"
                 },
                 "physical_condition": {
+                    "name": "Physical Condition",
+                    "lookup": {
+                        "1":"No visible damage",
+                        "2":"Minor damage",
+                        "4":"Partially collapsed",
+                        "3":"Major damage",
+                        "5":"Completely collapsed"
+                    }
+                },
+                /*"physical_condition": {
                     "name": "Physical Condition",
                     "lookup": {
                         "no visible damage":"No visible damage",
@@ -463,7 +504,7 @@ MustacheAsset::register($this);
                         "major damage":"Major damage",
                         "completely collapsed":"Completely collapsed"
                     }
-                },
+                },*/
                 "physical_condition_comment": {
                     "name": "Comment"
                 },
@@ -500,7 +541,8 @@ MustacheAsset::register($this);
         categoryField = 'physical_condition', //This is the fieldname for marker category (used in the pie and legend)
         categories = {
             "physical_condition": {
-                "values": ["no visible damage","minor damage","partially collapsed","major damage","completely collapsed"],
+                //"values": ["no visible damage","minor damage","partially collapsed","major damage","completely collapsed"],
+                "values": ["1","2","4","3","5"],
                 "cssStyles": [
                     {"fill": "#40d47e", "stroke": "#ffffff", "background": "#40d47e", "border-color": "#ffffff"},
                     {"fill": "#f1c40f", "stroke": "#ffffff", "background": "#f1c40f", "border-color": "#ffffff"},
@@ -512,7 +554,8 @@ MustacheAsset::register($this);
         },
         icons = {
             "physical_condition": {
-                "values": ["no visible damage","minor damage","partial damage","major damage","completely collapsed"],
+                //"values": ["no visible damage","minor damage","partial damage","major damage","completely collapsed"],
+                "values": ["1","2","4","3","5"],
                 "cssStyles": [
                     {
                         "background-image": "url('http://www.iconsdb.com/icons/download/black/running-16.png')",
