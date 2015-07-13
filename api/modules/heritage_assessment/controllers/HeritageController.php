@@ -371,7 +371,6 @@ WHERE h.geom && ST_MakeEnvelope(85.311838362075, 27.708511041836, 85.31183836207
                  * @see: http://gis.stackexchange.com/questions/25797/select-bounding-box-using-postgis
                  */
                 $query->andWhere("geom && ST_MakeEnvelope($minLon, $minLat, $maxLon, $maxLat, $srid)");
-                echo $query->createCommand()->rawSql;exit;
             }
             if (isset($queryParams['dwithin'])) {
                 //'POLYGON((85.311838362073 27.708511041836,85.311838362073 27.708511041838,85.311838362075 27.708511041838,85.311838362075 27.708511041836,85.311838362073 27.708511041836))'
