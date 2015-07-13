@@ -276,7 +276,7 @@ class HeritageController extends ActiveController
 
     public function actionSearch(){
         /* @var $model \common\modules\building_assessment\models\BuildingHousehold */
-        /* @var $model \yii\db\ActiveQuery */
+        /* @var $query \yii\db\ActiveQuery */
 
         $model = new $this->modelClass;
         $query = $model::find();
@@ -355,7 +355,22 @@ class HeritageController extends ActiveController
                 $query->andWhere("(SELECT ST_Within(geom,st_collect)))");
             }*/
 
+            if (isset($queryParams['bbox'])) {
+
+                /*SELECT *
+                FROM "heritage_assessment".heritage h
+WHERE h.geom && ST_MakeEnvelope(85.311838362075, 27.708511041836, 85.311838362075, 27.708511041838, 4326);
+                */
+                $srid = 4326;
+                $bboxParam = explode(',',$queryParams['bbox']);
+                $minLon = $bboxParam[0];
+                $minLat = $bboxParam[1];
+                $maxLon = $bboxParam[2];
+                $maxLat = $bboxParam[3];
+                $query->andWhere("(SELECT ST_Within(geom,(select ST_MakeEnvelope($minLon,$minLat,$maxLon,$maxLat,$srid))))");
+            }
             if (isset($queryParams['dwithin'])) {
+                //'POLYGON((85.311838362073 27.708511041836,85.311838362073 27.708511041838,85.311838362075 27.708511041838,85.311838362075 27.708511041836,85.311838362073 27.708511041836))'
                 //$pointWkt="'POINT(81.5 29.5)'";
                 //$polygonWkt="'POLYGON((-81 -27,-81 27,181 27,81 -27,-81 -27))'";
                 $polygonWkt = $queryParams['dwithin'];
@@ -375,12 +390,11 @@ SELECT ST_Within(
                  WITH driver AS ( SELECT *,ST_Within(geom,(select ST_GeomFromText('POLYGON((-180 -90,-180 90,180 90,180 -90,-180 -90))',4326))) as if_within_polygon from "tracking".tracking_driver)
                 SELECT * FROM driver where driver.if_within_polygon=true;
                  */
-
-
                 $query->andWhere("(SELECT ST_Within(geom,(select ST_GeomFromText($polygonWkt,$srid))))");
 
             }
         }
+
         \Yii::$app->response->format = 'geo_json';
         $dataProvider->pagination = false;
         return $dataProvider;
