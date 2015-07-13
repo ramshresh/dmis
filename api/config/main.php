@@ -14,7 +14,6 @@ $params = array_merge(
 );
 // {{{ Removing api/web from url @see http://www.yiiframework.com/wiki/755/how-to-hide-frontend-web-in-url-addresses-on-apache/*/
 use \yii\web\Request;
-use yii\web\Response;
 
 $baseUrlFrontend = str_replace('/api/web', '/', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
 $baseUrlBackend = str_replace('/api/web', '/admin', (new Request)->getBaseUrl());// also add ['vomponents']['request'] 'baseUrl' => $baseUrl,
@@ -63,7 +62,7 @@ return [
         'response' => [
             'class' => 'yii\web\Response',
             //'format'=>Response::FORMAT_JSON,
-            /*'on beforeSend' => function ($event) {
+            'on beforeSend' => function ($event) {
                 $response = $event->sender;
                 if (!$response->isSuccessful) {
                     $response->data = [
@@ -73,7 +72,7 @@ return [
                     ];
                     $response->statusCode = 200;
                 }
-            },*/
+            },
             'formatters' => [
                 'php' => 'common\components\response\formatter\PhpArrayFormatter',
                 'geo_json' => 'common\components\response\formatter\GeoJsonFormatter',
