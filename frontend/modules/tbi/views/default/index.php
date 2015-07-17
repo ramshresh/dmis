@@ -454,7 +454,7 @@ MustacheAsset::register($this);
                 },
                 "style": {
                     "name": "Architecture Style",
-                    "lookup": {
+                    /*"lookup": {
                         "10": "other",
                         "2": "vernacular",
                         "3": "gurung",
@@ -465,6 +465,13 @@ MustacheAsset::register($this);
                         "1": "newar",
                         "9": "rana",
                         "8": "modern"
+                    }*/
+                    "lookup":{
+                        "1":"Shikara",
+                        "2":"Pyagoda",
+                        "3":"Gumbaj/Moughal",
+                        "4":"Stupa",
+                        "5":"Others"
                     }
                 },
                 /*"style": {
