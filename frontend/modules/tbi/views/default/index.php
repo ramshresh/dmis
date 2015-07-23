@@ -544,25 +544,26 @@ MustacheAsset::register($this);
                 }
             }
         },
-        geojsonPath = 'traffic_accidents.json',
+       // geojsonPath = 'traffic_accidents.json',
         categoryField = 'physical_condition', //This is the fieldname for marker category (used in the pie and legend)
         categories = {
             "physical_condition": {
                 //"values": ["no visible damage","minor damage","partially collapsed","major damage","completely collapsed"],
-                "values": ["1","2","4","3","5"],
+                "values": ["1","2","3","4","5"],
                 "cssStyles": [
                     {"fill": "#40d47e", "stroke": "#ffffff", "background": "#40d47e", "border-color": "#ffffff"},
                     {"fill": "#f1c40f", "stroke": "#ffffff", "background": "#f1c40f", "border-color": "#ffffff"},
                     {"fill": "#d35400", "stroke": "#ffffff", "background": "#d35400", "border-color": "#ffffff"},
                     {"fill": "#e74c3c", "stroke": "#ffffff", "background": "#e74c3c", "border-color": "#ffffff"},
-                    {"fill": "#ff000", "stroke": "#ee4c3c", "background": "#ee4c3c", "border-color": "#ffffff"}
+                    {"fill": "#ff0000", "stroke": "#ffffff", "background": "#ee4c3c", "border-color": "#ffffff"}
+                    /*{"fill": "#ff000", "stroke": "#ffffff", "background": "#ee4c3c", "border-color": "#ffffff"}*/
                 ]
             }
         },
         icons = {
             "physical_condition": {
                 //"values": ["no visible damage","minor damage","partial damage","major damage","completely collapsed"],
-                "values": ["1","2","4","3","5"],
+                "values": ["1","2","3","4","5"],
                 "cssStyles": [
                     {
                         "background-image": "url('http://www.iconsdb.com/icons/download/black/running-16.png')",
@@ -878,7 +879,7 @@ MustacheAsset::register($this);
             var selector = '.icon-' + space2underscore(value);
             var cssStyleObj = iconCategory.cssStyles[idx];
             var cssStyleStr = selector + '{' + styleObj2css(cssStyleObj) + '}';
-            sheet.insertRule(cssStyleStr, 0);
+           // sheet.insertRule(cssStyleStr, 0);
         });
 
         /*
