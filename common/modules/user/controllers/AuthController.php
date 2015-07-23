@@ -2,8 +2,13 @@
 
 namespace common\modules\user\controllers;
 
+use common\modules\social_media\components\TwitterAPIExchange;
+use common\modules\social_media\components\TwitterRestApi;
 use Yii;
+use yii\authclient\clients\Twitter;
+use yii\authclient\OAuth2;
 use yii\helpers\Json;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 /**
@@ -56,22 +61,21 @@ class AuthController extends Controller
     /**
      * Login/register via social auth
      *
-     * @param \yii\authclient\BaseClient $client
+     * @param \yii\authclient\clients\Twitter $client
      * @return \yii\web\Response
      * @throws \yii\web\ForbiddenHttpException
      */
     public function loginRegisterCallback($client)
     {
-        // uncomment this to see which attributes you get back
-        //echo "<pre>";print_r($client->getUserAttributes());echo "</pre>";exit;
-
         // check if user is already logged in. if so, do nothing
         if (!Yii::$app->user->isGuest) {
             return;
         }
 
-
-
+        $response = $client->api('statuses/update.json', 'POST', [
+            'status' => 'testlokijasuhyd23'
+        ]);
+        echo Json::encode([$client]);exit;
         // attempt to log in as an existing user
         if ($this->attemptLogin($client)) {
             return;
