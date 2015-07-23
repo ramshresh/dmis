@@ -3,7 +3,7 @@ return [
     'name' => 'Disaster Management Information System',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
-        'stream' => [
+        'streamUserConsumer' => [
             'class' => 'common\components\MyStream',// extends 'richweber\twitter\streaming\lib\Stream',
             //'account' => ['kugeospatiallabtest1@gmail.com','kuge0sp@ti@ll@btest1']
             'username' => '3330290638-L1SSDmN3YHflhi96BkewAk9ur3cEdJS9DdAYhU8',
@@ -55,6 +55,35 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+          /*      'facebook' => [
+                    'class' => 'yii\authclient\clients\Facebook',
+                    'clientId' => 'xxxxxxxxxx',
+                    'clientSecret' => 'yyyyyyyyyy',
+                    'scope' => 'email',
+                ],
+          */      'twitter' => [
+                    'class' => 'yii\authclient\clients\Twitter',
+                    'consumerKey' => 'wOZVLoFlFIJyRXL8kSO3JqYqe',
+                    'consumerSecret' => '5mZTEQzgSnPrhWjqNLQNfADV9dMnhEQtp9kqB4hjd9kK3QAhpT',
+                ],
+                'google' => [
+                    'class' => 'yii\authclient\clients\GoogleOAuth',
+                    'clientId' => '285026373087-p5ltkun3ed73amjppskat2f19hea5ep5.apps.googleusercontent.com',
+                    'clientSecret' => 'hrqRDe_7X-DDcVlUwRAXmcLo',
+                ],
+            /*    'reddit' => [
+                    'class' => 'common\modules\user\components\RedditAuth',
+                    'clientId' => 'xxxxxxxxxx',
+                    'clientSecret' => 'yyyyyyyyyy',
+                    'scope' => 'identity', // comma separated string, NO SPACES
+                    // @see https://github.com/reddit/reddit/wiki/OAuth2#authorization
+                ],
+            */    // any other social auth
+            ],
+        ],
         'assetManager' => [
             //'linkAssets' => true, //disabled because not working in windows
             'linkAssets' => true,
@@ -85,7 +114,9 @@ return [
                  ],*/
             ]
         ],
-
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager'
+        ],
     ],
     'modules' => [
         'heritage_assessment' => [
