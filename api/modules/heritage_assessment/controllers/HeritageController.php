@@ -8,6 +8,8 @@
 
 namespace api\modules\heritage_assessment\controllers;
 
+use common\components\helpers\GeoJsonHelper;
+use yii\helpers\Json;
 use yii\web\Response;
 use common\modules\heritage_assessment\models\search\HeritageSearch;
 use common\modules\vdc\models\NepalVdc;
@@ -28,7 +30,12 @@ class HeritageController extends ActiveController
         parent::init();
         header("Access-Control-Allow-Origin: *");
     }
-
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['contentNegotiator']['formats']['application/javascript'] = Response::FORMAT_JSONP;
+        return $behaviors;
+    }
     public function actions()
     {
         return ArrayHelper::merge(
@@ -172,7 +179,8 @@ class HeritageController extends ActiveController
         }
         $query->addSelect([$propertyAlias => $property]);
         $query->from([$model::tableName()]);
-        $query->andFilterWhere(['=',$property,null]);
+        $query->andWhere(['IS NOT', $property, null]);
+
         $query->groupBy($propertyAlias);
         $query->orderBy([$countAlias => SORT_ASC]);
 
@@ -212,6 +220,7 @@ class HeritageController extends ActiveController
         }
         $query->addSelect([$propertyAlias => $property]);
         $query->from([$model::tableName()]);
+        $query->andWhere(['IS NOT', $property, null]);
         $query->groupBy($propertyAlias);
         $query->orderBy([$countAlias => SORT_DESC]);
 
@@ -254,9 +263,10 @@ class HeritageController extends ActiveController
         $galleryImages=[];
         foreach($heritages as $heritage){
             if(!empty($heritage->galleryImages)){
-                foreach($heritage->galleryImages as $images){
+                /*foreach($heritage->galleryImages as $images){
                     $galleryImages[] = $images;
-                }
+                }*/
+                $galleryImages[] = $heritage->galleryImages[0];
             }
         }
 
@@ -265,9 +275,7 @@ class HeritageController extends ActiveController
             'sort' => [
                 'attributes' => ['id'],
             ],
-            'pagination' => [
-                'pageSize' => 10,
-            ],
+            'pagination' => false,
         ]);
 
         return $provider;
@@ -275,15 +283,15 @@ class HeritageController extends ActiveController
     }
 
     public function actionSearch(){
-        /* @var $model \common\modules\building_assessment\models\BuildingHousehold */
+
+        /* @var $model \common\modules\heritage_assessment\models\Heritage */
         /* @var $query \yii\db\ActiveQuery */
 
         $model = new $this->modelClass;
-        $query = $model::find();
-        $dataProvider = new ActiveDataProvider(['query' => $query]);
+        $query = $model::find(['scenario'=>'map']);
 
         $queryParams = \Yii::$app->request->queryParams;
-
+      //  echo Json::encode($queryParams);exit;
         if (!empty($queryParams)) {
             if (isset($queryParams['search_attribute']) && isset($queryParams['search_value'])) {
                 if ($model->hasAttribute($queryParams['search_attribute'])) {
@@ -394,12 +402,50 @@ SELECT ST_Within(
                 SELECT * FROM driver where driver.if_within_polygon=true;
                  */
                 $query->andWhere("(SELECT ST_Within(geom,(select ST_GeomFromText($polygonWkt,$srid))))");
-
             }
+
         }
 
-        \Yii::$app->response->format = 'geo_json';
-        $dataProvider->pagination = false;
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => false
+        ]);
+
+        if(isset($queryParams['format'])){
+            switch(strtolower($queryParams['format'])){
+                case 'jsonp':
+                    if(!isset($_GET['callback'])){
+                        throw new Exception('callback must be provided.');
+                    }
+                    $callback = isset($_GET['callback'])?$_GET['callback']:'getJson';
+                    \Yii::$app->response->format = Response::FORMAT_JSONP;
+                    $return= ['data'=>$this->serializeData($dataProvider),'callback'=>$callback];
+                    break;
+                case 'xml':
+                    \Yii::$app->response->format = Response::FORMAT_XML;
+                    $return =$dataProvider;
+                    break;
+                case 'geojson':
+                    \Yii::$app->response->format = 'geoJson';
+                    $return = $dataProvider;
+                    break;
+                case 'geojsonp':
+                    if(!isset($_GET['callback'])){
+                        throw new Exception('callback must be provided.');
+                    }
+                    $callback = isset($_GET['callback'])?$_GET['callback']:'getJson';
+                    \Yii::$app->response->format = 'geoJsonp';
+                    $return= ['data'=>$this->serializeData($dataProvider),'callback'=>$callback];
+                    break;
+                default:
+                    \Yii::$app->response->format = Response::FORMAT_JSON;
+                    $return = $dataProvider;
+                    break;
+
+            }
+            return $return;
+        }
         return $dataProvider;
+
     }
 }
